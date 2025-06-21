@@ -38,6 +38,8 @@ export default function Module() {
       if (id) complete(id)
       if (progress && progress.completed + 1 >= progress.total) {
         setCurrentCourse(null)
+        navigate(`/cursos/${id}/examen-final`)
+        return
       }
     }
     navigate(-1)
