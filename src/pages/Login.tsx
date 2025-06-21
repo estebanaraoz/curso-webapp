@@ -15,11 +15,11 @@ export default function Login() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="flex-grow flex flex-col items-center justify-center gap-4 p-4">
+      <main className="container mx-auto flex-grow flex flex-col items-center justify-center gap-4 p-4">
         <h1 className="text-3xl font-bold">Ingresar</h1>
         <button
           onClick={handleLogin}
-          className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700"
+          className="px-4 py-2 rounded min-w-[8rem] text-base bg-blue-600 text-white hover:bg-blue-700"
         >
           Iniciar sesión
         </button>

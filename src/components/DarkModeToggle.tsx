@@ -14,7 +14,7 @@ export default function DarkModeToggle() {
   return (
     <button
       onClick={() => setEnabled(!enabled)}
-      className="ml-4 px-2 py-1 border rounded"
+      className="ml-4 px-4 py-2 border rounded min-w-[6rem] text-sm"
     >
       {enabled ? 'Modo claro' : 'Modo oscuro'}
     </button>

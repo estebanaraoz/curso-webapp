@@ -9,16 +9,16 @@ export default function Navbar() {
   const name = (user as { name?: string } | null)?.name ?? exampleUser.name
 
   return (
-    <nav className="p-4 flex items-center gap-4 bg-gray-200 dark:bg-gray-800">
-      <Link to="/">Home</Link>
-      <Link to="/cursos">Cursos</Link>
-      <div className="ml-auto flex items-center gap-4">
+    <nav className="p-4 flex flex-wrap items-center gap-4 bg-gray-200 dark:bg-gray-800 text-sm">
+      <Link to="/" className="block">Home</Link>
+      <Link to="/cursos" className="block">Cursos</Link>
+      <div className="ml-auto flex flex-wrap items-center gap-2">
         {isLogged ? (
           <>
             <span>Hola, {name}</span>
             <button
               onClick={logout}
-              className="px-3 py-1 rounded bg-gray-300 text-gray-800 hover:bg-gray-400"
+              className="px-4 py-2 rounded min-w-[6rem] bg-gray-300 text-gray-800 hover:bg-gray-400"
             >
               Cerrar sesión
             </button>
@@ -26,7 +26,7 @@ export default function Navbar() {
         ) : (
           <button
             onClick={() => navigate('/login')}
-            className="px-3 py-1 rounded bg-gray-300 text-gray-800 hover:bg-gray-400"
+            className="px-4 py-2 rounded min-w-[6rem] bg-gray-300 text-gray-800 hover:bg-gray-400"
           >
             Ingresar
           </button>

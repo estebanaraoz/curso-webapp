@@ -8,7 +8,7 @@ export default function NotFound() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="flex-grow flex flex-col items-center justify-center gap-4 p-4 text-center">
+      <main className="container mx-auto flex-grow flex flex-col items-center justify-center gap-4 p-4 text-center">
         <h1 className="text-4xl font-bold">P\u00e1gina no encontrada</h1>
         <p className="text-lg">La ruta que est\u00e1s buscando no existe.</p>
         <Button onClick={() => navigate('/')}>Volver al inicio</Button>

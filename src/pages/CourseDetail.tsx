@@ -21,11 +21,11 @@ export default function CourseDetail() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="flex-grow p-4 flex flex-col items-start gap-4">
+      <main className="container mx-auto flex-grow p-4 flex flex-col items-start gap-4">
         <img
           src={mockCourse.image}
           alt={mockCourse.title}
-          className="w-full h-48 object-cover rounded"
+          className="w-full max-w-full h-auto object-cover rounded overflow-hidden"
         />
         <h1 className="text-3xl font-bold">
           {mockCourse.title} (ID: {id})
