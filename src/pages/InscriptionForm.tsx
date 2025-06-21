@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Button from '../components/Button'
 import { useAuthStore } from '../store/auth'
+import { courses } from '../data/courses'
 
 export default function InscriptionForm() {
   const { id } = useParams()
@@ -18,8 +19,14 @@ export default function InscriptionForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    enroll({ id: id || '', title: `Curso ${id}`, progress: '0 de 8 clases' })
-    navigate('/inscripcion-exitosa', { state: { courseTitle: `Curso ${id}` } })
+    const course = courses.find(c => c.id === id)
+    enroll({
+      id: id || '',
+      title: course?.title ?? `Curso ${id}`,
+      completed: 0,
+      total: course?.modules.length ?? 0,
+    })
+    navigate('/inscripcion-exitosa', { state: { courseTitle: course?.title } })
   }
 
   return (

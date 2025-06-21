@@ -32,7 +32,7 @@ export default function Navbar() {
             </svg>
           )}
         </button>
-        <DarkModeToggle />
+        <DarkModeToggle className="ml-4" />
       </div>
       <div className={`${open ? 'flex' : 'hidden'} sm:flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 border-t sm:border-none`}>
         <Link to="/" className="block" onClick={() => setOpen(false)}>Home</Link>
@@ -66,6 +66,7 @@ export default function Navbar() {
               Ingresar
             </button>
           )}
+          <DarkModeToggle className="hidden sm:block" />
         </div>
       </div>
     </nav>

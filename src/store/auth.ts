@@ -3,7 +3,8 @@ import { create } from 'zustand'
 export interface Course {
   id: string
   title: string
-  progress: string
+  completed: number
+  total: number
 }
 
 export interface AuthState {
@@ -13,6 +14,7 @@ export interface AuthState {
   login: (user: Record<string, unknown>) => void
   logout: () => void
   enroll: (course: Course) => void
+  completeModule: (courseId: string) => void
 }
 
 const useAuthStore = create<AuthState>((set) => {
@@ -33,6 +35,14 @@ const useAuthStore = create<AuthState>((set) => {
     },
     enroll: course =>
       set(state => ({ enrolledCourses: [...state.enrolledCourses, course] })),
+    completeModule: courseId =>
+      set(state => ({
+        enrolledCourses: state.enrolledCourses.map(c =>
+          c.id === courseId && c.completed < c.total
+            ? { ...c, completed: c.completed + 1 }
+            : c,
+        ),
+      })),
   }
 })
 
