@@ -1,6 +1,8 @@
 export interface ModuleInfo {
   id: string
   title: string
+  description: string
+  videoUrl: string
 }
 
 export interface CourseInfo {
@@ -23,11 +25,11 @@ export const courses: CourseInfo[] = [
     duration: '4 semanas',
     level: 'Principiante',
     modules: [
-      { id: '1', title: 'Introducción al desarrollo web' },
-      { id: '2', title: 'Estructura con HTML' },
-      { id: '3', title: 'Estilos con CSS' },
-      { id: '4', title: 'Diseño responsive' },
-      { id: '5', title: 'Proyecto final' },
+      { id: '1', title: 'Introducción al desarrollo web', description: 'Contenido del módulo 1', videoUrl: '#' },
+      { id: '2', title: 'Estructura con HTML', description: 'Contenido del módulo 2', videoUrl: '#' },
+      { id: '3', title: 'Estilos con CSS', description: 'Contenido del módulo 3', videoUrl: '#' },
+      { id: '4', title: 'Diseño responsive', description: 'Contenido del módulo 4', videoUrl: '#' },
+      { id: '5', title: 'Proyecto final', description: 'Contenido del módulo 5', videoUrl: '#' },
     ],
   },
   {
@@ -39,12 +41,12 @@ export const courses: CourseInfo[] = [
     duration: '5 semanas',
     level: 'Principiante',
     modules: [
-      { id: '1', title: 'Sintaxis y variables' },
-      { id: '2', title: 'Funciones y objetos' },
-      { id: '3', title: 'DOM y eventos' },
-      { id: '4', title: 'Manejo de asincronía' },
-      { id: '5', title: 'Consumo de APIs' },
-      { id: '6', title: 'Proyecto integrador' },
+      { id: '1', title: 'Sintaxis y variables', description: 'Contenido del módulo 1', videoUrl: '#' },
+      { id: '2', title: 'Funciones y objetos', description: 'Contenido del módulo 2', videoUrl: '#' },
+      { id: '3', title: 'DOM y eventos', description: 'Contenido del módulo 3', videoUrl: '#' },
+      { id: '4', title: 'Manejo de asincronía', description: 'Contenido del módulo 4', videoUrl: '#' },
+      { id: '5', title: 'Consumo de APIs', description: 'Contenido del módulo 5', videoUrl: '#' },
+      { id: '6', title: 'Proyecto integrador', description: 'Contenido del módulo 6', videoUrl: '#' },
     ],
   },
   {
@@ -55,11 +57,11 @@ export const courses: CourseInfo[] = [
     duration: '6 semanas',
     level: 'Intermedio',
     modules: [
-      { id: '1', title: 'Componentes y JSX' },
-      { id: '2', title: 'Estado y propiedades' },
-      { id: '3', title: 'Hooks básicos' },
-      { id: '4', title: 'Ruteo con React Router' },
-      { id: '5', title: 'Proyecto guiado' },
+      { id: '1', title: 'Componentes y JSX', description: 'Contenido del módulo 1', videoUrl: '#' },
+      { id: '2', title: 'Estado y propiedades', description: 'Contenido del módulo 2', videoUrl: '#' },
+      { id: '3', title: 'Hooks básicos', description: 'Contenido del módulo 3', videoUrl: '#' },
+      { id: '4', title: 'Ruteo con React Router', description: 'Contenido del módulo 4', videoUrl: '#' },
+      { id: '5', title: 'Proyecto guiado', description: 'Contenido del módulo 5', videoUrl: '#' },
     ],
   },
   {
@@ -70,11 +72,11 @@ export const courses: CourseInfo[] = [
     duration: '5 semanas',
     level: 'Intermedio',
     modules: [
-      { id: '1', title: 'Introducción a Node.js' },
-      { id: '2', title: 'Módulos y NPM' },
-      { id: '3', title: 'Creación de API con Express' },
-      { id: '4', title: 'Persistencia con bases de datos' },
-      { id: '5', title: 'Despliegue' },
+      { id: '1', title: 'Introducción a Node.js', description: 'Contenido del módulo 1', videoUrl: '#' },
+      { id: '2', title: 'Módulos y NPM', description: 'Contenido del módulo 2', videoUrl: '#' },
+      { id: '3', title: 'Creación de API con Express', description: 'Contenido del módulo 3', videoUrl: '#' },
+      { id: '4', title: 'Persistencia con bases de datos', description: 'Contenido del módulo 4', videoUrl: '#' },
+      { id: '5', title: 'Despliegue', description: 'Contenido del módulo 5', videoUrl: '#' },
     ],
   },
   {
@@ -85,13 +87,13 @@ export const courses: CourseInfo[] = [
     duration: '6 semanas',
     level: 'Avanzado',
     modules: [
-      { id: '1', title: 'Tipos y interfaces' },
-      { id: '2', title: 'Genéricos' },
-      { id: '3', title: 'Decoradores y metadata' },
-      { id: '4', title: 'Configuración avanzada' },
-      { id: '5', title: 'Integración con librerías' },
-      { id: '6', title: 'Patrones de diseño' },
-      { id: '7', title: 'Proyecto final' },
+      { id: '1', title: 'Tipos y interfaces', description: 'Contenido del módulo 1', videoUrl: '#' },
+      { id: '2', title: 'Genéricos', description: 'Contenido del módulo 2', videoUrl: '#' },
+      { id: '3', title: 'Decoradores y metadata', description: 'Contenido del módulo 3', videoUrl: '#' },
+      { id: '4', title: 'Configuración avanzada', description: 'Contenido del módulo 4', videoUrl: '#' },
+      { id: '5', title: 'Integración con librerías', description: 'Contenido del módulo 5', videoUrl: '#' },
+      { id: '6', title: 'Patrones de diseño', description: 'Contenido del módulo 6', videoUrl: '#' },
+      { id: '7', title: 'Proyecto final', description: 'Contenido del módulo 7', videoUrl: '#' },
     ],
   },
   {
@@ -102,13 +104,13 @@ export const courses: CourseInfo[] = [
     duration: '8 semanas',
     level: 'Avanzado',
     modules: [
-      { id: '1', title: 'Fundamentos de MongoDB' },
-      { id: '2', title: 'API REST con Express' },
-      { id: '3', title: 'Frontend con React' },
-      { id: '4', title: 'Autenticación' },
-      { id: '5', title: 'Testing' },
-      { id: '6', title: 'Despliegue continuo' },
-      { id: '7', title: 'Proyecto final' },
+      { id: '1', title: 'Fundamentos de MongoDB', description: 'Contenido del módulo 1', videoUrl: '#' },
+      { id: '2', title: 'API REST con Express', description: 'Contenido del módulo 2', videoUrl: '#' },
+      { id: '3', title: 'Frontend con React', description: 'Contenido del módulo 3', videoUrl: '#' },
+      { id: '4', title: 'Autenticación', description: 'Contenido del módulo 4', videoUrl: '#' },
+      { id: '5', title: 'Testing', description: 'Contenido del módulo 5', videoUrl: '#' },
+      { id: '6', title: 'Despliegue continuo', description: 'Contenido del módulo 6', videoUrl: '#' },
+      { id: '7', title: 'Proyecto final', description: 'Contenido del módulo 7', videoUrl: '#' },
     ],
   },
   {
@@ -119,11 +121,11 @@ export const courses: CourseInfo[] = [
     duration: '4 semanas',
     level: 'Intermedio',
     modules: [
-      { id: '1', title: 'Introducción a las pruebas' },
-      { id: '2', title: 'Jest en profundidad' },
-      { id: '3', title: 'Pruebas de React' },
-      { id: '4', title: 'Cobertura y mocks' },
-      { id: '5', title: 'Integración continua' },
+      { id: '1', title: 'Introducción a las pruebas', description: 'Contenido del módulo 1', videoUrl: '#' },
+      { id: '2', title: 'Jest en profundidad', description: 'Contenido del módulo 2', videoUrl: '#' },
+      { id: '3', title: 'Pruebas de React', description: 'Contenido del módulo 3', videoUrl: '#' },
+      { id: '4', title: 'Cobertura y mocks', description: 'Contenido del módulo 4', videoUrl: '#' },
+      { id: '5', title: 'Integración continua', description: 'Contenido del módulo 5', videoUrl: '#' },
     ],
   },
   {
@@ -134,12 +136,12 @@ export const courses: CourseInfo[] = [
     duration: '7 semanas',
     level: 'Intermedio',
     modules: [
-      { id: '1', title: 'Bases de React Native' },
-      { id: '2', title: 'Componentes y estilos' },
-      { id: '3', title: 'Navegación en la app' },
-      { id: '4', title: 'Consumo de APIs' },
-      { id: '5', title: 'Distribución en tiendas' },
-      { id: '6', title: 'Proyecto final' },
+      { id: '1', title: 'Bases de React Native', description: 'Contenido del módulo 1', videoUrl: '#' },
+      { id: '2', title: 'Componentes y estilos', description: 'Contenido del módulo 2', videoUrl: '#' },
+      { id: '3', title: 'Navegación en la app', description: 'Contenido del módulo 3', videoUrl: '#' },
+      { id: '4', title: 'Consumo de APIs', description: 'Contenido del módulo 4', videoUrl: '#' },
+      { id: '5', title: 'Distribución en tiendas', description: 'Contenido del módulo 5', videoUrl: '#' },
+      { id: '6', title: 'Proyecto final', description: 'Contenido del módulo 6', videoUrl: '#' },
     ],
   },
 ]
