@@ -14,6 +14,7 @@ export default function Module() {
   const progress = useAuthStore(state =>
     state.enrolledCourses.find(c => c.id === id),
   )
+  const isEnrolled = !!progress
   const setCurrentCourse = useAuthStore(state => state.setCurrentCourse)
   const course = courses.find(c => c.id === id)
   const module = course?.modules.find(m => m.id === moduleId)
@@ -39,13 +40,15 @@ export default function Module() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="container mx-auto flex-grow p-4 space-y-4">
+      <main className="container mx-auto flex-grow p-4 flex flex-col items-center space-y-4">
         {course && module ? (
           <>
-            <h1 className="text-3xl font-bold">{course.title} - {module.title}</h1>
-            <p>{module.description}</p>
-            {isLogged ? (
-              <>
+            <h1 className="text-3xl font-bold text-center">
+              {course.title} - {module.title}
+            </h1>
+            <p className="text-center">{module.description}</p>
+            {isLogged && isEnrolled ? (
+              <div className="border p-4 rounded shadow w-full max-w-md text-center">
                 <a
                   href={module.videoUrl}
                   className="text-blue-600 underline"
@@ -54,16 +57,19 @@ export default function Module() {
                 >
                   Ver video
                 </a>
-              </>
+              </div>
+            ) : isLogged ? (
+              <p className="italic text-center">Inscríbete para ver el contenido de este módulo.</p>
             ) : (
-              <p className="italic">Inicia sesión para ver el contenido de este módulo.</p>
+              <p className="italic text-center">Inicia sesión para ver el contenido de este módulo.</p>
             )}
           </>
         ) : (
           <p>Módulo no encontrado</p>
         )}
-        {isLogged ? (
+        {isLogged && isEnrolled ? (
           <Button
+            className="mx-auto"
             onClick={handleComplete}
             disabled={progress ? progress.completed >= progress.total : false}
           >
@@ -71,7 +77,7 @@ export default function Module() {
               ? 'Curso completado'
               : 'Marcar completado'}
           </Button>
-        ) : (
+        ) : isLogged ? null : (
           <Button onClick={() => navigate('/login')}>Inicia sesión para continuar</Button>
         )}
       </main>
