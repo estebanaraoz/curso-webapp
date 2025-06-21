@@ -34,30 +34,39 @@ export default function CourseDetail() {
             <ul className="list-disc pl-6 space-y-2">
               {course.modules.map(m => {
                 const allowed = progress ? parseInt(m.id) <= progress.completed + 1 : false
+                const isCurrent = progress ? parseInt(m.id) === progress.completed + 1 : false
                 return (
-                  <li key={m.id} className="space-y-1">
+                  <li
+                    key={m.id}
+                    className={`space-y-1 ${isCurrent ? 'bg-blue-50 border-l-4 border-blue-400 pl-2' : ''}`}
+                  >
                     {isLogged && allowed ? (
                       <Link
                         to={`/cursos/${id}/modulo/${m.id}`}
-                        className="text-blue-600 underline"
+                        className={`${isCurrent ? 'text-blue-700 font-semibold underline' : 'text-blue-600 underline'}`}
                       >
                         {m.title}
                       </Link>
                     ) : (
-                      <span className="font-semibold text-gray-500">{m.title}</span>
+                      <span className={`font-semibold ${isCurrent ? 'text-blue-700' : 'text-gray-500'}`}>{m.title}</span>
                     )}
                     <p className="ml-4 text-sm text-gray-600">{m.description}</p>
                   </li>
                 )
               })}
             </ul>
-          {progress && (
-            <p className="font-semibold">
-              {progress.completed >= progress.total
-                ? `Curso finalizado - Nota: ${progress.grade ?? '-'}`
-                : `${Math.round((progress.completed / progress.total) * 100)}% completado`}
-            </p>
-          )}
+            {progress && (
+              <p className="font-semibold">
+                {progress.completed >= progress.total
+                  ? `Curso finalizado - Nota: ${progress.grade ?? '-'}`
+                  : `${Math.round((progress.completed / progress.total) * 100)}% completado`}
+              </p>
+            )}
+            {progress && progress.completed >= progress.total && (
+              <Button onClick={() => navigate(`/cursos/${id}/examen-final`)}>
+                Ir al examen final
+              </Button>
+            )}
         </>
         ) : (
           <p>Curso no encontrado</p>

@@ -18,6 +18,8 @@ export default function Module() {
   const moduleNumber = parseInt(moduleId ?? '0', 10)
   const canAccess =
     !moduleId || !isEnrolled || progress.completed >= moduleNumber - 1
+  const isCompleted =
+    isLogged && isEnrolled && progress.completed >= moduleNumber
   const setCurrentCourse = useAuthStore(state => state.setCurrentCourse)
   const course = courses.find(c => c.id === id)
   const module = course?.modules.find(m => m.id === moduleId)
@@ -81,17 +83,19 @@ export default function Module() {
           <p>Módulo no encontrado</p>
         )}
         {isLogged && isEnrolled ? (
-          <Button
-            className="mx-auto"
-            onClick={handleComplete}
-            disabled={
-              !canAccess || (progress ? progress.completed >= progress.total : false)
-            }
-          >
-            {progress && progress.completed >= progress.total
-              ? 'Curso completado'
-              : 'Marcar completado'}
-          </Button>
+          isCompleted ? (
+            <p className="text-center italic">Ya has completado este módulo. Puedes volver a ver el video.</p>
+          ) : (
+            <Button
+              className="mx-auto"
+              onClick={handleComplete}
+              disabled={!canAccess || (progress ? progress.completed >= progress.total : false)}
+            >
+              {progress && progress.completed >= progress.total
+                ? 'Curso completado'
+                : 'Marcar completado'}
+            </Button>
+          )
         ) : isLogged ? null : (
           <Button onClick={() => navigate('/login')}>Inicia sesión para continuar</Button>
         )}
