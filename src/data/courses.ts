@@ -25,11 +25,40 @@ export const courses: CourseInfo[] = [
     duration: '4 semanas',
     level: 'Principiante',
     modules: [
-      { id: '1', title: 'Introducción al desarrollo web', description: 'Contenido del módulo 1', videoUrl: '#' },
-      { id: '2', title: 'Estructura con HTML', description: 'Contenido del módulo 2', videoUrl: '#' },
-      { id: '3', title: 'Estilos con CSS', description: 'Contenido del módulo 3', videoUrl: '#' },
-      { id: '4', title: 'Diseño responsive', description: 'Contenido del módulo 4', videoUrl: '#' },
-      { id: '5', title: 'Proyecto final', description: 'Contenido del módulo 5', videoUrl: '#' },
+      {
+        id: '1',
+        title: 'Introducción al desarrollo web',
+        description:
+          'Descubre cómo funcionan los navegadores y las bases del desarrollo web.',
+        videoUrl: '#',
+      },
+      {
+        id: '2',
+        title: 'Estructura con HTML',
+        description: 'Aprende a estructurar páginas con etiquetas semánticas.',
+        videoUrl: '#',
+      },
+      {
+        id: '3',
+        title: 'Estilos con CSS',
+        description:
+          'Aplica estilos atractivos utilizando selectores y propiedades de CSS.',
+        videoUrl: '#',
+      },
+      {
+        id: '4',
+        title: 'Diseño responsive',
+        description:
+          'Domina las técnicas para adaptar tus diseños a cualquier dispositivo.',
+        videoUrl: '#',
+      },
+      {
+        id: '5',
+        title: 'Proyecto final',
+        description:
+          'Pon en práctica todo lo aprendido creando un sitio web completo.',
+        videoUrl: '#',
+      },
     ],
   },
   {
@@ -41,12 +70,46 @@ export const courses: CourseInfo[] = [
     duration: '5 semanas',
     level: 'Principiante',
     modules: [
-      { id: '1', title: 'Sintaxis y variables', description: 'Contenido del módulo 1', videoUrl: '#' },
-      { id: '2', title: 'Funciones y objetos', description: 'Contenido del módulo 2', videoUrl: '#' },
-      { id: '3', title: 'DOM y eventos', description: 'Contenido del módulo 3', videoUrl: '#' },
-      { id: '4', title: 'Manejo de asincronía', description: 'Contenido del módulo 4', videoUrl: '#' },
-      { id: '5', title: 'Consumo de APIs', description: 'Contenido del módulo 5', videoUrl: '#' },
-      { id: '6', title: 'Proyecto integrador', description: 'Contenido del módulo 6', videoUrl: '#' },
+      {
+        id: '1',
+        title: 'Sintaxis y variables',
+        description:
+          'Conoce la sintaxis básica del lenguaje y cómo declarar variables.',
+        videoUrl: '#',
+      },
+      {
+        id: '2',
+        title: 'Funciones y objetos',
+        description: 'Profundiza en funciones, scopes y creación de objetos.',
+        videoUrl: '#',
+      },
+      {
+        id: '3',
+        title: 'DOM y eventos',
+        description:
+          'Manipula elementos de la página y responde a las acciones del usuario.',
+        videoUrl: '#',
+      },
+      {
+        id: '4',
+        title: 'Manejo de asincronía',
+        description:
+          'Aprende promesas y async/await para controlar operaciones asíncronas.',
+        videoUrl: '#',
+      },
+      {
+        id: '5',
+        title: 'Consumo de APIs',
+        description:
+          'Realiza peticiones HTTP y trabaja con datos externos en tus apps.',
+        videoUrl: '#',
+      },
+      {
+        id: '6',
+        title: 'Proyecto integrador',
+        description: 'Crea una aplicación práctica aplicando todos los conceptos.',
+        videoUrl: '#',
+      },
     ],
   },
   {
@@ -57,11 +120,36 @@ export const courses: CourseInfo[] = [
     duration: '6 semanas',
     level: 'Intermedio',
     modules: [
-      { id: '1', title: 'Componentes y JSX', description: 'Contenido del módulo 1', videoUrl: '#' },
-      { id: '2', title: 'Estado y propiedades', description: 'Contenido del módulo 2', videoUrl: '#' },
-      { id: '3', title: 'Hooks básicos', description: 'Contenido del módulo 3', videoUrl: '#' },
-      { id: '4', title: 'Ruteo con React Router', description: 'Contenido del módulo 4', videoUrl: '#' },
-      { id: '5', title: 'Proyecto guiado', description: 'Contenido del módulo 5', videoUrl: '#' },
+      {
+        id: '1',
+        title: 'Componentes y JSX',
+        description: 'Entiende la filosofía de React y crea componentes reutilizables.',
+        videoUrl: '#',
+      },
+      {
+        id: '2',
+        title: 'Estado y propiedades',
+        description: 'Gestiona datos internos y comunica componentes de forma efectiva.',
+        videoUrl: '#',
+      },
+      {
+        id: '3',
+        title: 'Hooks básicos',
+        description: 'Aprovecha useState y useEffect para dotar de lógica a tus interfaces.',
+        videoUrl: '#',
+      },
+      {
+        id: '4',
+        title: 'Ruteo con React Router',
+        description: 'Navega entre páginas con enlaces y parámetros dinámicos.',
+        videoUrl: '#',
+      },
+      {
+        id: '5',
+        title: 'Proyecto guiado',
+        description: 'Construye una pequeña aplicación aplicando todo lo aprendido.',
+        videoUrl: '#',
+      },
     ],
   },
   {
@@ -72,11 +160,36 @@ export const courses: CourseInfo[] = [
     duration: '5 semanas',
     level: 'Intermedio',
     modules: [
-      { id: '1', title: 'Introducción a Node.js', description: 'Contenido del módulo 1', videoUrl: '#' },
-      { id: '2', title: 'Módulos y NPM', description: 'Contenido del módulo 2', videoUrl: '#' },
-      { id: '3', title: 'Creación de API con Express', description: 'Contenido del módulo 3', videoUrl: '#' },
-      { id: '4', title: 'Persistencia con bases de datos', description: 'Contenido del módulo 4', videoUrl: '#' },
-      { id: '5', title: 'Despliegue', description: 'Contenido del módulo 5', videoUrl: '#' },
+      {
+        id: '1',
+        title: 'Introducción a Node.js',
+        description: 'Conoce el entorno de ejecución y sus características principales.',
+        videoUrl: '#',
+      },
+      {
+        id: '2',
+        title: 'Módulos y NPM',
+        description: 'Aprende a organizar tu código y gestionar dependencias.',
+        videoUrl: '#',
+      },
+      {
+        id: '3',
+        title: 'Creación de API con Express',
+        description: 'Construye rutas y controladores para exponer servicios REST.',
+        videoUrl: '#',
+      },
+      {
+        id: '4',
+        title: 'Persistencia con bases de datos',
+        description: 'Integra una base de datos para guardar información de forma permanente.',
+        videoUrl: '#',
+      },
+      {
+        id: '5',
+        title: 'Despliegue',
+        description: 'Prepara y publica tu aplicación en un entorno productivo.',
+        videoUrl: '#',
+      },
     ],
   },
   {
@@ -87,13 +200,48 @@ export const courses: CourseInfo[] = [
     duration: '6 semanas',
     level: 'Avanzado',
     modules: [
-      { id: '1', title: 'Tipos y interfaces', description: 'Contenido del módulo 1', videoUrl: '#' },
-      { id: '2', title: 'Genéricos', description: 'Contenido del módulo 2', videoUrl: '#' },
-      { id: '3', title: 'Decoradores y metadata', description: 'Contenido del módulo 3', videoUrl: '#' },
-      { id: '4', title: 'Configuración avanzada', description: 'Contenido del módulo 4', videoUrl: '#' },
-      { id: '5', title: 'Integración con librerías', description: 'Contenido del módulo 5', videoUrl: '#' },
-      { id: '6', title: 'Patrones de diseño', description: 'Contenido del módulo 6', videoUrl: '#' },
-      { id: '7', title: 'Proyecto final', description: 'Contenido del módulo 7', videoUrl: '#' },
+      {
+        id: '1',
+        title: 'Tipos y interfaces',
+        description: 'Domina la definición de tipos para crear código más seguro.',
+        videoUrl: '#',
+      },
+      {
+        id: '2',
+        title: 'Genéricos',
+        description: 'Escribe funciones y clases reutilizables mediante genéricos.',
+        videoUrl: '#',
+      },
+      {
+        id: '3',
+        title: 'Decoradores y metadata',
+        description: 'Añade funcionalidades mediante decoradores y reflexión.',
+        videoUrl: '#',
+      },
+      {
+        id: '4',
+        title: 'Configuración avanzada',
+        description: 'Configura el compilador y gestiona proyectos de gran escala.',
+        videoUrl: '#',
+      },
+      {
+        id: '5',
+        title: 'Integración con librerías',
+        description: 'Utiliza TypeScript junto a bibliotecas populares de JavaScript.',
+        videoUrl: '#',
+      },
+      {
+        id: '6',
+        title: 'Patrones de diseño',
+        description: 'Implementa soluciones comunes aplicando patrones en TypeScript.',
+        videoUrl: '#',
+      },
+      {
+        id: '7',
+        title: 'Proyecto final',
+        description: 'Desarrolla una aplicación compleja aplicando buenas prácticas.',
+        videoUrl: '#',
+      },
     ],
   },
   {
@@ -104,13 +252,48 @@ export const courses: CourseInfo[] = [
     duration: '8 semanas',
     level: 'Avanzado',
     modules: [
-      { id: '1', title: 'Fundamentos de MongoDB', description: 'Contenido del módulo 1', videoUrl: '#' },
-      { id: '2', title: 'API REST con Express', description: 'Contenido del módulo 2', videoUrl: '#' },
-      { id: '3', title: 'Frontend con React', description: 'Contenido del módulo 3', videoUrl: '#' },
-      { id: '4', title: 'Autenticación', description: 'Contenido del módulo 4', videoUrl: '#' },
-      { id: '5', title: 'Testing', description: 'Contenido del módulo 5', videoUrl: '#' },
-      { id: '6', title: 'Despliegue continuo', description: 'Contenido del módulo 6', videoUrl: '#' },
-      { id: '7', title: 'Proyecto final', description: 'Contenido del módulo 7', videoUrl: '#' },
+      {
+        id: '1',
+        title: 'Fundamentos de MongoDB',
+        description: 'Configura y modela tus datos en la base NoSQL más popular.',
+        videoUrl: '#',
+      },
+      {
+        id: '2',
+        title: 'API REST con Express',
+        description: 'Crea un backend robusto y documenta tus rutas HTTP.',
+        videoUrl: '#',
+      },
+      {
+        id: '3',
+        title: 'Frontend con React',
+        description: 'Conecta la interfaz de usuario con tu servidor utilizando React.',
+        videoUrl: '#',
+      },
+      {
+        id: '4',
+        title: 'Autenticación',
+        description: 'Implementa registros, login y protección de rutas.',
+        videoUrl: '#',
+      },
+      {
+        id: '5',
+        title: 'Testing',
+        description: 'Escribe pruebas de extremo a extremo para asegurar la calidad.',
+        videoUrl: '#',
+      },
+      {
+        id: '6',
+        title: 'Despliegue continuo',
+        description: 'Automatiza la publicación de la aplicación con herramientas CI/CD.',
+        videoUrl: '#',
+      },
+      {
+        id: '7',
+        title: 'Proyecto final',
+        description: 'Integra todos los componentes en una aplicación completa.',
+        videoUrl: '#',
+      },
     ],
   },
   {
@@ -121,11 +304,36 @@ export const courses: CourseInfo[] = [
     duration: '4 semanas',
     level: 'Intermedio',
     modules: [
-      { id: '1', title: 'Introducción a las pruebas', description: 'Contenido del módulo 1', videoUrl: '#' },
-      { id: '2', title: 'Jest en profundidad', description: 'Contenido del módulo 2', videoUrl: '#' },
-      { id: '3', title: 'Pruebas de React', description: 'Contenido del módulo 3', videoUrl: '#' },
-      { id: '4', title: 'Cobertura y mocks', description: 'Contenido del módulo 4', videoUrl: '#' },
-      { id: '5', title: 'Integración continua', description: 'Contenido del módulo 5', videoUrl: '#' },
+      {
+        id: '1',
+        title: 'Introducción a las pruebas',
+        description: 'Comprende los tipos de pruebas y su importancia en el desarrollo.',
+        videoUrl: '#',
+      },
+      {
+        id: '2',
+        title: 'Jest en profundidad',
+        description: 'Configura y aprovecha al máximo las características de Jest.',
+        videoUrl: '#',
+      },
+      {
+        id: '3',
+        title: 'Pruebas de React',
+        description: 'Escribe tests para tus componentes utilizando la Testing Library.',
+        videoUrl: '#',
+      },
+      {
+        id: '4',
+        title: 'Cobertura y mocks',
+        description: 'Simula dependencias y mide el alcance de tus pruebas.',
+        videoUrl: '#',
+      },
+      {
+        id: '5',
+        title: 'Integración continua',
+        description: 'Automatiza la ejecución de tests en cada actualización.',
+        videoUrl: '#',
+      },
     ],
   },
   {
@@ -136,12 +344,42 @@ export const courses: CourseInfo[] = [
     duration: '7 semanas',
     level: 'Intermedio',
     modules: [
-      { id: '1', title: 'Bases de React Native', description: 'Contenido del módulo 1', videoUrl: '#' },
-      { id: '2', title: 'Componentes y estilos', description: 'Contenido del módulo 2', videoUrl: '#' },
-      { id: '3', title: 'Navegación en la app', description: 'Contenido del módulo 3', videoUrl: '#' },
-      { id: '4', title: 'Consumo de APIs', description: 'Contenido del módulo 4', videoUrl: '#' },
-      { id: '5', title: 'Distribución en tiendas', description: 'Contenido del módulo 5', videoUrl: '#' },
-      { id: '6', title: 'Proyecto final', description: 'Contenido del módulo 6', videoUrl: '#' },
+      {
+        id: '1',
+        title: 'Bases de React Native',
+        description: 'Configura tu entorno y crea tu primera aplicación móvil.',
+        videoUrl: '#',
+      },
+      {
+        id: '2',
+        title: 'Componentes y estilos',
+        description: 'Construye interfaces móviles y aplica estilos flexibles.',
+        videoUrl: '#',
+      },
+      {
+        id: '3',
+        title: 'Navegación en la app',
+        description: 'Gestiona pantallas y transiciones con React Navigation.',
+        videoUrl: '#',
+      },
+      {
+        id: '4',
+        title: 'Consumo de APIs',
+        description: 'Conecta tu aplicación con servicios externos para obtener datos.',
+        videoUrl: '#',
+      },
+      {
+        id: '5',
+        title: 'Distribución en tiendas',
+        description: 'Prepara tu app para publicarla en Google Play y App Store.',
+        videoUrl: '#',
+      },
+      {
+        id: '6',
+        title: 'Proyecto final',
+        description: 'Desarrolla una app completa aplicando todos los conocimientos.',
+        videoUrl: '#',
+      },
     ],
   },
 ]
