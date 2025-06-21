@@ -48,21 +48,39 @@ export default function Module() {
           <>
             <h1 className="text-3xl font-bold">{course.title} - {module.title}</h1>
             <p>{module.description}</p>
-            <a href={module.videoUrl} className="text-blue-600 underline" target="_blank" rel="noreferrer">
-              Ver video
-            </a>
-            <div className="aspect-video bg-gray-200 flex items-center justify-center">
-              Contenido del módulo {moduleId}
-            </div>
+            {isLogged ? (
+              <>
+                <a
+                  href={module.videoUrl}
+                  className="text-blue-600 underline"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Ver video
+                </a>
+                <div className="aspect-video bg-gray-200 flex items-center justify-center">
+                  Contenido del módulo {moduleId}
+                </div>
+              </>
+            ) : (
+              <p className="italic">Inicia sesión para ver el contenido de este módulo.</p>
+            )}
           </>
         ) : (
           <p>Módulo no encontrado</p>
         )}
-        <Button onClick={handleComplete} disabled={progress?.completed >= progress?.total}>
-          {progress && progress.completed >= progress.total
-            ? 'Curso completado'
-            : 'Marcar completado'}
-        </Button>
+        {isLogged ? (
+          <Button
+            onClick={handleComplete}
+            disabled={progress ? progress.completed >= progress.total : false}
+          >
+            {progress && progress.completed >= progress.total
+              ? 'Curso completado'
+              : 'Marcar completado'}
+          </Button>
+        ) : (
+          <Button onClick={() => navigate('/login')}>Inicia sesión para continuar</Button>
+        )}
       </main>
       <Footer />
     </div>
