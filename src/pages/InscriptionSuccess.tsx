@@ -1,11 +1,12 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Button from '../components/Button'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 export default function InscriptionSuccess() {
   const navigate = useNavigate()
-  const courseName = 'Introducción a JavaScript'
+  const location = useLocation()
+  const courseName = (location.state as { courseTitle?: string } | null)?.courseTitle ?? 'Introducción a JavaScript'
 
   return (
     <div className="flex flex-col min-h-screen">

@@ -12,6 +12,12 @@ export default function Navbar() {
     <nav className="p-4 flex flex-wrap items-center gap-4 bg-gray-200 dark:bg-gray-800 text-sm">
       <Link to="/" className="block">Home</Link>
       <Link to="/cursos" className="block">Cursos</Link>
+      {isLogged && (
+        <>
+          <Link to="/dashboard" className="block">Mis cursos</Link>
+          <Link to="/perfil" className="block">Perfil</Link>
+        </>
+      )}
       <div className="ml-auto flex flex-wrap items-center gap-2">
         {isLogged ? (
           <>
