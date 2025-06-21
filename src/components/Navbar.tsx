@@ -8,6 +8,7 @@ export default function Navbar() {
   const isLogged = useAuthStore(state => state.isLogged)
   const user = useAuthStore(state => state.user)
   const logout = useAuthStore(state => state.logout)
+  const clearCache = useAuthStore(state => state.clearCache)
   const [open, setOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const exampleUser = { name: 'Mariana' }
@@ -89,6 +90,17 @@ export default function Navbar() {
                     className="text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
                   >
                     Cerrar sesión
+                  </button>
+                  <button
+                    onClick={() => {
+                      clearCache()
+                      navigate('/')
+                      setOpen(false)
+                      setDropdownOpen(false)
+                    }}
+                    className="text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                  >
+                    Borrar caché
                   </button>
                 </div>
               )}

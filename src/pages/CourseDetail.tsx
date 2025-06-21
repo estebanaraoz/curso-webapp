@@ -32,18 +32,24 @@ export default function CourseDetail() {
               <span className="px-3 py-1 bg-gray-200 rounded">Módulos: {course.modules.length}</span>
             </div>
             <ul className="list-disc pl-6 space-y-2">
-              {course.modules.map(m => (
-                <li key={m.id} className="space-y-1">
-                  {isLogged ? (
-                    <Link to={`/cursos/${id}/modulo/${m.id}`} className="text-blue-600 underline">
-                      {m.title}
-                    </Link>
-                  ) : (
-                    <span className="font-semibold">{m.title}</span>
-                  )}
-                  <p className="ml-4 text-sm text-gray-600">{m.description}</p>
-                </li>
-              ))}
+              {course.modules.map(m => {
+                const allowed = progress ? parseInt(m.id) <= progress.completed + 1 : false
+                return (
+                  <li key={m.id} className="space-y-1">
+                    {isLogged && allowed ? (
+                      <Link
+                        to={`/cursos/${id}/modulo/${m.id}`}
+                        className="text-blue-600 underline"
+                      >
+                        {m.title}
+                      </Link>
+                    ) : (
+                      <span className="font-semibold text-gray-500">{m.title}</span>
+                    )}
+                    <p className="ml-4 text-sm text-gray-600">{m.description}</p>
+                  </li>
+                )
+              })}
             </ul>
           {progress && (
             <p className="font-semibold">

@@ -15,6 +15,9 @@ export default function Module() {
     state.enrolledCourses.find(c => c.id === id),
   )
   const isEnrolled = !!progress
+  const moduleNumber = parseInt(moduleId ?? '0', 10)
+  const canAccess =
+    !moduleId || !isEnrolled || progress.completed >= moduleNumber - 1
   const setCurrentCourse = useAuthStore(state => state.setCurrentCourse)
   const course = courses.find(c => c.id === id)
   const module = course?.modules.find(m => m.id === moduleId)
@@ -26,6 +29,9 @@ export default function Module() {
   const handleComplete = () => {
     if (!isLogged) {
       navigate('/login')
+      return
+    }
+    if (!canAccess) {
       return
     }
     if (!progress || progress.completed < progress.total) {
@@ -47,7 +53,7 @@ export default function Module() {
               {course.title} - {module.title}
             </h1>
             <p className="text-center">{module.description}</p>
-            {isLogged && isEnrolled ? (
+            {isLogged && isEnrolled && canAccess ? (
               <div className="border p-4 rounded shadow w-full max-w-md text-center">
                 <a
                   href={module.videoUrl}
@@ -58,6 +64,11 @@ export default function Module() {
                   Ver video
                 </a>
               </div>
+            ) : isLogged && isEnrolled && !canAccess ? (
+              <p className="italic text-center">
+                Primero debes completar el módulo{' '}
+                {course?.modules.find(m => m.id === String(moduleNumber - 1))?.title}
+              </p>
             ) : isLogged ? (
               <p className="italic text-center">Inscríbete para ver el contenido de este módulo.</p>
             ) : (
@@ -71,7 +82,9 @@ export default function Module() {
           <Button
             className="mx-auto"
             onClick={handleComplete}
-            disabled={progress ? progress.completed >= progress.total : false}
+            disabled={
+              !canAccess || (progress ? progress.completed >= progress.total : false)
+            }
           >
             {progress && progress.completed >= progress.total
               ? 'Curso completado'
