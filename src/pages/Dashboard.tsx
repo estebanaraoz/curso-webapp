@@ -2,22 +2,10 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Button from '../components/Button'
 import { PieChart, Pie, Cell, Tooltip } from 'recharts'
+import { useAuthStore } from '../store/auth'
 
 export default function Dashboard() {
-  const enrolledCourses = [
-    {
-      id: '1',
-      title: 'Introducci\u00f3n a JavaScript',
-      completed: 3,
-      total: 8,
-    },
-    {
-      id: '2',
-      title: 'React desde cero',
-      completed: 1,
-      total: 10,
-    },
-  ]
+  const enrolledCourses = useAuthStore(state => state.enrolledCourses)
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -29,9 +17,12 @@ export default function Dashboard() {
         ) : (
           <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
             {enrolledCourses.map(course => {
-              const remaining = course.total - course.completed
+              const match = course.progress.match(/(\d+) de (\d+)/)
+              const completed = match ? Number(match[1]) : 0
+              const total = match ? Number(match[2]) : 0
+              const remaining = total - completed
               const data = [
-                { name: 'Completado', value: course.completed },
+                { name: 'Completado', value: completed },
                 { name: 'Restante', value: remaining },
               ]
               return (
@@ -56,9 +47,7 @@ export default function Dashboard() {
                     </Pie>
                     <Tooltip />
                   </PieChart>
-                  <p className="text-sm">
-                    {course.completed} de {course.total} clases
-                  </p>
+                  <p className="text-sm">{course.progress}</p>
                   <Button className="mt-auto">Continuar curso</Button>
                 </div>
               )

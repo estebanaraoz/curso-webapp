@@ -2,10 +2,12 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Button from '../components/Button'
 import { useParams, useNavigate } from 'react-router-dom'
+import { useAuthStore } from '../store/auth'
 
 export default function CourseDetail() {
   const { id } = useParams()
   const navigate = useNavigate()
+  const enroll = useAuthStore(state => state.enroll)
   const mockCourse = {
     id: '1',
     title: 'Introducción a JavaScript',
@@ -40,7 +42,18 @@ export default function CourseDetail() {
             Clases: {mockCourse.classes}
           </span>
         </div>
-        <Button onClick={() => navigate('/inscripcion-exitosa')}>Inscribirme</Button>
+        <Button
+          onClick={() => {
+            enroll({
+              id: '1',
+              title: 'JavaScript desde cero',
+              progress: '0 de 8 clases',
+            })
+            navigate('/inscripcion-exitosa')
+          }}
+        >
+          Inscribirme
+        </Button>
       </main>
       <Footer />
     </div>
