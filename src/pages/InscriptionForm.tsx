@@ -32,6 +32,7 @@ export default function InscriptionForm() {
       title: course?.title ?? `Curso ${id}`,
       completed: 0,
       total: course?.modules.length ?? 0,
+      grade: null,
     })
     navigate('/inscripcion-exitosa', { state: { courseTitle: course?.title } })
   }

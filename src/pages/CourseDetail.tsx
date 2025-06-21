@@ -54,7 +54,7 @@ export default function CourseDetail() {
           {progress && (
             <p className="font-semibold">
               {progress.completed >= progress.total
-                ? 'Curso completado'
+                ? `Curso finalizado - Nota: ${progress.grade ?? '-'}`
                 : `${Math.round((progress.completed / progress.total) * 100)}% completado`}
             </p>
           )}
@@ -62,29 +62,27 @@ export default function CourseDetail() {
         ) : (
           <p>Curso no encontrado</p>
         )}
-        <Button
-          onClick={() => {
-            if (!progress) {
-              if (!isLogged) {
-                navigate('/login')
+        {(!progress || progress.completed < progress.total) && (
+          <Button
+            onClick={() => {
+              if (!progress) {
+                if (!isLogged) {
+                  navigate('/login')
+                } else {
+                  navigate(`/cursos/${id}/inscripcion`)
+                }
               } else {
-                navigate(`/cursos/${id}/inscripcion`)
+                navigate(`/cursos/${id}/modulo/${progress.completed + 1}`)
               }
-            } else if (progress.completed >= progress.total) {
-              navigate('/dashboard')
-            } else {
-              navigate(`/cursos/${id}/modulo/${progress.completed + 1}`)
-            }
-          }}
-        >
-          {progress
-            ? progress.completed >= progress.total
-              ? 'Curso finalizado'
-              : `Continuar curso (${Math.round((progress.completed / progress.total) * 100)}%)`
-            : isLogged
-              ? 'Inscribirme'
-              : 'Inicia sesión para inscribirte'}
-        </Button>
+            }}
+          >
+            {progress
+              ? `Continuar curso (${Math.round((progress.completed / progress.total) * 100)}%)`
+              : isLogged
+                ? 'Inscribirme'
+                : 'Inicia sesión para inscribirte'}
+          </Button>
+        )}
       </main>
       <Footer />
     </div>

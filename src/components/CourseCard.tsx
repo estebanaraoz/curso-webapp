@@ -12,7 +12,8 @@ interface Props {
 export default function CourseCard({ id, title, duration, level, image }: Props) {
   const isLogged = useAuthStore(state => state.isLogged)
   const enrolledCourses = useAuthStore(state => state.enrolledCourses)
-  const isEnrolled = enrolledCourses.some(c => c.id === id)
+  const progress = enrolledCourses.find(c => c.id === id)
+  const isEnrolled = !!progress
 
   return (
     <div className="border p-4 rounded shadow hover:shadow-lg flex flex-col gap-2 w-full">
@@ -21,6 +22,13 @@ export default function CourseCard({ id, title, duration, level, image }: Props)
         <h2 className="text-xl font-semibold">{title}</h2>
         <p>Duración: {duration}</p>
         <p>Nivel: {level}</p>
+        {isEnrolled && (
+          <p className="text-sm mt-1">
+            {progress && progress.completed >= progress.total
+              ? `Curso finalizado - Nota: ${progress.grade ?? '-'}`
+              : `${Math.round((progress?.completed ?? 0) / (progress?.total ?? 1) * 100)}% completado`}
+          </p>
+        )}
       </Link>
       {!isLogged ? (
         <Link

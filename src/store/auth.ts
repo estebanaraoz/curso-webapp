@@ -5,6 +5,7 @@ export interface Course {
   title: string
   completed: number
   total: number
+  grade?: number
 }
 
 export interface AuthState {
@@ -18,6 +19,7 @@ export interface AuthState {
   clearCache: () => void
   enroll: (course: Course) => void
   completeModule: (courseId: string) => void
+  finishCourse: (courseId: string, grade: number) => void
   setCurrentCourse: (courseId: string | null) => void
 }
 
@@ -67,6 +69,14 @@ const useAuthStore = create<AuthState>(set => {
           c.id === courseId && c.completed < c.total
             ? { ...c, completed: c.completed + 1 }
             : c,
+        )
+        persistCourses(updated)
+        return { enrolledCourses: updated }
+      }),
+    finishCourse: (courseId, grade) =>
+      set(state => {
+        const updated = state.enrolledCourses.map(c =>
+          c.id === courseId ? { ...c, grade } : c,
         )
         persistCourses(updated)
         return { enrolledCourses: updated }
