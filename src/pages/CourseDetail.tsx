@@ -20,6 +20,7 @@ export default function CourseDetail() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="container mx-auto flex-grow p-4 flex flex-col items-start gap-4">
+        <Button variant="secondary" onClick={() => navigate(-1)}>Volver atrás</Button>
         {course ? (
           <>
             <img

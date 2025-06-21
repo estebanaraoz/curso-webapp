@@ -51,6 +51,7 @@ export default function Module() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="container mx-auto flex-grow p-4 flex flex-col items-center space-y-4">
+        <Button variant="secondary" onClick={() => navigate(-1)}>Volver atrás</Button>
         {course && module ? (
           <>
             <h1 className="text-3xl font-bold text-center">
