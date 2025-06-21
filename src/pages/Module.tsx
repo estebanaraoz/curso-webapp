@@ -20,11 +20,7 @@ export default function Module() {
 
   useEffect(() => {
     if (id) setCurrentCourse(id)
-    const expected = progress ? progress.completed + 1 : 1
-    if (module && parseInt(module.id) !== expected) {
-      navigate(`/cursos/${id}/modulo/${expected}`, { replace: true })
-    }
-  }, [id, module, progress, navigate, setCurrentCourse])
+  }, [id, setCurrentCourse])
 
   const handleComplete = () => {
     if (!isLogged) {
@@ -58,9 +54,6 @@ export default function Module() {
                 >
                   Ver video
                 </a>
-                <div className="aspect-video bg-gray-200 flex items-center justify-center">
-                  Contenido del módulo {moduleId}
-                </div>
               </>
             ) : (
               <p className="italic">Inicia sesión para ver el contenido de este módulo.</p>
