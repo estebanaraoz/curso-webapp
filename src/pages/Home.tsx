@@ -39,8 +39,10 @@ export default function Home() {
             </div>
             <div className="flex flex-col items-center gap-2">
               <img src="/images/icon-support.png" alt="" className="w-16 h-16" />
-              <h2 className="text-xl font-semibold">Soporte de instructores</h2>
-              <p>Resuelve tus dudas con la ayuda de nuestro equipo de expertos.</p>
+              <h2 className="text-xl font-semibold">Foro de la comunidad</h2>
+              <p>
+                Resuelve tus dudas junto a otros alumnes y asesores en nuestro foro.
+              </p>
             </div>
           </div>
         </section>
