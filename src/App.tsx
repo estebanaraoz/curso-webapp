@@ -9,6 +9,7 @@ import InscriptionForm from './pages/InscriptionForm'
 import Module from './pages/Module'
 import FinalExam from './pages/FinalExam'
 import Profile from './pages/Profile'
+import Forum from './pages/Forum'
 import ErrorPage from './pages/ErrorPage'
 import NotFound from './pages/NotFound'
 
@@ -25,6 +26,7 @@ export default function App() {
       <Route path="/inscripcion-exitosa" element={<InscriptionSuccess />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/perfil" element={<Profile />} />
+      <Route path="/foro" element={<Forum />} />
       <Route path="/error" element={<ErrorPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

@@ -17,6 +17,7 @@ export default function Navbar() {
     <nav className="p-4 flex flex-wrap items-center gap-4 bg-gray-200 dark:bg-gray-800 text-sm">
       <Link to="/" className="block">Home</Link>
       <Link to="/cursos" className="block">Cursos</Link>
+      <Link to="/foro" className="block">Foro</Link>
       {isLogged && (
         <>
           <Link to="/dashboard" className="block">Mis cursos</Link>
