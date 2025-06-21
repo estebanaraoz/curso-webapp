@@ -4,8 +4,9 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 
 export default defineConfig({
+  plugins: [react()],
   server: {
     host: true, // Muy importante: escucha en todas las interfaces
     allowedHosts: ['earaoz.dyndns.org'],
-  }
+  },
 })
