@@ -31,6 +31,7 @@ export default function Courses() {
                       title={info?.title ?? course.title}
                       duration={info?.duration ?? ''}
                       level={info?.level ?? ''}
+                      image={info?.image ?? ''}
                     />
                   )
                 })}
@@ -51,6 +52,7 @@ export default function Courses() {
                 title={course.title}
                 duration={course.duration}
                 level={course.level}
+                image={course.image}
               />
             ))}
           </div>

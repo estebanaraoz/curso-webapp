@@ -6,9 +6,10 @@ interface Props {
   title: string
   duration: string
   level: string
+  image: string
 }
 
-export default function CourseCard({ id, title, duration, level }: Props) {
+export default function CourseCard({ id, title, duration, level, image }: Props) {
   const isLogged = useAuthStore(state => state.isLogged)
   const enrolledCourses = useAuthStore(state => state.enrolledCourses)
   const isEnrolled = enrolledCourses.some(c => c.id === id)
@@ -16,6 +17,7 @@ export default function CourseCard({ id, title, duration, level }: Props) {
   return (
     <div className="border p-4 rounded shadow hover:shadow-lg flex flex-col gap-2 w-full">
       <Link to={`/cursos/${id}`} className="flex flex-col gap-2 flex-grow">
+        <img src={image} alt={title} className="w-full h-24 object-cover rounded" />
         <h2 className="text-xl font-semibold">{title}</h2>
         <p>Duración: {duration}</p>
         <p>Nivel: {level}</p>
