@@ -26,6 +26,7 @@ export default function Dashboard() {
                 <h2 className="text-2xl font-semibold">Cursos en curso</h2>
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
                   {currentCourses.map(course => {
+                    const info = courses.find(c => c.id === course.id)
                     const completed = course.completed
                     const total = course.total
                     const remaining = total - completed
@@ -38,6 +39,13 @@ export default function Dashboard() {
                         key={course.id}
                         className="border p-4 rounded shadow flex flex-col items-center gap-2 w-full overflow-hidden"
                       >
+                        {info?.image && (
+                          <img
+                            src={info.image}
+                            alt={course.title}
+                            className="w-full h-48 object-cover rounded"
+                          />
+                        )}
                         <h2 className="text-xl font-semibold text-center w-full">
                           {course.title}
                         </h2>
@@ -83,11 +91,29 @@ export default function Dashboard() {
                         key={course.id}
                         className="border p-4 rounded shadow flex flex-col gap-2 w-full"
                       >
+                        {info?.image && (
+                          <img
+                            src={info.image}
+                            alt={course.title}
+                            className="w-full h-48 object-cover rounded"
+                          />
+                        )}
                         <h2 className="text-xl font-semibold text-center w-full">
                           {course.title}
                         </h2>
                         <p className="text-center font-semibold">
-                          Nota: {course.grade ?? '-'}
+                          Nota: {course.grade ?? '-'}{' '}
+                          {course.grade !== undefined && (
+                            <span
+                              className={`ml-1 px-2 py-0.5 rounded text-xs ${
+                                course.grade >= 40
+                                  ? 'bg-green-200 text-green-800'
+                                  : 'bg-red-200 text-red-800'
+                              }`}
+                            >
+                              {course.grade >= 40 ? 'Aprobado' : 'Desaprobado'}
+                            </span>
+                          )}
                         </p>
                         <ul className="list-disc pl-6 text-sm flex-grow">
                           {info?.modules.map(m => (
