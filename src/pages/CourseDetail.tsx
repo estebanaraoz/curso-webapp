@@ -1,10 +1,11 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Button from '../components/Button'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 export default function CourseDetail() {
   const { id } = useParams()
+  const navigate = useNavigate()
   const mockCourse = {
     id: '1',
     title: 'Introducción a JavaScript',
@@ -39,7 +40,7 @@ export default function CourseDetail() {
             Clases: {mockCourse.classes}
           </span>
         </div>
-        <Button>Inscribirme</Button>
+        <Button onClick={() => navigate('/inscripcion-exitosa')}>Inscribirme</Button>
       </main>
       <Footer />
     </div>
