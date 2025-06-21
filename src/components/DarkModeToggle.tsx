@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react'
 
-export default function DarkModeToggle() {
+interface Props {
+  className?: string
+}
+
+export default function DarkModeToggle({ className = '' }: Props) {
   const [enabled, setEnabled] = useState(false)
 
   useEffect(() => {
@@ -14,7 +18,7 @@ export default function DarkModeToggle() {
   return (
     <button
       onClick={() => setEnabled(!enabled)}
-      className="ml-4 px-4 py-2 border rounded min-w-[6rem] text-sm"
+      className={`px-4 py-2 border rounded min-w-[6rem] text-sm ${className}`}
     >
       {enabled ? 'Modo claro' : 'Modo oscuro'}
     </button>

@@ -19,9 +19,8 @@ export default function Dashboard() {
         ) : (
           <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
             {enrolledCourses.map(course => {
-              const match = course.progress.match(/(\d+) de (\d+)/)
-              const completed = match ? Number(match[1]) : 0
-              const total = match ? Number(match[2]) : 0
+              const completed = course.completed
+              const total = course.total
               const remaining = total - completed
               const data = [
                 { name: 'Completado', value: completed },
@@ -49,10 +48,14 @@ export default function Dashboard() {
                     </Pie>
                     <Tooltip />
                   </PieChart>
-                  <p className="text-sm">{course.progress}</p>
+                  <p className="text-sm">
+                    {course.completed} de {course.total} módulos
+                  </p>
                   <Button
                     className="mt-auto"
-                    onClick={() => navigate(`/cursos/${course.id}/modulo/1`)}
+                    onClick={() =>
+                      navigate(`/cursos/${course.id}/modulo/${course.completed + 1}`)
+                    }
                   >
                     Continuar curso
                   </Button>
