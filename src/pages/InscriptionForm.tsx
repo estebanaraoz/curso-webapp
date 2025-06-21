@@ -9,7 +9,9 @@ import { courses } from '../data/courses'
 export default function InscriptionForm() {
   const { id } = useParams()
   const navigate = useNavigate()
-  const { isLogged, enroll, enrolledCourses } = useAuthStore()
+  const isLogged = useAuthStore(state => state.isLogged)
+  const enroll = useAuthStore(state => state.enroll)
+  const enrolledCourses = useAuthStore(state => state.enrolledCourses)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
 

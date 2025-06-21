@@ -5,7 +5,8 @@ import CourseCard from '../components/CourseCard'
 import { useAuthStore } from '../store/auth'
 
 export default function Courses() {
-  const { isLogged, enrolledCourses } = useAuthStore()
+  const isLogged = useAuthStore(state => state.isLogged)
+  const enrolledCourses = useAuthStore(state => state.enrolledCourses)
   const availableCourses = courses.filter(
     c => !enrolledCourses.some(e => e.id === c.id),
   )
