@@ -5,7 +5,7 @@ import Button from '../components/Button'
 import { useAuthStore } from '../store/auth'
 
 export default function Profile() {
-  const { user } = useAuthStore()
+  const user = useAuthStore(state => state.user)
   const [name, setName] = useState((user as { name?: string } | null)?.name || '')
   const [email, setEmail] = useState((user as { email?: string } | null)?.email || '')
 

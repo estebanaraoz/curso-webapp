@@ -9,10 +9,8 @@ interface Props {
 }
 
 export default function CourseCard({ id, title, duration, level }: Props) {
-  const { isLogged, enrolledCourses } = useAuthStore(state => ({
-    isLogged: state.isLogged,
-    enrolledCourses: state.enrolledCourses,
-  }))
+  const isLogged = useAuthStore(state => state.isLogged)
+  const enrolledCourses = useAuthStore(state => state.enrolledCourses)
   const isEnrolled = enrolledCourses.some(c => c.id === id)
 
   return (

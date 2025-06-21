@@ -5,7 +5,9 @@ import { useAuthStore } from '../store/auth'
 
 export default function Navbar() {
   const navigate = useNavigate()
-  const { isLogged, user, logout } = useAuthStore()
+  const isLogged = useAuthStore(state => state.isLogged)
+  const user = useAuthStore(state => state.user)
+  const logout = useAuthStore(state => state.logout)
   const [open, setOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const exampleUser = { name: 'Mariana' }
