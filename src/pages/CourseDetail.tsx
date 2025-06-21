@@ -9,7 +9,9 @@ export default function CourseDetail() {
   const { id } = useParams()
   const navigate = useNavigate()
   const isLogged = useAuthStore(state => state.isLogged)
+  const enrolledCourses = useAuthStore(state => state.enrolledCourses)
   const course = courses.find(c => c.id === id)
+  const progress = enrolledCourses.find(c => c.id === id)
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -30,28 +32,45 @@ export default function CourseDetail() {
               <span className="px-3 py-1 bg-gray-200 rounded">Módulos: {course.modules.length}</span>
             </div>
             <ul className="list-disc pl-6 space-y-1">
-              {course.modules.map(m => (
-                <li key={m.id}>
-                  <Link to={`/cursos/${id}/modulo/${m.id}`} className="text-blue-600 underline">
-                    {m.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </>
+            {course.modules.map(m => (
+              <li key={m.id}>
+                <Link to={`/cursos/${id}/modulo/${m.id}`} className="text-blue-600 underline">
+                  {m.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          {progress && (
+            <p className="font-semibold">
+              {progress.completed >= progress.total
+                ? 'Curso completado'
+                : `${Math.round((progress.completed / progress.total) * 100)}% completado`}
+            </p>
+          )}
+        </>
         ) : (
           <p>Curso no encontrado</p>
         )}
         <Button
           onClick={() => {
-            if (!isLogged) {
-              navigate('/login')
+            if (!progress) {
+              if (!isLogged) {
+                navigate('/login')
+              } else {
+                navigate(`/cursos/${id}/inscripcion`)
+              }
+            } else if (progress.completed >= progress.total) {
+              navigate('/dashboard')
             } else {
-              navigate(`/cursos/${id}/inscripcion`)
+              navigate(`/cursos/${id}/modulo/${progress.completed + 1}`)
             }
           }}
         >
-          Inscribirme
+          {progress
+            ? progress.completed >= progress.total
+              ? 'Curso finalizado'
+              : `Continuar curso (${Math.round((progress.completed / progress.total) * 100)}%)`
+            : 'Inscribirme'}
         </Button>
       </main>
       <Footer />
