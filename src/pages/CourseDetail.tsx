@@ -22,7 +22,7 @@ export default function CourseDetail() {
             <img
               src={course.image}
               alt={course.title}
-              className="w-full h-auto object-cover sm:max-h-[200px] rounded overflow-hidden"
+              className="w-full max-h-[200px] object-contain rounded overflow-hidden"
             />
             <h1 className="text-3xl font-bold">{course.title}</h1>
             <p>{course.description}</p>
