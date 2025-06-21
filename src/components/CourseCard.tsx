@@ -9,7 +9,11 @@ interface Props {
 }
 
 export default function CourseCard({ id, title, duration, level }: Props) {
-  const isLogged = useAuthStore(state => state.isLogged)
+  const { isLogged, enrolledCourses } = useAuthStore(state => ({
+    isLogged: state.isLogged,
+    enrolledCourses: state.enrolledCourses,
+  }))
+  const isEnrolled = enrolledCourses.some(c => c.id === id)
 
   return (
     <div className="border p-4 rounded shadow hover:shadow-lg flex flex-col gap-2 w-full">
@@ -18,13 +22,22 @@ export default function CourseCard({ id, title, duration, level }: Props) {
         <p>Duración: {duration}</p>
         <p>Nivel: {level}</p>
       </Link>
-      {!isLogged && (
+      {!isLogged ? (
         <Link
           to="/login"
           className="mt-2 px-3 py-1 text-sm rounded bg-blue-600 text-white text-center hover:bg-blue-700"
         >
           Inicia sesión para inscribirte
         </Link>
+      ) : (
+        !isEnrolled && (
+          <Link
+            to={`/cursos/${id}/inscripcion`}
+            className="mt-2 px-3 py-1 text-sm rounded bg-blue-600 text-white text-center hover:bg-blue-700"
+          >
+            Inscribirse
+          </Link>
+        )
       )}
     </div>
   )
