@@ -6,6 +6,8 @@ export interface Course {
   completed: number
   total: number
   grade?: number
+  /** ISO date string indicating when the user can retake the final exam */
+  nextExamDate?: string
 }
 
 export interface AuthState {
@@ -75,9 +77,16 @@ const useAuthStore = create<AuthState>(set => {
       }),
     finishCourse: (courseId, grade) =>
       set(state => {
-        const updated = state.enrolledCourses.map(c =>
-          c.id === courseId ? { ...c, grade } : c,
-        )
+        const updated = state.enrolledCourses.map(c => {
+          if (c.id !== courseId) return c
+          const tomorrow = new Date()
+          tomorrow.setDate(tomorrow.getDate() + 1)
+          return {
+            ...c,
+            grade,
+            nextExamDate: grade < 40 ? tomorrow.toISOString() : undefined,
+          }
+        })
         persistCourses(updated)
         return { enrolledCourses: updated }
       }),

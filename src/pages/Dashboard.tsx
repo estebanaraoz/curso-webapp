@@ -66,14 +66,23 @@ export default function Dashboard() {
                         <p className="text-sm">
                           {course.completed} de {course.total} módulos
                         </p>
-                        <Button
-                          className="mt-auto"
-                          onClick={() =>
-                            navigate(`/cursos/${course.id}/modulo/${course.completed + 1}`)
-                          }
-                        >
-                          Continuar curso
-                        </Button>
+                        <div className="flex gap-2 mt-auto">
+                          <Button
+                            onClick={() =>
+                              navigate(`/cursos/${course.id}`)
+                            }
+                            variant="secondary"
+                          >
+                            Ver curso
+                          </Button>
+                          <Button
+                            onClick={() =>
+                              navigate(`/cursos/${course.id}/modulo/${course.completed + 1}`)
+                            }
+                          >
+                            Continuar curso
+                          </Button>
+                        </div>
                       </div>
                     )
                   })}
@@ -120,6 +129,12 @@ export default function Dashboard() {
                             <li key={m.id}>{m.title}</li>
                           ))}
                         </ul>
+                        <Button
+                          onClick={() => navigate(`/cursos/${course.id}`)}
+                          variant="secondary"
+                        >
+                          Ver curso
+                        </Button>
                       </div>
                     )
                   })}
