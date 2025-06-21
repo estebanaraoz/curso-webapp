@@ -11,7 +11,7 @@ export default function FinalExam() {
 
   const handleFinish = () => {
     if (id) {
-      const grade = Math.floor(Math.random() * 41) + 60
+      const grade = Math.floor(Math.random() * 101)
       finishCourse(id, grade)
     }
     navigate('/dashboard')

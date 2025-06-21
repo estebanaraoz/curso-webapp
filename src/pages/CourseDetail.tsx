@@ -57,12 +57,27 @@ export default function CourseDetail() {
             </ul>
             {progress && (
               <p className="font-semibold">
-                {progress.completed >= progress.total
-                  ? `Curso finalizado - Nota: ${progress.grade ?? '-'}`
-                  : `${Math.round((progress.completed / progress.total) * 100)}% completado`}
+                {progress.completed >= progress.total && progress.grade !== undefined ? (
+                  <>
+                    Has finalizado este curso con nota: {progress.grade}{' '}
+                    <span
+                      className={`ml-1 px-2 py-0.5 rounded text-xs ${
+                        progress.grade >= 40
+                          ? 'bg-green-200 text-green-800'
+                          : 'bg-red-200 text-red-800'
+                      }`}
+                    >
+                      {progress.grade >= 40 ? 'Aprobado' : 'Desaprobado'}
+                    </span>
+                  </>
+                ) : progress.completed >= progress.total ? (
+                  'Curso finalizado'
+                ) : (
+                  `${Math.round((progress.completed / progress.total) * 100)}% completado`
+                )}
               </p>
             )}
-            {progress && progress.completed >= progress.total && (
+            {progress && progress.completed >= progress.total && progress.grade === undefined && (
               <Button onClick={() => navigate(`/cursos/${id}/examen-final`)}>
                 Ir al examen final
               </Button>
