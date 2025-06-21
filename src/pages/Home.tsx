@@ -8,35 +8,37 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow">
-        <section className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-8 p-8">
+        <section className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-8 p-8 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-lg">
           <div className="flex flex-col items-start gap-4 md:w-1/2">
-            <h1 className="text-4xl font-bold">Aprende y potencia tu carrera</h1>
+            <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Aprende y potencia tu carrera
+            </h1>
             <p className="text-lg">Cursos online dictados por profesionales del desarrollo web.</p>
             <Link to="/cursos">
               <Button variant="primary">Explorar cursos</Button>
             </Link>
           </div>
           <img
-            src="/images/hero.jpg"
+            src="/images/hero.png"
             alt="Estudiantes programando"
-            className="w-full md:w-1/2 rounded shadow"
+            className="w-full md:w-1/2 rounded-lg shadow-xl"
           />
         </section>
 
         <section className="bg-gray-100 dark:bg-gray-800 py-8">
           <div className="container mx-auto grid md:grid-cols-3 gap-8 p-4 text-center">
             <div className="flex flex-col items-center gap-2">
-              <img src="/images/icon-quality.svg" alt="" className="w-16 h-16" />
+              <img src="/images/icon-quality.png" alt="" className="w-16 h-16" />
               <h2 className="text-xl font-semibold">Contenido de calidad</h2>
               <p>Lecciones actualizadas para que aprendas con la tecnología más reciente.</p>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <img src="/images/icon-flexibility.svg" alt="" className="w-16 h-16" />
+              <img src="/images/icon-flexibility.png" alt="" className="w-16 h-16" />
               <h2 className="text-xl font-semibold">A tu propio ritmo</h2>
               <p>Accede a las clases cuando quieras y avanza de acuerdo a tu disponibilidad.</p>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <img src="/images/icon-support.svg" alt="" className="w-16 h-16" />
+              <img src="/images/icon-support.png" alt="" className="w-16 h-16" />
               <h2 className="text-xl font-semibold">Soporte de instructores</h2>
               <p>Resuelve tus dudas con la ayuda de nuestro equipo de expertos.</p>
             </div>
