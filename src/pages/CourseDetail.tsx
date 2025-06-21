@@ -7,7 +7,7 @@ import { useAuthStore } from '../store/auth'
 export default function CourseDetail() {
   const { id } = useParams()
   const navigate = useNavigate()
-  const enroll = useAuthStore(state => state.enroll)
+  const isLogged = useAuthStore(state => state.isLogged)
   const mockCourse = {
     id: '1',
     title: 'Introducción a JavaScript',
@@ -44,12 +44,11 @@ export default function CourseDetail() {
         </div>
         <Button
           onClick={() => {
-            enroll({
-              id: '1',
-              title: 'JavaScript desde cero',
-              progress: '0 de 8 clases',
-            })
-            navigate('/inscripcion-exitosa')
+            if (!isLogged) {
+              navigate('/login')
+            } else {
+              navigate(`/cursos/${id}/inscripcion`)
+            }
           }}
         >
           Inscribirme

@@ -3,9 +3,11 @@ import Footer from '../components/Footer'
 import Button from '../components/Button'
 import { PieChart, Pie, Cell, Tooltip } from 'recharts'
 import { useAuthStore } from '../store/auth'
+import { useNavigate } from 'react-router-dom'
 
 export default function Dashboard() {
   const enrolledCourses = useAuthStore(state => state.enrolledCourses)
+  const navigate = useNavigate()
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -48,7 +50,12 @@ export default function Dashboard() {
                     <Tooltip />
                   </PieChart>
                   <p className="text-sm">{course.progress}</p>
-                  <Button className="mt-auto">Continuar curso</Button>
+                  <Button
+                    className="mt-auto"
+                    onClick={() => navigate(`/cursos/${course.id}/modulo/1`)}
+                  >
+                    Continuar curso
+                  </Button>
                 </div>
               )
             })}
