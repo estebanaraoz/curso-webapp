@@ -21,7 +21,7 @@ export default function Courses() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="flex-grow p-4">
+      <main className="container mx-auto flex-grow p-4 space-y-4">
         <h1 className="text-3xl font-bold mb-4">Cursos disponibles</h1>
         <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
           {courses.map(course => (

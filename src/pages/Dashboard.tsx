@@ -10,7 +10,7 @@ export default function Dashboard() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="flex-grow p-4">
+      <main className="container mx-auto flex-grow p-4 space-y-4">
         <h1 className="text-3xl font-bold mb-4">Mis cursos</h1>
         {enrolledCourses.length === 0 ? (
           <p>Todav\u00eda no te inscribiste a ning\u00fan curso.</p>
@@ -28,7 +28,7 @@ export default function Dashboard() {
               return (
                 <div
                   key={course.id}
-                  className="border p-4 rounded shadow flex flex-col items-center gap-2"
+                  className="border p-4 rounded shadow flex flex-col items-center gap-2 w-full overflow-hidden"
                 >
                   <h2 className="text-xl font-semibold text-center w-full">
                     {course.title}
