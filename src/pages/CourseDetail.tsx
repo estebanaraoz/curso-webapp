@@ -31,15 +31,20 @@ export default function CourseDetail() {
               <span className="px-3 py-1 bg-gray-200 rounded">Duración: {course.duration}</span>
               <span className="px-3 py-1 bg-gray-200 rounded">Módulos: {course.modules.length}</span>
             </div>
-            <ul className="list-disc pl-6 space-y-1">
-            {course.modules.map(m => (
-              <li key={m.id}>
-                <Link to={`/cursos/${id}/modulo/${m.id}`} className="text-blue-600 underline">
-                  {m.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
+            <ul className="list-disc pl-6 space-y-2">
+              {course.modules.map(m => (
+                <li key={m.id} className="space-y-1">
+                  {isLogged ? (
+                    <Link to={`/cursos/${id}/modulo/${m.id}`} className="text-blue-600 underline">
+                      {m.title}
+                    </Link>
+                  ) : (
+                    <span className="font-semibold">{m.title}</span>
+                  )}
+                  <p className="ml-4 text-sm text-gray-600">{m.description}</p>
+                </li>
+              ))}
+            </ul>
           {progress && (
             <p className="font-semibold">
               {progress.completed >= progress.total
@@ -70,7 +75,9 @@ export default function CourseDetail() {
             ? progress.completed >= progress.total
               ? 'Curso finalizado'
               : `Continuar curso (${Math.round((progress.completed / progress.total) * 100)}%)`
-            : 'Inscribirme'}
+            : isLogged
+              ? 'Inscribirme'
+              : 'Inicia sesión para inscribirte'}
         </Button>
       </main>
       <Footer />
