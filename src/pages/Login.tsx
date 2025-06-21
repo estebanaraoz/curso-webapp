@@ -1,34 +1,28 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import Button from '../components/Button'
-import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useAuthStore } from '../store/auth'
 
 export default function Login() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const navigate = useNavigate()
+  const login = useAuthStore(state => state.login)
+
+  const handleLogin = () => {
+    login({ name: 'Mariana', email: 'mariana@example.com' })
+    navigate('/')
+  }
 
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="flex-grow flex flex-col items-center justify-center p-4 gap-4">
+      <main className="flex-grow flex flex-col items-center justify-center gap-4 p-4">
         <h1 className="text-3xl font-bold">Ingresar</h1>
-        <form className="flex flex-col gap-4 w-full max-w-sm">
-          <input
-            className="border rounded p-2"
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-          />
-          <input
-            className="border rounded p-2"
-            type="password"
-            placeholder="Contraseña"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-          />
-          <Button variant="primary" type="submit">Ingresar</Button>
-        </form>
+        <button
+          onClick={handleLogin}
+          className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700"
+        >
+          Iniciar sesión
+        </button>
       </main>
       <Footer />
     </div>
