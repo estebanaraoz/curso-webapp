@@ -9,7 +9,7 @@ import { courses } from '../data/courses'
 export default function InscriptionForm() {
   const { id } = useParams()
   const navigate = useNavigate()
-  const { isLogged, enroll } = useAuthStore()
+  const { isLogged, enroll, enrolledCourses } = useAuthStore()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
 
@@ -19,6 +19,11 @@ export default function InscriptionForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    if (enrolledCourses.some(c => c.id === id)) {
+      alert('Ya estás inscrito en este curso')
+      navigate('/dashboard')
+      return
+    }
     const course = courses.find(c => c.id === id)
     enroll({
       id: id || '',
