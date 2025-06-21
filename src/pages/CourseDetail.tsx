@@ -12,6 +12,9 @@ export default function CourseDetail() {
   const enrolledCourses = useAuthStore(state => state.enrolledCourses)
   const course = courses.find(c => c.id === id)
   const progress = enrolledCourses.find(c => c.id === id)
+  const canRetake = progress?.nextExamDate
+    ? new Date(progress.nextExamDate) <= new Date()
+    : true
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -77,11 +80,24 @@ export default function CourseDetail() {
                 )}
               </p>
             )}
-            {progress && progress.completed >= progress.total && progress.grade === undefined && (
-              <Button onClick={() => navigate(`/cursos/${id}/examen-final`)}>
-                Ir al examen final
-              </Button>
-            )}
+            {progress &&
+              progress.completed >= progress.total &&
+              (progress.grade === undefined || progress.grade < 40) && (
+                <>
+                  {progress.grade !== undefined && progress.grade < 40 &&
+                    !canRetake && (
+                      <p className="text-sm text-red-600">
+                        Vas a poder volver a contestar el examen mañana.
+                      </p>
+                    )}
+                  <Button
+                    onClick={() => navigate(`/cursos/${id}/examen-final`)}
+                    disabled={progress.grade !== undefined && progress.grade < 40 && !canRetake}
+                  >
+                    Ir al examen final
+                  </Button>
+                </>
+              )}
         </>
         ) : (
           <p>Curso no encontrado</p>
