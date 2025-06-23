@@ -10,6 +10,7 @@ import Module from './pages/Module'
 import FinalExam from './pages/FinalExam'
 import Profile from './pages/Profile'
 import Forum from './pages/Forum'
+import Nosotros from './pages/Nosotros'
 import ErrorPage from './pages/ErrorPage'
 import NotFound from './pages/NotFound'
 import Wireframes from './pages/Wireframes'
@@ -28,6 +29,7 @@ export default function App() {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/perfil" element={<Profile />} />
       <Route path="/foro" element={<Forum />} />
+      <Route path="/nosotros" element={<Nosotros />} />
       <Route path="/wireframes" element={<Wireframes />} />
       <Route path="/error" element={<ErrorPage />} />
       <Route path="*" element={<NotFound />} />
