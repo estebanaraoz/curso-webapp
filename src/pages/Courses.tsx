@@ -8,8 +8,15 @@ import { useState } from 'react'
 export default function Courses() {
   const isLogged = useAuthStore(state => state.isLogged)
   const enrolledCourses = useAuthStore(state => state.enrolledCourses)
+  const inProgressCourses = enrolledCourses.filter(
+    c => c.grade === undefined || c.grade < 40,
+  )
+  const completedCourses = enrolledCourses.filter(
+    c => c.grade !== undefined && c.grade >= 40,
+  )
+  const [showCompleted, setShowCompleted] = useState(false)
   const availableCourses = courses.filter(
-    c => !enrolledCourses.some(e => e.id === c.id),
+    c => !inProgressCourses.some(e => e.id === c.id),
   )
   const categories = Array.from(new Set(courses.map(c => c.category)))
   const levels = Array.from(new Set(courses.map(c => c.level)))
@@ -17,7 +24,13 @@ export default function Courses() {
   const [category, setCategory] = useState('Todos')
   const [level, setLevel] = useState('Todos')
   const [duration, setDuration] = useState('Todas')
-  const filteredCourses = (isLogged ? availableCourses : courses).filter(
+
+  const baseList = isLogged ? availableCourses : courses
+  const listWithCompletion = isLogged && !showCompleted
+    ? baseList.filter(c => !completedCourses.some(e => e.id === c.id))
+    : baseList
+
+  const filteredCourses = listWithCompletion.filter(
     c =>
       (category === 'Todos' || c.category === category) &&
       (level === 'Todos' || c.level === level) &&
@@ -31,11 +44,11 @@ export default function Courses() {
         {isLogged && (
           <div className="space-y-4">
             <h1 className="text-3xl font-bold">Actualmente cursando</h1>
-            {enrolledCourses.length === 0 ? (
-              <p>Aún no estás inscrito en ningún curso.</p>
+            {inProgressCourses.length === 0 ? (
+              <p>No tienes cursos en curso.</p>
             ) : (
               <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-                {enrolledCourses.map(course => {
+                {inProgressCourses.map(course => {
                   const info = courses.find(c => c.id === course.id)
                   return (
                     <CourseCard
@@ -94,6 +107,16 @@ export default function Courses() {
                 </option>
               ))}
             </select>
+            {isLogged && (
+              <label className="flex items-center gap-1 text-sm">
+                <input
+                  type="checkbox"
+                  checked={showCompleted}
+                  onChange={e => setShowCompleted(e.target.checked)}
+                />
+                Mostrar cursos realizados
+              </label>
+            )}
           </div>
           <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
             {filteredCourses.map(course => (
