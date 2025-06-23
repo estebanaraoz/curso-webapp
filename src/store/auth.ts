@@ -18,7 +18,6 @@ export interface AuthState {
   currentCourseId: string | null
   login: (user: Record<string, unknown>) => void
   logout: () => void
-  clearCache: () => void
   enroll: (course: Course) => void
   completeModule: (courseId: string) => void
   finishCourse: (courseId: string, grade: number) => void
@@ -53,10 +52,6 @@ const useAuthStore = create<AuthState>(set => {
       localStorage.removeItem('token')
       localStorage.removeItem('currentCourseId')
       localStorage.removeItem('enrolledCourses')
-      set({ isLogged: false, user: null, token: null, enrolledCourses: [], currentCourseId: null })
-    },
-    clearCache: () => {
-      localStorage.clear()
       set({ isLogged: false, user: null, token: null, enrolledCourses: [], currentCourseId: null })
     },
     enroll: course =>
