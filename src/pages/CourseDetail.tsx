@@ -20,7 +20,10 @@ export default function CourseDetail() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="container mx-auto flex-grow p-4 flex flex-col items-start gap-4">
-        <Button variant="secondary" onClick={() => navigate(-1)}>Volver atrás</Button>
+        <nav className="text-sm">
+          <Link to="/cursos" className="text-blue-600 underline">Cursos</Link>
+          {course && <span> / {course.title}</span>}
+        </nav>
         {course ? (
           <>
             <img
@@ -28,17 +31,19 @@ export default function CourseDetail() {
               alt={course.title}
               className="w-full max-h-[200px] object-contain rounded overflow-hidden"
             />
-            <h1 className="text-3xl font-bold">{course.title}</h1>
-            <p>{course.description}</p>
+            <h1 className="text-4xl font-extrabold">{course.title}</h1>
+            <p className="text-lg">{course.description}</p>
             <div className="flex flex-wrap gap-2 text-sm">
               <span className="px-3 py-1 bg-gray-200 rounded">Nivel: {course.level}</span>
               <span className="px-3 py-1 bg-gray-200 rounded">Duración: {course.duration}</span>
               <span className="px-3 py-1 bg-gray-200 rounded">Módulos: {course.modules.length}</span>
             </div>
-            <ul className="list-disc pl-6 space-y-2">
-              {course.modules.map(m => {
+            <h2 className="text-2xl font-bold mt-4">Módulos</h2>
+            <ul className="pl-6 space-y-2">
+              {course.modules.map((m, i) => {
                 const allowed = progress ? parseInt(m.id) <= progress.completed + 1 : false
                 const isCurrent = progress ? parseInt(m.id) === progress.completed + 1 : false
+                const title = `Módulo ${i + 1}: ${m.title}`
                 return (
                   <li
                     key={m.id}
@@ -49,10 +54,10 @@ export default function CourseDetail() {
                         to={`/cursos/${id}/modulo/${m.id}`}
                         className={`${isCurrent ? 'text-blue-700 font-semibold underline' : 'text-blue-600 underline'}`}
                       >
-                        {m.title}
+                        {title}
                       </Link>
                     ) : (
-                      <span className={`font-semibold ${isCurrent ? 'text-blue-700' : 'text-gray-500'}`}>{m.title}</span>
+                      <span className={`font-semibold ${isCurrent ? 'text-blue-700' : 'text-gray-500'}`}>{title}</span>
                     )}
                     <p className="ml-4 text-sm text-gray-600">{m.description}</p>
                   </li>
@@ -104,25 +109,32 @@ export default function CourseDetail() {
           <p>Curso no encontrado</p>
         )}
         {(!progress || progress.completed < progress.total) && (
-          <Button
-            onClick={() => {
-              if (!progress) {
-                if (!isLogged) {
-                  navigate('/login')
+          <>
+            {!progress && (
+              <p className="font-semibold">
+                ¿Listo para comenzar? Inscríbete al curso para acceder a todos los módulos.
+              </p>
+            )}
+            <Button
+              onClick={() => {
+                if (!progress) {
+                  if (!isLogged) {
+                    navigate('/login')
+                  } else {
+                    navigate(`/cursos/${id}/inscripcion`)
+                  }
                 } else {
-                  navigate(`/cursos/${id}/inscripcion`)
+                  navigate(`/cursos/${id}/modulo/${progress.completed + 1}`)
                 }
-              } else {
-                navigate(`/cursos/${id}/modulo/${progress.completed + 1}`)
-              }
-            }}
-          >
-            {progress
-              ? `Continuar curso (${Math.round((progress.completed / progress.total) * 100)}%)`
-              : isLogged
-                ? 'Inscribirme'
-                : 'Inicia sesión para inscribirte'}
-          </Button>
+              }}
+            >
+              {progress
+                ? `Continuar curso (${Math.round((progress.completed / progress.total) * 100)}%)`
+                : isLogged
+                  ? 'Inscribirme'
+                  : 'Inicia sesión para inscribirte'}
+            </Button>
+          </>
         )}
       </main>
       <Footer />

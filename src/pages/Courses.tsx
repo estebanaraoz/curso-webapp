@@ -17,11 +17,11 @@ export default function Courses() {
       <main className="container mx-auto flex-grow p-4 space-y-6">
         {isLogged && (
           <div className="space-y-4">
-            <h1 className="text-3xl font-bold">Mis cursos</h1>
+            <h1 className="text-3xl font-bold">Actualmente cursando</h1>
             {enrolledCourses.length === 0 ? (
               <p>Aún no estás inscrito en ningún curso.</p>
             ) : (
-              <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+              <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
                 {enrolledCourses.map(course => {
                   const info = courses.find(c => c.id === course.id)
                   return (
@@ -44,7 +44,7 @@ export default function Courses() {
           <h1 className="text-3xl font-bold">
             {isLogged ? 'Todos los cursos' : 'Cursos disponibles'}
           </h1>
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
             {(isLogged ? availableCourses : courses).map(course => (
               <CourseCard
                 key={course.id}

@@ -81,6 +81,7 @@ export default function Home() {
                   duration={course.duration}
                   level={course.level}
                   image={course.image}
+                  showProgress={false}
                 />
               ))}
             </div>
