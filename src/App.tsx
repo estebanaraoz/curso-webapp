@@ -12,6 +12,7 @@ import Profile from './pages/Profile'
 import Forum from './pages/Forum'
 import ErrorPage from './pages/ErrorPage'
 import NotFound from './pages/NotFound'
+import Wireframes from './pages/Wireframes'
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/perfil" element={<Profile />} />
       <Route path="/foro" element={<Forum />} />
+      <Route path="/wireframes" element={<Wireframes />} />
       <Route path="/error" element={<ErrorPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

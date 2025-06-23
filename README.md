@@ -17,3 +17,5 @@ Dentro de la carpeta `Wireframes` hay dos plantillas HTML estáticas que represe
 - `home-con-sesion.html` muestra la versión con la sesión iniciada.
 
 Ambas plantillas utilizan rectángulos y círculos grises para ilustrar la ubicación de los elementos.
+
+Además, la aplicación cuenta con una ruta `/wireframes` que lista enlaces a todas estas plantillas para poder visualizarlas de forma ordenada.
