@@ -7,9 +7,18 @@ interface Props {
   duration: string
   level: string
   image: string
+  /** Show user's progress info inside the card */
+  showProgress?: boolean
 }
 
-export default function CourseCard({ id, title, duration, level, image }: Props) {
+export default function CourseCard({
+  id,
+  title,
+  duration,
+  level,
+  image,
+  showProgress = true,
+}: Props) {
   const isLogged = useAuthStore(state => state.isLogged)
   const enrolledCourses = useAuthStore(state => state.enrolledCourses)
   const progress = enrolledCourses.find(c => c.id === id)
@@ -26,7 +35,7 @@ export default function CourseCard({ id, title, duration, level, image }: Props)
         <h2 className="text-xl font-semibold">{title}</h2>
         <p>Duración: {duration}</p>
         <p>Nivel: {level}</p>
-        {isEnrolled && (
+        {showProgress && isEnrolled && (
           <p className="text-sm mt-1">
             {progress && progress.completed >= progress.total ? (
               <>
@@ -51,23 +60,31 @@ export default function CourseCard({ id, title, duration, level, image }: Props)
           </p>
         )}
       </Link>
-      {!isLogged ? (
+      <div className="mt-2 flex gap-2">
         <Link
-          to="/login"
-          className="mt-2 px-3 py-1 text-sm rounded bg-blue-600 text-white text-center hover:bg-blue-700"
+          to={`/cursos/${id}`}
+          className="px-3 py-1 text-sm rounded bg-gray-300 text-gray-800 text-center hover:bg-gray-400"
         >
-          Inicia sesión para inscribirte
+          Ver más
         </Link>
-      ) : (
-        !isEnrolled && (
+        {!isLogged ? (
           <Link
-            to={`/cursos/${id}/inscripcion`}
-            className="mt-2 px-3 py-1 text-sm rounded bg-blue-600 text-white text-center hover:bg-blue-700"
+            to="/login"
+            className="px-3 py-1 text-sm rounded bg-blue-600 text-white text-center hover:bg-blue-700"
           >
-            Inscribirse
+            Inicia sesión para inscribirte
           </Link>
-        )
-      )}
+        ) : (
+          !isEnrolled && (
+            <Link
+              to={`/cursos/${id}/inscripcion`}
+              className="px-3 py-1 text-sm rounded bg-blue-600 text-white text-center hover:bg-blue-700"
+            >
+              Inscribirse
+            </Link>
+          )
+        )}
+      </div>
     </div>
   )
 }
