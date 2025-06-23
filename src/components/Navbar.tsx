@@ -8,7 +8,6 @@ export default function Navbar() {
   const isLogged = useAuthStore(state => state.isLogged)
   const user = useAuthStore(state => state.user)
   const logout = useAuthStore(state => state.logout)
-  const clearCache = useAuthStore(state => state.clearCache)
   const [open, setOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const exampleUser = { name: 'Mariana' }
@@ -41,7 +40,7 @@ export default function Navbar() {
         <Link to="/" className="mx-auto" onClick={() => setOpen(false)}>
           <img src="/vite.svg" alt="Logo" className="h-8" />
         </Link>
-        <DarkModeToggle className="ml-auto" />
+        {!isLogged && <DarkModeToggle className="ml-auto" />}
       </div>
       <div
         className={`${open ? 'flex' : 'hidden'} sm:flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 border-t sm:border-none`}
@@ -121,17 +120,7 @@ export default function Navbar() {
                   >
                     Cerrar sesión
                   </button>
-                  <button
-                    onClick={() => {
-                      clearCache()
-                      navigate('/')
-                      setOpen(false)
-                      setDropdownOpen(false)
-                    }}
-                    className="text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
-                  >
-                    Borrar caché
-                  </button>
+                  <DarkModeToggle className="text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600" />
                 </div>
               )}
             </div>
@@ -146,7 +135,7 @@ export default function Navbar() {
               Ingresar
             </button>
           )}
-          <DarkModeToggle className="hidden sm:block" />
+          {!isLogged && <DarkModeToggle className="hidden sm:block" />}
         </div>
       </div>
     </nav>
