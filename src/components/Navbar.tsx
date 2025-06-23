@@ -38,9 +38,8 @@ export default function Navbar() {
           )}
         </button>
         <Link to="/" className="mx-auto" onClick={() => setOpen(false)}>
-          <img src="/logo.png" alt="Logo" className="h-8" />
+          <img src="/logo.png" alt="Logo" className="h-10 w-24" />
         </Link>
-        {!isLogged && <DarkModeToggle className="ml-auto" />}
       </div>
       <div
         className={`${open ? 'flex' : 'hidden'} sm:flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 border-t sm:border-none`}
@@ -50,7 +49,7 @@ export default function Navbar() {
           className="hidden sm:block mr-4"
           onClick={() => setOpen(false)}
         >
-          <img src="/logo.png" alt="Logo" className="h-8" />
+          <img src="/logo.png" alt="Logo" className="h-10 w-24" />
         </Link>
         <NavLink
           to="/"
@@ -142,7 +141,6 @@ export default function Navbar() {
               Ingresar
             </button>
           )}
-          {!isLogged && <DarkModeToggle className="hidden sm:block" />}
         </div>
       </div>
     </nav>
