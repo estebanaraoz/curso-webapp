@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import DarkModeToggle from './DarkModeToggle'
 import { useAuthStore } from '../store/auth'
 
@@ -25,9 +25,9 @@ export default function Navbar() {
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen)
 
   return (
-    <nav className="bg-gray-200 dark:bg-gray-800 text-sm">
-      <div className="flex items-center p-4 sm:hidden">
-        <button onClick={toggleMenu} aria-label="Abrir menú" className="mr-auto">
+    <nav className="sticky top-0 z-50 bg-gray-200 dark:bg-gray-800 text-sm">
+      <div className="relative flex items-center p-4 sm:hidden">
+        <button onClick={toggleMenu} aria-label="Abrir menú" className="mr-2">
           {open ? (
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -38,12 +38,42 @@ export default function Navbar() {
             </svg>
           )}
         </button>
-        <DarkModeToggle className="ml-4" />
+        <Link to="/" className="mx-auto" onClick={() => setOpen(false)}>
+          <img src="/vite.svg" alt="Logo" className="h-8" />
+        </Link>
+        <DarkModeToggle className="ml-auto" />
       </div>
-      <div className={`${open ? 'flex' : 'hidden'} sm:flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 border-t sm:border-none`}>
-        <Link to="/" className="block" onClick={() => setOpen(false)}>Home</Link>
-        <Link to="/cursos" className="block" onClick={() => setOpen(false)}>Cursos</Link>
-        <Link to="/foro" className="block" onClick={() => setOpen(false)}>Foro</Link>
+      <div
+        className={`${open ? 'flex' : 'hidden'} sm:flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 border-t sm:border-none`}
+      >
+        <Link
+          to="/"
+          className="hidden sm:block mr-4"
+          onClick={() => setOpen(false)}
+        >
+          <img src="/vite.svg" alt="Logo" className="h-8" />
+        </Link>
+        <NavLink
+          to="/"
+          className={({ isActive }) => `block ${isActive ? 'font-semibold text-blue-600' : ''}`}
+          onClick={() => setOpen(false)}
+        >
+          Home
+        </NavLink>
+        <NavLink
+          to="/cursos"
+          className={({ isActive }) => `block ${isActive ? 'font-semibold text-blue-600' : ''}`}
+          onClick={() => setOpen(false)}
+        >
+          Cursos
+        </NavLink>
+        <NavLink
+          to="/foro"
+          className={({ isActive }) => `block ${isActive ? 'font-semibold text-blue-600' : ''}`}
+          onClick={() => setOpen(false)}
+        >
+          Foro
+        </NavLink>
         <div className="sm:ml-auto flex flex-col sm:flex-row items-start sm:items-center gap-2 w-full sm:w-auto">
           {isLogged ? (
             <div className="relative w-full sm:w-auto">
