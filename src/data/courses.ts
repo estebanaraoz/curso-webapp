@@ -9,6 +9,7 @@ export interface CourseInfo {
   id: string
   title: string
   description: string
+  category: string
   image: string
   duration: string
   level: string
@@ -21,6 +22,7 @@ export const courses: CourseInfo[] = [
     title: 'HTML y CSS desde cero',
     description:
       'Aprende a construir paginas web modernas con HTML5 y CSS3 paso a paso.',
+    category: 'Frontend',
     image: '/images/course-html-css.png',
     duration: '4 semanas',
     level: 'Principiante',
@@ -66,6 +68,7 @@ export const courses: CourseInfo[] = [
     title: 'JavaScript desde cero',
     description:
       'Domina los fundamentos del lenguaje que impulsa la web moderna.',
+    category: 'Programación',
     image: '/images/course-js.png',
     duration: '5 semanas',
     level: 'Principiante',
@@ -116,6 +119,7 @@ export const courses: CourseInfo[] = [
     id: 'react-principiantes',
     title: 'React para principiantes',
     description: 'Crea interfaces interactivas con la librería más popular.',
+    category: 'Frontend',
     image: '/images/course-react.png',
     duration: '6 semanas',
     level: 'Intermedio',
@@ -156,6 +160,7 @@ export const courses: CourseInfo[] = [
     id: 'node-express',
     title: 'Node.js y Express',
     description: 'Construye servidores y APIs con JavaScript del lado del servidor.',
+    category: 'Backend',
     image: '/images/course-node.png',
     duration: '5 semanas',
     level: 'Intermedio',
@@ -196,6 +201,7 @@ export const courses: CourseInfo[] = [
     id: 'typescript-avanzado',
     title: 'TypeScript avanzado',
     description: 'Lleva tu código JavaScript al siguiente nivel con tipado fuerte.',
+    category: 'Programación',
     image: '/images/course-ts.png',
     duration: '6 semanas',
     level: 'Avanzado',
@@ -248,6 +254,7 @@ export const courses: CourseInfo[] = [
     id: 'mern-fullstack',
     title: 'Desarrollo Fullstack con MERN',
     description: 'Aprende a crear aplicaciones completas con Mongo, Express, React y Node.',
+    category: 'Fullstack',
     image: '/images/course-mern.png',
     duration: '8 semanas',
     level: 'Avanzado',
@@ -300,6 +307,7 @@ export const courses: CourseInfo[] = [
     id: 'testing-jest',
     title: 'Testing con Jest',
     description: 'Garantiza la calidad de tus aplicaciones con pruebas unitarias y de integración.',
+    category: 'Testing',
     image: '/images/course-jest.png',
     duration: '4 semanas',
     level: 'Intermedio',
@@ -340,6 +348,7 @@ export const courses: CourseInfo[] = [
     id: 'react-native',
     title: 'Aplicaciones móviles con React Native',
     description: 'Desarrolla apps nativas para iOS y Android usando JavaScript.',
+    category: 'Mobile',
     image: '/images/course-react-native.png',
     duration: '7 semanas',
     level: 'Intermedio',

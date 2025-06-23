@@ -3,12 +3,25 @@ import Footer from '../components/Footer'
 import { courses } from '../data/courses'
 import CourseCard from '../components/CourseCard'
 import { useAuthStore } from '../store/auth'
+import { useState } from 'react'
 
 export default function Courses() {
   const isLogged = useAuthStore(state => state.isLogged)
   const enrolledCourses = useAuthStore(state => state.enrolledCourses)
   const availableCourses = courses.filter(
     c => !enrolledCourses.some(e => e.id === c.id),
+  )
+  const categories = Array.from(new Set(courses.map(c => c.category)))
+  const levels = Array.from(new Set(courses.map(c => c.level)))
+  const durations = Array.from(new Set(courses.map(c => c.duration)))
+  const [category, setCategory] = useState('Todos')
+  const [level, setLevel] = useState('Todos')
+  const [duration, setDuration] = useState('Todas')
+  const filteredCourses = (isLogged ? availableCourses : courses).filter(
+    c =>
+      (category === 'Todos' || c.category === category) &&
+      (level === 'Todos' || c.level === level) &&
+      (duration === 'Todas' || c.duration === duration),
   )
 
   return (
@@ -44,8 +57,46 @@ export default function Courses() {
           <h1 className="text-3xl font-bold">
             {isLogged ? 'Todos los cursos' : 'Cursos disponibles'}
           </h1>
+          <div className="flex flex-wrap gap-4">
+            <select
+              className="border p-2 rounded"
+              value={category}
+              onChange={e => setCategory(e.target.value)}
+            >
+              <option value="Todos">Todas las categorías</option>
+              {categories.map(cat => (
+                <option key={cat} value={cat}>
+                  {cat}
+                </option>
+              ))}
+            </select>
+            <select
+              className="border p-2 rounded"
+              value={level}
+              onChange={e => setLevel(e.target.value)}
+            >
+              <option value="Todos">Todos los niveles</option>
+              {levels.map(l => (
+                <option key={l} value={l}>
+                  {l}
+                </option>
+              ))}
+            </select>
+            <select
+              className="border p-2 rounded"
+              value={duration}
+              onChange={e => setDuration(e.target.value)}
+            >
+              <option value="Todas">Todas las duraciones</option>
+              {durations.map(d => (
+                <option key={d} value={d}>
+                  {d}
+                </option>
+              ))}
+            </select>
+          </div>
           <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-            {(isLogged ? availableCourses : courses).map(course => (
+            {filteredCourses.map(course => (
               <CourseCard
                 key={course.id}
                 id={course.id}

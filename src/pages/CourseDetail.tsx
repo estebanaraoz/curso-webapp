@@ -20,7 +20,12 @@ export default function CourseDetail() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="container mx-auto flex-grow p-4 flex flex-col items-start gap-4">
-        <nav className="text-sm">
+        <nav className="text-sm flex items-center gap-2">
+          <button onClick={() => navigate(-1)} aria-label="Volver" className="p-1">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+          </button>
           <Link to="/cursos" className="text-blue-600 underline">Cursos</Link>
           {course && <span> / {course.title}</span>}
         </nav>
