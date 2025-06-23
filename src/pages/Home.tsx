@@ -11,9 +11,9 @@ export default function Home() {
         <section className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-8 p-8 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-lg">
           <div className="flex flex-col items-start gap-4 md:w-1/2">
             <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Aprende y potencia tu carrera
+              Aula Digital Ciudadana
             </h1>
-            <p className="text-lg">Cursos online dictados por profesionales del desarrollo web.</p>
+            <p className="text-lg">Aprende y potencia tu carrera con cursos online dictados por profesionales del desarrollo web.</p>
             <Link to="/cursos">
               <Button variant="primary">Explorar cursos</Button>
             </Link>

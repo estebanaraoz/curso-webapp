@@ -5,7 +5,7 @@ export default function Footer() {
         <div>
           <img src="/vite.svg" alt="Logo" className="h-8 mb-2" />
           <p>
-            Cursos Webapp es una plataforma de formación en línea para que aprendas a tu propio ritmo.
+            Aula Digital Ciudadana es una plataforma de formación en línea para que aprendas a tu propio ritmo.
           </p>
         </div>
         <div>
@@ -36,7 +36,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="text-center py-4 bg-gray-300 dark:bg-gray-900">
-        © 2024 Cursos Webapp
+        © 2025 Aula Digital Ciudadana
       </div>
     </footer>
   )

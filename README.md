@@ -1,4 +1,4 @@
-# Curso Webapp
+# Aula Digital Ciudadana
 
 Aplicación React creada con Vite y TypeScript. Incluye Tailwind CSS 3 configurado, React Router y un modo oscuro básico.
 

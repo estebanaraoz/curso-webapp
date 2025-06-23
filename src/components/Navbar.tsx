@@ -67,6 +67,13 @@ export default function Navbar() {
           Cursos
         </NavLink>
         <NavLink
+          to="/nosotros"
+          className={({ isActive }) => `block ${isActive ? 'font-semibold text-blue-600' : ''}`}
+          onClick={() => setOpen(false)}
+        >
+          Nosotros
+        </NavLink>
+        <NavLink
           to="/foro"
           className={({ isActive }) => `block ${isActive ? 'font-semibold text-blue-600' : ''}`}
           onClick={() => setOpen(false)}
