@@ -8,3 +8,12 @@ Aplicación React creada con Vite y TypeScript. Incluye Tailwind CSS 3 configura
 - `pnpm dev` – inicia el servidor de desarrollo.
 - `pnpm build` – genera la versión de producción.
 
+
+## Wireframes
+
+Dentro de la carpeta `Wireframes` hay dos plantillas HTML estáticas que representan la página de inicio:
+
+- `home-sin-sesion.html` muestra la estructura para usuarios no autenticados.
+- `home-con-sesion.html` muestra la versión con la sesión iniciada.
+
+Ambas plantillas utilizan rectángulos y círculos grises para ilustrar la ubicación de los elementos.
