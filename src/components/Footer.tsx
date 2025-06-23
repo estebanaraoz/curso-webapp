@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 text-sm">
       <div className="container mx-auto px-4 py-8 grid gap-8 md:grid-cols-4">
         <div>
-          <img src="/logo.png" alt="Logo" className="h-16 w-48 mb-2" />
+          <img src="/logo.png" alt="Logo" className="h-16 w-auto mb-2 object-contain" />
           <p>
             Aula Digital Ciudadana es una plataforma de formación en línea para que aprendas a tu propio ritmo.
           </p>
