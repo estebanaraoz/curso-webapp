@@ -38,7 +38,7 @@ export default function Navbar() {
           )}
         </button>
         <Link to="/" className="mx-auto" onClick={() => setOpen(false)}>
-          <img src="/vite.svg" alt="Logo" className="h-8" />
+          <img src="/logo.png" alt="Logo" className="h-8" />
         </Link>
         {!isLogged && <DarkModeToggle className="ml-auto" />}
       </div>
@@ -50,7 +50,7 @@ export default function Navbar() {
           className="hidden sm:block mr-4"
           onClick={() => setOpen(false)}
         >
-          <img src="/vite.svg" alt="Logo" className="h-8" />
+          <img src="/logo.png" alt="Logo" className="h-8" />
         </Link>
         <NavLink
           to="/"
