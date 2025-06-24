@@ -108,17 +108,7 @@ export default function Navbar() {
                       setDropdownOpen(false)
                     }}
                   >
-                    Mis cursos
-                  </Link>
-                  <Link
-                    to="/perfil"
-                    className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
-                    onClick={() => {
-                      setOpen(false)
-                      setDropdownOpen(false)
-                    }}
-                  >
-                    Perfil
+                    Mi cuenta
                   </Link>
                   <button
                     onClick={handleLogout}
