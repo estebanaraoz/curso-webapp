@@ -1,7 +1,7 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Button from '../components/Button'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import { courses } from '../data/courses'
 import { useAuthStore } from '../store/auth'
@@ -23,6 +23,13 @@ export default function Module() {
   const setCurrentCourse = useAuthStore(state => state.setCurrentCourse)
   const course = courses.find(c => c.id === id)
   const module = course?.modules.find(m => m.id === moduleId)
+  const currentIndex = course?.modules.findIndex(m => m.id === moduleId) ?? -1
+  const prevModule =
+    currentIndex > 0 && course ? course.modules[currentIndex - 1] : null
+  const nextModule =
+    course && currentIndex >= 0 && currentIndex < course.modules.length - 1
+      ? course.modules[currentIndex + 1]
+      : null
 
   useEffect(() => {
     if (id) setCurrentCourse(id)
@@ -51,23 +58,63 @@ export default function Module() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="container mx-auto flex-grow p-4 flex flex-col items-center space-y-4">
-        <Button variant="secondary" onClick={() => navigate(-1)}>Volver atrás</Button>
+        <nav className="text-sm flex items-center gap-2 self-start">
+          <button
+            onClick={() => navigate(-1)}
+            aria-label="Volver"
+            className="flex items-center gap-1 p-1"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-4 h-4"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+            <span>Volver</span>
+          </button>
+          <Link to="/cursos" className="text-blue-600 underline">Cursos</Link>
+          {course && (
+            <>
+              <span>/</span>
+              <Link to={`/cursos/${course.id}`} className="text-blue-600 underline">
+                {course.title}
+              </Link>
+              {module && <span> / Módulo {module.id}</span>}
+            </>
+          )}
+        </nav>
+        <div className="flex justify-between w-full">
+          {prevModule && (
+            <Button
+              onClick={() => navigate(`/cursos/${id}/modulo/${prevModule.id}`)}
+              className="px-6 py-3"
+            >
+              Anterior
+            </Button>
+          )}
+          {nextModule && (
+            <Button
+              onClick={() => navigate(`/cursos/${id}/modulo/${nextModule.id}`)}
+              className="ml-auto px-6 py-3"
+            >
+              Siguiente
+            </Button>
+          )}
+        </div>
         {course && module ? (
           <>
             <h1 className="text-3xl font-bold text-center">
               {course.title} - {module.title}
             </h1>
             <p className="text-center">{module.description}</p>
+            <p className="text-center text-sm">{module.intro}</p>
             {isLogged && isEnrolled && canAccess ? (
-              <div className="border p-4 rounded shadow w-full max-w-md text-center">
-                <a
-                  href={module.videoUrl}
-                  className="text-blue-600 underline"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Ver video
-                </a>
+              <div className="border p-4 rounded shadow w-full max-w-[600px] h-[600px] flex items-center justify-center bg-gray-200 mx-auto">
+                Mostrar video
               </div>
             ) : isLogged && isEnrolled && !canAccess ? (
               <p className="italic text-center">
@@ -100,6 +147,24 @@ export default function Module() {
         ) : isLogged ? null : (
           <Button onClick={() => navigate('/login')}>Inicia sesión para continuar</Button>
         )}
+        <div className="flex justify-between w-full mt-4">
+          {prevModule && (
+            <Button
+              onClick={() => navigate(`/cursos/${id}/modulo/${prevModule.id}`)}
+              className="px-6 py-3"
+            >
+              Anterior
+            </Button>
+          )}
+          {nextModule && (
+            <Button
+              onClick={() => navigate(`/cursos/${id}/modulo/${nextModule.id}`)}
+              className="ml-auto px-6 py-3"
+            >
+              Siguiente
+            </Button>
+          )}
+        </div>
       </main>
       <Footer />
     </div>
