@@ -14,6 +14,14 @@ export default function CourseDetail() {
   const course = courses.find(c => c.id === id)
   const instructor = course ? getInstructorByCourse(course.id) : null
   const progress = enrolledCourses.find(c => c.id === id)
+  const progressPercent = progress
+    ? Math.min(100, Math.round((progress.completed / progress.total) * 100))
+    : 0
+  const canRetakeExam = progress
+    ? !progress.lastAttempt ||
+      Date.now() - progress.lastAttempt >= 24 * 60 * 60 * 1000
+    : false
+  const attemptsRemaining = progress ? progress.maxAttempts - progress.attempts : 0
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -83,22 +91,32 @@ export default function CourseDetail() {
                     </span>
                   )}
                 </p>
-                <div className="w-full bg-gray-200 rounded h-2">
+                <div className="w-full bg-gray-200 rounded h-6 relative overflow-hidden">
                   <div
-                    className="bg-blue-600 h-2 rounded"
-                    style={{ width: `${Math.min(100, Math.round((progress.completed / progress.total) * 100))}%` }}
-                  />
+                    className="bg-blue-600 h-6 rounded text-white text-center text-sm flex items-center justify-center"
+                    style={{ width: `${progressPercent}%` }}
+                  >
+                    {progressPercent}%
+                  </div>
                 </div>
                 {progress.completed >= progress.total &&
-                  (progress.grade === undefined || progress.grade < 40) ? (
-                    <Button
-                      onClick={() => navigate(`/cursos/${id}/examen-final`)}
-                    >
-                      Contestar evaluación
-                    </Button>
-                  ) : progress.completed >= progress.total ? null : (
-                  <Button onClick={() => navigate(`/cursos/${id}/modulo/${progress.completed + 1}`)}>Seguir</Button>
-                )}
+                  (progress.grade === undefined || progress.grade < 40) &&
+                  attemptsRemaining > 0 ? (
+                    <>
+                      <p className="text-sm text-red-600">
+                        Debes volver a contestar la evaluación
+                      </p>
+                      {canRetakeExam ? (
+                        <Button onClick={() => navigate(`/cursos/${id}/examen-final`)}>
+                          Contestar evaluación
+                        </Button>
+                      ) : (
+                        <Button disabled>Debes esperar 24 horas</Button>
+                      )}
+                    </>
+                  ) : progress.completed >= progress.total && progress.grade !== undefined ? null : (
+                    <Button onClick={() => navigate(`/cursos/${id}/modulo/${progress.completed + 1}`)}>Seguir</Button>
+                  )}
               </div>
             ) : (
               <div className="border rounded p-4 space-y-3">
@@ -130,27 +148,25 @@ export default function CourseDetail() {
                 return (
                   <li
                     key={m.id}
-                    className={`border rounded p-3 ${
+                    className={`border rounded ${
                       completed ? 'bg-green-50' : ''
                     } ${isCurrent && !completed ? 'bg-blue-50 border-blue-400' : ''}`}
                   >
                     {isLogged && allowed ? (
-                      <Link
-                        to={`/cursos/${id}/modulo/${m.id}`}
-                        className={`block font-semibold ${completed ? 'line-through' : ''}`}
-                      >
-                        Módulo {i + 1}: {m.title}
+                      <Link to={`/cursos/${id}/modulo/${m.id}`} className="block p-3">
+                        <div className={`font-semibold ${completed ? 'line-through' : ''}`}>
+                          Módulo {i + 1}: {m.title}
+                        </div>
+                        <p className="text-sm text-gray-600">{m.description}</p>
+                        {completed && (
+                          <p className="text-xs italic text-gray-500">Haz clic para verlo nuevamente</p>
+                        )}
                       </Link>
                     ) : (
-                      <span className={`font-semibold ${completed ? 'line-through' : ''}`}>
-                        Módulo {i + 1}: {m.title}
-                      </span>
-                    )}
-                    <p className="text-sm text-gray-600">{m.description}</p>
-                    {completed && (
-                      <p className="text-xs italic text-gray-500">
-                        Haz clic para verlo nuevamente
-                      </p>
+                      <div className="p-3">
+                        <span className={`font-semibold ${completed ? 'line-through' : ''}`}>Módulo {i + 1}: {m.title}</span>
+                        <p className="text-sm text-gray-600">{m.description}</p>
+                      </div>
                     )}
                   </li>
                 )

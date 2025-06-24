@@ -6,6 +6,9 @@ export interface Course {
   completed: number
   total: number
   grade?: number
+  maxAttempts: number
+  attempts: number
+  lastAttempt?: number
 }
 
 export interface AuthState {
@@ -27,7 +30,13 @@ const useAuthStore = create<AuthState>(set => {
   const initialUser = storedUser ? JSON.parse(storedUser) : null
   const storedToken = localStorage.getItem('token')
   const storedCourses = localStorage.getItem('enrolledCourses')
-  const initialCourses: Course[] = storedCourses ? JSON.parse(storedCourses) : []
+  const parsedCourses: Course[] = storedCourses ? JSON.parse(storedCourses) : []
+  const initialCourses: Course[] = parsedCourses.map(c => ({
+    ...c,
+    maxAttempts: c.maxAttempts ?? 3,
+    attempts: c.attempts ?? 0,
+    lastAttempt: c.lastAttempt,
+  }))
   const storedCourse = localStorage.getItem('currentCourseId')
 
   const persistCourses = (courses: Course[]) =>
@@ -54,7 +63,11 @@ const useAuthStore = create<AuthState>(set => {
     },
     enroll: course =>
       set(state => {
-        const updated = [...state.enrolledCourses, course]
+        const updated = [...state.enrolledCourses, {
+          ...course,
+          attempts: 0,
+          lastAttempt: undefined,
+        }]
         persistCourses(updated)
         return { enrolledCourses: updated }
       }),
@@ -70,9 +83,16 @@ const useAuthStore = create<AuthState>(set => {
       }),
     finishCourse: (courseId, grade) =>
       set(state => {
-        const updated = state.enrolledCourses.map(c =>
-          c.id === courseId ? { ...c, grade } : c,
-        )
+        const now = Date.now()
+        const updated = state.enrolledCourses.map(c => {
+          if (c.id !== courseId) return c
+          const attempts = (c.attempts ?? 0) + 1
+          const result = { ...c, grade, attempts, lastAttempt: now }
+          if (grade < 40 && attempts >= c.maxAttempts) {
+            return null
+          }
+          return result
+        }).filter(Boolean) as Course[]
         persistCourses(updated)
         return { enrolledCourses: updated }
       }),

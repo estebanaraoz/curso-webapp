@@ -8,6 +8,13 @@ export default function FinalExam() {
   const { id } = useParams()
   const navigate = useNavigate()
   const finishCourse = useAuthStore(state => state.finishCourse)
+  const enrolled = useAuthStore(state => state.enrolledCourses)
+  const progress = enrolled.find(c => c.id === id)
+  const canRetakeExam = progress
+    ? (!progress.lastAttempt ||
+        Date.now() - progress.lastAttempt >= 24 * 60 * 60 * 1000) &&
+      progress.attempts < progress.maxAttempts
+    : false
 
   const handleFinish = () => {
     if (id) {
@@ -21,10 +28,14 @@ export default function FinalExam() {
       <Navbar />
       <main className="container mx-auto flex-grow p-4 space-y-4">
         <h1 className="text-3xl font-bold">Examen final - Curso {id}</h1>
-        <p>Completa las preguntas para finalizar el curso.</p>
-        <Button onClick={handleFinish}>
-          Enviar respuestas
-        </Button>
+        {canRetakeExam ? (
+          <>
+            <p>Completa las preguntas para finalizar el curso.</p>
+            <Button onClick={handleFinish}>Enviar respuestas</Button>
+          </>
+        ) : (
+          <p className="text-red-600">Aún no puedes realizar este examen.</p>
+        )}
       </main>
       <Footer />
     </div>
