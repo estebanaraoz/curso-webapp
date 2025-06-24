@@ -50,6 +50,7 @@ export default function CourseDetail() {
             <span className="px-3 py-1 bg-gray-200 rounded underline font-semibold">Dificultad: {course.level}</span>
             <span className="px-3 py-1 bg-gray-200 rounded">Duración: {course.duration}</span>
             <span className="px-3 py-1 bg-gray-200 rounded">Módulos: {course.modules.length}</span>
+            <span className="px-3 py-1 bg-gray-200 rounded">Intentos de evaluación: {course.maxAttempts}</span>
           </div>
           <h2 className="text-2xl font-bold">Preguntas frecuentes</h2>
           <p>
@@ -80,7 +81,7 @@ export default function CourseDetail() {
                     ? `Curso finalizado - Nota: ${progress.grade}`
                     : progress.completed >= progress.total
                       ? 'Curso finalizado'
-                      : `${Math.round((progress.completed / progress.total) * 100)}% completado`}
+                      : 'Actualmente en curso'}
                   {progress.completed >= progress.total && progress.grade !== undefined && (
                     <span
                       className={`ml-1 px-2 py-0.5 rounded text-xs ${
@@ -104,7 +105,10 @@ export default function CourseDetail() {
                   attemptsRemaining > 0 ? (
                     <>
                       <p className="text-sm text-red-600">
-                        Debes volver a contestar la evaluación
+                        Debes volver a contestar la evaluación.
+                        {!canRetakeExam &&
+                          ' Debes esperar 24 horas antes de volver a responder esta evaluación.'}
+                        {' '}Te quedan {attemptsRemaining} intentos.
                       </p>
                       {canRetakeExam ? (
                         <Button onClick={() => navigate(`/cursos/${id}/examen-final`)}>

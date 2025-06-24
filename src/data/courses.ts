@@ -27,7 +27,7 @@ export const courses: CourseInfo[] = [
     image: '/images/course-html-css.png',
     duration: '4 semanas',
     level: 'Principiante',
-    maxAttempts: 3,
+    maxAttempts: 2,
     modules: [
       {
         id: '1',
@@ -126,7 +126,7 @@ export const courses: CourseInfo[] = [
     image: '/images/course-react.png',
     duration: '6 semanas',
     level: 'Intermedio',
-    maxAttempts: 3,
+    maxAttempts: 2,
     modules: [
       {
         id: '1',
@@ -168,7 +168,7 @@ export const courses: CourseInfo[] = [
     image: '/images/course-node.png',
     duration: '5 semanas',
     level: 'Intermedio',
-    maxAttempts: 3,
+    maxAttempts: 4,
     modules: [
       {
         id: '1',
@@ -210,7 +210,7 @@ export const courses: CourseInfo[] = [
     image: '/images/course-ts.png',
     duration: '6 semanas',
     level: 'Avanzado',
-    maxAttempts: 3,
+    maxAttempts: 5,
     modules: [
       {
         id: '1',
@@ -318,7 +318,7 @@ export const courses: CourseInfo[] = [
     image: '/images/course-jest.png',
     duration: '4 semanas',
     level: 'Intermedio',
-    maxAttempts: 3,
+    maxAttempts: 2,
     modules: [
       {
         id: '1',
@@ -360,7 +360,7 @@ export const courses: CourseInfo[] = [
     image: '/images/course-react-native.png',
     duration: '7 semanas',
     level: 'Intermedio',
-    maxAttempts: 3,
+    maxAttempts: 4,
     modules: [
       {
         id: '1',
