@@ -14,6 +14,7 @@ import Nosotros from './pages/Nosotros'
 import ErrorPage from './pages/ErrorPage'
 import NotFound from './pages/NotFound'
 import Wireframes from './pages/Wireframes'
+import UserFlow from './pages/UserFlow'
 
 export default function App() {
   return (
@@ -31,6 +32,7 @@ export default function App() {
       <Route path="/foro" element={<Forum />} />
       <Route path="/nosotros" element={<Nosotros />} />
       <Route path="/wireframes" element={<Wireframes />} />
+      <Route path="/flujo" element={<UserFlow />} />
       <Route path="/error" element={<ErrorPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
