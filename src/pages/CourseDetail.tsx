@@ -14,9 +14,6 @@ export default function CourseDetail() {
   const course = courses.find(c => c.id === id)
   const instructor = course ? getInstructorByCourse(course.id) : null
   const progress = enrolledCourses.find(c => c.id === id)
-  const canRetake = progress?.nextExamDate
-    ? new Date(progress.nextExamDate) <= new Date()
-    : true
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -56,7 +53,7 @@ export default function CourseDetail() {
           </p>
           <h2 className="text-2xl font-bold">Instructor</h2>
           {instructor && (
-            <div className="border rounded p-4 flex flex-col items-center gap-2 w-full sm:w-1/2">
+            <div className="border rounded p-4 flex flex-col items-center gap-2 w-full">
               <div className="w-24 h-24 rounded-full bg-gray-300 overflow-hidden flex items-center justify-center">
                 <img
                   src={instructor.avatar}
@@ -92,16 +89,14 @@ export default function CourseDetail() {
                     style={{ width: `${Math.min(100, Math.round((progress.completed / progress.total) * 100))}%` }}
                   />
                 </div>
-                {progress.completed >= progress.total ? (
-                  progress.grade === undefined ? (
+                {progress.completed >= progress.total &&
+                  (progress.grade === undefined || progress.grade < 40) ? (
                     <Button
                       onClick={() => navigate(`/cursos/${id}/examen-final`)}
-                      disabled={progress.grade !== undefined && progress.grade < 40 && !canRetake}
                     >
                       Contestar evaluación
                     </Button>
-                  ) : null
-                ) : (
+                  ) : progress.completed >= progress.total ? null : (
                   <Button onClick={() => navigate(`/cursos/${id}/modulo/${progress.completed + 1}`)}>Seguir</Button>
                 )}
               </div>
@@ -152,6 +147,11 @@ export default function CourseDetail() {
                       </span>
                     )}
                     <p className="text-sm text-gray-600">{m.description}</p>
+                    {completed && (
+                      <p className="text-xs italic text-gray-500">
+                        Haz clic para verlo nuevamente
+                      </p>
+                    )}
                   </li>
                 )
               })}
