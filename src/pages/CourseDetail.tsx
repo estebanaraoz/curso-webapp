@@ -4,6 +4,7 @@ import Button from '../components/Button'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { useAuthStore } from '../store/auth'
 import { courses } from '../data/courses'
+import { getInstructorByCourse } from '../data/instructors'
 
 export default function CourseDetail() {
   const { id } = useParams()
@@ -11,6 +12,7 @@ export default function CourseDetail() {
   const isLogged = useAuthStore(state => state.isLogged)
   const enrolledCourses = useAuthStore(state => state.enrolledCourses)
   const course = courses.find(c => c.id === id)
+  const instructor = course ? getInstructorByCourse(course.id) : null
   const progress = enrolledCourses.find(c => c.id === id)
   const canRetake = progress?.nextExamDate
     ? new Date(progress.nextExamDate) <= new Date()
@@ -53,19 +55,43 @@ export default function CourseDetail() {
             .
           </p>
           <h2 className="text-2xl font-bold">Instructor</h2>
-          <div className="flex items-center gap-2">
-            <span className="font-semibold">Ing. Marilina</span>
-          </div>
+          {instructor && (
+            <div className="border rounded p-4 flex flex-col items-center gap-2 w-full sm:w-1/2">
+              <div className="w-24 h-24 rounded-full bg-gray-300 overflow-hidden flex items-center justify-center">
+                <img
+                  src={instructor.avatar}
+                  alt={instructor.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <span className="font-semibold">{instructor.name}</span>
+            </div>
+          )}
           <div className="space-y-2">
             {progress ? (
-              <>
+              <div className="border rounded p-4 space-y-3">
                 <p className="font-semibold">
                   {progress.completed >= progress.total && progress.grade !== undefined
                     ? `Curso finalizado - Nota: ${progress.grade}`
                     : progress.completed >= progress.total
                       ? 'Curso finalizado'
                       : `${Math.round((progress.completed / progress.total) * 100)}% completado`}
+                  {progress.completed >= progress.total && progress.grade !== undefined && (
+                    <span
+                      className={`ml-1 px-2 py-0.5 rounded text-xs ${
+                        progress.grade >= 40 ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'
+                      }`}
+                    >
+                      {progress.grade >= 40 ? 'Aprobado' : 'Desaprobado'}
+                    </span>
+                  )}
                 </p>
+                <div className="w-full bg-gray-200 rounded h-2">
+                  <div
+                    className="bg-blue-600 h-2 rounded"
+                    style={{ width: `${Math.min(100, Math.round((progress.completed / progress.total) * 100))}%` }}
+                  />
+                </div>
                 {progress.completed >= progress.total ? (
                   progress.grade === undefined ? (
                     <Button
@@ -78,11 +104,24 @@ export default function CourseDetail() {
                 ) : (
                   <Button onClick={() => navigate(`/cursos/${id}/modulo/${progress.completed + 1}`)}>Seguir</Button>
                 )}
-              </>
+              </div>
             ) : (
-              <p className="font-semibold">
-                ¿Listo para comenzar? Inscríbete al curso para acceder a todos los módulos.
-              </p>
+              <div className="border rounded p-4 space-y-3">
+                <p className="font-semibold">
+                  ¿Listo para comenzar? Inscríbete al curso para acceder a todos los módulos.
+                </p>
+                <Button
+                  onClick={() => {
+                    if (!isLogged) {
+                      navigate('/login')
+                    } else {
+                      navigate(`/cursos/${id}/inscripcion`)
+                    }
+                  }}
+                >
+                  {isLogged ? 'Inscribirme' : 'Inicia sesión para inscribirte'}
+                </Button>
+              </div>
             )}
           </div>
         </div>
@@ -120,22 +159,6 @@ export default function CourseDetail() {
         </>
         ) : (
           <p>Curso no encontrado</p>
-        )}
-        {!progress && (
-          <div className="mt-8 space-y-2">
-            <h2 className="text-2xl font-bold">¿Estás listo para inscribirte?</h2>
-            <Button
-              onClick={() => {
-                if (!isLogged) {
-                  navigate('/login')
-                } else {
-                  navigate(`/cursos/${id}/inscripcion`)
-                }
-              }}
-            >
-              {isLogged ? 'Inscribirme' : 'Inicia sesión para inscribirte'}
-            </Button>
-          </div>
         )}
       </main>
       <Footer />
