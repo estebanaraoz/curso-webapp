@@ -124,6 +124,10 @@ export default function Module() {
             </button>
           )}
         </div>
+        <hr className="my-4" />
+        {moduleId && (
+          <h2 className="text-center text-xl font-semibold">Módulo {moduleId}</h2>
+        )}
         {course && module ? (
           <>
             <h1 className="text-3xl font-bold text-center">
