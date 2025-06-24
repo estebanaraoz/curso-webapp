@@ -4,7 +4,9 @@ import Footer from '../components/Footer'
 const files = [
   'home-sin-sesion.html',
   'home-con-sesion.html',
+  'courses-sin-sesion.html',
   'courses.html',
+  'course-detail-sin-sesion.html',
   'course-detail.html',
   'inscription-form.html',
   'inscription-success.html',
@@ -12,6 +14,7 @@ const files = [
   'module.html',
   'final-exam.html',
   'forum.html',
+  'nosotros.html',
   'login.html',
   'profile.html',
   'error-page.html',
