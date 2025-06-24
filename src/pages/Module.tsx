@@ -86,6 +86,44 @@ export default function Module() {
             </>
           )}
         </nav>
+        <div className="flex justify-center gap-4 w-full">
+          {prevModule && (
+            <button
+              onClick={() => navigate(`/cursos/${id}/modulo/${prevModule.id}`)}
+              className="flex items-center gap-2 border border-black px-4 py-4 w-64"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-4 h-4"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
+              <span className="text-sm">Módulo {prevModule.id} - {prevModule.title}</span>
+            </button>
+          )}
+          {nextModule && (
+            <button
+              onClick={() => navigate(`/cursos/${id}/modulo/${nextModule.id}`)}
+              className="flex items-center gap-2 border border-black px-4 py-4 w-64"
+            >
+              <span className="text-sm">Módulo {nextModule.id} - {nextModule.title}</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-4 h-4"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </button>
+          )}
+        </div>
         {course && module ? (
           <>
             <h1 className="text-3xl font-bold text-center">
@@ -128,11 +166,11 @@ export default function Module() {
           <Button onClick={() => navigate('/login')}>Inicia sesión para continuar</Button>
         )}
         <hr className="my-4" />
-        <div className="flex justify-between w-full max-w-xl mx-auto">
+        <div className="flex justify-center gap-4 w-full">
           {prevModule && (
             <button
               onClick={() => navigate(`/cursos/${id}/modulo/${prevModule.id}`)}
-              className="flex items-center gap-2 border border-black px-4 py-2"
+              className="flex items-center gap-2 border border-black px-4 py-4 w-64"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -150,7 +188,7 @@ export default function Module() {
           {nextModule && (
             <button
               onClick={() => navigate(`/cursos/${id}/modulo/${nextModule.id}`)}
-              className="flex items-center gap-2 border border-black px-4 py-2"
+              className="flex items-center gap-2 border border-black px-4 py-4 w-64"
             >
               <span className="text-sm">Módulo {nextModule.id} - {nextModule.title}</span>
               <svg
