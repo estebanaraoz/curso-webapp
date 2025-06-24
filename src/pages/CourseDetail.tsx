@@ -19,7 +19,7 @@ export default function CourseDetail() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="container mx-auto flex-grow p-4 flex flex-col items-start gap-4">
+      <main className="container mx-auto flex-grow p-4 flex flex-col items-start gap-6">
         <nav className="text-sm flex items-center gap-2">
           <button onClick={() => navigate(-1)} aria-label="Volver" className="p-1">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
@@ -31,115 +31,111 @@ export default function CourseDetail() {
         </nav>
         {course ? (
           <>
+          <div className="space-y-4 w-full">
             <img
               src={course.image}
               alt={course.title}
-              className="w-full max-h-[200px] object-contain rounded overflow-hidden"
+              className="w-full max-h-[300px] object-contain rounded overflow-hidden"
             />
             <h1 className="text-4xl font-extrabold">{course.title}</h1>
             <p className="text-lg">{course.description}</p>
-            <div className="flex flex-wrap gap-2 text-sm">
-              <span className="px-3 py-1 bg-gray-200 rounded">Nivel: {course.level}</span>
-              <span className="px-3 py-1 bg-gray-200 rounded">Duración: {course.duration}</span>
-              <span className="px-3 py-1 bg-gray-200 rounded">Módulos: {course.modules.length}</span>
-            </div>
-            <h2 className="text-2xl font-bold mt-4">Módulos</h2>
-            <ul className="pl-6 space-y-2">
-              {course.modules.map((m, i) => {
-                const allowed = progress ? parseInt(m.id) <= progress.completed + 1 : false
-                const isCurrent = progress ? parseInt(m.id) === progress.completed + 1 : false
-                const title = `Módulo ${i + 1}: ${m.title}`
-                return (
-                  <li
-                    key={m.id}
-                    className={`space-y-1 ${isCurrent ? 'bg-blue-50 border-l-4 border-blue-400 pl-2' : ''}`}
-                  >
-                    {isLogged && allowed ? (
-                      <Link
-                        to={`/cursos/${id}/modulo/${m.id}`}
-                        className={`${isCurrent ? 'text-blue-700 font-semibold underline' : 'text-blue-600 underline'}`}
-                      >
-                        {title}
-                      </Link>
-                    ) : (
-                      <span className={`font-semibold ${isCurrent ? 'text-blue-700' : 'text-gray-500'}`}>{title}</span>
-                    )}
-                    <p className="ml-4 text-sm text-gray-600">{m.description}</p>
-                  </li>
-                )
-              })}
-            </ul>
-            {progress && (
-              <p className="font-semibold">
-                {progress.completed >= progress.total && progress.grade !== undefined ? (
-                  <>
-                    Has finalizado este curso con nota: {progress.grade}{' '}
-                    <span
-                      className={`ml-1 px-2 py-0.5 rounded text-xs ${
-                        progress.grade >= 40
-                          ? 'bg-green-200 text-green-800'
-                          : 'bg-red-200 text-red-800'
-                      }`}
+          <div className="flex flex-wrap gap-2 text-sm">
+            <span className="px-3 py-1 bg-gray-200 rounded underline font-semibold">Dificultad: {course.level}</span>
+            <span className="px-3 py-1 bg-gray-200 rounded">Duración: {course.duration}</span>
+            <span className="px-3 py-1 bg-gray-200 rounded">Módulos: {course.modules.length}</span>
+          </div>
+          <h2 className="text-2xl font-bold">Preguntas frecuentes</h2>
+          <p>
+            ¿Tienes dudas? Escríbenos a{' '}
+            <a href="mailto:correo@example.com" className="text-blue-600 underline">
+              correo@example.com
+            </a>
+            .
+          </p>
+          <h2 className="text-2xl font-bold">Instructor</h2>
+          <div className="flex items-center gap-2">
+            <span className="font-semibold">Ing. Marilina</span>
+          </div>
+          <div className="space-y-2">
+            {progress ? (
+              <>
+                <p className="font-semibold">
+                  {progress.completed >= progress.total && progress.grade !== undefined
+                    ? `Curso finalizado - Nota: ${progress.grade}`
+                    : progress.completed >= progress.total
+                      ? 'Curso finalizado'
+                      : `${Math.round((progress.completed / progress.total) * 100)}% completado`}
+                </p>
+                {progress.completed >= progress.total ? (
+                  progress.grade === undefined ? (
+                    <Button
+                      onClick={() => navigate(`/cursos/${id}/examen-final`)}
+                      disabled={progress.grade !== undefined && progress.grade < 40 && !canRetake}
                     >
-                      {progress.grade >= 40 ? 'Aprobado' : 'Desaprobado'}
-                    </span>
-                  </>
-                ) : progress.completed >= progress.total ? (
-                  'Curso finalizado'
+                      Contestar evaluación
+                    </Button>
+                  ) : null
                 ) : (
-                  `${Math.round((progress.completed / progress.total) * 100)}% completado`
+                  <Button onClick={() => navigate(`/cursos/${id}/modulo/${progress.completed + 1}`)}>Seguir</Button>
                 )}
-              </p>
-            )}
-            {progress &&
-              progress.completed >= progress.total &&
-              (progress.grade === undefined || progress.grade < 40) && (
-                <>
-                  {progress.grade !== undefined && progress.grade < 40 &&
-                    !canRetake && (
-                      <p className="text-sm text-red-600">
-                        Vas a poder volver a contestar el examen mañana.
-                      </p>
-                    )}
-                  <Button
-                    onClick={() => navigate(`/cursos/${id}/examen-final`)}
-                    disabled={progress.grade !== undefined && progress.grade < 40 && !canRetake}
-                  >
-                    Ir al examen final
-                  </Button>
-                </>
-              )}
-        </>
-        ) : (
-          <p>Curso no encontrado</p>
-        )}
-        {(!progress || progress.completed < progress.total) && (
-          <>
-            {!progress && (
+              </>
+            ) : (
               <p className="font-semibold">
                 ¿Listo para comenzar? Inscríbete al curso para acceder a todos los módulos.
               </p>
             )}
+          </div>
+        </div>
+        <h2 className="text-2xl font-bold mt-4">Módulos</h2>
+        <ul className="space-y-3 w-full">
+              {course.modules.map((m, i) => {
+                const num = parseInt(m.id)
+                const completed = progress ? progress.completed >= num : false
+                const allowed = progress ? num <= progress.completed + 1 : false
+                const isCurrent = progress ? num === progress.completed + 1 : false
+                return (
+                  <li
+                    key={m.id}
+                    className={`border rounded p-3 ${
+                      completed ? 'bg-green-50' : ''
+                    } ${isCurrent && !completed ? 'bg-blue-50 border-blue-400' : ''}`}
+                  >
+                    {isLogged && allowed ? (
+                      <Link
+                        to={`/cursos/${id}/modulo/${m.id}`}
+                        className={`block font-semibold ${completed ? 'line-through' : ''}`}
+                      >
+                        Módulo {i + 1}: {m.title}
+                      </Link>
+                    ) : (
+                      <span className={`font-semibold ${completed ? 'line-through' : ''}`}>
+                        Módulo {i + 1}: {m.title}
+                      </span>
+                    )}
+                    <p className="text-sm text-gray-600">{m.description}</p>
+                  </li>
+                )
+              })}
+            </ul>
+        </>
+        ) : (
+          <p>Curso no encontrado</p>
+        )}
+        {!progress && (
+          <div className="mt-8 space-y-2">
+            <h2 className="text-2xl font-bold">¿Estás listo para inscribirte?</h2>
             <Button
               onClick={() => {
-                if (!progress) {
-                  if (!isLogged) {
-                    navigate('/login')
-                  } else {
-                    navigate(`/cursos/${id}/inscripcion`)
-                  }
+                if (!isLogged) {
+                  navigate('/login')
                 } else {
-                  navigate(`/cursos/${id}/modulo/${progress.completed + 1}`)
+                  navigate(`/cursos/${id}/inscripcion`)
                 }
               }}
             >
-              {progress
-                ? `Continuar curso (${Math.round((progress.completed / progress.total) * 100)}%)`
-                : isLogged
-                  ? 'Inscribirme'
-                  : 'Inicia sesión para inscribirte'}
+              {isLogged ? 'Inscribirme' : 'Inicia sesión para inscribirte'}
             </Button>
-          </>
+          </div>
         )}
       </main>
       <Footer />

@@ -25,12 +25,12 @@ export default function CourseCard({
   const isEnrolled = !!progress
 
   return (
-    <div className="border p-4 rounded shadow hover:shadow-lg flex flex-col gap-2 w-full">
+    <div className="border p-4 rounded shadow hover:shadow-lg flex flex-col gap-4 w-full">
       <Link to={`/cursos/${id}`} className="flex flex-col gap-2 flex-grow">
         <img
           src={image}
           alt={title}
-          className="w-full h-48 object-cover rounded"
+          className="w-full h-60 object-cover rounded"
         />
         <h2 className="text-xl font-semibold">{title}</h2>
         <p>Duración: {duration}</p>
