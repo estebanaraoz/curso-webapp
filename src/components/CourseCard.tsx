@@ -64,29 +64,33 @@ export default function CourseCard({
       <div className="mt-2 flex gap-2 justify-center">
         <Link
           to={`/cursos/${id}`}
-          className="flex flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-gray-300 text-gray-800 hover:bg-gray-400"
+          className="flex flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-gray-300 text-gray-800 hover:bg-gray-400 min-w-[8rem]"
         >
-          <InformationCircleIcon className="h-5 w-5" />
-          Ver info
+          <InformationCircleIcon className="h-6 w-6" />
+          <span className="hidden sm:inline">Ver info</span>
         </Link>
         {!isLogged ? (
           <Link
             to="/login"
-            className="flex flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-blue-600 text-white hover:bg-blue-700"
+            className="flex flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-blue-600 text-white hover:bg-blue-700 min-w-[8rem]"
           >
-            <PlayCircleIcon className="h-5 w-5" />
-            Inicia sesión para inscribirte
+            <PlayCircleIcon className="h-6 w-6" />
+            <span className="hidden sm:inline">Inicia sesión para inscribirte</span>
           </Link>
         ) : (
-          !isEnrolled && (
-            <Link
-              to={`/cursos/${id}/inscripcion`}
-              className="flex flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-blue-600 text-white hover:bg-blue-700"
-            >
-              <PlayCircleIcon className="h-5 w-5" />
-              Comenzar
-            </Link>
-          )
+          <Link
+            to={
+              isEnrolled
+                ? `/cursos/${id}/modulo/${(progress?.completed ?? 0) + 1}`
+                : `/cursos/${id}/inscripcion`
+            }
+            className="flex flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-blue-600 text-white hover:bg-blue-700 min-w-[8rem]"
+          >
+            <PlayCircleIcon className="h-6 w-6" />
+            <span className="hidden sm:inline">
+              {isEnrolled ? 'Seguir' : 'Comenzar'}
+            </span>
+          </Link>
         )}
       </div>
     </div>
