@@ -2,6 +2,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Button from '../components/Button'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { CheckCircleIcon } from '@heroicons/react/24/solid'
 
 export default function InscriptionSuccess() {
   const navigate = useNavigate()
@@ -12,11 +13,16 @@ export default function InscriptionSuccess() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="container mx-auto flex-grow flex flex-col items-center justify-center gap-6 p-4 text-center">
+        <CheckCircleIcon className="w-16 h-16 text-green-600" />
         <h1 className="text-4xl font-bold">¡Te inscribiste al curso con éxito!</h1>
         <p className="text-xl">{courseName}</p>
         <div className="flex gap-4 mt-4">
-          <Button onClick={() => navigate('/dashboard')}>Ir al Dashboard</Button>
-          <Button variant="secondary" onClick={() => navigate('/cursos')}>Volver a Cursos</Button>
+          <Button className="bg-green-600 hover:bg-green-700 text-white" onClick={() => navigate('/dashboard')}>
+            Ir al Dashboard
+          </Button>
+          <Button className="bg-purple-600 hover:bg-purple-700 text-white" onClick={() => navigate('/cursos')}>
+            Volver a Cursos
+          </Button>
         </div>
       </main>
       <Footer />
