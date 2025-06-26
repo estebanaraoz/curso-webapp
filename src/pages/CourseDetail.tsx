@@ -3,7 +3,12 @@ import Footer from '../components/Footer'
 import Button from '../components/Button'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 
-import { UserCircleIcon, LockClosedIcon } from '@heroicons/react/24/solid'
+import {
+  UserCircleIcon,
+  LockClosedIcon,
+  CheckCircleIcon as CheckCircleSolidIcon,
+} from '@heroicons/react/24/solid'
+import { CheckCircleIcon as CheckCircleOutlineIcon } from '@heroicons/react/24/outline'
 import { useAuthStore } from '../store/auth'
 import { courses } from '../data/courses'
 import { getInstructorByCourse } from '../data/instructors'
@@ -188,12 +193,12 @@ export default function CourseDetail() {
             const completed = progress ? progress.completed >= num : false
             const classes = m.classes ?? []
             const completedClasses = progress?.classProgress[m.id] ?? []
-            const locked = !progress
+            const locked = !progress || (progress.completed < num - 1)
             return (
               <li
                 key={m.id}
                 className={`border-2 rounded border-gray-300 ${
-                  completed ? 'bg-green-50' : locked ? 'bg-gray-100 opacity-60' : ''
+                  completed ? 'bg-green-50' : locked ? 'bg-gray-100 opacity-60 cursor-not-allowed' : ''
                 }`}
               >
                 <div className="p-3 flex justify-between">
@@ -203,27 +208,29 @@ export default function CourseDetail() {
                   </div>
                   {locked && <LockClosedIcon className="w-5 h-5 text-gray-500" />}
                 </div>
-                {classes.length > 0 && progress && (
+                {classes.length > 0 && progress && !locked && (
                   <ul className="pl-5 pr-3 pb-3 space-y-1">
                     {classes.map((c, idxClass) => {
                       const done = completedClasses.includes(c.id)
+                      const Icon = done ? CheckCircleSolidIcon : CheckCircleOutlineIcon
                       return (
-                        <li key={c.id} className="flex justify-between items-center border-b last:border-b-0 py-1">
-                          <span className={done ? 'line-through text-gray-600' : ''}>
-                            {idxClass + 1}. {c.title}
-                          </span>
-                          {progress && (
-                            done ? (
-                              <span className="text-green-600 text-xs">Completado</span>
+                        <li key={c.id}>
+                          <Link
+                            to={`/cursos/${id}/modulo/${m.id}/clase/${c.id}`}
+                            className="flex justify-between items-center border-b last:border-b-0 py-2 hover:bg-gray-50"
+                          >
+                            <div className="flex items-center gap-2">
+                              <Icon className={`w-6 h-6 ${done ? 'text-green-600' : 'text-gray-400'}`} />
+                              <span className={done ? 'line-through text-gray-600' : ''}>
+                                {idxClass + 1}. {c.title}
+                              </span>
+                            </div>
+                            {done ? (
+                              <span className="text-green-600 text-sm font-semibold">Completado</span>
                             ) : (
-                              <Link
-                                to={`/cursos/${id}/modulo/${m.id}/clase/${c.id}`}
-                                className="text-blue-600 underline text-xs"
-                              >
-                                Ver
-                              </Link>
-                            )
-                          )}
+                              <span className="text-blue-600 underline text-sm">Ver</span>
+                            )}
+                          </Link>
                         </li>
                       )
                     })}
