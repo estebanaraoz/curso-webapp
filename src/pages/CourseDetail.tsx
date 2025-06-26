@@ -184,8 +184,14 @@ export default function CourseDetail() {
           </div>
         </div>
         <h2 className="text-2xl font-bold mt-4">Módulos</h2>
-        {!progress && (
+        {!progress ? (
           <p className="text-sm mb-2">Inscríbete a este curso para comenzar y ver las clases.</p>
+        ) : (
+          <p className="text-sm mb-2">
+            Los próximos módulos se irán desbloqueando a medida que completes cada
+            módulo anterior. Debes finalizar todas las clases para habilitar el
+            siguiente módulo.
+          </p>
         )}
         <ul className="space-y-3 w-full">
           {course.modules.map((m, i) => {
@@ -221,7 +227,7 @@ export default function CourseDetail() {
                           >
                             <div className="flex items-center gap-2">
                               <Icon className={`w-6 h-6 ${done ? 'text-green-600' : 'text-gray-400'}`} />
-                              <span className={done ? 'line-through text-gray-600' : ''}>
+                              <span className={`${done ? 'line-through text-gray-600' : ''} hover:underline`}>
                                 {idxClass + 1}. {c.title}
                               </span>
                             </div>
