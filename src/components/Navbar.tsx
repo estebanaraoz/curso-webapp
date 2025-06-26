@@ -49,7 +49,7 @@ export default function Navbar() {
                 className="flex items-center gap-1 px-2 py-1 rounded bg-gray-300 text-gray-800 hover:bg-gray-400"
               >
                 <UserCircleIcon className="w-5 h-5" />
-                <span className="text-sm">Hola, {name}</span>
+                <span className="hidden sm:inline text-sm">{name}</span>
                 <svg
                   className={`w-4 h-4 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`}
                   xmlns="http://www.w3.org/2000/svg"
@@ -142,7 +142,7 @@ export default function Navbar() {
                 className="flex items-center gap-1 w-full sm:w-auto px-4 py-2 rounded bg-gray-300 text-gray-800 hover:bg-gray-400"
               >
                 <UserCircleIcon className="w-5 h-5" />
-                <span>Hola, {name}</span>
+                <span>{name}</span>
                 <svg
                   className={`w-4 h-4 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`}
                   xmlns="http://www.w3.org/2000/svg"
