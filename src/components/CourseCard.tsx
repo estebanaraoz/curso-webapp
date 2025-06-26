@@ -13,6 +13,8 @@ interface Props {
 }
 
 import formatDuration from '../utils/formatDuration'
+import { courses } from '../data/courses'
+import getNextClassLink from '../utils/getNextClassLink'
 
 export default function CourseCard({
   id,
@@ -30,6 +32,21 @@ export default function CourseCard({
     progress &&
     progress.completed >= progress.total &&
     (progress.grade === undefined || progress.grade < 40)
+  const course = courses.find(c => c.id === id)
+  const totalClasses = course
+    ? course.modules.reduce((sum, m) => sum + (m.classes ? m.classes.length : 1), 0)
+    : 0
+  const completedClasses = course && progress
+    ? course.modules.reduce((sum, m, idx) => {
+        const classes = m.classes ?? []
+        if (classes.length > 0) {
+          return sum + (progress.classProgress[m.id]?.length ?? 0)
+        }
+        return sum + (progress.completed >= idx + 1 ? 1 : 0)
+      }, 0)
+    : 0
+  const percent = totalClasses ? Math.round((completedClasses / totalClasses) * 100) : 0
+  const nextLink = course ? getNextClassLink(course, progress) : `/cursos/${id}`
 
   return (
     <div className="border-2 border-gray-300 p-4 rounded shadow hover:shadow-lg flex flex-col gap-4 w-full min-w-[300px]">
@@ -60,9 +77,7 @@ export default function CourseCard({
                 )}
               </>
             ) : (
-              `${Math.round(
-                ((progress?.completed ?? 0) / (progress?.total ?? 1)) * 100,
-              )}% completado`
+              `${percent}% completado`
             )}
           </p>
         )}
@@ -89,7 +104,7 @@ export default function CourseCard({
               isEnrolled
                 ? showExam
                   ? `/cursos/${id}/examen-final`
-                  : `/cursos/${id}/modulo/${(progress?.completed ?? 0) + 1}`
+                  : nextLink
                 : `/cursos/${id}/inscripcion`
             }
             className={`flex w-full sm:flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded min-w-[8rem] ${
