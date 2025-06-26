@@ -138,6 +138,13 @@ export default function Navbar() {
         >
           Foro
         </NavLink>
+        <NavLink
+          to="/contacto"
+          className={({ isActive }) => `block ${isActive ? 'font-semibold text-blue-600' : ''}`}
+          onClick={() => setOpen(false)}
+        >
+          Contacto
+        </NavLink>
         <div className="hidden sm:flex sm:ml-auto flex-col sm:flex-row items-start sm:items-center gap-2 w-full sm:w-auto">
           {isLogged ? (
             <div className="relative w-full sm:w-auto">

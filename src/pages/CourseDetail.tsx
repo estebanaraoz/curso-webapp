@@ -5,6 +5,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom'
 import { useAuthStore } from '../store/auth'
 import { courses } from '../data/courses'
 import { getInstructorByCourse } from '../data/instructors'
+import formatDuration from '../utils/formatDuration'
 
 export default function CourseDetail() {
   const { id } = useParams()
@@ -45,34 +46,37 @@ export default function CourseDetail() {
               className="w-full max-h-[300px] object-contain rounded overflow-hidden"
             />
             <h1 className="text-4xl font-extrabold">{course.title}</h1>
-            <p className="text-lg">{course.description}</p>
-          <div className="flex flex-wrap gap-2 text-sm">
-            <span className="px-3 py-1 bg-gray-200 rounded underline font-semibold">Dificultad: {course.level}</span>
-            <span className="px-3 py-1 bg-gray-200 rounded">Duración: {course.duration}</span>
-            <span className="px-3 py-1 bg-gray-200 rounded">Módulos: {course.modules.length}</span>
-            <span className="px-3 py-1 bg-gray-200 rounded">Intentos de evaluación: {course.maxAttempts}</span>
-          </div>
-          <h2 className="text-2xl font-bold">Preguntas frecuentes</h2>
-          <p>
-            ¿Tienes dudas? Escríbenos a{' '}
-            <a href="mailto:correo@example.com" className="text-blue-600 underline">
-              correo@example.com
-            </a>
-            .
-          </p>
-          <h2 className="text-2xl font-bold">Instructor</h2>
-          {instructor && (
-            <div className="border rounded p-4 flex flex-col items-center gap-2 w-full">
-              <div className="w-24 h-24 rounded-full bg-gray-300 overflow-hidden flex items-center justify-center">
-                <img
-                  src={instructor.avatar}
-                  alt={instructor.name}
-                  className="w-full h-full object-cover"
-                />
+            <section className="border rounded p-4 space-y-4">
+              <p className="text-lg">{course.description}</p>
+              <div className="flex flex-wrap gap-2 text-sm">
+                <span className="px-3 py-1 bg-gray-200 rounded underline font-semibold">Dificultad: {course.level}</span>
+                <span className="px-3 py-1 bg-gray-200 rounded">Duración: {formatDuration(course.weeks)}</span>
+                <span className="px-3 py-1 bg-gray-200 rounded">Módulos: {course.modules.length}</span>
+                <span className="px-3 py-1 bg-gray-200 rounded">Intentos de evaluación: {course.maxAttempts}</span>
               </div>
-              <span className="font-semibold">{instructor.name}</span>
-            </div>
-          )}
+            </section>
+            <section className="border rounded p-4 space-y-2">
+              <h2 className="text-2xl font-bold">Preguntas frecuentes</h2>
+              <p>
+                ¿Tienes dudas? Escríbelas a través del siguiente formulario para contactarnos.
+              </p>
+              <Link to="/contacto" className="text-blue-600 underline">Ir al formulario</Link>
+            </section>
+            <section className="border rounded p-4 space-y-2">
+              <h2 className="text-2xl font-bold">Instructor</h2>
+              {instructor && (
+                <div className="flex flex-col items-center gap-2">
+                  <div className="w-24 h-24 rounded-full bg-gray-300 overflow-hidden flex items-center justify-center">
+                    <img
+                      src={instructor.avatar}
+                      alt={instructor.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <span className="font-semibold">{instructor.name}</span>
+                </div>
+              )}
+            </section>
           <div className="space-y-2">
             {progress ? (
               <div className="border rounded p-4 space-y-3">
@@ -125,7 +129,7 @@ export default function CourseDetail() {
             ) : (
               <div className="border rounded p-4 space-y-3">
                 <p className="font-semibold">
-                  ¿Listo para comenzar? Inscríbete al curso para acceder a todos los módulos.
+                  Aún no estás inscrito a este curso. Si estás listo, haz clic en Comenzar para inscribirte.
                 </p>
                 <Button
                   onClick={() => {
@@ -136,7 +140,7 @@ export default function CourseDetail() {
                     }
                   }}
                 >
-                  {isLogged ? 'Inscribirme' : 'Inicia sesión para inscribirte'}
+                  {isLogged ? 'Comenzar' : 'Inicia sesión para inscribirte'}
                 </Button>
               </div>
             )}

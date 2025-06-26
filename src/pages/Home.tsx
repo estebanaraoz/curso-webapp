@@ -88,7 +88,7 @@ export default function Home() {
                   key={course.id}
                   id={course.id}
                   title={course.title}
-                  duration={course.duration}
+                  weeks={course.weeks}
                   level={course.level}
                   image={course.image}
                   showProgress={false}

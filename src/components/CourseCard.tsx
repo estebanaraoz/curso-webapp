@@ -5,17 +5,19 @@ import { useAuthStore } from '../store/auth'
 interface Props {
   id: string
   title: string
-  duration: string
+  weeks: number
   level: string
   image: string
   /** Show user's progress info inside the card */
   showProgress?: boolean
 }
 
+import formatDuration from '../utils/formatDuration'
+
 export default function CourseCard({
   id,
   title,
-  duration,
+  weeks,
   level,
   image,
   showProgress = true,
@@ -38,7 +40,7 @@ export default function CourseCard({
           className="w-full h-60 object-cover rounded"
         />
         <h2 className="text-xl font-semibold">{title}</h2>
-        <p>Duración: {duration}</p>
+        <p>Duración: {formatDuration(weeks)}</p>
         <p>Nivel: {level}</p>
         {showProgress && isEnrolled && (
           <p className="text-sm mt-1">
