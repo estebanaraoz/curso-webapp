@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export default function Footer() {
   return (
     <footer className="bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 text-sm">
@@ -22,17 +24,24 @@ export default function Footer() {
           </p>
         </div>
         <div>
-          <h3 className="font-semibold mb-2">Newsletter</h3>
-          <form className="flex flex-col gap-2">
-            <input
-              type="email"
-              placeholder="Tu correo"
-              className="p-2 rounded border text-gray-800"
-            />
-            <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">
-              Suscribirme
-            </button>
-          </form>
+          <h3 className="font-semibold mb-2">Mapa del sitio</h3>
+          <ul className="space-y-1">
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/cursos">Cursos</Link>
+            </li>
+            <li>
+              <Link to="/nosotros">Nosotros</Link>
+            </li>
+            <li>
+              <Link to="/foro">Foro</Link>
+            </li>
+            <li>
+              <Link to="/dashboard">Mi cuenta</Link>
+            </li>
+          </ul>
         </div>
       </div>
       <div className="text-center py-4 bg-gray-300 dark:bg-gray-900">
