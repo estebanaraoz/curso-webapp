@@ -12,8 +12,6 @@ export default function CourseInscription() {
   const isLogged = useAuthStore(state => state.isLogged)
   const enroll = useAuthStore(state => state.enroll)
   const enrolledCourses = useAuthStore(state => state.enrolledCourses)
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
   const [agree, setAgree] = useState(false)
 
   useEffect(() => {
@@ -46,9 +44,9 @@ export default function CourseInscription() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="container mx-auto flex-grow p-4 flex flex-col items-center">
+      <main className="container mx-auto flex-grow p-4 flex flex-col items-center justify-center">
         {course ? (
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-prose w-full border rounded p-6 bg-white dark:bg-gray-800">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-prose w-full border rounded p-6 bg-white dark:bg-gray-800 text-center items-center">
             <h1 className="text-3xl font-bold text-center">Inscripción a {course.title}</h1>
             <p className="text-center">Lee atentamente el siguiente documento y acepta las condiciones para completar tu inscripción.</p>
             {course.prerequisites && (
@@ -85,21 +83,6 @@ export default function CourseInscription() {
                 <li>Régimen de aprobación: completar todos los módulos y aprobar la evaluación final con al menos 40 puntos</li>
               </ul>
             </section>
-            <input
-              className="border p-2 rounded"
-              placeholder="Nombre"
-              value={name}
-              onChange={e => setName(e.target.value)}
-              required
-            />
-            <input
-              type="email"
-              className="border p-2 rounded"
-              placeholder="Email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              required
-            />
             <label className="flex items-center gap-2">
               <input type="checkbox" checked={agree} onChange={e => setAgree(e.target.checked)} />
               Acepto las normas del curso
