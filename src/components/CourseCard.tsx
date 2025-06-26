@@ -46,7 +46,9 @@ export default function CourseCard({
       }, 0)
     : 0
   const percent = totalClasses ? Math.round((completedClasses / totalClasses) * 100) : 0
-  const nextLink = course ? getNextClassLink(course, progress) : `/cursos/${id}`
+  const nextLink = course
+    ? getNextClassLink(course, progress) ?? `/cursos/${id}`
+    : `/cursos/${id}`
 
   return (
     <div className="border-2 border-gray-300 p-4 rounded shadow hover:shadow-lg flex flex-col gap-4 w-full min-w-[300px]">

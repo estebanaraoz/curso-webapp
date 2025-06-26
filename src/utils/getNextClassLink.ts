@@ -1,5 +1,5 @@
-import { CourseInfo } from '../data/courses'
-import { Course } from '../store/auth'
+import type { CourseInfo } from '../data/courses'
+import type { Course } from '../store/auth'
 
 export default function getNextClassLink(course: CourseInfo, progress?: Course): string | null {
   for (const module of course.modules) {
