@@ -55,7 +55,7 @@ export default function CourseInscription() {
                 {course.prerequisites.courses && course.prerequisites.courses.length > 0 && (
                   <div>
                     <h3 className="font-medium">Cursos previos</h3>
-                    <ul className="list-disc pl-6">
+                    <ul className="list-disc list-inside">
                       {course.prerequisites.courses.map(req => {
                         const prereqCourse = courses.find(c => c.id === req)
                         return <li key={req}>{prereqCourse ? prereqCourse.title : req}</li>
@@ -66,7 +66,7 @@ export default function CourseInscription() {
                 {course.prerequisites.other && course.prerequisites.other.length > 0 && (
                   <div>
                     <h3 className="font-medium">Otros requisitos</h3>
-                    <ul className="list-disc pl-6">
+                    <ul className="list-disc list-inside">
                       {course.prerequisites.other.map(r => (
                         <li key={r}>{r}</li>
                       ))}
@@ -77,7 +77,7 @@ export default function CourseInscription() {
             )}
             <section className="space-y-1">
               <h2 className="text-xl font-semibold">Información del curso</h2>
-              <ul className="list-disc pl-6">
+              <ul className="list-disc list-inside">
                 <li>Duración estimada: {course.weeks} semanas</li>
                 <li>Cantidad de módulos: {course.modules.length}</li>
                 <li>Régimen de aprobación: completar todos los módulos y aprobar la evaluación final con al menos 40 puntos</li>

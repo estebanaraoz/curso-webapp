@@ -5,6 +5,7 @@ import CourseCard from '../components/CourseCard'
 import { courses } from '../data/courses'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import { UserCircleIcon } from '@heroicons/react/24/solid'
 
 export default function Home() {
   const featuredCourses = courses.slice(0, 5)
@@ -41,19 +42,28 @@ export default function Home() {
           <div className="container mx-auto grid md:grid-cols-3 gap-8 p-4 text-center">
             <div className="flex flex-col items-center gap-2">
               <img src="/images/icon-quality.png" alt="" className="w-16 h-16" />
-              <h2 className="text-xl font-semibold">Contenido de calidad</h2>
-              <p>Lecciones actualizadas para que aprendas con la tecnología más reciente.</p>
+              <h2 className="text-xl font-semibold">Cursos certificados</h2>
+              <p>
+                Inscríbete y recorre cada clase con sus documentos y videos. Al
+                finalizar presenta una evaluación corregida por un asesor; si la
+                apruebas recibirás un certificado y, de lo contrario, podrás
+                volver a intentarlo según el límite del curso.
+              </p>
             </div>
             <div className="flex flex-col items-center gap-2">
               <img src="/images/icon-flexibility.png" alt="" className="w-16 h-16" />
               <h2 className="text-xl font-semibold">A tu propio ritmo</h2>
-              <p>Accede a las clases cuando quieras y avanza de acuerdo a tu disponibilidad.</p>
+              <p>
+                Avanza con total flexibilidad de horarios y elige cuándo tomar
+                cada lección. Repasa los módulos las veces que necesites.
+              </p>
             </div>
             <div className="flex flex-col items-center gap-2">
               <img src="/images/icon-support.png" alt="" className="w-16 h-16" />
               <h2 className="text-xl font-semibold">Foro de la comunidad</h2>
               <p>
-                Resuelve tus dudas junto a otros alumnes y asesores en nuestro foro.
+                Participa en un espacio colaborativo con estudiantes y asesores
+                para compartir dudas y soluciones.
               </p>
             </div>
           </div>
@@ -120,14 +130,16 @@ export default function Home() {
         </section>
 
         <section className="bg-gray-100 dark:bg-gray-800 py-12">
-          <div className="container mx-auto grid md:grid-cols-2 gap-8 p-4">
-            <div className="flex flex-col gap-2">
+          <div className="container mx-auto grid md:grid-cols-2 gap-8 p-4 text-center">
+            <div className="flex flex-col items-center gap-2">
+              <UserCircleIcon className="w-10 h-10 mx-auto text-gray-500" />
               <p className="text-lg font-semibold">"Gracias a Aula Digital pude conseguir mi primer trabajo en tecnología"</p>
-              <span className="text-sm text-right">- Lucía</span>
+              <span className="text-sm">- Lucía</span>
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col items-center gap-2">
+              <UserCircleIcon className="w-10 h-10 mx-auto text-gray-500" />
               <p className="text-lg font-semibold">"Los cursos son claros y el soporte del foro es excelente"</p>
-              <span className="text-sm text-right">- Mateo</span>
+              <span className="text-sm">- Mateo</span>
             </div>
           </div>
         </section>
