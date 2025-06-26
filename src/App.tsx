@@ -5,8 +5,7 @@ import Login from './pages/Login'
 import CourseDetail from './pages/CourseDetail'
 import InscriptionSuccess from './pages/InscriptionSuccess'
 import Dashboard from './pages/Dashboard'
-import InscriptionForm from './pages/InscriptionForm'
-import CoursePrerequisites from './pages/CoursePrerequisites'
+import CourseInscription from './pages/CourseInscription'
 import Module from './pages/Module'
 import FinalExam from './pages/FinalExam'
 import Profile from './pages/Profile'
@@ -23,8 +22,7 @@ export default function App() {
       <Route path="/" element={<Home />} />
       <Route path="/cursos" element={<Courses />} />
       <Route path="/cursos/:id" element={<CourseDetail />} />
-      <Route path="/cursos/:id/prerrequisitos" element={<CoursePrerequisites />} />
-      <Route path="/cursos/:id/inscripcion" element={<InscriptionForm />} />
+      <Route path="/cursos/:id/inscripcion" element={<CourseInscription />} />
       <Route path="/cursos/:id/modulo/:moduleId" element={<Module />} />
       <Route path="/cursos/:id/examen-final" element={<FinalExam />} />
       <Route path="/login" element={<Login />} />

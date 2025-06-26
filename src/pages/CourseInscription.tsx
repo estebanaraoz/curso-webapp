@@ -1,0 +1,116 @@
+import { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
+import Button from '../components/Button'
+import { useAuthStore } from '../store/auth'
+import { courses } from '../data/courses'
+
+export default function CourseInscription() {
+  const { id } = useParams()
+  const navigate = useNavigate()
+  const isLogged = useAuthStore(state => state.isLogged)
+  const enroll = useAuthStore(state => state.enroll)
+  const enrolledCourses = useAuthStore(state => state.enrolledCourses)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [agree, setAgree] = useState(false)
+
+  useEffect(() => {
+    if (!isLogged) navigate('/login')
+  }, [isLogged, navigate])
+
+  const course = courses.find(c => c.id === id)
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (enrolledCourses.some(c => c.id === id)) {
+      alert('Ya estás inscrito en este curso')
+      navigate('/dashboard')
+      return
+    }
+    enroll({
+      id: id || '',
+      title: course?.title ?? `Curso ${id}`,
+      completed: 0,
+      total: course?.modules.length ?? 0,
+      grade: undefined,
+      maxAttempts: course?.maxAttempts ?? 3,
+      attempts: 0,
+      lastAttempt: undefined,
+      classProgress: {},
+    })
+    navigate('/inscripcion-exitosa', { state: { courseTitle: course?.title } })
+  }
+
+  return (
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+      <main className="container mx-auto flex-grow p-4 flex flex-col items-center">
+        {course ? (
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-prose w-full border rounded p-6 bg-white dark:bg-gray-800">
+            <h1 className="text-3xl font-bold text-center">Inscripción a {course.title}</h1>
+            <p className="text-center">Lee atentamente el siguiente documento y acepta las condiciones para completar tu inscripción.</p>
+            {course.prerequisites && (
+              <section className="space-y-2">
+                <h2 className="text-xl font-semibold">Requisitos</h2>
+                {course.prerequisites.courses && course.prerequisites.courses.length > 0 && (
+                  <div>
+                    <h3 className="font-medium">Cursos previos</h3>
+                    <ul className="list-disc pl-6">
+                      {course.prerequisites.courses.map(req => {
+                        const prereqCourse = courses.find(c => c.id === req)
+                        return <li key={req}>{prereqCourse ? prereqCourse.title : req}</li>
+                      })}
+                    </ul>
+                  </div>
+                )}
+                {course.prerequisites.other && course.prerequisites.other.length > 0 && (
+                  <div>
+                    <h3 className="font-medium">Otros requisitos</h3>
+                    <ul className="list-disc pl-6">
+                      {course.prerequisites.other.map(r => (
+                        <li key={r}>{r}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </section>
+            )}
+            <section className="space-y-1">
+              <h2 className="text-xl font-semibold">Información del curso</h2>
+              <ul className="list-disc pl-6">
+                <li>Duración estimada: {course.weeks} semanas</li>
+                <li>Cantidad de módulos: {course.modules.length}</li>
+                <li>Régimen de aprobación: completar todos los módulos y aprobar la evaluación final con al menos 40 puntos</li>
+              </ul>
+            </section>
+            <input
+              className="border p-2 rounded"
+              placeholder="Nombre"
+              value={name}
+              onChange={e => setName(e.target.value)}
+              required
+            />
+            <input
+              type="email"
+              className="border p-2 rounded"
+              placeholder="Email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              required
+            />
+            <label className="flex items-center gap-2">
+              <input type="checkbox" checked={agree} onChange={e => setAgree(e.target.checked)} />
+              Acepto las normas del curso
+            </label>
+            <Button type="submit" disabled={!agree}>Confirmar inscripción</Button>
+          </form>
+        ) : (
+          <p>Curso no encontrado</p>
+        )}
+      </main>
+      <Footer />
+    </div>
+  )
+}
