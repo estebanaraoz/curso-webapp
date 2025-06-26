@@ -4,6 +4,7 @@ import { courses } from '../data/courses'
 import CourseCard from '../components/CourseCard'
 import { useAuthStore } from '../store/auth'
 import { useState } from 'react'
+import formatDuration from '../utils/formatDuration'
 
 export default function Courses() {
   const isLogged = useAuthStore(state => state.isLogged)
@@ -20,7 +21,7 @@ export default function Courses() {
   )
   const categories = Array.from(new Set(courses.map(c => c.category)))
   const levels = Array.from(new Set(courses.map(c => c.level)))
-  const durations = Array.from(new Set(courses.map(c => c.duration)))
+  const durations = Array.from(new Set(courses.map(c => formatDuration(c.weeks))))
   const [category, setCategory] = useState('Todos')
   const [level, setLevel] = useState('Todos')
   const [duration, setDuration] = useState('Todas')
@@ -34,7 +35,7 @@ export default function Courses() {
     c =>
       (category === 'Todos' || c.category === category) &&
       (level === 'Todos' || c.level === level) &&
-      (duration === 'Todas' || c.duration === duration),
+      (duration === 'Todas' || formatDuration(c.weeks) === duration),
   )
 
   return (
@@ -55,7 +56,7 @@ export default function Courses() {
                       key={course.id}
                       id={course.id}
                       title={info?.title ?? course.title}
-                      duration={info?.duration ?? ''}
+                      weeks={info?.weeks ?? 0}
                       level={info?.level ?? ''}
                       image={info?.image ?? ''}
                     />
@@ -124,7 +125,7 @@ export default function Courses() {
                 key={course.id}
                 id={course.id}
                 title={course.title}
-                duration={course.duration}
+                weeks={course.weeks}
                 level={course.level}
                 image={course.image}
               />
