@@ -11,7 +11,6 @@ export default function Module() {
   const navigate = useNavigate()
   const isLogged = useAuthStore(state => state.isLogged)
   const complete = useAuthStore(state => state.completeModule)
-  const completeClass = useAuthStore(state => state.completeClass)
   const progress = useAuthStore(state =>
     state.enrolledCourses.find(c => c.id === id),
   )
@@ -24,8 +23,13 @@ export default function Module() {
   const setCurrentCourse = useAuthStore(state => state.setCurrentCourse)
   const course = courses.find(c => c.id === id)
   const module = course?.modules.find(m => m.id === moduleId)
-  const completedClasses =
-    progress?.classProgress[moduleId ?? ''] ?? []
+  const classes =
+    module?.classes ?? Array.from({ length: 3 }, (_, i) => ({
+      id: `${i + 1}`,
+      title: `Clase ${i + 1}`,
+      content: ['video'],
+    }))
+  const completedClasses = progress?.classProgress[moduleId ?? ''] ?? []
   const currentIndex = course?.modules.findIndex(m => m.id === moduleId) ?? -1
   const prevModule =
     currentIndex > 0 && course ? course.modules[currentIndex - 1] : null
@@ -57,11 +61,6 @@ export default function Module() {
     navigate(-1)
   }
 
-  const handleCompleteClass = (classId: string) => {
-    if (!isLogged || !isEnrolled || !module) return
-    if (!moduleId || !id) return
-    completeClass(id, moduleId, classId, module.classes?.length ?? 0)
-  }
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -145,9 +144,9 @@ export default function Module() {
             <p className="text-center">{module.description}</p>
             <p className="text-center text-sm">{module.intro}</p>
             {isLogged && isEnrolled && canAccess ? (
-              module.classes && module.classes.length > 0 ? (
+              classes && classes.length > 0 ? (
                 <ul className="space-y-2">
-                  {module.classes.map(c => (
+                  {classes.map(c => (
                     <li
                       key={c.id}
                       className="border p-3 flex justify-between items-center"
@@ -156,12 +155,12 @@ export default function Module() {
                       {completedClasses.includes(c.id) ? (
                         <span className="text-green-600 text-sm">Completado</span>
                       ) : (
-                        <Button
-                          onClick={() => handleCompleteClass(c.id)}
-                          className="text-sm"
+                        <Link
+                          to={`/cursos/${id}/modulo/${moduleId}/clase/${c.id}`}
+                          className="text-blue-600 underline text-sm"
                         >
-                          Marcar completado
-                        </Button>
+                          Ir a la clase
+                        </Link>
                       )}
                     </li>
                   ))}
@@ -184,7 +183,7 @@ export default function Module() {
         ) : (
           <p>Módulo no encontrado</p>
         )}
-        {isLogged && isEnrolled && !(module?.classes && module.classes.length > 0) ? (
+        {isLogged && isEnrolled && classes.length === 0 ? (
           isCompleted ? (
             <p className="text-center italic">Ya has completado este módulo. Puedes volver a ver el video.</p>
           ) : (

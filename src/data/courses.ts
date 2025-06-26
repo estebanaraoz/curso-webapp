@@ -37,14 +37,14 @@ export const courses: CourseInfo[] = [
     id: 'html-css',
     title: 'HTML y CSS desde cero',
     description:
-      'Aprende a construir paginas web modernas con HTML5 y CSS3 paso a paso.',
+      'Este curso introductorio te gu\xC3\xADa por los conceptos b\xC3\xA1sicos de HTML y CSS. Aprender\xC3\xA1s c\xC3\xB3mo funcionan los navegadores y las etiquetas que dan estructura a una p\xC3\xA1gina. Luego practicar\xC3\xA1s estilos y distribuci\xC3\xB3n para crear dise\xC3\xB1os adaptables. Finalizar\xC3\xA1s con un proyecto donde aplicar\xC3\xA1s todo lo visto. Al terminar podr\xC3\xA1s construir sitios web modernos desde cero.',
     category: 'Frontend',
     image: '/images/course-html-css.png',
     duration: '4 semanas',
     level: 'Principiante',
     weeks: 4,
     prerequisites: {
-      other: ['Ser mayor de 18 años']
+      other: ['Ser mayor de 18 años', 'DNI argentino']
     },
     maxAttempts: 2,
     modules: [
@@ -119,7 +119,7 @@ export const courses: CourseInfo[] = [
     id: 'javascript-basico',
     title: 'JavaScript desde cero',
     description:
-      'Domina los fundamentos del lenguaje que impulsa la web moderna.',
+      'Aprender\xC3\xA1s paso a paso la sintaxis de JavaScript y sus caracter\xC3\xADsticas fundamentales. Desde la declaraci\xC3\xB3n de variables hasta el manejo del DOM, recorrer\xC3\xA1s ejemplos pr\xC3\xA1cticos en cada m\xC3\xB3dulo. Ver\xC3\xA1s c\xC3\xB3mo organizar tu c\xC3\xB3digo y trabajar con asincron\xC3\xADa y consumo de APIs. El curso concluye con un proyecto integrador para afianzar lo aprendido. Al finalizar contar\xC3\xA1s con las bases necesarias para seguir explorando el desarrollo web.',
     category: 'Programación',
     image: '/images/course-js.png',
     duration: '5 semanas',
@@ -127,6 +127,7 @@ export const courses: CourseInfo[] = [
     weeks: 5,
     prerequisites: {
       courses: ['html-css'],
+      other: ['Ser mayor de 18 años', 'DNI argentino'],
     },
     maxAttempts: 3,
     modules: [
@@ -187,14 +188,15 @@ export const courses: CourseInfo[] = [
   {
     id: 'react-principiantes',
     title: 'React para principiantes',
-    description: 'Crea interfaces interactivas con la librería más popular.',
+    description: 'Este curso te introduce en el desarrollo de interfaces con React. A lo largo de diversos m\xC3\xB3dulos aprender\xC3\xA1s a crear componentes reutilizables y administrar estado de forma efectiva. Revisaremos los hooks m\xC3\xA1s comunes y la configuraci\xC3\xB3n de rutas para proyectos de una sola p\xC3\xA1gina. Realizar\xC3\xA1s un proyecto guiado donde pondr\xC3\xA1s en pr\xC3\xA1ctica cada concepto. Al completarlo estar\xC3\xA1s listo para construir aplicaciones interactivas m\xC3\xA1s complejas.',
     category: 'Frontend',
     image: '/images/course-react.png',
-    duration: '6 semanas',
+    duration: '10 semanas',
     level: 'Intermedio',
-    weeks: 6,
+    weeks: 10,
     prerequisites: {
       courses: ['javascript-basico'],
+      other: ['Ser mayor de 18 años', 'DNI argentino'],
     },
     maxAttempts: 2,
     modules: [
@@ -243,14 +245,15 @@ export const courses: CourseInfo[] = [
   {
     id: 'node-express',
     title: 'Node.js y Express',
-    description: 'Construye servidores y APIs con JavaScript del lado del servidor.',
+    description: 'En este curso aprender\xC3\xA1s a crear servidores con Node y Express desde cero. Comenzaremos instalando el entorno y explorando el uso de m\xC3\xB3dulos y NPM. Luego construir\xC3\xA1s una API REST con persistencia en bases de datos y preparar\xC3\xA1s el proyecto para desplegarlo en la nube. Al finalizar ser\xC3\xA1s capaz de desarrollar y publicar tus propios servicios backend.',
     category: 'Backend',
     image: '/images/course-node.png',
-    duration: '5 semanas',
+    duration: '10 semanas',
     level: 'Intermedio',
-    weeks: 5,
+    weeks: 10,
     prerequisites: {
       courses: ['javascript-basico'],
+      other: ['Ser mayor de 18 años', 'DNI argentino'],
     },
     maxAttempts: 4,
     modules: [
@@ -299,14 +302,15 @@ export const courses: CourseInfo[] = [
   {
     id: 'typescript-avanzado',
     title: 'TypeScript avanzado',
-    description: 'Lleva tu código JavaScript al siguiente nivel con tipado fuerte.',
+    description: 'Este curso profundiza en las caracter\xC3\xADsticas avanzadas de TypeScript para que lleves tu c\xC3\xB3digo al siguiente nivel. Explorar\xC3\xA1s la definici\xC3\xB3n de tipos complejos, el uso de gen\xC3\xA9ricos y la aplicaci\xC3\xB3n de decoradores para a\xC3\xB1adir funcionalidades. Tambi\xC3\xA9n revisaremos configuraciones recomendadas para proyectos grandes y la integraci\xC3\xB3n con bibliotecas populares. Finalmente aplicar\xC3\xA1s patrones de dise\xC3\xB1o y crear\xC3\xA1s un proyecto completo con buenas pr\xC3\xA1cticas. Al dominar estos temas podr\xC3\xA1s desarrollar aplicaciones de gran escala con confianza.',
     category: 'Programación',
     image: '/images/course-ts.png',
-    duration: '6 semanas',
+    duration: '52 semanas',
     level: 'Avanzado',
-    weeks: 6,
+    weeks: 52,
     prerequisites: {
       courses: ['javascript-basico'],
+      other: ['Ser mayor de 18 años', 'DNI argentino'],
     },
     maxAttempts: 5,
     modules: [
@@ -371,14 +375,15 @@ export const courses: CourseInfo[] = [
   {
     id: 'mern-fullstack',
     title: 'Desarrollo Fullstack con MERN',
-    description: 'Aprende a crear aplicaciones completas con Mongo, Express, React y Node.',
+    description: 'En esta formaci\xC3\xB3n crear\xC3\xA1s una aplicaci\xC3\xB3n completa utilizando MongoDB, Express, React y Node. Partiremos de la configuraci\xC3\xB3n de la base de datos y continuaremos desarrollando una API robusta. Despu\xC3\xA9s conectar\xC3\xA1s el frontend en React y a\xC3\xB1adir\xC3\xA1s autenticaci\xC3\xB3n y pruebas autom\xC3\xA1ticas. Tambi\xC3\xA9n preparar\xC3\xA1s un flujo de despliegue continuo y culminar\xC3\xA1s integrando todos los conceptos en un proyecto final. Tras un a\xC3\xB1o de pr\xC3\xA1ctica estar\xC3\xA1s capacitado para afrontar retos fullstack profesionales.',
     category: 'Fullstack',
     image: '/images/course-mern.png',
-    duration: '8 semanas',
+    duration: '52 semanas',
     level: 'Avanzado',
-    weeks: 8,
+    weeks: 52,
     prerequisites: {
       courses: ['react-principiantes', 'node-express'],
+      other: ['Ser mayor de 18 años', 'DNI argentino'],
     },
     maxAttempts: 3,
     modules: [
@@ -443,14 +448,15 @@ export const courses: CourseInfo[] = [
   {
     id: 'testing-jest',
     title: 'Testing con Jest',
-    description: 'Garantiza la calidad de tus aplicaciones con pruebas unitarias y de integración.',
+    description: 'Con este curso aprender\xC3\xA1s a utilizar Jest para asegurar la calidad de tus proyectos. Revisaremos las distintas estrategias de pruebas y c\xC3\xB3mo configurarlas correctamente. Profundizar\xC3\xA1s en la API de Jest y practicar\xC3\xA1s con pruebas de componentes de React. Conocer\xC3\xA1s t\xC3\xA9cnicas de mocks, medici\xC3\xB3n de cobertura e integraci\xC3\xB3n continua. Al finalizar podr\xC3\xA1s aplicar pruebas automatizadas a cualquier aplicaci\xC3\xB3n JavaScript.',
     category: 'Testing',
     image: '/images/course-jest.png',
-    duration: '4 semanas',
+    duration: '10 semanas',
     level: 'Intermedio',
-    weeks: 4,
+    weeks: 10,
     prerequisites: {
       courses: ['javascript-basico'],
+      other: ['Ser mayor de 18 años', 'DNI argentino'],
     },
     maxAttempts: 2,
     modules: [
@@ -499,14 +505,15 @@ export const courses: CourseInfo[] = [
   {
     id: 'react-native',
     title: 'Aplicaciones móviles con React Native',
-    description: 'Desarrolla apps nativas para iOS y Android usando JavaScript.',
+    description: 'Aprende a crear aplicaciones m\xC3\xB3viles multiplataforma con React Native. Durante el curso configurar\xC3\xA1s el entorno de desarrollo y trabajar\xC3\xA1s con los componentes esenciales de la librer\xC3\xADa. Practicar\xC3\xA1s la navegaci\xC3\xB3n, el consumo de APIs y la publicaci\xC3\xB3n en tiendas, siempre con ejemplos guiados. Cada m\xC3\xB3dulo incluye ejercicios para consolidar lo aprendido y un proyecto final que integra todas las funcionalidades. Al terminar podr\xC3\xA1s llevar tus ideas a iOS y Android desde un solo c\xC3\xB3digo.',
     category: 'Mobile',
     image: '/images/course-react-native.png',
-    duration: '7 semanas',
+    duration: '12 semanas',
     level: 'Intermedio',
-    weeks: 7,
+    weeks: 12,
     prerequisites: {
       courses: ['react-principiantes'],
+      other: ['Ser mayor de 18 años', 'DNI argentino'],
     },
     maxAttempts: 4,
     modules: [
