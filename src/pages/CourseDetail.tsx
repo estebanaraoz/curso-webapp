@@ -3,7 +3,7 @@ import Footer from '../components/Footer'
 import Button from '../components/Button'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 
-import { UserCircleIcon } from '@heroicons/react/24/solid'
+import { UserCircleIcon, LockClosedIcon } from '@heroicons/react/24/solid'
 import { useAuthStore } from '../store/auth'
 import { courses } from '../data/courses'
 import { getInstructorByCourse } from '../data/instructors'
@@ -77,6 +77,25 @@ export default function CourseDetail() {
                 <span className="px-3 py-1 bg-gray-200 rounded">Intentos de evaluación: {course.maxAttempts}</span>
               </div>
             </section>
+            {!progress && (
+              <section className="border-2 border-gray-300 rounded p-4 space-y-3">
+                <p className="font-semibold">
+                  Aún no estás inscrito en este curso. Presiona "Comenzar" para
+                  revisar los requisitos previos y los términos de aprobación.
+                </p>
+                <Button
+                  onClick={() => {
+                    if (!isLogged) {
+                      navigate('/login')
+                    } else {
+                      navigate(`/cursos/${id}/inscripcion`)
+                    }
+                  }}
+                >
+                  {isLogged ? 'Comenzar' : 'Inicia sesión para inscribirte'}
+                </Button>
+              </section>
+            )}
             <section className="border-2 border-gray-300 rounded p-4 space-y-2">
               <h2 className="text-2xl font-bold">Preguntas frecuentes</h2>
               <p>
@@ -101,8 +120,8 @@ export default function CourseDetail() {
               )}
             </section>
           <div className="space-y-2">
-            {progress ? (
-              <div className="border-2 border-gray-300 rounded p-4 space-y-3">
+            {progress && (
+              <section className="border-2 border-gray-300 rounded p-4 space-y-3">
                 <p className="font-semibold">
                   {progress.completed >= progress.total && progress.grade !== undefined
                     ? `Curso finalizado - Nota: ${progress.grade}`
@@ -152,48 +171,39 @@ export default function CourseDetail() {
                       onClick={() => nextLink && navigate(nextLink)}
                       disabled={!nextLink}
                     >
-                      Próxima clase
-                    </Button>
-                  )}
-              </div>
-            ) : (
-              <div className="border-2 border-gray-300 rounded p-4 space-y-3">
-                <p className="font-semibold">
-                  Aún no estás inscrito en este curso. Si estás listo, presiona "Comenzar" y empieza a aprender cuanto antes.
-                </p>
-                <Button
-                  onClick={() => {
-                    if (!isLogged) {
-                      navigate('/login')
-                    } else {
-                      navigate(`/cursos/${id}/inscripcion`)
-                    }
-                  }}
-                >
-                  {isLogged ? 'Comenzar' : 'Inicia sesión para inscribirte'}
-                </Button>
-              </div>
+                    Próxima clase
+                  </Button>
+                )}
+              </section>
             )}
           </div>
         </div>
         <h2 className="text-2xl font-bold mt-4">Módulos</h2>
+        {!progress && (
+          <p className="text-sm mb-2">Inscríbete a este curso para comenzar y ver las clases.</p>
+        )}
         <ul className="space-y-3 w-full">
           {course.modules.map((m, i) => {
             const num = parseInt(m.id)
             const completed = progress ? progress.completed >= num : false
-            const classes =
-              m.classes ?? []
+            const classes = m.classes ?? []
             const completedClasses = progress?.classProgress[m.id] ?? []
+            const locked = !progress
             return (
               <li
                 key={m.id}
-                className={`border-2 rounded border-gray-300 ${completed ? 'bg-green-50' : ''}`}
+                className={`border-2 rounded border-gray-300 ${
+                  completed ? 'bg-green-50' : locked ? 'bg-gray-100 opacity-60' : ''
+                }`}
               >
-                <div className="p-3">
-                  <div className={`font-semibold ${completed ? 'line-through' : ''}`}>Módulo {i + 1}: {m.title}</div>
-                  <p className="text-sm text-gray-600">{m.description}</p>
+                <div className="p-3 flex justify-between">
+                  <div>
+                    <div className={`font-semibold ${completed ? 'line-through' : ''}`}>Módulo {i + 1}: {m.title}</div>
+                    <p className="text-sm text-gray-600">{m.description}</p>
+                  </div>
+                  {locked && <LockClosedIcon className="w-5 h-5 text-gray-500" />}
                 </div>
-                {classes.length > 0 && (
+                {classes.length > 0 && progress && (
                   <ul className="pl-5 pr-3 pb-3 space-y-1">
                     {classes.map((c, idxClass) => {
                       const done = completedClasses.includes(c.id)
@@ -202,7 +212,7 @@ export default function CourseDetail() {
                           <span className={done ? 'line-through text-gray-600' : ''}>
                             {idxClass + 1}. {c.title}
                           </span>
-                          {isLogged && progress ? (
+                          {progress && (
                             done ? (
                               <span className="text-green-600 text-xs">Completado</span>
                             ) : (
@@ -213,7 +223,7 @@ export default function CourseDetail() {
                                 Ver
                               </Link>
                             )
-                          ) : null}
+                          )}
                         </li>
                       )
                     })}
