@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { InformationCircleIcon, PlayCircleIcon } from '@heroicons/react/24/solid'
 import { useAuthStore } from '../store/auth'
 
 interface Props {
@@ -60,27 +61,30 @@ export default function CourseCard({
           </p>
         )}
       </Link>
-      <div className="mt-2 flex gap-2">
+      <div className="mt-2 flex gap-2 justify-center">
         <Link
           to={`/cursos/${id}`}
-          className="px-3 py-1 text-sm rounded bg-gray-300 text-gray-800 text-center hover:bg-gray-400"
+          className="flex flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-gray-300 text-gray-800 hover:bg-gray-400"
         >
-          Ver más
+          <InformationCircleIcon className="h-5 w-5" />
+          Ver info
         </Link>
         {!isLogged ? (
           <Link
             to="/login"
-            className="px-3 py-1 text-sm rounded bg-blue-600 text-white text-center hover:bg-blue-700"
+            className="flex flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-blue-600 text-white hover:bg-blue-700"
           >
+            <PlayCircleIcon className="h-5 w-5" />
             Inicia sesión para inscribirte
           </Link>
         ) : (
           !isEnrolled && (
             <Link
               to={`/cursos/${id}/inscripcion`}
-              className="px-3 py-1 text-sm rounded bg-blue-600 text-white text-center hover:bg-blue-700"
+              className="flex flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-blue-600 text-white hover:bg-blue-700"
             >
-              Inscribirse
+              <PlayCircleIcon className="h-5 w-5" />
+              Comenzar
             </Link>
           )
         )}
