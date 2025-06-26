@@ -61,10 +61,10 @@ export default function CourseCard({
           </p>
         )}
       </Link>
-      <div className="mt-2 flex gap-2 justify-center">
+      <div className="mt-2 flex flex-col sm:flex-row gap-2 justify-center">
         <Link
           to={`/cursos/${id}`}
-          className="flex flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-gray-300 text-gray-800 hover:bg-gray-400 min-w-[8rem]"
+          className="flex w-full sm:flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-gray-300 text-gray-800 hover:bg-gray-400 min-w-[8rem]"
         >
           <InformationCircleIcon className="h-6 w-6" />
           <span className="hidden sm:inline">Ver info</span>
@@ -72,7 +72,7 @@ export default function CourseCard({
         {!isLogged ? (
           <Link
             to="/login"
-            className="flex flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-blue-600 text-white hover:bg-blue-700 min-w-[8rem]"
+            className="flex w-full sm:flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-blue-600 text-white hover:bg-blue-700 min-w-[8rem]"
           >
             <PlayCircleIcon className="h-6 w-6" />
             <span className="hidden sm:inline">Inicia sesión para inscribirte</span>
@@ -84,7 +84,7 @@ export default function CourseCard({
                 ? `/cursos/${id}/modulo/${(progress?.completed ?? 0) + 1}`
                 : `/cursos/${id}/inscripcion`
             }
-            className="flex flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-blue-600 text-white hover:bg-blue-700 min-w-[8rem]"
+            className="flex w-full sm:flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-blue-600 text-white hover:bg-blue-700 min-w-[8rem]"
           >
             <PlayCircleIcon className="h-6 w-6" />
             <span className="hidden sm:inline">
