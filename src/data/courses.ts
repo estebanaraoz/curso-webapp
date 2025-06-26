@@ -1,9 +1,17 @@
+export interface ClassInfo {
+  id: string
+  title: string
+  /** Types of content available in the class */
+  content: ('video' | 'text' | 'document' | 'questions')[]
+}
+
 export interface ModuleInfo {
   id: string
   title: string
   description: string
   intro: string
   videoUrl: string
+  classes?: ClassInfo[]
 }
 
 export interface CourseInfo {
@@ -14,6 +22,12 @@ export interface CourseInfo {
   image: string
   duration: string
   level: string
+  /** Recommended duration in weeks */
+  weeks: number
+  prerequisites?: {
+    courses?: string[]
+    other?: string[]
+  }
   modules: ModuleInfo[]
   maxAttempts: number
 }
@@ -28,6 +42,10 @@ export const courses: CourseInfo[] = [
     image: '/images/course-html-css.png',
     duration: '4 semanas',
     level: 'Principiante',
+    weeks: 4,
+    prerequisites: {
+      other: ['Ser mayor de 18 años']
+    },
     maxAttempts: 2,
     modules: [
       {
@@ -38,6 +56,11 @@ export const courses: CourseInfo[] = [
         intro:
           'Conocerás los actores principales de internet y cómo se enlazan para mostrar páginas en tu navegador.',
         videoUrl: '#',
+        classes: [
+          { id: '1', title: 'Presentación', content: ['video'] },
+          { id: '2', title: 'Lecturas recomendadas', content: ['text', 'document'] },
+          { id: '3', title: 'Preguntas', content: ['questions'] },
+        ],
       },
       {
         id: '2',
@@ -46,6 +69,10 @@ export const courses: CourseInfo[] = [
         intro:
           'Verás las etiquetas fundamentales para definir encabezados, listas y secciones, creando bases sólidas de tus documentos.',
         videoUrl: '#',
+        classes: [
+          { id: '1', title: 'Etiquetas básicas', content: ['video', 'text'] },
+          { id: '2', title: 'Documento de ejemplo', content: ['document'] },
+        ],
       },
       {
         id: '3',
@@ -55,6 +82,10 @@ export const courses: CourseInfo[] = [
         intro:
           'Aprenderás a cambiar colores, tipografías y disposiciones para lograr sitios atractivos y consistentes en todos los dispositivos.',
         videoUrl: '#',
+        classes: [
+          { id: '1', title: 'Selectores', content: ['video'] },
+          { id: '2', title: 'Ejercicios', content: ['document', 'questions'] },
+        ],
       },
       {
         id: '4',
@@ -64,6 +95,10 @@ export const courses: CourseInfo[] = [
         intro:
           'Descubrirás técnicas con flexbox y media queries que adaptan el contenido a cualquier tamaño de pantalla.',
         videoUrl: '#',
+        classes: [
+          { id: '1', title: 'Flexbox', content: ['video'] },
+          { id: '2', title: 'Media queries', content: ['video', 'text'] },
+        ],
       },
       {
         id: '5',
@@ -73,6 +108,10 @@ export const courses: CourseInfo[] = [
         intro:
           'Combinaremos todos los temas anteriores para crear desde cero una página completa lista para publicar.',
         videoUrl: '#',
+        classes: [
+          { id: '1', title: 'Planificación', content: ['text'] },
+          { id: '2', title: 'Entrega', content: ['document', 'questions'] },
+        ],
       },
     ],
   },
@@ -85,6 +124,10 @@ export const courses: CourseInfo[] = [
     image: '/images/course-js.png',
     duration: '5 semanas',
     level: 'Principiante',
+    weeks: 5,
+    prerequisites: {
+      courses: ['html-css'],
+    },
     maxAttempts: 3,
     modules: [
       {
@@ -149,6 +192,10 @@ export const courses: CourseInfo[] = [
     image: '/images/course-react.png',
     duration: '6 semanas',
     level: 'Intermedio',
+    weeks: 6,
+    prerequisites: {
+      courses: ['javascript-basico'],
+    },
     maxAttempts: 2,
     modules: [
       {
@@ -201,6 +248,10 @@ export const courses: CourseInfo[] = [
     image: '/images/course-node.png',
     duration: '5 semanas',
     level: 'Intermedio',
+    weeks: 5,
+    prerequisites: {
+      courses: ['javascript-basico'],
+    },
     maxAttempts: 4,
     modules: [
       {
@@ -253,6 +304,10 @@ export const courses: CourseInfo[] = [
     image: '/images/course-ts.png',
     duration: '6 semanas',
     level: 'Avanzado',
+    weeks: 6,
+    prerequisites: {
+      courses: ['javascript-basico'],
+    },
     maxAttempts: 5,
     modules: [
       {
@@ -321,6 +376,10 @@ export const courses: CourseInfo[] = [
     image: '/images/course-mern.png',
     duration: '8 semanas',
     level: 'Avanzado',
+    weeks: 8,
+    prerequisites: {
+      courses: ['react-principiantes', 'node-express'],
+    },
     maxAttempts: 3,
     modules: [
       {
@@ -389,6 +448,10 @@ export const courses: CourseInfo[] = [
     image: '/images/course-jest.png',
     duration: '4 semanas',
     level: 'Intermedio',
+    weeks: 4,
+    prerequisites: {
+      courses: ['javascript-basico'],
+    },
     maxAttempts: 2,
     modules: [
       {
@@ -441,6 +504,10 @@ export const courses: CourseInfo[] = [
     image: '/images/course-react-native.png',
     duration: '7 semanas',
     level: 'Intermedio',
+    weeks: 7,
+    prerequisites: {
+      courses: ['react-principiantes'],
+    },
     maxAttempts: 4,
     modules: [
       {

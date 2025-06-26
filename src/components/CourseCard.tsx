@@ -88,7 +88,7 @@ export default function CourseCard({
                 ? showExam
                   ? `/cursos/${id}/examen-final`
                   : `/cursos/${id}/modulo/${(progress?.completed ?? 0) + 1}`
-                : `/cursos/${id}/inscripcion`
+                : `/cursos/${id}/prerrequisitos`
             }
             className={`flex w-full sm:flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded min-w-[8rem] ${
               isEnrolled
