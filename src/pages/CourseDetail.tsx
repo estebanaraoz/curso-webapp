@@ -2,6 +2,8 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Button from '../components/Button'
 import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useState } from 'react'
+import { UserCircleIcon } from '@heroicons/react/24/solid'
 import { useAuthStore } from '../store/auth'
 import { courses } from '../data/courses'
 import { getInstructorByCourse } from '../data/instructors'
@@ -18,6 +20,13 @@ export default function CourseDetail() {
   const progressPercent = progress
     ? Math.min(100, Math.round((progress.completed / progress.total) * 100))
     : 0
+  const [openModule, setOpenModule] = useState<string | null>(() => {
+    if (progress && course) {
+      const idx = Math.min(progress.completed, course.modules.length - 1)
+      return course.modules[idx].id
+    }
+    return course?.modules[0]?.id ?? null
+  })
   const canRetakeExam = progress
     ? !progress.lastAttempt ||
       Date.now() - progress.lastAttempt >= 24 * 60 * 60 * 1000
@@ -46,7 +55,7 @@ export default function CourseDetail() {
               className="w-full max-h-[300px] object-contain rounded overflow-hidden"
             />
             <h1 className="text-4xl font-extrabold">{course.title}</h1>
-            <section className="border rounded p-4 space-y-4">
+            <section className="border-2 border-gray-300 rounded p-4 space-y-4">
               <p className="text-lg">{course.description}</p>
               <div className="flex flex-wrap gap-2 text-sm">
                 <span className="px-3 py-1 bg-gray-200 rounded underline font-semibold">Dificultad: {course.level}</span>
@@ -55,18 +64,24 @@ export default function CourseDetail() {
                 <span className="px-3 py-1 bg-gray-200 rounded">Intentos de evaluación: {course.maxAttempts}</span>
               </div>
             </section>
-            <section className="border rounded p-4 space-y-2">
+            <section className="border-2 border-gray-300 rounded p-4 space-y-2">
               <h2 className="text-2xl font-bold">Preguntas frecuentes</h2>
               <p>
                 ¿Tienes dudas? Escríbelas a través del siguiente formulario para contactarnos.
               </p>
-              <Link to="/contacto" className="text-blue-600 underline">Ir al formulario</Link>
+              <Link
+                to={`/contacto?curso=${id}`}
+                className="text-blue-600 underline"
+              >
+                Ir al formulario
+              </Link>
             </section>
-            <section className="border rounded p-4 space-y-2">
+            <section className="border-2 border-gray-300 rounded p-4 space-y-2">
               <h2 className="text-2xl font-bold">Instructor</h2>
               {instructor && (
                 <div className="flex flex-col items-center gap-2">
-                  <div className="w-24 h-24 rounded-full bg-gray-300 overflow-hidden flex items-center justify-center">
+                  <div className="relative w-24 h-24 rounded-full bg-gray-300 overflow-hidden flex items-center justify-center">
+                    <UserCircleIcon className="absolute w-20 h-20 text-gray-400" />
                     <img
                       src={instructor.avatar}
                       alt={instructor.name}
@@ -79,7 +94,7 @@ export default function CourseDetail() {
             </section>
           <div className="space-y-2">
             {progress ? (
-              <div className="border rounded p-4 space-y-3">
+              <div className="border-2 border-gray-300 rounded p-4 space-y-3">
                 <p className="font-semibold">
                   {progress.completed >= progress.total && progress.grade !== undefined
                     ? `Curso finalizado - Nota: ${progress.grade}`
@@ -96,13 +111,14 @@ export default function CourseDetail() {
                     </span>
                   )}
                 </p>
+                <p className="text-center font-semibold">
+                  {progressPercent}% completado
+                </p>
                 <div className="w-full bg-gray-200 rounded h-6 relative overflow-hidden">
                   <div
-                    className="bg-blue-600 h-6 rounded text-white text-center text-sm flex items-center justify-center"
+                    className="bg-blue-600 h-6 rounded"
                     style={{ width: `${progressPercent}%` }}
-                  >
-                    {progressPercent}%
-                  </div>
+                  />
                 </div>
                 {progress.completed >= progress.total &&
                   (progress.grade === undefined || progress.grade < 40) &&
@@ -123,11 +139,16 @@ export default function CourseDetail() {
                       )}
                     </>
                   ) : progress.completed >= progress.total && progress.grade !== undefined ? null : (
-                    <Button onClick={() => navigate(`/cursos/${id}/modulo/${progress.completed + 1}`)}>Seguir</Button>
+                    <Button
+                      className="bg-green-600 hover:bg-green-700 text-white"
+                      onClick={() => navigate(`/cursos/${id}/modulo/${progress.completed + 1}`)}
+                    >
+                      Próxima clase
+                    </Button>
                   )}
               </div>
             ) : (
-              <div className="border rounded p-4 space-y-3">
+              <div className="border-2 border-gray-300 rounded p-4 space-y-3">
                 <p className="font-semibold">
                   Aún no estás inscrito a este curso. Si estás listo, haz clic en Comenzar para inscribirte.
                 </p>
@@ -148,38 +169,54 @@ export default function CourseDetail() {
         </div>
         <h2 className="text-2xl font-bold mt-4">Módulos</h2>
         <ul className="space-y-3 w-full">
-              {course.modules.map((m, i) => {
-                const num = parseInt(m.id)
-                const completed = progress ? progress.completed >= num : false
-                const allowed = progress ? num <= progress.completed + 1 : false
-                const isCurrent = progress ? num === progress.completed + 1 : false
-                return (
-                  <li
-                    key={m.id}
-                    className={`border rounded ${
-                      completed ? 'bg-green-50' : ''
-                    } ${isCurrent && !completed ? 'bg-blue-50 border-blue-400' : ''}`}
-                  >
-                    {isLogged && allowed ? (
-                      <Link to={`/cursos/${id}/modulo/${m.id}`} className="block p-3">
-                        <div className={`font-semibold ${completed ? 'line-through' : ''}`}>
-                          Módulo {i + 1}: {m.title}
-                        </div>
-                        <p className="text-sm text-gray-600">{m.description}</p>
-                        {completed && (
-                          <p className="text-xs italic text-gray-500">Haz clic para verlo nuevamente</p>
-                        )}
-                      </Link>
-                    ) : (
-                      <div className="p-3">
-                        <span className={`font-semibold ${completed ? 'line-through' : ''}`}>Módulo {i + 1}: {m.title}</span>
-                        <p className="text-sm text-gray-600">{m.description}</p>
-                      </div>
-                    )}
-                  </li>
-                )
-              })}
-            </ul>
+          {course.modules.map((m, i) => {
+            const num = parseInt(m.id)
+            const completed = progress ? progress.completed >= num : false
+            const classes =
+              m.classes ?? []
+            const completedClasses = progress?.classProgress[m.id] ?? []
+            return (
+              <li
+                key={m.id}
+                className={`border-2 rounded border-gray-300 ${completed ? 'bg-green-50' : ''}`}
+              >
+                <details
+                  open={openModule === m.id}
+                  onToggle={e =>
+                    setOpenModule((e.target as HTMLDetailsElement).open ? m.id : null)
+                  }
+                >
+                  <summary className="p-3 cursor-pointer">
+                    <div className={`font-semibold ${completed ? 'line-through' : ''}`}>Módulo {i + 1}: {m.title}</div>
+                    <p className="text-sm text-gray-600">{m.description}</p>
+                  </summary>
+                  <ul className="pl-5 pr-3 pb-3 space-y-1">
+                    {classes.map(c => {
+                      const done = completedClasses.includes(c.id)
+                      return (
+                        <li key={c.id} className="flex justify-between items-center border-b last:border-b-0 py-1">
+                          <span className={done ? 'line-through text-gray-600' : ''}>{c.title}</span>
+                          {isLogged && progress ? (
+                            done ? (
+                              <span className="text-green-600 text-xs">Completado</span>
+                            ) : (
+                              <Link
+                                to={`/cursos/${id}/modulo/${m.id}/clase/${c.id}`}
+                                className="text-blue-600 underline text-xs"
+                              >
+                                Ver
+                              </Link>
+                            )
+                          ) : null}
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </details>
+              </li>
+            )
+          })}
+        </ul>
         </>
         ) : (
           <p>Curso no encontrado</p>

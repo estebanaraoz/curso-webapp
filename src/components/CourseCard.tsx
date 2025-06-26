@@ -32,7 +32,7 @@ export default function CourseCard({
     (progress.grade === undefined || progress.grade < 40)
 
   return (
-    <div className="border p-4 rounded shadow hover:shadow-lg flex flex-col gap-4 w-full min-w-[300px]">
+    <div className="border-2 border-gray-300 p-4 rounded shadow hover:shadow-lg flex flex-col gap-4 w-full min-w-[300px]">
       <Link to={`/cursos/${id}`} className="flex flex-col gap-2 flex-grow">
         <img
           src={image}
