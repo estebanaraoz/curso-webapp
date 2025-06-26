@@ -38,7 +38,11 @@ export default function Navbar() {
             </svg>
           )}
         </button>
-        <Link to="/" className="mx-auto" onClick={() => setOpen(false)}>
+        <Link
+          to="/"
+          className="absolute left-1/2 -translate-x-1/2"
+          onClick={() => setOpen(false)}
+        >
           <img src="/logo.png" alt="Logo" className="h-10 w-auto object-contain" />
         </Link>
         <div className="ml-auto">
