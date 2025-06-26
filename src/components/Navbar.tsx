@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { UserCircleIcon } from '@heroicons/react/24/solid'
 import DarkModeToggle from './DarkModeToggle'
 import { useAuthStore } from '../store/auth'
 
@@ -40,6 +41,60 @@ export default function Navbar() {
         <Link to="/" className="mx-auto" onClick={() => setOpen(false)}>
           <img src="/logo.png" alt="Logo" className="h-10 w-auto object-contain" />
         </Link>
+        <div className="ml-auto">
+          {isLogged ? (
+            <div className="relative">
+              <button
+                onClick={toggleDropdown}
+                className="flex items-center gap-1 px-2 py-1 rounded bg-gray-300 text-gray-800 hover:bg-gray-400"
+              >
+                <UserCircleIcon className="w-5 h-5" />
+                <span className="text-sm">Hola, {name}</span>
+                <svg
+                  className={`w-4 h-4 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`}
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </button>
+              {dropdownOpen && (
+                <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-700 border rounded shadow flex flex-col z-10">
+                  <Link
+                    to="/dashboard"
+                    className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                    onClick={() => {
+                      setOpen(false)
+                      setDropdownOpen(false)
+                    }}
+                  >
+                    Mi cuenta
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                  >
+                    Cerrar sesión
+                  </button>
+                  <DarkModeToggle className="text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600" />
+                </div>
+              )}
+            </div>
+          ) : (
+            <button
+              onClick={() => {
+                navigate('/login')
+                setOpen(false)
+              }}
+              className="px-4 py-2 rounded bg-gray-300 text-gray-800 hover:bg-gray-400"
+            >
+              Ingresar
+            </button>
+          )}
+        </div>
       </div>
       <div
         className={`${open ? 'flex' : 'hidden'} sm:flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 border-t sm:border-none`}
@@ -79,13 +134,14 @@ export default function Navbar() {
         >
           Foro
         </NavLink>
-        <div className="sm:ml-auto flex flex-col sm:flex-row items-start sm:items-center gap-2 w-full sm:w-auto">
+        <div className="hidden sm:flex sm:ml-auto flex-col sm:flex-row items-start sm:items-center gap-2 w-full sm:w-auto">
           {isLogged ? (
             <div className="relative w-full sm:w-auto">
               <button
                 onClick={toggleDropdown}
                 className="flex items-center gap-1 w-full sm:w-auto px-4 py-2 rounded bg-gray-300 text-gray-800 hover:bg-gray-400"
               >
+                <UserCircleIcon className="w-5 h-5" />
                 <span>Hola, {name}</span>
                 <svg
                   className={`w-4 h-4 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`}
