@@ -9,6 +9,8 @@ export interface Course {
   maxAttempts: number
   attempts: number
   lastAttempt?: number
+  /** Map of completed class ids per module */
+  classProgress: Record<string, string[]>
 }
 
 export interface AuthState {
@@ -21,6 +23,12 @@ export interface AuthState {
   logout: () => void
   enroll: (course: Course) => void
   completeModule: (courseId: string) => void
+  completeClass: (
+    courseId: string,
+    moduleId: string,
+    classId: string,
+    totalClasses: number,
+  ) => void
   finishCourse: (courseId: string, grade: number) => void
   setCurrentCourse: (courseId: string | null) => void
 }
@@ -36,6 +44,7 @@ const useAuthStore = create<AuthState>(set => {
     maxAttempts: c.maxAttempts ?? 3,
     attempts: c.attempts ?? 0,
     lastAttempt: c.lastAttempt,
+    classProgress: c.classProgress ?? {},
   }))
   const storedCourse = localStorage.getItem('currentCourseId')
 
@@ -67,6 +76,7 @@ const useAuthStore = create<AuthState>(set => {
           ...course,
           attempts: 0,
           lastAttempt: undefined,
+          classProgress: {},
         }]
         persistCourses(updated)
         return { enrolledCourses: updated }
@@ -78,6 +88,23 @@ const useAuthStore = create<AuthState>(set => {
             ? { ...c, completed: c.completed + 1 }
             : c,
         )
+        persistCourses(updated)
+        return { enrolledCourses: updated }
+      }),
+    completeClass: (courseId, moduleId, classId, totalClasses) =>
+      set(state => {
+        const updated = state.enrolledCourses.map(c => {
+          if (c.id !== courseId) return c
+          const moduleClasses = c.classProgress[moduleId] || []
+          if (moduleClasses.includes(classId)) return c
+          const newClasses = [...moduleClasses, classId]
+          const newProgress = { ...c.classProgress, [moduleId]: newClasses }
+          let completed = c.completed
+          if (newClasses.length >= totalClasses && completed < c.total) {
+            completed = completed + 1
+          }
+          return { ...c, classProgress: newProgress, completed }
+        })
         persistCourses(updated)
         return { enrolledCourses: updated }
       }),

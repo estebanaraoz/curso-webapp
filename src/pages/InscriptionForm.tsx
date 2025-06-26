@@ -36,6 +36,7 @@ export default function InscriptionForm() {
       maxAttempts: course?.maxAttempts ?? 3,
       attempts: 0,
       lastAttempt: undefined,
+      classProgress: {},
     })
     navigate('/inscripcion-exitosa', { state: { courseTitle: course?.title } })
   }

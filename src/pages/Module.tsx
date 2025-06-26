@@ -11,6 +11,7 @@ export default function Module() {
   const navigate = useNavigate()
   const isLogged = useAuthStore(state => state.isLogged)
   const complete = useAuthStore(state => state.completeModule)
+  const completeClass = useAuthStore(state => state.completeClass)
   const progress = useAuthStore(state =>
     state.enrolledCourses.find(c => c.id === id),
   )
@@ -23,6 +24,8 @@ export default function Module() {
   const setCurrentCourse = useAuthStore(state => state.setCurrentCourse)
   const course = courses.find(c => c.id === id)
   const module = course?.modules.find(m => m.id === moduleId)
+  const completedClasses =
+    progress?.classProgress[moduleId ?? ''] ?? []
   const currentIndex = course?.modules.findIndex(m => m.id === moduleId) ?? -1
   const prevModule =
     currentIndex > 0 && course ? course.modules[currentIndex - 1] : null
@@ -52,6 +55,12 @@ export default function Module() {
       }
     }
     navigate(-1)
+  }
+
+  const handleCompleteClass = (classId: string) => {
+    if (!isLogged || !isEnrolled || !module) return
+    if (!moduleId || !id) return
+    completeClass(id, moduleId, classId, module.classes?.length ?? 0)
   }
 
   return (
@@ -136,9 +145,32 @@ export default function Module() {
             <p className="text-center">{module.description}</p>
             <p className="text-center text-sm">{module.intro}</p>
             {isLogged && isEnrolled && canAccess ? (
-              <div className="border p-4 rounded shadow w-full max-w-[600px] h-[600px] flex items-center justify-center bg-gray-200 mx-auto">
-                Mostrar video
-              </div>
+              module.classes && module.classes.length > 0 ? (
+                <ul className="space-y-2">
+                  {module.classes.map(c => (
+                    <li
+                      key={c.id}
+                      className="border p-3 flex justify-between items-center"
+                    >
+                      <span>{c.title}</span>
+                      {completedClasses.includes(c.id) ? (
+                        <span className="text-green-600 text-sm">Completado</span>
+                      ) : (
+                        <Button
+                          onClick={() => handleCompleteClass(c.id)}
+                          className="text-sm"
+                        >
+                          Marcar completado
+                        </Button>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <div className="border p-4 rounded shadow w-full max-w-[600px] h-[600px] flex items-center justify-center bg-gray-200 mx-auto">
+                  Mostrar video
+                </div>
+              )
             ) : isLogged && isEnrolled && !canAccess ? (
               <p className="italic text-center">
                 Primero debes completar el Módulo {prevModule?.id} "{prevModule?.title}"
@@ -152,7 +184,7 @@ export default function Module() {
         ) : (
           <p>Módulo no encontrado</p>
         )}
-        {isLogged && isEnrolled ? (
+        {isLogged && isEnrolled && !(module?.classes && module.classes.length > 0) ? (
           isCompleted ? (
             <p className="text-center italic">Ya has completado este módulo. Puedes volver a ver el video.</p>
           ) : (
@@ -166,9 +198,9 @@ export default function Module() {
                 : 'Marcar completado'}
             </Button>
           )
-        ) : isLogged ? null : (
+        ) : isLogged && !isEnrolled ? null : !isLogged ? (
           <Button onClick={() => navigate('/login')}>Inicia sesión para continuar</Button>
-        )}
+        ) : null}
         <hr className="my-4" />
         <div className="flex justify-center gap-4 w-full">
           {prevModule && (
