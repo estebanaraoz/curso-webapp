@@ -10,9 +10,9 @@ body {
 .lined-paper {
   background-image: repeating-linear-gradient(
     to bottom,
-    #ffffff,
-    #ffffff 32px,
-    #e5e7eb 32px,
-    #e5e7eb 33px
+    #ffffff 0,
+    #ffffff 2.5rem,
+    #e5e7eb 2.5rem,
+    #e5e7eb calc(2.5rem + 1px)
   );
 }

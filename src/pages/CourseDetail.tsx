@@ -221,7 +221,7 @@ export default function CourseDetail() {
                         <li key={c.id}>
                           <Link
                             to={`/cursos/${id}/modulo/${m.id}/clase/${c.id}`}
-                            className="flex justify-between items-center py-2 hover:bg-gray-50"
+                            className="flex justify-between items-center py-2 min-h-[2.5rem] hover:bg-gray-50"
                           >
                             <div className="flex items-center gap-2">
                               <Icon className={`w-6 h-6 ${done ? 'text-green-600' : 'text-gray-400'}`} />
