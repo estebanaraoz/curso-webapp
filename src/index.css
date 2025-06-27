@@ -5,3 +5,14 @@
 body {
   @apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100;
 }
+
+/* Adds a lined-paper effect for lists of classes */
+.lined-paper {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    #ffffff,
+    #ffffff 32px,
+    #e5e7eb 32px,
+    #e5e7eb 33px
+  );
+}

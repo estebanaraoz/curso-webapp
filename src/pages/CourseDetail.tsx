@@ -106,11 +106,9 @@ export default function CourseDetail() {
               <p>
                 ¿Tienes dudas? Escríbelas a través del siguiente formulario para contactarnos.
               </p>
-              <Link
-                to={`/contacto?curso=${id}`}
-                className="text-blue-600 underline"
-              >
-                Ir al formulario
+              <Link to={`/contacto?curso=${id}`}
+                className="inline-block">
+                <Button>Completar formulario</Button>
               </Link>
             </section>
             <section className="border-2 border-gray-300 rounded p-4 space-y-2">
@@ -215,7 +213,7 @@ export default function CourseDetail() {
                   {locked && <LockClosedIcon className="w-5 h-5 text-gray-500" />}
                 </div>
                 {classes.length > 0 && progress && !locked && (
-                  <ul className="pl-5 pr-3 pb-3 space-y-1">
+                  <ul className="pl-5 pr-3 pb-3 space-y-1 lined-paper">
                     {classes.map((c, idxClass) => {
                       const done = completedClasses.includes(c.id)
                       const Icon = done ? CheckCircleSolidIcon : CheckCircleOutlineIcon
@@ -223,7 +221,7 @@ export default function CourseDetail() {
                         <li key={c.id}>
                           <Link
                             to={`/cursos/${id}/modulo/${m.id}/clase/${c.id}`}
-                            className="flex justify-between items-center border-b last:border-b-0 py-2 hover:bg-gray-50"
+                            className="flex justify-between items-center py-2 hover:bg-gray-50"
                           >
                             <div className="flex items-center gap-2">
                               <Icon className={`w-6 h-6 ${done ? 'text-green-600' : 'text-gray-400'}`} />
