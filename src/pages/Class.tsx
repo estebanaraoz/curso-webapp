@@ -28,6 +28,13 @@ export default function ClassPage() {
   const currentClass = classes[index]
   const prevClass = index > 0 ? classes[index - 1] : null
   const nextClass = index >= 0 && index < classes.length - 1 ? classes[index + 1] : null
+  const moduleIndex = course?.modules.findIndex(m => m.id === moduleId) ?? -1
+  const prevModule =
+    moduleIndex > 0 && course ? course.modules[moduleIndex - 1] : null
+  const nextModule =
+    course && moduleIndex >= 0 && moduleIndex < course.modules.length - 1
+      ? course.modules[moduleIndex + 1]
+      : null
   const completedClasses = progress?.classProgress[moduleId ?? ''] ?? []
   const isCompleted = completedClasses.includes(classId ?? '')
 
@@ -40,8 +47,12 @@ export default function ClassPage() {
     completeClass(id, moduleId, classId, classes.length)
     if (nextClass) {
       navigate(`/cursos/${id}/modulo/${moduleId}/clase/${nextClass.id}`)
+    } else if (nextModule) {
+      const first = nextModule.classes?.[0]?.id ?? '1'
+      navigate(`/cursos/${id}/modulo/${nextModule.id}/clase/${first}`)
     } else {
-      navigate(`/cursos/${id}/modulo/${moduleId}`)
+      setCurrentCourse(null)
+      navigate(`/cursos/${id}/examen-final`)
     }
   }
 
@@ -83,12 +94,42 @@ export default function ClassPage() {
           <Link to={`/cursos/${course.id}`} className="text-blue-600 underline">
             {course.title}
           </Link>
-          <span>/ Módulo {module.id}</span>
+          <span>/</span>
+          <Link
+            to={`/cursos/${course.id}/modulo/${module.id}/clase/${classes[0].id}`}
+            className="text-blue-600 underline"
+          >
+            Módulo {module.id}
+          </Link>
           <span>/ Clase {currentClass.id}</span>
         </nav>
         <h1 className="text-2xl font-bold text-center">
           {module.title} - {currentClass.title}
         </h1>
+        <p className="text-center">{module.description}</p>
+        <p className="text-center text-sm">{module.intro}</p>
+        <ul className="space-y-2 w-full max-w-[600px]">
+          {classes.map(c => (
+            <li
+              key={c.id}
+              className="border p-3 flex justify-between items-center"
+            >
+              <span>{c.title}</span>
+              {completedClasses.includes(c.id) ? (
+                <span className="text-green-600 text-sm">Completado</span>
+              ) : c.id === classId ? (
+                <span className="text-blue-600 text-sm">En esta clase</span>
+              ) : (
+                <Link
+                  to={`/cursos/${id}/modulo/${moduleId}/clase/${c.id}`}
+                  className="text-blue-600 underline text-sm"
+                >
+                  Ir a la clase
+                </Link>
+              )}
+            </li>
+          ))}
+        </ul>
         <div className="border p-4 rounded shadow w-full max-w-[600px] h-[400px] flex items-center justify-center bg-gray-200">
           Mostrar contenido de la clase
         </div>
@@ -119,6 +160,57 @@ export default function ClassPage() {
             </Link>
           ) : (
             <span />
+          )}
+        </div>
+        <hr className="my-4" />
+        <div className="flex justify-center gap-4 w-full">
+          {prevModule && (
+            <button
+              onClick={() =>
+                navigate(
+                  `/cursos/${id}/modulo/${prevModule.id}/clase/${
+                    prevModule.classes?.[0]?.id ?? '1'
+                  }`,
+                )
+              }
+              className="flex items-center gap-2 border border-black px-4 py-4 w-64"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-4 h-4"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
+              <span className="text-sm">Módulo {prevModule.id} - {prevModule.title}</span>
+            </button>
+          )}
+          {nextModule && (
+            <button
+              onClick={() =>
+                navigate(
+                  `/cursos/${id}/modulo/${nextModule.id}/clase/${
+                    nextModule.classes?.[0]?.id ?? '1'
+                  }`,
+                )
+              }
+              className="flex items-center gap-2 border border-black px-4 py-4 w-64"
+            >
+              <span className="text-sm">Módulo {nextModule.id} - {nextModule.title}</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-4 h-4"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </button>
           )}
         </div>
       </main>
