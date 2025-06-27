@@ -5,6 +5,7 @@ import { PieChart, Pie, Cell, Tooltip } from 'recharts'
 import { useAuthStore } from '../store/auth'
 import { Link, useNavigate } from 'react-router-dom'
 import { courses } from '../data/courses'
+import getNextClassLink from "../utils/getNextClassLink"
 
 export default function Dashboard() {
   const enrolledCourses = useAuthStore(state => state.enrolledCourses)
@@ -73,6 +74,7 @@ export default function Dashboard() {
                     <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
                       {currentCourses.map(course => {
                         const info = courses.find(c => c.id === course.id)
+                        const nextLink = info ? getNextClassLink(info, course) : null
                         const completed = course.completed
                         const total = course.total
                         const remaining = total - completed
@@ -120,9 +122,8 @@ export default function Dashboard() {
                                 Ver curso
                               </Button>
                               <Button
-                                onClick={() =>
-                                  navigate(`/cursos/${course.id}/modulo/${course.completed + 1}`)
-                                }
+                                onClick={() => nextLink && navigate(nextLink)}
+                                disabled={!nextLink}
                               >
                                 Continuar curso
                               </Button>
