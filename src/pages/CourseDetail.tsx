@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Button from '../components/Button'
+import PrerequisiteCourses from '../components/PrerequisiteCourses'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 
 import {
@@ -82,6 +83,10 @@ export default function CourseDetail() {
                 <span className="px-3 py-1 bg-gray-200 rounded">Intentos de evaluación: {course.maxAttempts}</span>
               </div>
             </section>
+            {course.prerequisites?.courses &&
+              course.prerequisites.courses.length > 0 && (
+                <PrerequisiteCourses courseIds={course.prerequisites.courses} />
+              )}
             {!progress && (
               <section className="border-2 border-gray-300 rounded p-4 space-y-3">
                 <p className="font-semibold">
