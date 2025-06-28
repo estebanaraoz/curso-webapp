@@ -159,7 +159,7 @@ export default function Dashboard() {
                               Nota:{' '}
                               {course.grade !== undefined
                                 ? course.grade
-                                : 'Contesta la evaluación para recibir tu calificacion'}{' '}
+                                : 'Contesta la evaluación para recibir tu calificación.'}{' '}
                               {course.grade !== undefined && (
                                 <span
                                   className={`ml-1 px-2 py-0.5 rounded text-xs ${
