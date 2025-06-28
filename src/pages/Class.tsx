@@ -105,7 +105,7 @@ export default function ClassPage() {
             </Link>
             <span>/ Módulo {module.id} / Clase {currentClass.id}</span>
           </nav>
-          <div className="flex justify-center">
+          <div className="flex justify-center mb-6">
             {isLogged ? (
               isCompleted ? (
                 <p className="text-sm text-center max-w-md">
@@ -113,7 +113,11 @@ export default function ClassPage() {
                   ver el contenido cuando quieras.
                 </p>
               ) : (
-                <Button onClick={handleComplete} className="w-full max-w-xs">
+                <Button
+                  onClick={handleComplete}
+                  className="w-full max-w-xs"
+                  disabled={!canAccess}
+                >
                   Marcar lección como completa
                 </Button>
               )
@@ -121,12 +125,13 @@ export default function ClassPage() {
               <Button onClick={() => navigate('/login')}>Inicia sesión para continuar</Button>
             )}
           </div>
-          <hr className="my-4" />
-          <div className="flex justify-center gap-4">
+          <hr className="my-6" />
+          <div className="flex justify-center gap-6 my-6">
             {prevClass && prevModuleId && (
               <Button
                 onClick={() => navigate(`/cursos/${id}/modulo/${prevModuleId}/clase/${prevClass.id}`)}
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 py-3"
+                variant="secondary"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -138,15 +143,16 @@ export default function ClassPage() {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                 </svg>
-                <span>Clase anterior</span>
+                <span className="truncate">{prevClass.title}</span>
               </Button>
             )}
             {canAccess && nextClass && nextModuleId && (
               <Button
                 onClick={() => navigate(`/cursos/${id}/modulo/${nextModuleId}/clase/${nextClass.id}`)}
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 py-3"
+                variant="secondary"
               >
-                <span>Próxima clase</span>
+                <span className="truncate">{nextClass.title}</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -170,7 +176,7 @@ export default function ClassPage() {
           ) : (
             <>
               <h2 className="text-xl font-bold">Material de la clase</h2>
-              <ul className="space-y-2">
+              <ul className="space-y-4">
                 {currentClass.content.map(type => {
                   const Icon =
                     type === 'video'
@@ -201,14 +207,18 @@ export default function ClassPage() {
                 controls
                 className="w-full max-h-80 bg-black"
               />
-              <div className="flex justify-center">
+              <div className="flex justify-center my-6">
                 {isLogged ? (
                   isCompleted ? (
                     <p className="text-sm text-center max-w-md">
                       Ya has marcado como completada esta clase. Pero puedes volver a ver el contenido cuando quieras.
                     </p>
                   ) : (
-                    <Button onClick={handleComplete} className="w-full max-w-xs">
+                    <Button
+                      onClick={handleComplete}
+                      className="w-full max-w-xs"
+                      disabled={!canAccess}
+                    >
                       Marcar lección como completa
                     </Button>
                   )
@@ -218,12 +228,13 @@ export default function ClassPage() {
               </div>
             </>
           )}
-          <hr className="my-4" />
-          <div className="flex justify-center gap-4">
+          <hr className="my-6" />
+          <div className="flex justify-center gap-6 my-6">
             {prevClass && prevModuleId && (
               <Button
                 onClick={() => navigate(`/cursos/${id}/modulo/${prevModuleId}/clase/${prevClass.id}`)}
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 py-3"
+                variant="secondary"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -235,15 +246,16 @@ export default function ClassPage() {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                 </svg>
-                <span>Clase anterior</span>
+                <span className="truncate">{prevClass.title}</span>
               </Button>
             )}
             {canAccess && nextClass && nextModuleId && (
               <Button
                 onClick={() => navigate(`/cursos/${id}/modulo/${nextModuleId}/clase/${nextClass.id}`)}
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 py-3"
+                variant="secondary"
               >
-                <span>Próxima clase</span>
+                <span className="truncate">{nextClass.title}</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
