@@ -52,7 +52,7 @@ export default function CourseCard({
 
   return (
     <div
-      className="border-2 border-gray-300 p-4 rounded shadow hover:shadow-lg flex flex-col gap-4 min-w-[360px] max-w-[360px]"
+      className="border-2 border-gray-300 p-4 rounded shadow hover:shadow-lg flex flex-col gap-4 w-full sm:w-[360px]"
     >
       <Link to={`/cursos/${id}`} className="flex flex-col gap-2 flex-grow">
         <img
@@ -72,7 +72,7 @@ export default function CourseCard({
                   Nota:{' '}
                   {progress.grade !== undefined
                     ? progress.grade
-                    : 'Contesta la evaluación para recibir tu calificacion'}{' '}
+                    : 'Contesta la evaluación para recibir tu calificación.'}{' '}
                   {progress.grade !== undefined && (
                     <span
                       className={`ml-1 px-2 py-0.5 rounded text-xs ${
