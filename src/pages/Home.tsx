@@ -9,11 +9,10 @@ import { UserCircleIcon } from '@heroicons/react/24/solid'
 
 export default function Home() {
   const featuredCourses = courses.slice(0, 5)
-  const [page, setPage] = useState(0)
+  const [index, setIndex] = useState(0)
   const itemsPerPage = 3
-  const pageCourses = featuredCourses.slice(
-    page * itemsPerPage,
-    page * itemsPerPage + itemsPerPage,
+  const pageCourses = Array.from({ length: itemsPerPage }).map((_, i) =>
+    featuredCourses[(index + i) % featuredCourses.length],
   )
 
   return (
@@ -73,16 +72,15 @@ export default function Home() {
           <h2 className="text-2xl font-bold">Cursos Destacados</h2>
           <div className="flex items-center gap-4">
             <button
-              onClick={() => setPage(0)}
-              disabled={page === 0}
-              className="p-2 disabled:opacity-50"
+              onClick={() => setIndex((index - 1 + featuredCourses.length) % featuredCourses.length)}
+              className="p-2"
               aria-label="Anterior"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
               </svg>
             </button>
-            <div className="grid gap-4 flex-grow justify-center [grid-template-columns:repeat(auto-fit,_minmax(300px,_1fr))]">
+            <div className="grid grid-flow-col auto-cols-[minmax(300px,1fr)] gap-4 overflow-hidden flex-grow">
               {pageCourses.map(course => (
                 <CourseCard
                   key={course.id}
@@ -96,9 +94,8 @@ export default function Home() {
               ))}
             </div>
             <button
-              onClick={() => setPage(1)}
-              disabled={page === 1}
-              className="p-2 disabled:opacity-50"
+              onClick={() => setIndex((index + 1) % featuredCourses.length)}
+              className="p-2"
               aria-label="Siguiente"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
