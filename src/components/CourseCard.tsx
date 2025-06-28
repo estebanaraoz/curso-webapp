@@ -51,7 +51,7 @@ export default function CourseCard({
     : `/cursos/${id}`
 
   return (
-    <div className="border-2 border-gray-300 p-4 rounded shadow hover:shadow-lg flex flex-col gap-4 w-full">
+    <div className="border-2 border-gray-300 p-4 rounded shadow hover:shadow-lg flex flex-col gap-4 w-[300px]">
       <Link to={`/cursos/${id}`} className="flex flex-col gap-2 flex-grow">
         <img
           src={image}
