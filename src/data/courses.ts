@@ -3,6 +3,10 @@ export interface ClassInfo {
   title: string
   /** Types of content available in the class */
   content: ('video' | 'text' | 'document' | 'questions')[]
+  /** Estimated duration when the class includes a video */
+  duration?: string
+  /** Description paragraphs for the class */
+  description: string[]
 }
 
 export interface ModuleInfo {
@@ -57,9 +61,34 @@ export const courses: CourseInfo[] = [
           'Conocerás los actores principales de internet y cómo se enlazan para mostrar páginas en tu navegador.',
         videoUrl: '#',
         classes: [
-          { id: '1', title: 'Presentación', content: ['video'] },
-          { id: '2', title: 'Lecturas recomendadas', content: ['text', 'document'] },
-          { id: '3', title: 'Preguntas', content: ['questions'] },
+          {
+            id: '1',
+            title: 'Presentación',
+            content: ['video'],
+            duration: '5m',
+            description: [
+              'En este video daremos la bienvenida al curso y explicaremos la dinámica de trabajo.',
+              'También revisaremos qué conocimientos previos son necesarios para aprovechar cada lección.',
+            ],
+          },
+          {
+            id: '2',
+            title: 'Lecturas recomendadas',
+            content: ['text', 'document'],
+            description: [
+              'Te compartiremos enlaces a artículos que amplían los conceptos vistos en la clase anterior.',
+              'Además podrás descargar un PDF con material complementario para repasar cuando quieras.',
+            ],
+          },
+          {
+            id: '3',
+            title: 'Preguntas',
+            content: ['questions'],
+            description: [
+              'Aquí encontrarás un breve cuestionario para evaluar tu comprensión de los temas iniciales.',
+              'No olvides completar este apartado para continuar con el siguiente módulo.',
+            ],
+          },
         ],
       },
       {
@@ -70,8 +99,25 @@ export const courses: CourseInfo[] = [
           'Verás las etiquetas fundamentales para definir encabezados, listas y secciones, creando bases sólidas de tus documentos.',
         videoUrl: '#',
         classes: [
-          { id: '1', title: 'Etiquetas básicas', content: ['video', 'text'] },
-          { id: '2', title: 'Documento de ejemplo', content: ['document'] },
+          {
+            id: '1',
+            title: 'Etiquetas básicas',
+            content: ['video', 'text'],
+            duration: '8m',
+            description: [
+              'Aprenderás cuáles son las etiquetas esenciales para crear la estructura de una página web.',
+              'Revisaremos ejemplos prácticos y algunas buenas prácticas al escribir HTML.',
+            ],
+          },
+          {
+            id: '2',
+            title: 'Documento de ejemplo',
+            content: ['document'],
+            description: [
+              'Descargarás un documento con el código de ejemplo utilizado durante la clase anterior.',
+              'Utiliza este material como referencia para tus propios proyectos.',
+            ],
+          },
         ],
       },
       {
@@ -83,8 +129,25 @@ export const courses: CourseInfo[] = [
           'Aprenderás a cambiar colores, tipografías y disposiciones para lograr sitios atractivos y consistentes en todos los dispositivos.',
         videoUrl: '#',
         classes: [
-          { id: '1', title: 'Selectores', content: ['video'] },
-          { id: '2', title: 'Ejercicios', content: ['document', 'questions'] },
+          {
+            id: '1',
+            title: 'Selectores',
+            content: ['video'],
+            duration: '7m',
+            description: [
+              'Exploraremos los distintos tipos de selectores de CSS y cuándo conviene utilizar cada uno.',
+              'Verás ejemplos que te ayudarán a escribir reglas más precisas y mantenibles.',
+            ],
+          },
+          {
+            id: '2',
+            title: 'Ejercicios',
+            content: ['document', 'questions'],
+            description: [
+              'Encontrarás una guía de ejercicios para practicar los selectores aprendidos.',
+              'Al finalizar podrás validar tus respuestas en la sección de preguntas incluidas.',
+            ],
+          },
         ],
       },
       {
@@ -96,8 +159,26 @@ export const courses: CourseInfo[] = [
           'Descubrirás técnicas con flexbox y media queries que adaptan el contenido a cualquier tamaño de pantalla.',
         videoUrl: '#',
         classes: [
-          { id: '1', title: 'Flexbox', content: ['video'] },
-          { id: '2', title: 'Media queries', content: ['video', 'text'] },
+          {
+            id: '1',
+            title: 'Flexbox',
+            content: ['video'],
+            duration: '6m',
+            description: [
+              'Conocerás el modelo de cajas flexibles para acomodar elementos de forma sencilla.',
+              'Mediante ejemplos prácticos verás cómo alinear y distribuir bloques en cualquier pantalla.',
+            ],
+          },
+          {
+            id: '2',
+            title: 'Media queries',
+            content: ['video', 'text'],
+            duration: '9m',
+            description: [
+              'Aprenderás a adaptar tus estilos utilizando breakpoints responsivos.',
+              'Combinaremos media queries con flexbox para lograr diseños fluidos y accesibles.',
+            ],
+          },
         ],
       },
       {
@@ -109,8 +190,24 @@ export const courses: CourseInfo[] = [
           'Combinaremos todos los temas anteriores para crear desde cero una página completa lista para publicar.',
         videoUrl: '#',
         classes: [
-          { id: '1', title: 'Planificación', content: ['text'] },
-          { id: '2', title: 'Entrega', content: ['document', 'questions'] },
+          {
+            id: '1',
+            title: 'Planificación',
+            content: ['text'],
+            description: [
+              'Definiremos los objetivos del sitio web que construirás como trabajo final.',
+              'Organizaremos las tareas en pasos pequeños para avanzar de forma ordenada.',
+            ],
+          },
+          {
+            id: '2',
+            title: 'Entrega',
+            content: ['document', 'questions'],
+            description: [
+              'Revisarás los criterios de evaluación y el formato de entrega del proyecto.',
+              'También responderás un breve cuestionario sobre tu experiencia desarrollando el curso.',
+            ],
+          },
         ],
       },
     ],
