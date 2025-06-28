@@ -95,12 +95,7 @@ export default function ClassPage() {
             {course.title}
           </Link>
           <span>/</span>
-          <Link
-            to={`/cursos/${course.id}/modulo/${module.id}/clase/${classes[0].id}`}
-            className="text-blue-600 underline"
-          >
-            Módulo {module.id}
-          </Link>
+          <span>Módulo {module.id}</span>
           <span>/ Clase {currentClass.id}</span>
         </nav>
         <h1 className="text-2xl font-bold text-center">

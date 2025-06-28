@@ -89,6 +89,7 @@ export default function CourseDetail() {
                   revisar los requisitos previos y los términos de aprobación.
                 </p>
                 <Button
+                  className="bg-orange-500 hover:bg-orange-600 text-white"
                   onClick={() => {
                     if (!isLogged) {
                       navigate('/login')
