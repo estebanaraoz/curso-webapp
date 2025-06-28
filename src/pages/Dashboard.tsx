@@ -156,7 +156,10 @@ export default function Dashboard() {
                               {course.title}
                             </h2>
                             <p className="text-center font-semibold">
-                              Nota: {course.grade ?? '-'}{' '}
+                              Nota:{' '}
+                              {course.grade !== undefined
+                                ? course.grade
+                                : 'Contesta la evaluación para recibir tu calificacion'}{' '}
                               {course.grade !== undefined && (
                                 <span
                                   className={`ml-1 px-2 py-0.5 rounded text-xs ${
