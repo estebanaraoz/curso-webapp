@@ -67,8 +67,7 @@ export const courses: CourseInfo[] = [
             content: ['video'],
             duration: '5m',
             description: [
-              'En este video daremos la bienvenida al curso y explicaremos la dinámica de trabajo.',
-              'También revisaremos qué conocimientos previos son necesarios para aprovechar cada lección.',
+              'En este video daremos la bienvenida al curso y explicaremos la dinámica de trabajo que seguiremos durante las próximas semanas. Repasaremos cómo están organizados los módulos y qué materiales adicionales encontrarás disponibles en la plataforma. También revisaremos qué conocimientos previos son necesarios para aprovechar cada lección y cómo puedes ponerte al día si lo requieres. Al finalizar tendrás una visión clara del recorrido que haremos y podrás planificar tu tiempo de estudio para sacar el mayor provecho del curso.',
             ],
           },
           {
@@ -76,8 +75,7 @@ export const courses: CourseInfo[] = [
             title: 'Lecturas recomendadas',
             content: ['text', 'document'],
             description: [
-              'Te compartiremos enlaces a artículos que amplían los conceptos vistos en la clase anterior.',
-              'Además podrás descargar un PDF con material complementario para repasar cuando quieras.',
+              'Te compartiremos enlaces a artículos y videos que amplían los conceptos vistos en la clase anterior para que puedas profundizar a tu propio ritmo. Además podrás descargar un PDF con material complementario que resume las definiciones más relevantes. Este documento incluye recomendaciones de estilos, buenas prácticas al escribir código y ejercicios adicionales para reforzar lo aprendido. La idea es que dispongas de recursos permanentes que puedas consultar cuando quieras retomar el estudio.',
             ],
           },
           {
@@ -85,8 +83,7 @@ export const courses: CourseInfo[] = [
             title: 'Preguntas',
             content: ['questions'],
             description: [
-              'Aquí encontrarás un breve cuestionario para evaluar tu comprensión de los temas iniciales.',
-              'No olvides completar este apartado para continuar con el siguiente módulo.',
+              'Aquí encontrarás un breve cuestionario diseñado para evaluar tu comprensión de los temas iniciales del curso. Cada pregunta busca repasar los conceptos clave de la introducción y detectar puntos que podrían requerir un repaso adicional. No olvides completar este apartado para continuar con el siguiente módulo; los resultados te ayudarán a enfocar mejor tu aprendizaje y asegurar que dominas los conocimientos básicos antes de seguir adelante.',
             ],
           },
         ],
@@ -98,27 +95,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Verás las etiquetas fundamentales para definir encabezados, listas y secciones, creando bases sólidas de tus documentos.',
         videoUrl: '#',
-        classes: [
-          {
-            id: '1',
-            title: 'Etiquetas básicas',
-            content: ['video', 'text'],
-            duration: '8m',
-            description: [
-              'Aprenderás cuáles son las etiquetas esenciales para crear la estructura de una página web.',
-              'Revisaremos ejemplos prácticos y algunas buenas prácticas al escribir HTML.',
-            ],
-          },
-          {
-            id: '2',
-            title: 'Documento de ejemplo',
-            content: ['document'],
-            description: [
-              'Descargarás un documento con el código de ejemplo utilizado durante la clase anterior.',
-              'Utiliza este material como referencia para tus propios proyectos.',
-            ],
-          },
-        ],
+        
       },
       {
         id: '3',
@@ -128,27 +105,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Aprenderás a cambiar colores, tipografías y disposiciones para lograr sitios atractivos y consistentes en todos los dispositivos.',
         videoUrl: '#',
-        classes: [
-          {
-            id: '1',
-            title: 'Selectores',
-            content: ['video'],
-            duration: '7m',
-            description: [
-              'Exploraremos los distintos tipos de selectores de CSS y cuándo conviene utilizar cada uno.',
-              'Verás ejemplos que te ayudarán a escribir reglas más precisas y mantenibles.',
-            ],
-          },
-          {
-            id: '2',
-            title: 'Ejercicios',
-            content: ['document', 'questions'],
-            description: [
-              'Encontrarás una guía de ejercicios para practicar los selectores aprendidos.',
-              'Al finalizar podrás validar tus respuestas en la sección de preguntas incluidas.',
-            ],
-          },
-        ],
+        
       },
       {
         id: '4',
@@ -158,28 +115,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Descubrirás técnicas con flexbox y media queries que adaptan el contenido a cualquier tamaño de pantalla.',
         videoUrl: '#',
-        classes: [
-          {
-            id: '1',
-            title: 'Flexbox',
-            content: ['video'],
-            duration: '6m',
-            description: [
-              'Conocerás el modelo de cajas flexibles para acomodar elementos de forma sencilla.',
-              'Mediante ejemplos prácticos verás cómo alinear y distribuir bloques en cualquier pantalla.',
-            ],
-          },
-          {
-            id: '2',
-            title: 'Media queries',
-            content: ['video', 'text'],
-            duration: '9m',
-            description: [
-              'Aprenderás a adaptar tus estilos utilizando breakpoints responsivos.',
-              'Combinaremos media queries con flexbox para lograr diseños fluidos y accesibles.',
-            ],
-          },
-        ],
+        
       },
       {
         id: '5',
@@ -189,26 +125,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Combinaremos todos los temas anteriores para crear desde cero una página completa lista para publicar.',
         videoUrl: '#',
-        classes: [
-          {
-            id: '1',
-            title: 'Planificación',
-            content: ['text'],
-            description: [
-              'Definiremos los objetivos del sitio web que construirás como trabajo final.',
-              'Organizaremos las tareas en pasos pequeños para avanzar de forma ordenada.',
-            ],
-          },
-          {
-            id: '2',
-            title: 'Entrega',
-            content: ['document', 'questions'],
-            description: [
-              'Revisarás los criterios de evaluación y el formato de entrega del proyecto.',
-              'También responderás un breve cuestionario sobre tu experiencia desarrollando el curso.',
-            ],
-          },
-        ],
+        
       },
     ],
   },
@@ -662,6 +579,145 @@ export const courses: CourseInfo[] = [
           'Desarrollarás una aplicación completa aplicando todo lo aprendido durante el curso de React Native para demostrar tus habilidades.',
         videoUrl: '#',
       },
+    ],
+  },
+  {
+    id: 'python-basico',
+    title: 'Python desde cero',
+    description: `Este curso te introduce en la programación con Python desde un enfoque práctico. A lo largo de las semanas aprenderás a instalar el intérprete, configurar un entorno de trabajo y utilizar las estructuras del lenguaje para resolver problemas cotidianos. Cada módulo desarrolla ejercicios guiados que consolidan las bases para continuar con proyectos más complejos.
+
+Explorarás las colecciones, las funciones y los módulos integrados para automatizar tareas y manipular archivos. Al finalizar habrás creado scripts útiles y comprenderás la sintaxis necesaria para avanzar en librerías y frameworks de Python. El aprendizaje continuo te permitirá adaptar el lenguaje a tus propias necesidades profesionales.`,
+    category: 'Programación',
+    image: '/images/course-python.png',
+    duration: '6 semanas',
+    level: 'Principiante',
+    weeks: 6,
+    prerequisites: {
+      other: ['Ser mayor de 18 años', 'DNI argentino'],
+    },
+    maxAttempts: 3,
+    modules: [
+      { id: '1', title: 'Introducción a Python', description: 'Comienza a utilizar el intérprete y escribe tus primeros scripts.', intro: 'Instalarás Python y ejecutarás tus primeras instrucciones desde la terminal.', videoUrl: '#' },
+      { id: '2', title: 'Estructuras de control', description: 'Aprende condicionales y bucles para manejar el flujo de tus programas.', intro: 'Verás cómo tomar decisiones y repetir acciones de forma eficiente.', videoUrl: '#' },
+      { id: '3', title: 'Funciones y módulos', description: 'Organiza tu código y reutiliza lógica mediante funciones y módulos.', intro: 'Definirás funciones propias y descubrirás módulos de la biblioteca estándar.', videoUrl: '#' },
+      { id: '4', title: 'Manejo de archivos', description: 'Lee y escribe datos en el sistema de archivos con Python.', intro: 'Practicarás operaciones de entrada y salida para almacenar información.', videoUrl: '#' },
+      { id: '5', title: 'Proyecto final', description: 'Integra todo lo aprendido creando un script de utilidad práctica.', intro: 'Planificarás y desarrollarás un pequeño proyecto que resuelva una tarea real.', videoUrl: '#' },
+    ],
+  },
+  {
+    id: 'ux-design',
+    title: 'Introducción al UX Design',
+    description: `Aprender UX significa entender cómo interactúan las personas con los productos digitales. En este curso analizarás metodologías de investigación y obtendrás herramientas para definir la arquitectura de información. Los módulos combinan ejemplos de la industria con prácticas para estructurar interfaces centradas en el usuario.
+
+A través de ejercicios de observación y prototipado crearás flujos de navegación intuitivos. Incorporarás principios de accesibilidad y realizarás pruebas que validen la usabilidad de tu diseño. Con los conocimientos adquiridos estarás preparado para participar en proyectos que prioricen la experiencia de usuario desde la fase inicial.`,
+    category: 'Diseño',
+    image: '/images/course-ux.png',
+    duration: '5 semanas',
+    level: 'Principiante',
+    weeks: 5,
+    prerequisites: {
+      other: ['Ser mayor de 18 años', 'DNI argentino'],
+    },
+    maxAttempts: 2,
+    modules: [
+      { id: '1', title: 'Investigación de usuarios', description: 'Aprende métodos para conocer las necesidades de quienes usarán tu producto.', intro: 'Realizarás entrevistas y encuestas para obtener información valiosa.', videoUrl: '#' },
+      { id: '2', title: 'Arquitectura de información', description: 'Organiza contenidos y define la navegación de tu interfaz.', intro: 'Usarás técnicas de card sorting para estructurar menús y secciones.', videoUrl: '#' },
+      { id: '3', title: 'Prototipado', description: 'Crea maquetas que te permitan validar ideas rápidamente.', intro: 'Trabajarás con herramientas digitales para diseñar bocetos interactivos.', videoUrl: '#' },
+      { id: '4', title: 'Pruebas de usabilidad', description: 'Evalúa tus prototipos con personas reales y obtén retroalimentación.', intro: 'Aprenderás a planificar y ejecutar test moderados y no moderados.', videoUrl: '#' },
+      { id: '5', title: 'Iteración y entrega', description: 'Refina tu diseño a partir de los resultados obtenidos.', intro: 'Documentarás hallazgos y prepararás la presentación final del proyecto.', videoUrl: '#' },
+    ],
+  },
+  {
+    id: 'docker-devops',
+    title: 'Docker y DevOps',
+    description: `Este programa repasa los fundamentos de la integración y entrega continua utilizando Docker como eje central. Conocerás cómo construir imágenes ligeras y desplegarlas en entornos controlados. Los ejemplos están orientados a mejorar la productividad y simplificar los procesos de desarrollo colaborativo.
+
+Implementarás pipelines automáticos que prueban y publican aplicaciones en contenedores. También explorarás estrategias de monitoreo y escalado para asegurar un rendimiento estable en la nube. Al completar el curso dominarás las técnicas necesarias para poner en producción servicios de forma confiable y repetible.`,
+    category: 'DevOps',
+    image: '/images/course-docker.png',
+    duration: '6 semanas',
+    level: 'Intermedio',
+    weeks: 6,
+    prerequisites: {
+      courses: ['javascript-basico'],
+      other: ['Ser mayor de 18 años', 'DNI argentino'],
+    },
+    maxAttempts: 4,
+    modules: [
+      { id: '1', title: 'Imágenes y contenedores', description: 'Crea y gestiona contenedores portables para tus aplicaciones.', intro: 'Construirás imágenes desde Dockerfile y lanzarás servicios aislados.', videoUrl: '#' },
+      { id: '2', title: 'Docker Compose', description: 'Orquesta múltiples servicios de manera sencilla.', intro: 'Definirás pilas de contenedores para entornos de desarrollo reproducibles.', videoUrl: '#' },
+      { id: '3', title: 'Integración continua', description: 'Automatiza pruebas y despliegues con pipelines.', intro: 'Configurarás workflows que ejecuten tareas en cada commit.', videoUrl: '#' },
+      { id: '4', title: 'Monitoreo', description: 'Supervisa el estado de tus servicios en producción.', intro: 'Implementarás métricas y registros para detectar problemas a tiempo.', videoUrl: '#' },
+      { id: '5', title: 'Despliegue final', description: 'Publica tu proyecto usando las mejores prácticas de DevOps.', intro: 'Prepararás tu aplicación para escalar en la nube de forma segura.', videoUrl: '#' },
+    ],
+  },
+  {
+    id: 'data-analytics',
+    title: 'Fundamentos de Data Analytics',
+    description: `Con la explosión de los datos en todas las industrias, saber analizarlos se ha convertido en una habilidad clave. Este curso inicia desde conceptos básicos de estadística y avanza hacia el uso de herramientas para la limpieza y manipulación de grandes volúmenes de información. Cada módulo te prepara para comprender patrones y extraer conclusiones concretas.
+
+Trabajarás con hojas de cálculo, lenguajes de consulta y visualización interactiva. Al finalizar estarás en condiciones de presentar informes claros que respalden la toma de decisiones. La práctica constante durante el programa te permitirá automatizar tareas y aprovechar al máximo los datos disponibles en tu organización.`,
+    category: 'Datos',
+    image: '/images/course-data.png',
+    duration: '7 semanas',
+    level: 'Intermedio',
+    weeks: 7,
+    prerequisites: {
+      other: ['Ser mayor de 18 años', 'DNI argentino'],
+    },
+    maxAttempts: 3,
+    modules: [
+      { id: '1', title: 'Estadística básica', description: 'Repasa medidas descriptivas y probabilidad para interpretar datos.', intro: 'Aplicarás conceptos de media, mediana y desviación estándar en ejemplos prácticos.', videoUrl: '#' },
+      { id: '2', title: 'Limpieza de datos', description: 'Prepara y transforma conjuntos de datos para su análisis.', intro: 'Utilizarás herramientas para detectar valores atípicos y formatear información.', videoUrl: '#' },
+      { id: '3', title: 'Consultas y filtros', description: 'Extrae información relevante utilizando lenguajes de consulta.', intro: 'Practicarás SQL básico para obtener métricas de grandes volúmenes.', videoUrl: '#' },
+      { id: '4', title: 'Visualización', description: 'Comunica hallazgos mediante gráficos claros y efectivos.', intro: 'Crearás dashboards con librerías de visualización interactivas.', videoUrl: '#' },
+      { id: '5', title: 'Informe final', description: 'Presenta tus conclusiones y recomendaciones de negocio.', intro: 'Redactarás un reporte profesional con los resultados obtenidos.', videoUrl: '#' },
+    ],
+  },
+  {
+    id: 'seguridad-informatica',
+    title: 'Seguridad Informática',
+    description: `La seguridad informática es esencial para proteger sistemas y datos frente a amenazas cada vez más sofisticadas. En este curso aprenderás los fundamentos de la criptografía, las vulnerabilidades más comunes y las mejores prácticas para el desarrollo de aplicaciones seguras. Cada módulo aborda casos reales que te ayudarán a reconocer riesgos antes de que se conviertan en problemas.
+
+Mediante ejercicios guiados configurarás herramientas de escaneo y simulaciones de ataque para entender cómo se comprometen los sistemas. Finalizarás diseñando políticas de seguridad y planes de respuesta que minimicen el impacto ante incidentes. Al dominar estos conceptos podrás implementar medidas de defensa en cualquier infraestructura tecnológica.`,
+    category: 'Seguridad',
+    image: '/images/course-security.png',
+    duration: '8 semanas',
+    level: 'Avanzado',
+    weeks: 8,
+    prerequisites: {
+      other: ['Ser mayor de 18 años', 'DNI argentino'],
+    },
+    maxAttempts: 4,
+    modules: [
+      { id: '1', title: 'Criptografía', description: 'Estudia métodos de encriptación y su aplicación práctica.', intro: 'Analizarás algoritmos que protegen la confidencialidad de la información.', videoUrl: '#' },
+      { id: '2', title: 'Vulnerabilidades comunes', description: 'Identifica fallos frecuentes y cómo mitigarlos.', intro: 'Revisarás ejemplos de ataques para comprender sus consecuencias.', videoUrl: '#' },
+      { id: '3', title: 'Herramientas de análisis', description: 'Utiliza escáneres y utilidades para evaluar la seguridad.', intro: 'Aprenderás a usar software de auditoría en entornos controlados.', videoUrl: '#' },
+      { id: '4', title: 'Respuesta a incidentes', description: 'Diseña planes de acción ante posibles ataques.', intro: 'Definirás procedimientos para actuar rápidamente y minimizar daños.', videoUrl: '#' },
+      { id: '5', title: 'Buenas prácticas', description: 'Establece políticas y controles para un entorno seguro.', intro: 'Implementarás estrategias de seguridad continuas en tus proyectos.', videoUrl: '#' },
+    ],
+  },
+  {
+    id: 'marketing-digital',
+    title: 'Marketing Digital',
+    description: `El marketing digital reúne estrategias para posicionar marcas en medios online y captar nuevos clientes. Este curso explica cómo funcionan los principales canales de difusión y enseña a diseñar campañas segmentadas de alto impacto. Los módulos abordan desde la optimización en motores de búsqueda hasta la gestión de redes sociales.
+
+Medirás resultados con herramientas analíticas y adaptarás las acciones según el comportamiento de tu audiencia. Al finalizar, estarás preparado para elaborar planes de marketing que integren distintos formatos de contenido y generen conversiones sostenidas en el tiempo. El curso combina ejercicios reales con las tendencias más actuales del sector.`,
+    category: 'Marketing',
+    image: '/images/course-marketing.png',
+    duration: '5 semanas',
+    level: 'Intermedio',
+    weeks: 5,
+    prerequisites: {
+      other: ['Ser mayor de 18 años', 'DNI argentino'],
+    },
+    maxAttempts: 3,
+    modules: [
+      { id: '1', title: 'SEO', description: 'Optimiza tu presencia en buscadores para aumentar visitas.', intro: 'Aplicarás técnicas de posicionamiento orgánico y análisis de palabras clave.', videoUrl: '#' },
+      { id: '2', title: 'Publicidad en línea', description: 'Gestiona campañas pagas en distintas plataformas.', intro: 'Configurarás anuncios segmentados y medirás su rendimiento.', videoUrl: '#' },
+      { id: '3', title: 'Redes sociales', description: 'Planifica estrategias para interactuar con tu audiencia.', intro: 'Aprenderás a seleccionar contenidos y programar publicaciones efectivas.', videoUrl: '#' },
+      { id: '4', title: 'Email marketing', description: 'Crea envíos que conviertan y fidelicen clientes.', intro: 'Diseñarás plantillas atractivas y segmentarás tus listas de contactos.', videoUrl: '#' },
+      { id: '5', title: 'Análisis de resultados', description: 'Evalúa el impacto de tus acciones y ajusta tu estrategia.', intro: 'Interpretarás métricas clave para mejorar continuamente tus campañas.', videoUrl: '#' },
     ],
   },
 ]
