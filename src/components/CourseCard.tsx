@@ -69,7 +69,10 @@ export default function CourseCard({
               <>
                 <p className="font-semibold text-green-700">Curso finalizado</p>
                 <p>
-                  Nota: {progress.grade ?? '-'}{' '}
+                  Nota:{' '}
+                  {progress.grade !== undefined
+                    ? progress.grade
+                    : 'Contesta la evaluación para recibir tu calificacion'}{' '}
                   {progress.grade !== undefined && (
                     <span
                       className={`ml-1 px-2 py-0.5 rounded text-xs ${
@@ -134,7 +137,7 @@ export default function CourseCard({
             <span>
               {isEnrolled
                 ? showExam
-                  ? 'CONTESTAR EVALUACIÓN'
+                  ? 'EVALUACIÓN'
                   : 'SEGUIR'
                 : 'COMENZAR'}
             </span>
