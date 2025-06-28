@@ -71,7 +71,7 @@ export default function Dashboard() {
                 {currentCourses.length > 0 && (
                   <div className="space-y-2">
                     <h2 className="text-2xl font-semibold">Cursos en curso</h2>
-                    <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+                    <div className="grid gap-4 [grid-template-columns:repeat(auto-fit,_minmax(300px,_1fr))]">
                       {currentCourses.map(course => {
                         const info = courses.find(c => c.id === course.id)
                         const nextLink = info ? getNextClassLink(info, course) : null
@@ -137,7 +137,7 @@ export default function Dashboard() {
                 {finishedCourses.length > 0 && (
                   <div className="space-y-2">
                     <h2 className="text-2xl font-semibold">Cursos finalizados</h2>
-                    <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+                    <div className="grid gap-4 [grid-template-columns:repeat(auto-fit,_minmax(300px,_1fr))]">
                       {finishedCourses.map(course => {
                         const info = courses.find(c => c.id === course.id)
                         return (
