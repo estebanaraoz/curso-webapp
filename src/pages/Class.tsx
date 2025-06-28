@@ -45,15 +45,6 @@ export default function ClassPage() {
   const handleComplete = () => {
     if (!isLogged || !id || !moduleId || !classId) return
     completeClass(id, moduleId, classId, classes.length)
-    if (nextClass) {
-      navigate(`/cursos/${id}/modulo/${moduleId}/clase/${nextClass.id}`)
-    } else if (nextModule) {
-      const first = nextModule.classes?.[0]?.id ?? '1'
-      navigate(`/cursos/${id}/modulo/${nextModule.id}/clase/${first}`)
-    } else {
-      setCurrentCourse(null)
-      navigate(`/cursos/${id}/examen-final`)
-    }
   }
 
   if (!course || !module || !currentClass) {
@@ -71,104 +62,13 @@ export default function ClassPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="container mx-auto flex-grow p-4 flex flex-col items-center space-y-4">
-        <nav className="text-sm flex items-center gap-2 self-start">
-          <button
-            onClick={() => navigate(-1)}
-            aria-label="Volver"
-            className="flex items-center gap-1 p-1"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-4 h-4"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-            </svg>
-          </button>
-          <Link to="/cursos" className="text-blue-600 underline">Cursos</Link>
-          <span>/</span>
-          <Link to={`/cursos/${course.id}`} className="text-blue-600 underline">
-            {course.title}
-          </Link>
-          <span>/</span>
-          <span>Módulo {module.id}</span>
-          <span>/ Clase {currentClass.id}</span>
-        </nav>
-        <h1 className="text-2xl font-bold text-center">
-          {module.title} - {currentClass.title}
-        </h1>
-        <p className="text-center">{module.description}</p>
-        <p className="text-center text-sm">{module.intro}</p>
-        <ul className="space-y-2 w-full max-w-[600px]">
-          {classes.map(c => (
-            <li
-              key={c.id}
-              className="border p-3 flex justify-between items-center"
-            >
-              <span>{c.title}</span>
-              {completedClasses.includes(c.id) ? (
-                <span className="text-green-600 text-sm">Completado</span>
-              ) : c.id === classId ? (
-                <span className="text-blue-600 text-sm">En esta clase</span>
-              ) : (
-                <Link
-                  to={`/cursos/${id}/modulo/${moduleId}/clase/${c.id}`}
-                  className="text-blue-600 underline text-sm"
-                >
-                  Ir a la clase
-                </Link>
-              )}
-            </li>
-          ))}
-        </ul>
-        <div className="border p-4 rounded shadow w-full max-w-[600px] h-[400px] flex items-center justify-center bg-gray-200">
-          Mostrar contenido de la clase
-        </div>
-        {isLogged ? (
-          <Button onClick={handleComplete} disabled={isCompleted} className="mx-auto">
-            {isCompleted ? 'Completada' : nextClass ? 'Marcar y continuar' : 'Marcar completada'}
-          </Button>
-        ) : (
-          <Button onClick={() => navigate('/login')}>Inicia sesión para continuar</Button>
-        )}
-        <div className="flex justify-between w-full max-w-[600px]">
-          {prevClass ? (
-            <Link
-              to={`/cursos/${id}/modulo/${moduleId}/clase/${prevClass.id}`}
-              className="text-blue-600 underline"
-            >
-              ← Clase {prevClass.id}
-            </Link>
-          ) : (
-            <span />
-          )}
-          {nextClass ? (
-            <Link
-              to={`/cursos/${id}/modulo/${moduleId}/clase/${nextClass.id}`}
-              className="text-blue-600 underline"
-            >
-              Clase {nextClass.id} →
-            </Link>
-          ) : (
-            <span />
-          )}
-        </div>
-        <hr className="my-4" />
-        <div className="flex justify-center gap-4 w-full">
-          {prevModule && (
+      <main className="container mx-auto flex-grow p-4 flex flex-col lg:flex-row gap-6">
+        <section className="flex-grow space-y-4">
+          <nav className="text-sm flex items-center gap-2">
             <button
-              onClick={() =>
-                navigate(
-                  `/cursos/${id}/modulo/${prevModule.id}/clase/${
-                    prevModule.classes?.[0]?.id ?? '1'
-                  }`,
-                )
-              }
-              className="flex items-center gap-2 border border-black px-4 py-4 w-64"
+              onClick={() => navigate(-1)}
+              aria-label="Volver"
+              className="flex items-center gap-1 p-1"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -180,34 +80,140 @@ export default function ClassPage() {
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
               </svg>
-              <span className="text-sm">Módulo {prevModule.id} - {prevModule.title}</span>
             </button>
+            <Link to="/cursos" className="text-blue-600 underline">Cursos</Link>
+            <span>/</span>
+            <Link to={`/cursos/${course.id}`} className="text-blue-600 underline">
+              {course.title}
+            </Link>
+            <span>/</span>
+            <span>Módulo {module.id}</span>
+            <span>/ Clase {currentClass.id}</span>
+          </nav>
+          <video
+            src={module.videoUrl}
+            controls
+            className="w-full max-h-80 bg-black"
+          />
+          <h1 className="text-2xl font-bold">{currentClass.title}</h1>
+          <p>{module.description}</p>
+          {isLogged ? (
+            <Button onClick={handleComplete} disabled={isCompleted} className="w-full max-w-xs">
+              {isCompleted ? 'Completada' : 'Marcar la lección como completa'}
+            </Button>
+          ) : (
+            <Button onClick={() => navigate('/login')}>Inicia sesión para continuar</Button>
           )}
-          {nextModule && (
-            <button
-              onClick={() =>
-                navigate(
-                  `/cursos/${id}/modulo/${nextModule.id}/clase/${
-                    nextModule.classes?.[0]?.id ?? '1'
-                  }`,
-                )
-              }
-              className="flex items-center gap-2 border border-black px-4 py-4 w-64"
-            >
-              <span className="text-sm">Módulo {nextModule.id} - {nextModule.title}</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-4 h-4"
+          <div className="flex justify-between">
+            {prevClass ? (
+              <Link
+                to={`/cursos/${id}/modulo/${moduleId}/clase/${prevClass.id}`}
+                className="text-blue-600 underline"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-              </svg>
-            </button>
-          )}
-        </div>
+                ← Clase {prevClass.id}
+              </Link>
+            ) : (
+              <span />
+            )}
+            {nextClass ? (
+              <Link
+                to={`/cursos/${id}/modulo/${moduleId}/clase/${nextClass.id}`}
+                className="text-blue-600 underline"
+              >
+                Clase {nextClass.id} →
+              </Link>
+            ) : (
+              <span />
+            )}
+          </div>
+          <hr className="my-4" />
+          <div className="flex justify-center gap-4">
+            {prevModule && (
+              <button
+                onClick={() =>
+                  navigate(
+                    `/cursos/${id}/modulo/${prevModule.id}/clase/${
+                      prevModule.classes?.[0]?.id ?? '1'
+                    }`,
+                  )
+                }
+                className="flex items-center gap-2 border border-black px-4 py-4 w-64"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-4 h-4"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+                <span className="text-sm">Módulo {prevModule.id} - {prevModule.title}</span>
+              </button>
+            )}
+            {nextModule && (
+              <button
+                onClick={() =>
+                  navigate(
+                    `/cursos/${id}/modulo/${nextModule.id}/clase/${
+                      nextModule.classes?.[0]?.id ?? '1'
+                    }`,
+                  )
+                }
+                className="flex items-center gap-2 border border-black px-4 py-4 w-64"
+              >
+                <span className="text-sm">Módulo {nextModule.id} - {nextModule.title}</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-4 h-4"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+              </button>
+            )}
+          </div>
+        </section>
+        <aside className="lg:w-64 lg:sticky lg:top-24 lg:self-start space-y-2">
+          <h2 className="text-lg font-semibold">Índice</h2>
+          <ul className="space-y-2">
+            {course.modules.map(m => {
+              const open = m.id === moduleId
+              const moduleClasses = m.classes ?? []
+              const doneClasses = progress?.classProgress[m.id] ?? []
+              return (
+                <li key={m.id} className="border rounded">
+                  <details open={open}>
+                    <summary className="cursor-pointer p-2 bg-gray-100 font-medium">
+                      Módulo {m.id}: {m.title}
+                    </summary>
+                    <ul className="pl-4 py-2 space-y-1">
+                      {moduleClasses.map(c => {
+                        const done = doneClasses.includes(c.id)
+                        const current = m.id === moduleId && c.id === classId
+                        return (
+                          <li key={c.id}>
+                            <Link
+                              to={`/cursos/${id}/modulo/${m.id}/clase/${c.id}`}
+                              className={`flex justify-between items-center ${current ? 'font-semibold text-blue-600' : ''}`}
+                            >
+                              <span className={`${done ? 'line-through' : ''}`}>{c.title}</span>
+                              {done && <span className="text-green-600 text-xs">✓</span>}
+                            </Link>
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  </details>
+                </li>
+              )
+            })}
+          </ul>
+        </aside>
       </main>
       <Footer />
     </div>
