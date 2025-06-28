@@ -7,6 +7,7 @@ import {
   PlayCircleIcon,
   DocumentIcon,
   DocumentTextIcon,
+  LockClosedIcon,
 } from '@heroicons/react/24/solid'
 import { courses } from '../data/courses'
 import type { ClassInfo } from '../data/courses'
@@ -35,10 +36,29 @@ export default function ClassPage() {
     })) as ClassInfo[])
   const index = classes.findIndex(c => c.id === classId)
   const currentClass = classes[index]
-  const prevClass = index > 0 ? classes[index - 1] : null
-  const nextClass = index >= 0 && index < classes.length - 1 ? classes[index + 1] : null
+
+  const allClasses = course
+    ? course.modules.flatMap(m =>
+        (m.classes ?? [{ id: '1', title: 'Clase 1', content: ['video'] }]).map(c => ({
+          moduleId: m.id,
+          info: c,
+        }))
+      )
+    : []
+  const allIndex = allClasses.findIndex(
+    c => c.moduleId === moduleId && c.info.id === classId,
+  )
+  const prevItem = allIndex > 0 ? allClasses[allIndex - 1] : null
+  const nextItem = allIndex >= 0 && allIndex < allClasses.length - 1 ? allClasses[allIndex + 1] : null
+  const prevClass = prevItem?.info ?? null
+  const prevModuleId = prevItem?.moduleId ?? null
+  const nextClass = nextItem?.info ?? null
+  const nextModuleId = nextItem?.moduleId ?? null
+
   const completedClasses = progress?.classProgress[moduleId ?? ''] ?? []
   const isCompleted = completedClasses.includes(classId ?? '')
+  const prevDone = !prevItem || (progress?.classProgress[prevItem.moduleId]?.includes(prevItem.info.id) ?? false)
+  const canAccess = !isLogged || prevDone
 
   useEffect(() => {
     if (id) setCurrentCourse(id)
@@ -85,117 +105,28 @@ export default function ClassPage() {
             </Link>
             <span>/ Módulo {module.id} / Clase {currentClass.id}</span>
           </nav>
-          {isLogged ? (
-            isCompleted ? (
-              <p className="text-sm">
-                Ya has marcado como completada esta clase. Pero puedes volver a
-                ver el contenido cuando quieras.
-              </p>
+          <div className="flex justify-center">
+            {isLogged ? (
+              isCompleted ? (
+                <p className="text-sm text-center max-w-md">
+                  Ya has marcado como completada esta clase. Pero puedes volver a
+                  ver el contenido cuando quieras.
+                </p>
+              ) : (
+                <Button onClick={handleComplete} className="w-full max-w-xs">
+                  Marcar lección como completa
+                </Button>
+              )
             ) : (
-              <Button onClick={handleComplete} className="w-full max-w-xs">
-                Marcar lección como completa
-              </Button>
-            )
-          ) : (
-            <Button onClick={() => navigate('/login')}>Inicia sesión para continuar</Button>
-          )}
-          <hr className="my-4" />
-          <div className="flex justify-center gap-4">
-            {prevClass && (
-              <button
-                onClick={() =>
-                  navigate(`/cursos/${id}/modulo/${moduleId}/clase/${prevClass.id}`)
-                }
-                className="flex items-center gap-2 border border-black px-4 py-4 w-64"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-4 h-4"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                </svg>
-                <span className="text-sm">Clase {prevClass.id} - {prevClass.title}</span>
-              </button>
-            )}
-            {nextClass && (
-              <button
-                onClick={() =>
-                  navigate(`/cursos/${id}/modulo/${moduleId}/clase/${nextClass.id}`)
-                }
-                className="flex items-center gap-2 border border-black px-4 py-4 w-64"
-              >
-                <span className="text-sm">Clase {nextClass.id} - {nextClass.title}</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-4 h-4"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-              </button>
+              <Button onClick={() => navigate('/login')}>Inicia sesión para continuar</Button>
             )}
           </div>
-          <h2 className="text-xl font-bold">Material de la clase</h2>
-          <ul className="space-y-2">
-            {currentClass.content.map(type => {
-              const Icon =
-                type === 'video'
-                  ? PlayCircleIcon
-                  : type === 'document'
-                  ? DocumentIcon
-                  : DocumentTextIcon
-              const label =
-                type === 'video'
-                  ? `Video · ${currentClass.duration ?? '---'}`
-                  : type === 'document'
-                  ? 'Documento descargable'
-                  : 'Lectura'
-              return (
-                <li key={type} className="flex items-center gap-2">
-                  <Icon className="w-5 h-5" />
-                  <span>{label}</span>
-                </li>
-              )
-            })}
-          </ul>
-          <h1 className="text-2xl font-bold">{currentClass.title}</h1>
-          {currentClass.description.map((p: string, i: number) => (
-            <p key={i}>{p}</p>
-          ))}
-          <video
-            src={module.videoUrl}
-            controls
-            className="w-full max-h-80 bg-black"
-          />
-          {isLogged ? (
-            isCompleted ? (
-              <p className="text-sm">
-                Ya has marcado como completada esta clase. Pero puedes volver a
-                ver el contenido cuando quieras.
-              </p>
-            ) : (
-              <Button onClick={handleComplete} className="w-full max-w-xs">
-                Marcar lección como completa
-              </Button>
-            )
-          ) : (
-            <Button onClick={() => navigate('/login')}>Inicia sesión para continuar</Button>
-          )}
           <hr className="my-4" />
           <div className="flex justify-center gap-4">
-            {prevClass && (
-              <button
-                onClick={() =>
-                  navigate(`/cursos/${id}/modulo/${moduleId}/clase/${prevClass.id}`)
-                }
-                className="flex items-center gap-2 border border-black px-4 py-4 w-64"
+            {prevClass && prevModuleId && (
+              <Button
+                onClick={() => navigate(`/cursos/${id}/modulo/${prevModuleId}/clase/${prevClass.id}`)}
+                className="flex items-center gap-2"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -207,17 +138,15 @@ export default function ClassPage() {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                 </svg>
-                <span className="text-sm">Clase {prevClass.id} - {prevClass.title}</span>
-              </button>
+                <span>Clase anterior</span>
+              </Button>
             )}
-            {nextClass && (
-              <button
-                onClick={() =>
-                  navigate(`/cursos/${id}/modulo/${moduleId}/clase/${nextClass.id}`)
-                }
-                className="flex items-center gap-2 border border-black px-4 py-4 w-64"
+            {canAccess && nextClass && nextModuleId && (
+              <Button
+                onClick={() => navigate(`/cursos/${id}/modulo/${nextModuleId}/clase/${nextClass.id}`)}
+                className="flex items-center gap-2"
               >
-                <span className="text-sm">Clase {nextClass.id} - {nextClass.title}</span>
+                <span>Próxima clase</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -228,7 +157,104 @@ export default function ClassPage() {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                 </svg>
-              </button>
+              </Button>
+            )}
+          </div>
+          {!canAccess ? (
+            <div className="flex flex-col items-center justify-center gap-4 py-10">
+              <LockClosedIcon className="w-10 h-10" />
+              <p className="text-center max-w-md">
+                No puedes ver el material de esta clase antes de terminar la clase anterior.
+              </p>
+            </div>
+          ) : (
+            <>
+              <h2 className="text-xl font-bold">Material de la clase</h2>
+              <ul className="space-y-2">
+                {currentClass.content.map(type => {
+                  const Icon =
+                    type === 'video'
+                      ? PlayCircleIcon
+                      : type === 'document'
+                      ? DocumentIcon
+                      : DocumentTextIcon
+                  const label =
+                    type === 'video'
+                      ? `Video · ${currentClass.duration ?? '---'}`
+                      : type === 'document'
+                      ? 'Documento descargable'
+                      : 'Lectura'
+                  return (
+                    <li key={type} className="flex items-center gap-2">
+                      <Icon className="w-5 h-5" />
+                      <span>{label}</span>
+                    </li>
+                  )
+                })}
+              </ul>
+              <h1 className="text-2xl font-bold">{currentClass.title}</h1>
+              {currentClass.description.map((p: string, i: number) => (
+                <p key={i}>{p}</p>
+              ))}
+              <video
+                src={module.videoUrl}
+                controls
+                className="w-full max-h-80 bg-black"
+              />
+              <div className="flex justify-center">
+                {isLogged ? (
+                  isCompleted ? (
+                    <p className="text-sm text-center max-w-md">
+                      Ya has marcado como completada esta clase. Pero puedes volver a ver el contenido cuando quieras.
+                    </p>
+                  ) : (
+                    <Button onClick={handleComplete} className="w-full max-w-xs">
+                      Marcar lección como completa
+                    </Button>
+                  )
+                ) : (
+                  <Button onClick={() => navigate('/login')}>Inicia sesión para continuar</Button>
+                )}
+              </div>
+            </>
+          )}
+          <hr className="my-4" />
+          <div className="flex justify-center gap-4">
+            {prevClass && prevModuleId && (
+              <Button
+                onClick={() => navigate(`/cursos/${id}/modulo/${prevModuleId}/clase/${prevClass.id}`)}
+                className="flex items-center gap-2"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-4 h-4"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+                <span>Clase anterior</span>
+              </Button>
+            )}
+            {canAccess && nextClass && nextModuleId && (
+              <Button
+                onClick={() => navigate(`/cursos/${id}/modulo/${nextModuleId}/clase/${nextClass.id}`)}
+                className="flex items-center gap-2"
+              >
+                <span>Próxima clase</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-4 h-4"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+              </Button>
             )}
           </div>
         </section>
@@ -249,15 +275,25 @@ export default function ClassPage() {
                       {moduleClasses.map(c => {
                         const done = doneClasses.includes(c.id)
                         const current = m.id === moduleId && c.id === classId
+                        const idx = allClasses.findIndex(a => a.moduleId === m.id && a.info.id === c.id)
+                        const prev = idx > 0 ? allClasses[idx - 1] : null
+                        const unlocked = !isLogged || !prev || (progress?.classProgress[prev.moduleId]?.includes(prev.info.id) ?? false)
                         return (
                           <li key={c.id}>
-                            <Link
-                              to={`/cursos/${id}/modulo/${m.id}/clase/${c.id}`}
-                              className={`flex justify-between items-center ${current ? 'font-semibold text-blue-600' : ''}`}
-                            >
-                              <span className={`${done ? 'line-through' : ''}`}>{c.title}</span>
-                              {done && <span className="text-green-600 text-xs">✓</span>}
-                            </Link>
+                            {unlocked ? (
+                              <Link
+                                to={`/cursos/${id}/modulo/${m.id}/clase/${c.id}`}
+                                className={`flex justify-between items-center ${current ? 'font-semibold text-blue-600' : ''}`}
+                              >
+                                <span className={`${done ? 'line-through' : ''}`}>{c.title}</span>
+                                {done && <span className="text-green-600 text-xs">✓</span>}
+                              </Link>
+                            ) : (
+                              <span className="flex items-center gap-1 text-gray-400">
+                                {c.title}
+                                <LockClosedIcon className="w-3 h-3" />
+                              </span>
+                            )}
                           </li>
                         )
                       })}
