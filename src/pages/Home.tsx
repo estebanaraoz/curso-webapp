@@ -82,7 +82,7 @@ export default function Home() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
               </svg>
             </button>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 flex-grow">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 flex-grow">
               {pageCourses.map(course => (
                 <CourseCard
                   key={course.id}
