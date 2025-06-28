@@ -8,6 +8,7 @@ import {
   DocumentIcon,
   DocumentTextIcon,
   LockClosedIcon,
+  AcademicCapIcon,
 } from '@heroicons/react/24/solid'
 import { courses } from '../data/courses'
 import type { ClassInfo } from '../data/courses'
@@ -118,7 +119,7 @@ export default function ClassPage() {
                   className="w-full max-w-xs"
                   disabled={!canAccess}
                 >
-                  Marcar lección como completa
+                  Marcar clase como completa
                 </Button>
               )
             ) : (
@@ -208,7 +209,12 @@ export default function ClassPage() {
                   )
                 })}
               </ul>
-              <h1 className="text-2xl font-bold">{currentClass.title}</h1>
+              <h1 className="text-2xl font-bold flex items-center gap-2">
+                <AcademicCapIcon className="w-6 h-6" />
+                <span>
+                  Módulo {module.id} · Clase {currentClass.id}: {currentClass.title}
+                </span>
+              </h1>
               {currentClass.description.map((p: string, i: number) => (
                 <p key={i}>{p}</p>
               ))}
@@ -229,7 +235,7 @@ export default function ClassPage() {
                       className="w-full max-w-xs"
                       disabled={!canAccess}
                     >
-                      Marcar lección como completa
+                      Marcar clase como completa
                     </Button>
                   )
                 ) : (
@@ -294,13 +300,21 @@ export default function ClassPage() {
           <h2 className="text-lg font-semibold">Índice</h2>
           <ul className="space-y-2">
             {course.modules.map(m => {
-              const open = m.id === moduleId
+              const num = parseInt(m.id)
               const moduleClasses = m.classes ?? []
               const doneClasses = progress?.classProgress[m.id] ?? []
+              const completed = progress ? progress.completed >= num : false
+              const locked = isLogged && progress ? progress.completed < num - 1 : false
+              const open = m.id === moduleId && !locked
               return (
-                <li key={m.id} className="border rounded">
-                  <details open={open}>
-                    <summary className="cursor-pointer p-2 bg-gray-100 font-medium">
+                <li
+                  key={m.id}
+                  className={`border rounded ${completed ? 'bg-green-50' : locked ? 'bg-gray-100' : ''}`}
+                >
+                  <details open={open} className={locked ? 'pointer-events-none opacity-70' : ''}>
+                    <summary
+                      className={`cursor-pointer p-2 font-medium ${completed ? 'bg-green-100' : 'bg-gray-100'} ${locked ? 'text-gray-400' : ''}`}
+                    >
                       Módulo {m.id}: {m.title}
                     </summary>
                     <ul className="pl-4 py-2 space-y-1">
