@@ -96,18 +96,14 @@ export default function CourseInscription() {
               Confirmar inscripción
             </Button>
             {!isLogged && (
-              <>
-                <p className="text-red-600 text-sm">
+              <div className="flex flex-col items-center gap-2 p-4 rounded border border-red-300 bg-red-100">
+                <p className="text-red-700 font-semibold">
                   Debes iniciar sesión para poder inscribirte en este curso.
                 </p>
-                <Button
-                  type="button"
-                  variant="secondary"
-                  onClick={() => navigate('/login')}
-                >
+                <Button type="button" onClick={() => navigate('/login')}>
                   Iniciar sesión
                 </Button>
-              </>
+              </div>
             )}
           </form>
         ) : (
