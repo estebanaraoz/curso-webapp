@@ -150,17 +150,36 @@ export default function CourseDetail() {
                   />
                 </div>
                 {progress.completed >= progress.total &&
-                  (progress.grade === undefined || progress.grade < 40) &&
+                  progress.grade === undefined &&
                   attemptsRemaining > 0 ? (
+                    <>
+                      <p className="text-sm font-semibold">
+                        Ya has visto todas las clases de este curso. Por favor,
+                        contestá la evaluación para que un instructor pueda calificar tu rendimiento.
+                      </p>
+                      <Button
+                        className="bg-purple-600 text-white hover:bg-purple-700"
+                        onClick={() => navigate(`/cursos/${id}/examen-final`)}
+                      >
+                        Contestar evaluación
+                      </Button>
+                    </>
+                  ) : progress.completed >= progress.total &&
+                    progress.grade !== undefined &&
+                    progress.grade < 40 &&
+                    attemptsRemaining > 0 ? (
                     <>
                       <p className="text-sm text-red-600">
                         Debes volver a contestar la evaluación.
                         {!canRetakeExam &&
-                          ' Debes esperar 24 horas antes de volver a responder esta evaluación.'}
-                        {' '}Te quedan {attemptsRemaining} intentos.
+                          ' Debes esperar 24 horas antes de volver a responder esta evaluación.'}{' '}
+                        Te quedan {attemptsRemaining} intentos.
                       </p>
                       {canRetakeExam ? (
-                        <Button onClick={() => navigate(`/cursos/${id}/examen-final`)}>
+                        <Button
+                          className="bg-purple-600 text-white hover:bg-purple-700"
+                          onClick={() => navigate(`/cursos/${id}/examen-final`)}
+                        >
                           Contestar evaluación
                         </Button>
                       ) : (
