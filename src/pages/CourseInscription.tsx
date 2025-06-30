@@ -84,10 +84,31 @@ export default function CourseInscription() {
               </ul>
             </section>
             <label className="flex items-center gap-2">
-              <input type="checkbox" checked={agree} onChange={e => setAgree(e.target.checked)} />
+              <input
+                type="checkbox"
+                checked={agree}
+                onChange={e => setAgree(e.target.checked)}
+                disabled={!isLogged}
+              />
               Acepto las normas del curso
             </label>
-            <Button type="submit" disabled={!agree}>Confirmar inscripción</Button>
+            <Button type="submit" disabled={!agree || !isLogged}>
+              Confirmar inscripción
+            </Button>
+            {!isLogged && (
+              <>
+                <p className="text-red-600 text-sm">
+                  Debes iniciar sesión para poder inscribirte en este curso.
+                </p>
+                <Button
+                  type="button"
+                  variant="secondary"
+                  onClick={() => navigate('/login')}
+                >
+                  Iniciar sesión
+                </Button>
+              </>
+            )}
           </form>
         ) : (
           <p>Curso no encontrado</p>
