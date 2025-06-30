@@ -2,6 +2,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Button from '../components/Button'
 import { PieChart, Pie, Cell, Tooltip } from 'recharts'
+import { SiSpringboot, SiGithub, SiMysql } from 'react-icons/si'
 import { useAuthStore } from '../store/auth'
 import { Link, useNavigate } from 'react-router-dom'
 import { courses } from '../data/courses'
@@ -88,15 +89,27 @@ export default function Dashboard() {
                             className="border p-4 rounded shadow flex flex-col items-center gap-2 w-[300px] overflow-hidden"
                           >
                             {info?.image && (
-                              <img
-                                src={info.image}
-                                alt={course.title}
-                                className="w-full h-48 object-cover rounded"
-                              />
+                              <div className="relative w-full">
+                                <img
+                                  src={info.image}
+                                  alt={course.title}
+                                  className="w-full h-48 object-cover rounded"
+                                />
+                                <span
+                                  className={`absolute top-2 left-2 px-2 py-1 rounded text-xs font-bold text-white ${info.free ? 'bg-green-600' : 'bg-orange-600'}`}
+                                >
+                                  {info.free ? 'GRATIS' : 'PAGO'}
+                                </span>
+                              </div>
                             )}
                             <h2 className="text-xl font-semibold text-center w-full">
                               {course.title}
                             </h2>
+                            <div className="flex gap-2 text-2xl text-gray-700">
+                              <SiSpringboot />
+                              <SiGithub />
+                              <SiMysql />
+                            </div>
                             <PieChart width={120} height={120}>
                               <Pie
                                 data={data}
@@ -146,15 +159,27 @@ export default function Dashboard() {
                             className="border p-4 rounded shadow flex flex-col gap-2 w-[300px]"
                           >
                             {info?.image && (
-                              <img
-                                src={info.image}
-                                alt={course.title}
-                                className="w-full h-48 object-cover rounded"
-                              />
+                              <div className="relative w-full">
+                                <img
+                                  src={info.image}
+                                  alt={course.title}
+                                  className="w-full h-48 object-cover rounded"
+                                />
+                                <span
+                                  className={`absolute top-2 left-2 px-2 py-1 rounded text-xs font-bold text-white ${info.free ? 'bg-green-600' : 'bg-orange-600'}`}
+                                >
+                                  {info.free ? 'GRATIS' : 'PAGO'}
+                                </span>
+                              </div>
                             )}
                             <h2 className="text-xl font-semibold text-center w-full">
                               {course.title}
                             </h2>
+                            <div className="flex gap-2 text-2xl text-gray-700">
+                              <SiSpringboot />
+                              <SiGithub />
+                              <SiMysql />
+                            </div>
                             <p className="text-center font-semibold">
                               Nota:{' '}
                               {course.grade !== undefined
@@ -192,13 +217,25 @@ export default function Dashboard() {
               </>
             )}
           </div>
-          <div className="border border-black rounded p-4">
+          <div className="border border-black rounded p-4 space-y-2">
             <h1 className="text-3xl font-bold">Mis calificaciones</h1>
             <p>Próximamente</p>
+            <Button>Ver todos mis calificaciones</Button>
           </div>
-          <div className="border border-black rounded p-4">
+          <div className="border border-black rounded p-4 space-y-2">
             <h1 className="text-3xl font-bold">Mis certificados</h1>
             <p>Próximamente</p>
+            <Button>Ver todos mis certificados</Button>
+          </div>
+          <div className="border border-black rounded p-4 space-y-2">
+            <h1 className="text-3xl font-bold">Mis logros</h1>
+            <p>Próximamente</p>
+            <Button>Ver todos mis logros</Button>
+          </div>
+          <div className="border border-black rounded p-4 space-y-2">
+            <h1 className="text-3xl font-bold">Mis membresías</h1>
+            <p>Próximamente</p>
+            <Button>Ver todos mis membresías</Button>
           </div>
         </section>
       </main>
