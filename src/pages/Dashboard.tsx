@@ -25,9 +25,9 @@ export default function Dashboard() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="container mx-auto flex-grow flex p-4 gap-4">
-        <aside className="w-56">
-          <ul className="space-y-2">
+      <main className="container mx-auto flex-grow flex flex-col md:flex-row p-4 gap-4 items-center md:items-start">
+        <aside className="w-full md:w-56 flex justify-center md:block mb-4 md:mb-0">
+          <ul className="space-y-2 text-center md:text-left">
             <li>
               <span className="block px-4 py-2 font-semibold">Menú</span>
             </li>
@@ -64,8 +64,8 @@ export default function Dashboard() {
             </li>
           </ul>
         </aside>
-        <section className="flex-grow space-y-4">
-          <div className="border border-black rounded p-4 space-y-4">
+        <section className="flex-grow space-y-4 w-full">
+          <div className="border border-black rounded p-4 space-y-4 w-full">
             <h1 className="text-3xl font-bold">Mis cursos</h1>
             {enrolledCourses.length === 0 ? (
               <p>Todavía no te inscribiste a ningún curso.</p>
@@ -114,15 +114,13 @@ export default function Dashboard() {
               </>
             )}
           </div>
-          <div className="border border-black rounded p-4 space-y-2">
+          <div className="border border-black rounded p-4 space-y-2 w-full">
             <h1 className="text-3xl font-bold">Mis calificaciones</h1>
-            <p>Próximamente</p>
-            <Button>Ver todos mis calificaciones</Button>
+            <p>Aquí verás tus calificaciones</p>
           </div>
-          <div className="border border-black rounded p-4 space-y-2">
+          <div className="border border-black rounded p-4 space-y-2 w-full">
             <h1 className="text-3xl font-bold">Mis certificados</h1>
-            <p>Próximamente</p>
-            <Button>Ver todos mis certificados</Button>
+            <p>Aquí verás tus certificados</p>
           </div>
         </section>
       </main>
