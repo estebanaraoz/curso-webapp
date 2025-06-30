@@ -50,7 +50,7 @@ export default function Navbar() {
             <div className="relative">
               <button
                 onClick={toggleDropdown}
-                className="flex items-center gap-1 px-2 py-1 rounded bg-gray-300 text-gray-800 hover:bg-gray-400"
+                className="flex items-center gap-1 px-2 py-1 rounded bg-sky-500 text-white hover:bg-sky-600"
               >
                 <UserCircleIcon className="w-5 h-5" />
                 <span className="hidden sm:inline text-sm">{name}</span>
@@ -69,7 +69,7 @@ export default function Navbar() {
                 <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-700 border rounded shadow flex flex-col z-10">
                   <Link
                     to="/dashboard"
-                    className="px-4 py-2 rounded bg-sky-500 text-white hover:bg-sky-600"
+                    className="text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
                     onClick={() => {
                       setOpen(false)
                       setDropdownOpen(false)
@@ -143,7 +143,7 @@ export default function Navbar() {
             <div className="relative w-full sm:w-auto">
               <button
                 onClick={toggleDropdown}
-                className="flex items-center gap-1 w-full sm:w-auto px-4 py-2 rounded bg-gray-300 text-gray-800 hover:bg-gray-400"
+                className="flex items-center gap-1 w-full sm:w-auto px-4 py-2 rounded bg-sky-500 text-white hover:bg-sky-600"
               >
                 <UserCircleIcon className="w-5 h-5" />
                 <span>{name}</span>
@@ -162,7 +162,7 @@ export default function Navbar() {
                 <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-700 border rounded shadow flex flex-col z-10">
                   <Link
                     to="/dashboard"
-                    className="px-4 py-2 rounded bg-sky-500 text-white hover:bg-sky-600"
+                    className="text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
                     onClick={() => {
                       setOpen(false)
                       setDropdownOpen(false)
