@@ -1,6 +1,5 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import Button from '../components/Button'
 import CourseCard from '../components/CourseCard'
 import { useAuthStore } from '../store/auth'
 import { Link, useNavigate } from 'react-router-dom'
