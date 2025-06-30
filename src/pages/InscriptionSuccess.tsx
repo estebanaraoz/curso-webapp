@@ -17,10 +17,10 @@ export default function InscriptionSuccess() {
         <h1 className="text-4xl font-bold">¡Te inscribiste al curso con éxito!</h1>
         <p className="text-xl">{courseName}</p>
         <div className="flex gap-4 mt-4">
-          <Button className="bg-green-600 hover:bg-green-700 text-white" onClick={() => navigate('/dashboard')}>
-            Ir al Dashboard
+          <Button className="bg-sky-500 hover:bg-sky-600 text-white" onClick={() => navigate('/dashboard')}>
+            Ir a mi cuenta
           </Button>
-          <Button className="bg-purple-600 hover:bg-purple-700 text-white" onClick={() => navigate('/cursos')}>
+          <Button className="bg-gray-500 hover:bg-gray-600 text-white" onClick={() => navigate('/cursos')}>
             Volver a Cursos
           </Button>
         </div>

@@ -69,7 +69,7 @@ export default function Navbar() {
                 <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-700 border rounded shadow flex flex-col z-10">
                   <Link
                     to="/dashboard"
-                    className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                    className="px-4 py-2 rounded bg-sky-500 text-white hover:bg-sky-600"
                     onClick={() => {
                       setOpen(false)
                       setDropdownOpen(false)
@@ -162,7 +162,7 @@ export default function Navbar() {
                 <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-700 border rounded shadow flex flex-col z-10">
                   <Link
                     to="/dashboard"
-                    className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                    className="px-4 py-2 rounded bg-sky-500 text-white hover:bg-sky-600"
                     onClick={() => {
                       setOpen(false)
                       setDropdownOpen(false)
