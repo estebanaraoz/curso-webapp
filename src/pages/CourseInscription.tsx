@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -14,14 +14,14 @@ export default function CourseInscription() {
   const enrolledCourses = useAuthStore(state => state.enrolledCourses)
   const [agree, setAgree] = useState(false)
 
-  useEffect(() => {
-    if (!isLogged) navigate('/login')
-  }, [isLogged, navigate])
-
   const course = courses.find(c => c.id === id)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    if (!isLogged) {
+      navigate('/login')
+      return
+    }
     if (enrolledCourses.some(c => c.id === id)) {
       alert('Ya estás inscrito en este curso')
       navigate('/dashboard')
