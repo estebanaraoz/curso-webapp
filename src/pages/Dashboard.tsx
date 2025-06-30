@@ -2,19 +2,15 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Button from '../components/Button'
 import { PieChart, Pie, Cell, Tooltip } from 'recharts'
-import { SiSpringboot, SiGithub, SiMysql } from 'react-icons/si'
 import { useAuthStore } from '../store/auth'
 import { Link, useNavigate } from 'react-router-dom'
 import { courses } from '../data/courses'
 import getNextClassLink from '../utils/getNextClassLink'
-import { useState } from 'react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
 
 export default function Dashboard() {
   const enrolledCourses = useAuthStore(state => state.enrolledCourses)
   const logout = useAuthStore(state => state.logout)
   const navigate = useNavigate()
-  const [menuOpen, setMenuOpen] = useState(false)
   const currentCourses = enrolledCourses.filter(c => c.completed < c.total)
   const finishedCourses = enrolledCourses.filter(c => c.completed >= c.total)
 
@@ -26,65 +22,39 @@ export default function Dashboard() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="container mx-auto flex-grow flex p-4 gap-4 relative">
-        {menuOpen && (
-          <div
-            className="fixed inset-0 bg-black/50 md:hidden"
-            onClick={() => setMenuOpen(false)}
-          />
-        )}
-        <button
-          onClick={() => setMenuOpen(true)}
-          aria-label="Abrir menú"
-          className="md:hidden p-2"
-        >
-          <Bars3Icon className="w-6 h-6" />
-        </button>
-        <aside
-          className={`w-56 bg-white dark:bg-gray-800 p-4 z-20 transform transition-transform fixed inset-y-0 left-0 md:static md:translate-x-0 ${menuOpen ? 'translate-x-0' : '-translate-x-full'} md:block`}
-        >
-          <button
-            onClick={() => setMenuOpen(false)}
-            aria-label="Cerrar menú"
-            className="md:hidden mb-2"
-          >
-            <XMarkIcon className="w-6 h-6" />
-          </button>
+      <main className="container mx-auto flex-grow flex p-4 gap-4">
+        <aside className="w-56">
           <ul className="space-y-2">
             <li>
               <span className="block px-4 py-2 font-semibold">Menú</span>
             </li>
             <li>
-              <button className="w-full text-left px-4 py-2 rounded hover:bg-gray-100" onClick={() => setMenuOpen(false)}>
+              <button className="w-full text-left px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">
                 Mis cursos
               </button>
             </li>
             <li>
-              <button className="w-full text-left px-4 py-2 rounded hover:bg-gray-100" onClick={() => setMenuOpen(false)}>
+              <button className="w-full text-left px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">
                 Mis calificaciones
               </button>
             </li>
             <li>
-              <button className="w-full text-left px-4 py-2 rounded hover:bg-gray-100" onClick={() => setMenuOpen(false)}>
+              <button className="w-full text-left px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">
                 Mis certificados
               </button>
             </li>
             <li>
               <Link
                 to="/perfil"
-                className="block w-full text-left px-4 py-2 rounded hover:bg-gray-100"
-                onClick={() => setMenuOpen(false)}
+                className="block w-full text-left px-4 py-2 rounded bg-gray-200 hover:bg-gray-300"
               >
                 Editar cuenta
               </Link>
             </li>
             <li>
               <button
-                onClick={() => {
-                  setMenuOpen(false)
-                  handleLogout()
-                }}
-                className="w-full text-left px-4 py-2 rounded hover:bg-gray-100"
+                onClick={handleLogout}
+                className="w-full text-left px-4 py-2 rounded bg-gray-200 hover:bg-gray-300"
               >
                 Cerrar sesión
               </button>
@@ -124,21 +94,11 @@ export default function Dashboard() {
                                   alt={course.title}
                                   className="w-full h-48 object-cover rounded"
                                 />
-                                <span
-                                  className={`absolute top-2 left-2 px-2 py-1 rounded text-xs font-bold text-white ${info.free ? 'bg-green-600' : 'bg-orange-600'}`}
-                                >
-                                  {info.free ? 'GRATIS' : 'PAGO'}
-                                </span>
                               </div>
                             )}
                             <h2 className="text-xl font-semibold text-center w-full">
                               {course.title}
                             </h2>
-                            <div className="flex gap-2 text-2xl text-gray-700">
-                              <SiSpringboot />
-                              <SiGithub />
-                              <SiMysql />
-                            </div>
                             <PieChart width={120} height={120}>
                               <Pie
                                 data={data}
@@ -194,21 +154,11 @@ export default function Dashboard() {
                                   alt={course.title}
                                   className="w-full h-48 object-cover rounded"
                                 />
-                                <span
-                                  className={`absolute top-2 left-2 px-2 py-1 rounded text-xs font-bold text-white ${info.free ? 'bg-green-600' : 'bg-orange-600'}`}
-                                >
-                                  {info.free ? 'GRATIS' : 'PAGO'}
-                                </span>
                               </div>
                             )}
                             <h2 className="text-xl font-semibold text-center w-full">
                               {course.title}
                             </h2>
-                            <div className="flex gap-2 text-2xl text-gray-700">
-                              <SiSpringboot />
-                              <SiGithub />
-                              <SiMysql />
-                            </div>
                             <p className="text-center font-semibold">
                               Nota:{' '}
                               {course.grade !== undefined
