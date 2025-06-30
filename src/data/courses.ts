@@ -40,6 +40,7 @@ const defaultClasses: ClassInfo[] = [
   },
 ]
 
+
 export interface CourseInfo {
   id: string
   title: string
@@ -788,3 +789,22 @@ Medirás resultados con herramientas analíticas y adaptarás las acciones segú
     ],
   },
 ]
+
+function createDefaultClasses(moduleTitle: string): ClassInfo[] {
+  return [
+    { ...defaultClasses[0], title: `Introducci\u00f3n a ${moduleTitle}` },
+    {
+      ...defaultClasses[1],
+      title: `Material complementario de ${moduleTitle}`,
+    },
+    { ...defaultClasses[2], title: `Evaluaci\u00f3n de ${moduleTitle}` },
+  ]
+}
+
+for (const course of courses) {
+  for (const module of course.modules) {
+    if (module.classes === defaultClasses) {
+      module.classes = createDefaultClasses(module.title)
+    }
+  }
+}
