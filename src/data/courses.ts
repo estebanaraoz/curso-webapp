@@ -18,6 +18,28 @@ export interface ModuleInfo {
   classes?: ClassInfo[]
 }
 
+const defaultClasses: ClassInfo[] = [
+  {
+    id: '1',
+    title: 'Clase 1',
+    content: ['video'],
+    duration: '0m',
+    description: ['Contenido no disponible'],
+  },
+  {
+    id: '2',
+    title: 'Clase 2',
+    content: ['text'],
+    description: ['Contenido no disponible'],
+  },
+  {
+    id: '3',
+    title: 'Clase 3',
+    content: ['questions'],
+    description: ['Contenido no disponible'],
+  },
+]
+
 export interface CourseInfo {
   id: string
   title: string
@@ -95,6 +117,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Verás las etiquetas fundamentales para definir encabezados, listas y secciones, creando bases sólidas de tus documentos.',
         videoUrl: '#',
+        classes: defaultClasses,
         
       },
       {
@@ -105,6 +128,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Aprenderás a cambiar colores, tipografías y disposiciones para lograr sitios atractivos y consistentes en todos los dispositivos.',
         videoUrl: '#',
+        classes: defaultClasses,
         
       },
       {
@@ -115,6 +139,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Descubrirás técnicas con flexbox y media queries que adaptan el contenido a cualquier tamaño de pantalla.',
         videoUrl: '#',
+        classes: defaultClasses,
         
       },
       {
@@ -125,6 +150,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Combinaremos todos los temas anteriores para crear desde cero una página completa lista para publicar.',
         videoUrl: '#',
+        classes: defaultClasses,
         
       },
     ],
@@ -153,6 +179,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Repasaremos operadores, palabras clave y cómo almacenar datos para sentar las bases de la programación en JavaScript.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '2',
@@ -161,6 +188,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Analizarás cómo encapsular lógica y manipular colecciones de propiedades para estructurar mejor tu código en aplicaciones reales.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '3',
@@ -170,6 +198,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Interactuarás con los elementos de la página y reaccionarás a las acciones del usuario con manejadores eficientes.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '4',
@@ -179,6 +208,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Comprenderás promesas, async y await para coordinar procesos que toman tiempo sin bloquear la interfaz.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '5',
@@ -188,6 +218,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Aprenderás a realizar peticiones HTTP y procesar respuestas para integrar datos externos de manera sencilla.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '6',
@@ -196,6 +227,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Elaborarás una pequeña aplicación que combine variables, funciones y peticiones para afianzar tus conocimientos recientes.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
     ],
   },
@@ -221,6 +253,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Exploraremos la estructura de los componentes y cómo usar JSX para describir interfaces de forma declarativa.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '2',
@@ -229,6 +262,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Aprenderás a manejar datos dinámicos y pasar información entre componentes para que la interfaz reaccione a los cambios.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '3',
@@ -237,6 +271,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Conocerás useState y useEffect para administrar estado y efectos laterales dentro de tus componentes de manera sencilla.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '4',
@@ -245,6 +280,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Verás cómo configurar rutas y enlaces para navegar entre páginas sin recargar la aplicación de forma fluida.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '5',
@@ -253,6 +289,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Construirás paso a paso una pequeña aplicación que combine todos los conceptos aprendidos en el curso.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
     ],
   },
@@ -278,6 +315,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Revisaremos qué es Node y por qué permite ejecutar JavaScript fuera del navegador para crear servidores rápidos.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '2',
@@ -286,6 +324,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Aprenderás a dividir tu código en módulos y a gestionar dependencias utilizando el sistema de paquetes NPM.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '3',
@@ -294,6 +333,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Construiremos un servicio REST básico con Express definiendo rutas, controladores y respuestas en formato JSON.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '4',
@@ -302,6 +342,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Verás cómo conectar tu servidor a una base de datos para almacenar y consultar información de manera persistente.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '5',
@@ -310,6 +351,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Aprenderás a preparar tu aplicación para producción y subirla a un servicio en la nube de forma segura.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
     ],
   },
@@ -335,6 +377,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Descubrirás cómo declarar tipos estrictos e interfaces para mejorar la legibilidad y seguridad de tu código.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '2',
@@ -343,6 +386,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Aprenderás a utilizar parámetros de tipo que permiten crear componentes y funciones reutilizables con seguridad total.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '3',
@@ -351,6 +395,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Exploraremos cómo los decoradores agregan comportamiento y almacenan metadata valiosa en clases y métodos de tus aplicaciones.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '4',
@@ -359,6 +404,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Configurarás el compilador y comprenderás opciones que facilitan trabajar con proyectos grandes y monorepos en entornos profesionales.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '5',
@@ -367,6 +413,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Verás las mejores prácticas para aprovechar bibliotecas de JavaScript manteniendo la consistencia del tipado en tus proyectos.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '6',
@@ -375,6 +422,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Implementarás soluciones comunes aplicando patrones que ayudan a organizar y escalar aplicaciones TypeScript de manera eficiente.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '7',
@@ -383,6 +431,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Desarrollarás una aplicación completa usando técnicas avanzadas y buenas prácticas aprendidas durante el curso para consolidar conocimientos.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
     ],
   },
@@ -408,6 +457,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Aprenderás a instalar MongoDB y diseñar esquemas para almacenar documentos de manera flexible y eficiente.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '2',
@@ -416,6 +466,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Construirás un backend manejando rutas y controladores para exponer datos desde la base de forma organizada.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '3',
@@ -424,6 +475,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Integrarás la interfaz creada en React con tu servidor, consumiendo la API y mostrando los datos.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '4',
@@ -432,6 +484,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Implementarás registro de usuarios y sesiones seguras para proteger las rutas sensibles de tu aplicación.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '5',
@@ -440,6 +493,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Configurarás pruebas de extremo a extremo asegurando que cada parte del stack funcione como se espera.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '6',
@@ -448,6 +502,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Aprenderás a automatizar compilación y publicación utilizando pipelines para entregar nuevas versiones rápidamente en producción.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '7',
@@ -456,6 +511,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Unirás todos los componentes creando una aplicación completa que demuestre tus habilidades fullstack adquiridas en el curso.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
     ],
   },
@@ -481,6 +537,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Analizaremos los distintos tipos de pruebas y cuándo aplicarlos para asegurar la calidad de tu proyecto.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '2',
@@ -489,6 +546,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Verás configuración avanzada y utilidades de Jest para escribir pruebas claras y mantenibles en cualquier entorno.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '3',
@@ -497,6 +555,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Aprenderás a testear componentes usando Testing Library y a simular interacciones de los usuarios en aplicaciones reales.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '4',
@@ -505,6 +564,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Utilizarás mocks para aislar dependencias y medirás la cobertura para mejorar tus pruebas de forma continua.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '5',
@@ -513,6 +573,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Configurarás pipelines que ejecutan las pruebas automáticamente en cada actualización del repositorio garantizando calidad constante.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
     ],
   },
@@ -538,6 +599,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Instalarás las herramientas necesarias y crearás un proyecto inicial para comenzar a desarrollar aplicaciones móviles.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '2',
@@ -546,6 +608,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Explorarás componentes básicos y aplicarás estilos flexibles utilizando el sistema de diseño de React Native.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '3',
@@ -554,6 +617,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Configurarás pilas de navegación y pestañas para moverte entre pantallas de forma intuitiva en tus proyectos.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '4',
@@ -562,6 +626,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Aprenderás a realizar peticiones y manejar respuestas para mostrar datos actualizados en la aplicación móvil.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '5',
@@ -570,6 +635,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Revisaremos los pasos necesarios para compilar y publicar tu app en Google Play y App Store.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
       {
         id: '6',
@@ -578,6 +644,7 @@ export const courses: CourseInfo[] = [
         intro:
           'Desarrollarás una aplicación completa aplicando todo lo aprendido durante el curso de React Native para demostrar tus habilidades.',
         videoUrl: '#',
+        classes: defaultClasses,
       },
     ],
   },
@@ -597,11 +664,11 @@ Explorarás las colecciones, las funciones y los módulos integrados para automa
     },
     maxAttempts: 3,
     modules: [
-      { id: '1', title: 'Introducción a Python', description: 'Comienza a utilizar el intérprete y escribe tus primeros scripts.', intro: 'Instalarás Python y ejecutarás tus primeras instrucciones desde la terminal.', videoUrl: '#' },
-      { id: '2', title: 'Estructuras de control', description: 'Aprende condicionales y bucles para manejar el flujo de tus programas.', intro: 'Verás cómo tomar decisiones y repetir acciones de forma eficiente.', videoUrl: '#' },
-      { id: '3', title: 'Funciones y módulos', description: 'Organiza tu código y reutiliza lógica mediante funciones y módulos.', intro: 'Definirás funciones propias y descubrirás módulos de la biblioteca estándar.', videoUrl: '#' },
-      { id: '4', title: 'Manejo de archivos', description: 'Lee y escribe datos en el sistema de archivos con Python.', intro: 'Practicarás operaciones de entrada y salida para almacenar información.', videoUrl: '#' },
-      { id: '5', title: 'Proyecto final', description: 'Integra todo lo aprendido creando un script de utilidad práctica.', intro: 'Planificarás y desarrollarás un pequeño proyecto que resuelva una tarea real.', videoUrl: '#' },
+      { id: '1', title: 'Introducción a Python', description: 'Comienza a utilizar el intérprete y escribe tus primeros scripts.', intro: 'Instalarás Python y ejecutarás tus primeras instrucciones desde la terminal.', videoUrl: '#', classes: defaultClasses },
+      { id: '2', title: 'Estructuras de control', description: 'Aprende condicionales y bucles para manejar el flujo de tus programas.', intro: 'Verás cómo tomar decisiones y repetir acciones de forma eficiente.', videoUrl: '#', classes: defaultClasses },
+      { id: '3', title: 'Funciones y módulos', description: 'Organiza tu código y reutiliza lógica mediante funciones y módulos.', intro: 'Definirás funciones propias y descubrirás módulos de la biblioteca estándar.', videoUrl: '#', classes: defaultClasses },
+      { id: '4', title: 'Manejo de archivos', description: 'Lee y escribe datos en el sistema de archivos con Python.', intro: 'Practicarás operaciones de entrada y salida para almacenar información.', videoUrl: '#', classes: defaultClasses },
+      { id: '5', title: 'Proyecto final', description: 'Integra todo lo aprendido creando un script de utilidad práctica.', intro: 'Planificarás y desarrollarás un pequeño proyecto que resuelva una tarea real.', videoUrl: '#', classes: defaultClasses },
     ],
   },
   {
@@ -620,11 +687,11 @@ A través de ejercicios de observación y prototipado crearás flujos de navegac
     },
     maxAttempts: 2,
     modules: [
-      { id: '1', title: 'Investigación de usuarios', description: 'Aprende métodos para conocer las necesidades de quienes usarán tu producto.', intro: 'Realizarás entrevistas y encuestas para obtener información valiosa.', videoUrl: '#' },
-      { id: '2', title: 'Arquitectura de información', description: 'Organiza contenidos y define la navegación de tu interfaz.', intro: 'Usarás técnicas de card sorting para estructurar menús y secciones.', videoUrl: '#' },
-      { id: '3', title: 'Prototipado', description: 'Crea maquetas que te permitan validar ideas rápidamente.', intro: 'Trabajarás con herramientas digitales para diseñar bocetos interactivos.', videoUrl: '#' },
-      { id: '4', title: 'Pruebas de usabilidad', description: 'Evalúa tus prototipos con personas reales y obtén retroalimentación.', intro: 'Aprenderás a planificar y ejecutar test moderados y no moderados.', videoUrl: '#' },
-      { id: '5', title: 'Iteración y entrega', description: 'Refina tu diseño a partir de los resultados obtenidos.', intro: 'Documentarás hallazgos y prepararás la presentación final del proyecto.', videoUrl: '#' },
+      { id: '1', title: 'Investigación de usuarios', description: 'Aprende métodos para conocer las necesidades de quienes usarán tu producto.', intro: 'Realizarás entrevistas y encuestas para obtener información valiosa.', videoUrl: '#', classes: defaultClasses },
+      { id: '2', title: 'Arquitectura de información', description: 'Organiza contenidos y define la navegación de tu interfaz.', intro: 'Usarás técnicas de card sorting para estructurar menús y secciones.', videoUrl: '#', classes: defaultClasses },
+      { id: '3', title: 'Prototipado', description: 'Crea maquetas que te permitan validar ideas rápidamente.', intro: 'Trabajarás con herramientas digitales para diseñar bocetos interactivos.', videoUrl: '#', classes: defaultClasses },
+      { id: '4', title: 'Pruebas de usabilidad', description: 'Evalúa tus prototipos con personas reales y obtén retroalimentación.', intro: 'Aprenderás a planificar y ejecutar test moderados y no moderados.', videoUrl: '#', classes: defaultClasses },
+      { id: '5', title: 'Iteración y entrega', description: 'Refina tu diseño a partir de los resultados obtenidos.', intro: 'Documentarás hallazgos y prepararás la presentación final del proyecto.', videoUrl: '#', classes: defaultClasses },
     ],
   },
   {
@@ -644,11 +711,11 @@ Implementarás pipelines automáticos que prueban y publican aplicaciones en con
     },
     maxAttempts: 4,
     modules: [
-      { id: '1', title: 'Imágenes y contenedores', description: 'Crea y gestiona contenedores portables para tus aplicaciones.', intro: 'Construirás imágenes desde Dockerfile y lanzarás servicios aislados.', videoUrl: '#' },
-      { id: '2', title: 'Docker Compose', description: 'Orquesta múltiples servicios de manera sencilla.', intro: 'Definirás pilas de contenedores para entornos de desarrollo reproducibles.', videoUrl: '#' },
-      { id: '3', title: 'Integración continua', description: 'Automatiza pruebas y despliegues con pipelines.', intro: 'Configurarás workflows que ejecuten tareas en cada commit.', videoUrl: '#' },
-      { id: '4', title: 'Monitoreo', description: 'Supervisa el estado de tus servicios en producción.', intro: 'Implementarás métricas y registros para detectar problemas a tiempo.', videoUrl: '#' },
-      { id: '5', title: 'Despliegue final', description: 'Publica tu proyecto usando las mejores prácticas de DevOps.', intro: 'Prepararás tu aplicación para escalar en la nube de forma segura.', videoUrl: '#' },
+      { id: '1', title: 'Imágenes y contenedores', description: 'Crea y gestiona contenedores portables para tus aplicaciones.', intro: 'Construirás imágenes desde Dockerfile y lanzarás servicios aislados.', videoUrl: '#', classes: defaultClasses },
+      { id: '2', title: 'Docker Compose', description: 'Orquesta múltiples servicios de manera sencilla.', intro: 'Definirás pilas de contenedores para entornos de desarrollo reproducibles.', videoUrl: '#', classes: defaultClasses },
+      { id: '3', title: 'Integración continua', description: 'Automatiza pruebas y despliegues con pipelines.', intro: 'Configurarás workflows que ejecuten tareas en cada commit.', videoUrl: '#', classes: defaultClasses },
+      { id: '4', title: 'Monitoreo', description: 'Supervisa el estado de tus servicios en producción.', intro: 'Implementarás métricas y registros para detectar problemas a tiempo.', videoUrl: '#', classes: defaultClasses },
+      { id: '5', title: 'Despliegue final', description: 'Publica tu proyecto usando las mejores prácticas de DevOps.', intro: 'Prepararás tu aplicación para escalar en la nube de forma segura.', videoUrl: '#', classes: defaultClasses },
     ],
   },
   {
@@ -667,11 +734,11 @@ Trabajarás con hojas de cálculo, lenguajes de consulta y visualización intera
     },
     maxAttempts: 3,
     modules: [
-      { id: '1', title: 'Estadística básica', description: 'Repasa medidas descriptivas y probabilidad para interpretar datos.', intro: 'Aplicarás conceptos de media, mediana y desviación estándar en ejemplos prácticos.', videoUrl: '#' },
-      { id: '2', title: 'Limpieza de datos', description: 'Prepara y transforma conjuntos de datos para su análisis.', intro: 'Utilizarás herramientas para detectar valores atípicos y formatear información.', videoUrl: '#' },
-      { id: '3', title: 'Consultas y filtros', description: 'Extrae información relevante utilizando lenguajes de consulta.', intro: 'Practicarás SQL básico para obtener métricas de grandes volúmenes.', videoUrl: '#' },
-      { id: '4', title: 'Visualización', description: 'Comunica hallazgos mediante gráficos claros y efectivos.', intro: 'Crearás dashboards con librerías de visualización interactivas.', videoUrl: '#' },
-      { id: '5', title: 'Informe final', description: 'Presenta tus conclusiones y recomendaciones de negocio.', intro: 'Redactarás un reporte profesional con los resultados obtenidos.', videoUrl: '#' },
+      { id: '1', title: 'Estadística básica', description: 'Repasa medidas descriptivas y probabilidad para interpretar datos.', intro: 'Aplicarás conceptos de media, mediana y desviación estándar en ejemplos prácticos.', videoUrl: '#', classes: defaultClasses },
+      { id: '2', title: 'Limpieza de datos', description: 'Prepara y transforma conjuntos de datos para su análisis.', intro: 'Utilizarás herramientas para detectar valores atípicos y formatear información.', videoUrl: '#', classes: defaultClasses },
+      { id: '3', title: 'Consultas y filtros', description: 'Extrae información relevante utilizando lenguajes de consulta.', intro: 'Practicarás SQL básico para obtener métricas de grandes volúmenes.', videoUrl: '#', classes: defaultClasses },
+      { id: '4', title: 'Visualización', description: 'Comunica hallazgos mediante gráficos claros y efectivos.', intro: 'Crearás dashboards con librerías de visualización interactivas.', videoUrl: '#', classes: defaultClasses },
+      { id: '5', title: 'Informe final', description: 'Presenta tus conclusiones y recomendaciones de negocio.', intro: 'Redactarás un reporte profesional con los resultados obtenidos.', videoUrl: '#', classes: defaultClasses },
     ],
   },
   {
@@ -690,11 +757,11 @@ Mediante ejercicios guiados configurarás herramientas de escaneo y simulaciones
     },
     maxAttempts: 4,
     modules: [
-      { id: '1', title: 'Criptografía', description: 'Estudia métodos de encriptación y su aplicación práctica.', intro: 'Analizarás algoritmos que protegen la confidencialidad de la información.', videoUrl: '#' },
-      { id: '2', title: 'Vulnerabilidades comunes', description: 'Identifica fallos frecuentes y cómo mitigarlos.', intro: 'Revisarás ejemplos de ataques para comprender sus consecuencias.', videoUrl: '#' },
-      { id: '3', title: 'Herramientas de análisis', description: 'Utiliza escáneres y utilidades para evaluar la seguridad.', intro: 'Aprenderás a usar software de auditoría en entornos controlados.', videoUrl: '#' },
-      { id: '4', title: 'Respuesta a incidentes', description: 'Diseña planes de acción ante posibles ataques.', intro: 'Definirás procedimientos para actuar rápidamente y minimizar daños.', videoUrl: '#' },
-      { id: '5', title: 'Buenas prácticas', description: 'Establece políticas y controles para un entorno seguro.', intro: 'Implementarás estrategias de seguridad continuas en tus proyectos.', videoUrl: '#' },
+      { id: '1', title: 'Criptografía', description: 'Estudia métodos de encriptación y su aplicación práctica.', intro: 'Analizarás algoritmos que protegen la confidencialidad de la información.', videoUrl: '#', classes: defaultClasses },
+      { id: '2', title: 'Vulnerabilidades comunes', description: 'Identifica fallos frecuentes y cómo mitigarlos.', intro: 'Revisarás ejemplos de ataques para comprender sus consecuencias.', videoUrl: '#', classes: defaultClasses },
+      { id: '3', title: 'Herramientas de análisis', description: 'Utiliza escáneres y utilidades para evaluar la seguridad.', intro: 'Aprenderás a usar software de auditoría en entornos controlados.', videoUrl: '#', classes: defaultClasses },
+      { id: '4', title: 'Respuesta a incidentes', description: 'Diseña planes de acción ante posibles ataques.', intro: 'Definirás procedimientos para actuar rápidamente y minimizar daños.', videoUrl: '#', classes: defaultClasses },
+      { id: '5', title: 'Buenas prácticas', description: 'Establece políticas y controles para un entorno seguro.', intro: 'Implementarás estrategias de seguridad continuas en tus proyectos.', videoUrl: '#', classes: defaultClasses },
     ],
   },
   {
@@ -713,11 +780,11 @@ Medirás resultados con herramientas analíticas y adaptarás las acciones segú
     },
     maxAttempts: 3,
     modules: [
-      { id: '1', title: 'SEO', description: 'Optimiza tu presencia en buscadores para aumentar visitas.', intro: 'Aplicarás técnicas de posicionamiento orgánico y análisis de palabras clave.', videoUrl: '#' },
-      { id: '2', title: 'Publicidad en línea', description: 'Gestiona campañas pagas en distintas plataformas.', intro: 'Configurarás anuncios segmentados y medirás su rendimiento.', videoUrl: '#' },
-      { id: '3', title: 'Redes sociales', description: 'Planifica estrategias para interactuar con tu audiencia.', intro: 'Aprenderás a seleccionar contenidos y programar publicaciones efectivas.', videoUrl: '#' },
-      { id: '4', title: 'Email marketing', description: 'Crea envíos que conviertan y fidelicen clientes.', intro: 'Diseñarás plantillas atractivas y segmentarás tus listas de contactos.', videoUrl: '#' },
-      { id: '5', title: 'Análisis de resultados', description: 'Evalúa el impacto de tus acciones y ajusta tu estrategia.', intro: 'Interpretarás métricas clave para mejorar continuamente tus campañas.', videoUrl: '#' },
+      { id: '1', title: 'SEO', description: 'Optimiza tu presencia en buscadores para aumentar visitas.', intro: 'Aplicarás técnicas de posicionamiento orgánico y análisis de palabras clave.', videoUrl: '#', classes: defaultClasses },
+      { id: '2', title: 'Publicidad en línea', description: 'Gestiona campañas pagas en distintas plataformas.', intro: 'Configurarás anuncios segmentados y medirás su rendimiento.', videoUrl: '#', classes: defaultClasses },
+      { id: '3', title: 'Redes sociales', description: 'Planifica estrategias para interactuar con tu audiencia.', intro: 'Aprenderás a seleccionar contenidos y programar publicaciones efectivas.', videoUrl: '#', classes: defaultClasses },
+      { id: '4', title: 'Email marketing', description: 'Crea envíos que conviertan y fidelicen clientes.', intro: 'Diseñarás plantillas atractivas y segmentarás tus listas de contactos.', videoUrl: '#', classes: defaultClasses },
+      { id: '5', title: 'Análisis de resultados', description: 'Evalúa el impacto de tus acciones y ajusta tu estrategia.', intro: 'Interpretarás métricas clave para mejorar continuamente tus campañas.', videoUrl: '#', classes: defaultClasses },
     ],
   },
 ]
