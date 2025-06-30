@@ -110,11 +110,11 @@ export default function CourseCard({
         </Link>
         {!isLogged ? (
           <Link
-            to="/login"
+            to={`/cursos/${id}/inscripcion`}
           className="flex w-full sm:flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-orange-500 text-white hover:bg-orange-600 min-w-[8rem] uppercase"
         >
           <PlayCircleIcon className="h-6 w-6" />
-          <span>Inicia sesión para inscribirte</span>
+          <span>Comenzar</span>
           </Link>
         ) : (
           <Link

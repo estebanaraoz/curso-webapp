@@ -19,7 +19,6 @@ import getNextClassLink from '../utils/getNextClassLink'
 export default function CourseDetail() {
   const { id } = useParams()
   const navigate = useNavigate()
-  const isLogged = useAuthStore(state => state.isLogged)
   const enrolledCourses = useAuthStore(state => state.enrolledCourses)
   const course = courses.find(c => c.id === id)
   const instructor = course ? getInstructorByCourse(course.id) : null
@@ -95,15 +94,9 @@ export default function CourseDetail() {
                 </p>
                 <Button
                   className="bg-orange-500 hover:bg-orange-600 text-white"
-                  onClick={() => {
-                    if (!isLogged) {
-                      navigate('/login')
-                    } else {
-                      navigate(`/cursos/${id}/inscripcion`)
-                    }
-                  }}
+                  onClick={() => navigate(`/cursos/${id}/inscripcion`)}
                 >
-                  {isLogged ? 'Comenzar' : 'Inicia sesión para inscribirte'}
+                  Comenzar
                 </Button>
               </section>
             )}
