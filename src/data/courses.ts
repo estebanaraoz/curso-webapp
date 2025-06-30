@@ -49,6 +49,7 @@ export interface CourseInfo {
   image: string
   duration: string
   level: string
+  free: boolean
   /** Recommended duration in weeks */
   weeks: number
   prerequisites?: {
@@ -69,6 +70,7 @@ export const courses: CourseInfo[] = [
     image: '/images/course-html-css.png',
     duration: '4 semanas',
     level: 'Principiante',
+    free: true,
     weeks: 4,
     prerequisites: {
       other: ['Ser mayor de 18 años', 'DNI argentino']
@@ -165,6 +167,7 @@ export const courses: CourseInfo[] = [
     image: '/images/course-js.png',
     duration: '5 semanas',
     level: 'Principiante',
+    free: true,
     weeks: 5,
     prerequisites: {
       courses: ['html-css'],
@@ -240,6 +243,7 @@ export const courses: CourseInfo[] = [
     image: '/images/course-react.png',
     duration: '8 semanas',
     level: 'Intermedio',
+    free: false,
     weeks: 8,
     prerequisites: {
       courses: ['javascript-basico'],
@@ -302,6 +306,7 @@ export const courses: CourseInfo[] = [
     image: '/images/course-node.png',
     duration: '8 semanas',
     level: 'Intermedio',
+    free: false,
     weeks: 8,
     prerequisites: {
       courses: ['javascript-basico'],
@@ -364,6 +369,7 @@ export const courses: CourseInfo[] = [
     image: '/images/course-ts.png',
     duration: '12 semanas',
     level: 'Avanzado',
+    free: false,
     weeks: 12,
     prerequisites: {
       courses: ['javascript-basico'],
@@ -444,6 +450,7 @@ export const courses: CourseInfo[] = [
     image: '/images/course-mern.png',
     duration: '12 semanas',
     level: 'Avanzado',
+    free: false,
     weeks: 12,
     prerequisites: {
       courses: ['react-principiantes', 'node-express'],
@@ -524,6 +531,7 @@ export const courses: CourseInfo[] = [
     image: '/images/course-jest.png',
     duration: '8 semanas',
     level: 'Intermedio',
+    free: true,
     weeks: 8,
     prerequisites: {
       courses: ['javascript-basico'],
@@ -586,6 +594,7 @@ export const courses: CourseInfo[] = [
     image: '/images/course-react-native.png',
     duration: '8 semanas',
     level: 'Intermedio',
+    free: false,
     weeks: 8,
     prerequisites: {
       courses: ['react-principiantes'],
@@ -659,6 +668,7 @@ Explorarás las colecciones, las funciones y los módulos integrados para automa
     image: '/images/course-python.png',
     duration: '6 semanas',
     level: 'Principiante',
+    free: true,
     weeks: 6,
     prerequisites: {
       other: ['Ser mayor de 18 años', 'DNI argentino'],
@@ -682,6 +692,7 @@ A través de ejercicios de observación y prototipado crearás flujos de navegac
     image: '/images/course-ux.png',
     duration: '5 semanas',
     level: 'Principiante',
+    free: false,
     weeks: 5,
     prerequisites: {
       other: ['Ser mayor de 18 años', 'DNI argentino'],
@@ -705,6 +716,7 @@ Implementarás pipelines automáticos que prueban y publican aplicaciones en con
     image: '/images/course-docker.png',
     duration: '6 semanas',
     level: 'Intermedio',
+    free: false,
     weeks: 6,
     prerequisites: {
       courses: ['javascript-basico'],
@@ -729,6 +741,7 @@ Trabajarás con hojas de cálculo, lenguajes de consulta y visualización intera
     image: '/images/course-data.png',
     duration: '7 semanas',
     level: 'Intermedio',
+    free: false,
     weeks: 7,
     prerequisites: {
       other: ['Ser mayor de 18 años', 'DNI argentino'],
@@ -752,6 +765,7 @@ Mediante ejercicios guiados configurarás herramientas de escaneo y simulaciones
     image: '/images/course-security.png',
     duration: '8 semanas',
     level: 'Avanzado',
+    free: false,
     weeks: 8,
     prerequisites: {
       other: ['Ser mayor de 18 años', 'DNI argentino'],
@@ -775,6 +789,7 @@ Medirás resultados con herramientas analíticas y adaptarás las acciones segú
     image: '/images/course-marketing.png',
     duration: '5 semanas',
     level: 'Intermedio',
+    free: true,
     weeks: 5,
     prerequisites: {
       other: ['Ser mayor de 18 años', 'DNI argentino'],
