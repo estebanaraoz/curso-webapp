@@ -69,19 +69,45 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative h-screen w-screen flex flex-col items-center justify-center">
-          <h2 className="text-2xl font-bold mb-2">Cursos Destacados</h2>
-          <div className="absolute top-2 left-1/2 -translate-x-1/2 flex gap-4 z-10">
-            <button ref={prevRef} className="p-2 bg-white/80 rounded" aria-label="Anterior">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-              </svg>
-            </button>
-            <button ref={nextRef} className="p-2 bg-white/80 rounded" aria-label="Siguiente">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-              </svg>
-            </button>
+        <section className="py-12">
+          <div className="container mx-auto flex items-center justify-between mb-4">
+            <h2 className="text-2xl font-bold">Cursos Destacados</h2>
+            <div className="flex gap-4">
+              <button
+                ref={prevRef}
+                className="flex items-center gap-1 px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                aria-label="Anterior"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-5 h-5"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+                <span className="hidden sm:inline">Anterior</span>
+              </button>
+              <button
+                ref={nextRef}
+                className="flex items-center gap-1 px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                aria-label="Siguiente"
+              >
+                <span className="hidden sm:inline">Siguiente</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-5 h-5"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+              </button>
+            </div>
           </div>
           <Swiper
             modules={[Navigation]}
@@ -93,7 +119,9 @@ export default function Home() {
                 swiper.params.navigation!.nextEl = nextRef.current
               }
             }}
-            className="w-full h-full"
+            slidesPerView={1}
+            breakpoints={{ 768: { slidesPerView: 3 } }}
+            className="w-full max-w-5xl mx-auto"
           >
             {featuredCourses.map(course => (
               <SwiperSlide key={course.id} className="flex items-center justify-center">
