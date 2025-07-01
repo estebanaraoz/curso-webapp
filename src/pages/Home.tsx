@@ -4,7 +4,8 @@ import Button from '../components/Button'
 import CourseCard from '../components/CourseCard'
 import { courses } from '../data/courses'
 import { Link } from 'react-router-dom'
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
+import type { Swiper as SwiperType } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper/modules'
 import 'swiper/css'
@@ -15,6 +16,18 @@ export default function Home() {
   const featuredCourses = courses.slice(0, 5)
   const prevRef = useRef<HTMLButtonElement>(null)
   const nextRef = useRef<HTMLButtonElement>(null)
+  const swiperRef = useRef<SwiperType | null>(null)
+
+  useEffect(() => {
+    const swiper = swiperRef.current
+    if (!swiper || !prevRef.current || !nextRef.current) return
+    if (swiper.params.navigation && typeof swiper.params.navigation !== 'boolean') {
+      swiper.params.navigation.prevEl = prevRef.current
+      swiper.params.navigation.nextEl = nextRef.current
+    }
+    swiper.navigation.init()
+    swiper.navigation.update()
+  }, [])
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -70,15 +83,12 @@ export default function Home() {
         </section>
 
         <section className="py-12">
+          <h2 className="text-2xl font-bold text-center mb-4">Cursos Destacados</h2>
           <Swiper
             modules={[Navigation]}
             loop
-            navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
-            onBeforeInit={swiper => {
-              if (typeof swiper.params.navigation !== 'boolean') {
-                swiper.params.navigation!.prevEl = prevRef.current
-                swiper.params.navigation!.nextEl = nextRef.current
-              }
+            onSwiper={swiper => {
+              swiperRef.current = swiper
             }}
             slidesPerView={1}
             spaceBetween={10}
@@ -137,7 +147,6 @@ export default function Home() {
                 </svg>
               </button>
             </div>
-            <h2 className="text-2xl font-bold text-center">Cursos Destacados</h2>
           </div>
         </section>
 
