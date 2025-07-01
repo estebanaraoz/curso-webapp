@@ -1,6 +1,6 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import CourseCard from '../components/CourseCard'
+import CourseSlider from '../components/CourseSlider'
 import { useAuthStore } from '../store/auth'
 import { Link, useNavigate } from 'react-router-dom'
 import { courses } from '../data/courses'
@@ -73,41 +73,35 @@ export default function Dashboard() {
                 {currentCourses.length > 0 && (
                   <div className="space-y-2">
                     <h2 className="text-2xl font-semibold">Actualmente cursando</h2>
-                    <div className="grid gap-4 justify-center [grid-template-columns:repeat(auto-fit,_minmax(300px,_1fr))]">
-                      {currentCourses.map(course => {
+                    <CourseSlider
+                      courses={currentCourses.map(course => {
                         const info = courses.find(c => c.id === course.id)
-                        return (
-                          <CourseCard
-                            key={course.id}
-                            id={course.id}
-                            title={info?.title ?? course.title}
-                            weeks={info?.weeks ?? 0}
-                            level={info?.level ?? ''}
-                            image={info?.image ?? ''}
-                          />
-                        )
+                        return {
+                          id: course.id,
+                          title: info?.title ?? course.title,
+                          weeks: info?.weeks ?? 0,
+                          level: info?.level ?? '',
+                          image: info?.image ?? '',
+                        }
                       })}
-                    </div>
+                    />
                   </div>
                 )}
                 {finishedCourses.length > 0 && (
                   <div className="space-y-2">
                     <h2 className="text-2xl font-semibold">Cursos finalizados</h2>
-                    <div className="grid gap-4 justify-center [grid-template-columns:repeat(auto-fit,_minmax(300px,_1fr))]">
-                      {finishedCourses.map(course => {
+                    <CourseSlider
+                      courses={finishedCourses.map(course => {
                         const info = courses.find(c => c.id === course.id)
-                        return (
-                          <CourseCard
-                            key={course.id}
-                            id={course.id}
-                            title={info?.title ?? course.title}
-                            weeks={info?.weeks ?? 0}
-                            level={info?.level ?? ''}
-                            image={info?.image ?? ''}
-                          />
-                        )
+                        return {
+                          id: course.id,
+                          title: info?.title ?? course.title,
+                          weeks: info?.weeks ?? 0,
+                          level: info?.level ?? '',
+                          image: info?.image ?? '',
+                        }
                       })}
-                    </div>
+                    />
                   </div>
                 )}
               </>
