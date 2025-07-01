@@ -70,45 +70,6 @@ export default function Home() {
         </section>
 
         <section className="py-12">
-          <div className="container mx-auto flex items-center justify-between mb-4">
-            <h2 className="text-2xl font-bold">Cursos Destacados</h2>
-            <div className="flex gap-4">
-              <button
-                ref={prevRef}
-                className="flex items-center gap-1 px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                aria-label="Anterior"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-5 h-5"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                </svg>
-                <span className="hidden sm:inline">Anterior</span>
-              </button>
-              <button
-                ref={nextRef}
-                className="flex items-center gap-1 px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                aria-label="Siguiente"
-              >
-                <span className="hidden sm:inline">Siguiente</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-5 h-5"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-              </button>
-            </div>
-          </div>
           <Swiper
             modules={[Navigation]}
             loop
@@ -120,7 +81,8 @@ export default function Home() {
               }
             }}
             slidesPerView={1}
-            breakpoints={{ 768: { slidesPerView: 3 } }}
+            spaceBetween={10}
+            breakpoints={{ 768: { slidesPerView: 3, spaceBetween: 10 } }}
             className="w-full max-w-5xl mx-auto"
           >
             {featuredCourses.map(course => (
@@ -138,6 +100,45 @@ export default function Home() {
               </SwiperSlide>
             ))}
           </Swiper>
+          <div className="container mx-auto flex flex-col items-center mt-6 space-y-4">
+            <div className="flex gap-4">
+              <button
+                ref={prevRef}
+                className="flex items-center gap-1 px-3 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400"
+                aria-label="Anterior"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-5 h-5"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+                <span className="hidden sm:inline">Anterior</span>
+              </button>
+              <button
+                ref={nextRef}
+                className="flex items-center gap-1 px-3 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400"
+                aria-label="Siguiente"
+              >
+                <span className="hidden sm:inline">Siguiente</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-5 h-5"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+              </button>
+            </div>
+            <h2 className="text-2xl font-bold text-center">Cursos Destacados</h2>
+          </div>
         </section>
 
         <section className="container mx-auto py-12 flex flex-col items-center gap-6">
