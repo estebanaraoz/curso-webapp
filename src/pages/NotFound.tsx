@@ -8,10 +8,26 @@ export default function NotFound() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="container mx-auto flex-grow flex flex-col items-center justify-center gap-4 p-4 text-center">
-        <h1 className="text-4xl font-bold">P\u00e1gina no encontrada</h1>
-        <p className="text-lg">La ruta que est\u00e1s buscando no existe.</p>
-        <Button onClick={() => navigate('/')}>Volver al inicio</Button>
+      <main className="container mx-auto flex-grow flex items-center justify-center p-4">
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
+          <div className="flex flex-col items-start text-left max-w-md">
+            <br />
+            <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent pb-2">
+              Error 404 - Página no encontrada
+            </h1>
+            <br />
+            <p className="text-lg mb-6">
+              Ups... Lo lamento, la ruta que estás buscando no existe.
+            </p>
+            <Button onClick={() => navigate('/Home')}>Volver al inicio</Button>
+          </div>
+
+          <img
+            src="/images/error404.png"
+            alt="falla en la página"
+            className="md:w-[400px] lg:w-[500px] object-contain"
+          />
+        </div>
       </main>
       <Footer />
     </div>
