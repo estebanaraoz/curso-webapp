@@ -32,17 +32,31 @@
       </div>
     </div>
   </nav>
-  <main class="flex-grow container mx-auto p-8">
-    <section class="max-w-md mx-auto bg-white dark:bg-gray-800 p-6 rounded shadow">
-      <h1 class="text-2xl font-bold mb-4 text-center">Crear cuenta</h1>
-      <form class="flex flex-col gap-4">
-        <input type="text" placeholder="Nombre completo" class="border rounded px-3 py-2 dark:bg-gray-700" />
-        <input type="email" placeholder="Correo electrónico" class="border rounded px-3 py-2 dark:bg-gray-700" />
-        <input type="password" placeholder="Contraseña" class="border rounded px-3 py-2 dark:bg-gray-700" />
-        <input type="password" placeholder="Confirmar contraseña" class="border rounded px-3 py-2 dark:bg-gray-700" />
+  <main class="flex-grow flex items-center justify-center p-4 bg-gray-50 dark:bg-gray-900">
+    <div class="bg-white rounded-2xl shadow-lg overflow-hidden grid w-full max-w-4xl lg:grid-cols-2">
+      <img src="../public/images/auth-illustration.png" alt="Ilustraci&oacute;n educativa" class="w-full h-48 object-cover lg:h-full" />
+      <form class="p-8 space-y-4 flex flex-col justify-center" role="form">
+        <h1 class="text-2xl font-bold text-gray-800">Crear cuenta</h1>
+        <div class="flex flex-col">
+          <label for="name" class="text-gray-700">Nombre completo</label>
+          <input id="name" type="text" placeholder="Tu nombre" class="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 placeholder-gray-400" required />
+        </div>
+        <div class="flex flex-col">
+          <label for="email" class="text-gray-700">Correo electr&oacute;nico</label>
+          <input id="email" type="email" placeholder="tu@correo.com" class="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 placeholder-gray-400" required />
+        </div>
+        <div class="flex flex-col">
+          <label for="password" class="text-gray-700">Contrase&ntilde;a</label>
+          <input id="password" type="password" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;" class="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 placeholder-gray-400" required />
+        </div>
+        <div class="flex flex-col">
+          <label for="confirm" class="text-gray-700">Confirmar contrase&ntilde;a</label>
+          <input id="confirm" type="password" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;" class="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 placeholder-gray-400" required />
+        </div>
         <button type="submit" class="px-4 py-2 rounded bg-indigo-500 text-white hover:bg-indigo-600">Registrarme</button>
+        <p class="text-sm text-center text-gray-700">&iquest;Ya ten&eacute;s cuenta? <a href="login.html" class="text-blue-600 hover:underline">Iniciar sesi&oacute;n</a></p>
       </form>
-    </section>
+    </div>
   </main>
   <footer class="bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 text-sm">
     <div class="container mx-auto px-4 py-8 grid gap-8 md:grid-cols-4">
