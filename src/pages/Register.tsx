@@ -1,33 +1,9 @@
-import { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Button from '../components/Button'
-import { Link, useNavigate } from 'react-router-dom'
-import { useAuthStore } from '../store/auth'
+import { Link } from 'react-router-dom'
 
-const DEFAULT_USER = {
-  name: 'usuario',
-  email: 'usuario@cursos.com.ar',
-  password: 'usuario',
-}
-
-export default function Login() {
-  const navigate = useNavigate()
-  const login = useAuthStore(state => state.login)
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (email === DEFAULT_USER.email && password === DEFAULT_USER.password) {
-      login({ name: DEFAULT_USER.name, email: DEFAULT_USER.email })
-      navigate('/')
-    } else {
-      setError('Credenciales incorrectas')
-    }
-  }
-
+export default function Register() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -40,12 +16,20 @@ export default function Login() {
             alt="Ilustración educativa"
             className="w-full h-48 object-cover lg:h-full"
           />
-          <form
-            className="p-8 space-y-4 flex flex-col justify-center"
-            role="form"
-            onSubmit={handleSubmit}
-          >
-            <h1 className="text-2xl font-bold text-gray-800">Iniciar sesión</h1>
+          <form className="p-8 space-y-4 flex flex-col justify-center" role="form">
+            <h1 className="text-2xl font-bold text-gray-800">Crear cuenta</h1>
+            <div className="flex flex-col">
+              <label htmlFor="name" className="text-gray-700">
+                Nombre completo
+              </label>
+              <input
+                id="name"
+                type="text"
+                placeholder="Tu nombre"
+                className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 placeholder-gray-400"
+                required
+              />
+            </div>
             <div className="flex flex-col">
               <label htmlFor="email" className="text-gray-700">
                 Correo electrónico
@@ -56,8 +40,6 @@ export default function Login() {
                 placeholder="tu@correo.com"
                 className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 placeholder-gray-400"
                 required
-                value={email}
-                onChange={e => setEmail(e.target.value)}
               />
             </div>
             <div className="flex flex-col">
@@ -70,29 +52,25 @@ export default function Login() {
                 placeholder="••••••••"
                 className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 placeholder-gray-400"
                 required
-                value={password}
-                onChange={e => setPassword(e.target.value)}
               />
             </div>
-            <div className="flex items-center justify-between">
-              <label className="flex items-center gap-2">
-                <input type="checkbox" className="" />
-                <span className="text-gray-700">Recordarme</span>
+            <div className="flex flex-col">
+              <label htmlFor="confirm" className="text-gray-700">
+                Confirmar contraseña
               </label>
-              <a href="#" className="text-sm text-blue-600 hover:underline">
-                ¿Olvidaste tu contraseña?
-              </a>
+              <input
+                id="confirm"
+                type="password"
+                placeholder="••••••••"
+                className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 placeholder-gray-400"
+                required
+              />
             </div>
-            {error && (
-              <p className="text-sm text-red-600" role="alert">
-                {error}
-              </p>
-            )}
-            <Button type="submit" className="w-full">Iniciar sesión</Button>
+            <Button type="submit" className="w-full">Registrarme</Button>
             <p className="text-sm text-center text-gray-700">
-              ¿No tenés una cuenta?{' '}
-              <Link to="/register" className="text-blue-600 hover:underline">
-                Registrate
+              ¿Ya tenés cuenta?{' '}
+              <Link to="/login" className="text-blue-600 hover:underline">
+                Iniciar sesión
               </Link>
             </p>
           </form>
