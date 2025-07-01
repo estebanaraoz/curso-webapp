@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Courses from './pages/Courses'
 import Login from './pages/Login'
+import Register from './pages/Register'
 import CourseDetail from './pages/CourseDetail'
 import InscriptionSuccess from './pages/InscriptionSuccess'
 import Dashboard from './pages/Dashboard'
@@ -24,9 +25,10 @@ export default function App() {
       <Route path="/cursos" element={<Courses />} />
       <Route path="/cursos/:id" element={<CourseDetail />} />
       <Route path="/cursos/:id/inscripcion" element={<CourseInscription />} />
-        <Route path="/cursos/:id/modulo/:moduleId/clase/:classId" element={<ClassPage />} />
+      <Route path="/cursos/:id/modulo/:moduleId/clase/:classId" element={<ClassPage />} />
       <Route path="/cursos/:id/examen-final" element={<FinalExam />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
       <Route path="/inscripcion-exitosa" element={<InscriptionSuccess />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/perfil" element={<Profile />} />
