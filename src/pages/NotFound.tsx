@@ -19,7 +19,7 @@ export default function NotFound() {
             <p className="text-lg mb-6">
               Ups... Lo lamento, la ruta que estás buscando no existe.
             </p>
-            <Button onClick={() => navigate('/Home')}>Volver al inicio</Button>
+            <Button onClick={() => navigate('/')}>Volver al inicio</Button>
           </div>
 
           <img
