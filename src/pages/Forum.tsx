@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import { courses } from '../data/courses'
 import type { ForumPost } from '../data/forum'
 import { sampleForumPosts } from '../data/forum'
+import { useAuthStore } from '../store/auth'
 import {
   ChatBubbleBottomCenterTextIcon,
   PaperAirplaneIcon,
@@ -15,6 +16,7 @@ export default function Forum() {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [courseId, setCourseId] = useState(courses[0]?.id ?? '')
+  const isLogged = useAuthStore(state => state.isLogged)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -43,39 +45,51 @@ export default function Forum() {
           <h2 className="text-xl font-semibold flex items-center gap-2">
             <PencilSquareIcon className="w-6 h-6" /> Nueva publicación
           </h2>
-          <form onSubmit={handleSubmit} className="flex flex-col gap-2">
-            <select
-              value={courseId}
-              onChange={e => setCourseId(e.target.value)}
-              className="border p-2 rounded text-gray-800"
-            >
-              {courses.map(c => (
-                <option key={c.id} value={c.id}>
-                  {c.title}
-                </option>
-              ))}
-            </select>
-            <input
-              className="border p-2 rounded"
-              placeholder="Título"
-              value={title}
-              onChange={e => setTitle(e.target.value)}
-              required
-            />
-            <textarea
-              className="border p-2 rounded"
-              placeholder="¿Cuál es tu duda?"
-              value={content}
-              onChange={e => setContent(e.target.value)}
-              required
-            />
-            <button
-              type="submit"
-              className="flex items-center gap-2 px-4 py-2 rounded bg-blue-600 text-white self-start"
-            >
-              <PaperAirplaneIcon className="w-5 h-5" /> Publicar
-            </button>
-          </form>
+          {isLogged ? (
+            <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+              <select
+                value={courseId}
+                onChange={e => setCourseId(e.target.value)}
+                className="border p-2 rounded text-gray-800"
+              >
+                {courses.map(c => (
+                  <option key={c.id} value={c.id}>
+                    {c.title}
+                  </option>
+                ))}
+              </select>
+              <input
+                className="border p-2 rounded"
+                placeholder="Título"
+                value={title}
+                onChange={e => setTitle(e.target.value)}
+                required
+              />
+              <textarea
+                className="border p-2 rounded"
+                placeholder="¿Cuál es tu duda?"
+                value={content}
+                onChange={e => setContent(e.target.value)}
+                required
+              />
+              <button
+                type="submit"
+                className="flex items-center gap-2 px-4 py-2 rounded bg-blue-600 text-white self-start"
+              >
+                <PaperAirplaneIcon className="w-5 h-5" /> Publicar
+              </button>
+            </form>
+          ) : (
+            <div className="flex flex-col gap-2">
+              <p>No puedes realizar una publicación si no iniciaste sesión.</p>
+              <a
+                href="/login"
+                className="flex items-center gap-2 px-4 py-2 rounded bg-blue-600 text-white w-max"
+              >
+                Inicia sesión para hacer una nueva consulta
+              </a>
+            </div>
+          )}
         </section>
 
         <section className="space-y-4">
