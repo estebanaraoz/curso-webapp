@@ -91,9 +91,12 @@ export default function Home() {
               swiperRef.current = swiper
             }}
             slidesPerView={1}
-            spaceBetween={10}
-            breakpoints={{ 768: { slidesPerView: 3, spaceBetween: 10 } }}
-            className="w-full max-w-5xl mx-auto"
+            spaceBetween={16}
+            breakpoints={{
+              768: { slidesPerView: 2, spaceBetween: 16 },
+              1280: { slidesPerView: 3, spaceBetween: 20 },
+            }}
+            className="w-full max-w-7xl mx-auto"
           >
             {featuredCourses.map(course => (
               <SwiperSlide key={course.id} className="flex items-center justify-center">
