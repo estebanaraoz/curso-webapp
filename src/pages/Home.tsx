@@ -4,16 +4,17 @@ import Button from '../components/Button'
 import CourseCard from '../components/CourseCard'
 import { courses } from '../data/courses'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useRef } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
 import { UserCircleIcon } from '@heroicons/react/24/solid'
 
 export default function Home() {
   const featuredCourses = courses.slice(0, 5)
-  const [index, setIndex] = useState(0)
-  const itemsPerPage = 3
-  const pageCourses = Array.from({ length: itemsPerPage }).map((_, i) =>
-    featuredCourses[(index + i) % featuredCourses.length],
-  )
+  const prevRef = useRef<HTMLButtonElement>(null)
+  const nextRef = useRef<HTMLButtonElement>(null)
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -68,41 +69,47 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="container mx-auto py-12 flex flex-col gap-4 items-center">
-          <h2 className="text-2xl font-bold">Cursos Destacados</h2>
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => setIndex((index - 1 + featuredCourses.length) % featuredCourses.length)}
-              className="p-2"
-              aria-label="Anterior"
-            >
+        <section className="relative h-screen w-screen flex flex-col items-center justify-center">
+          <h2 className="text-2xl font-bold mb-2">Cursos Destacados</h2>
+          <div className="absolute top-2 left-1/2 -translate-x-1/2 flex gap-4 z-10">
+            <button ref={prevRef} className="p-2 bg-white/80 rounded" aria-label="Anterior">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
               </svg>
             </button>
-            <div className="grid gap-4 justify-center [grid-template-columns:repeat(auto-fit,_minmax(300px,_1fr))]">
-              {pageCourses.map(course => (
-                <CourseCard
-                  key={course.id}
-                  id={course.id}
-                  title={course.title}
-                  weeks={course.weeks}
-                  level={course.level}
-                  image={course.image}
-                  showProgress={false}
-                />
-              ))}
-            </div>
-            <button
-              onClick={() => setIndex((index + 1) % featuredCourses.length)}
-              className="p-2"
-              aria-label="Siguiente"
-            >
+            <button ref={nextRef} className="p-2 bg-white/80 rounded" aria-label="Siguiente">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
               </svg>
             </button>
           </div>
+          <Swiper
+            modules={[Navigation]}
+            loop
+            navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
+            onBeforeInit={swiper => {
+              if (typeof swiper.params.navigation !== 'boolean') {
+                swiper.params.navigation!.prevEl = prevRef.current
+                swiper.params.navigation!.nextEl = nextRef.current
+              }
+            }}
+            className="w-full h-full"
+          >
+            {featuredCourses.map(course => (
+              <SwiperSlide key={course.id} className="flex items-center justify-center">
+                <div className="max-w-md w-full px-4">
+                  <CourseCard
+                    id={course.id}
+                    title={course.title}
+                    weeks={course.weeks}
+                    level={course.level}
+                    image={course.image}
+                    showProgress={false}
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </section>
 
         <section className="container mx-auto py-12 flex flex-col items-center gap-6">
