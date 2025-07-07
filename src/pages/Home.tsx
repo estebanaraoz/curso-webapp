@@ -34,7 +34,7 @@ export default function Home() {
                 <h1 className="text-6xl md:text-7xl font-extrabold text-blue-600 pb-2">
                   Aula Digital Ciudadana
                 </h1>
-                <p className="text-2xl md:text-4xl text-black">Aprende y potencia tu carrera con cursos online dictados por profesionales del desarrollo web.</p>
+                <p className="text-xl md:text-2xl text-black">Aprende y potencia tu carrera con cursos online dictados por profesionales del desarrollo web.</p>
                 <Link to="/cursos">
                   <Button variant="primary">Explorar cursos</Button>
                 </Link>
