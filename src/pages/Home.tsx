@@ -48,17 +48,17 @@ export default function Home() {
               <div className="flex flex-col items-center gap-2">
                 <CheckBadgeIcon className="w-16 h-16 text-blue-600" />
                 <h2 className="text-3xl font-semibold">Cursos certificados</h2>
-                <p>Inscríbete y recorre cada clase con documentos y videos. Al terminar rendí una evaluación para obtener tu certificado.</p>
+                <p>Inscríbete y recorre cada clase con documentos y videos. Al finalizar harás una evaluación para obtener tu certificado.</p>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <ClockIcon className="w-16 h-16 text-blue-600" />
                 <h2 className="text-3xl font-semibold">A tu propio ritmo</h2>
-                <p>Avanza con total flexibilidad de horarios y elige cuándo tomar cada lección. Repasa los módulos las veces que necesites.</p>
+                <p>Avanza con total flexibilidad de horario y elige cuándo tomar cada lección. Repasa los módulos las veces que necesites.</p>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <UsersIcon className="w-16 h-16 text-blue-600" />
                 <h2 className="text-3xl font-semibold">Foro de la comunidad</h2>
-                <p>Participa en un espacio colaborativo con estudiantes y asesores. Comparte dudas y soluciones con la comunidad.</p>
+                <p>Participa en un espacio colaborativo junto a estudiantes y asesores. Comparte dudas y soluciones con toda la comunidad.</p>
               </div>
             </div>
           </section>
