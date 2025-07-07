@@ -125,7 +125,7 @@ export default function Navbar() {
                 navigate('/login')
                 setOpen(false)
               }}
-              className="px-4 py-2 rounded bg-gray-300 text-gray-800 hover:bg-gray-400"
+              className="px-4 py-2 rounded bg-gray-300 text-gray-800 hover:bg-gray-400 uppercase"
             >
               Ingresar
             </button>
@@ -145,7 +145,7 @@ export default function Navbar() {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `block px-4 py-2 uppercase ${isActive ? 'font-semibold text-yellow-300' : ''}`}
+            `block px-4 py-2 uppercase ${isActive ? 'text-tertiary' : ''}`}
           onClick={() => setOpen(false)}
         >
           Home
@@ -153,7 +153,7 @@ export default function Navbar() {
         <NavLink
           to="/cursos"
           className={({ isActive }) =>
-            `block px-4 py-2 uppercase ${isActive ? 'font-semibold text-yellow-300' : ''}`}
+            `block px-4 py-2 uppercase ${isActive ? 'text-tertiary' : ''}`}
           onClick={() => setOpen(false)}
         >
           Cursos
@@ -161,7 +161,7 @@ export default function Navbar() {
         <NavLink
           to="/nosotros"
           className={({ isActive }) =>
-            `block px-4 py-2 uppercase ${isActive ? 'font-semibold text-yellow-300' : ''}`}
+            `block px-4 py-2 uppercase ${isActive ? 'text-tertiary' : ''}`}
           onClick={() => setOpen(false)}
         >
           Nosotros
@@ -169,7 +169,7 @@ export default function Navbar() {
         <NavLink
           to="/foro"
           className={({ isActive }) =>
-            `block px-4 py-2 uppercase ${isActive ? 'font-semibold text-yellow-300' : ''}`}
+            `block px-4 py-2 uppercase ${isActive ? 'text-tertiary' : ''}`}
           onClick={() => setOpen(false)}
         >
           Foro
@@ -223,7 +223,7 @@ export default function Navbar() {
                 navigate('/login')
                 setOpen(false)
               }}
-              className="px-4 py-2 rounded min-w-[6rem] bg-gray-300 text-gray-800 hover:bg-gray-400"
+              className="px-4 py-2 rounded min-w-[6rem] bg-gray-300 text-gray-800 hover:bg-gray-400 uppercase"
             >
               Ingresar
             </button>

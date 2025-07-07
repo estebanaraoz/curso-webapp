@@ -24,7 +24,7 @@ export default function Dashboard() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="container mx-auto flex-grow flex flex-col md:flex-row p-8 gap-8 items-start">
+      <main className="container mx-auto flex-grow flex flex-col md:flex-row p-8 pb-12 gap-8 items-start">
         <aside className="w-full md:w-56 flex justify-center md:block mb-4 md:mb-0">
           <ul className="space-y-2 text-center md:text-left">
             <li>

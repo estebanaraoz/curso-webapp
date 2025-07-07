@@ -12,7 +12,7 @@ export default function InscriptionSuccess() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="container mx-auto flex-grow flex flex-col items-center justify-center gap-6 p-4 text-center">
+      <main className="container mx-auto flex-grow flex flex-col items-center justify-center gap-6 p-4 pb-12 text-center">
         <CheckCircleIcon className="w-16 h-16 text-green-600" />
         <h1 className="text-6xl font-bold">¡Te inscribiste al curso con éxito!</h1>
         <p className="text-2xl">{courseName}</p>

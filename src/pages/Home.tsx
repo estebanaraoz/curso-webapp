@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-        <main className="flex-grow">
+      <main className="flex-grow">
           <section className="relative w-full overflow-hidden min-h-[600px] flex items-center">
             <div
               className="absolute inset-0 w-full h-full bg-cover bg-center -z-10"
@@ -35,7 +35,7 @@ export default function Home() {
                 </h1>
                 <p className="text-xl md:text-2xl text-black">Aprende y potencia tu carrera con cursos online dictados por profesionales del desarrollo web.</p>
                 <Link to="/cursos">
-                  <Button variant="primary">Explorar cursos</Button>
+                  <Button variant="primary" className="text-lg uppercase px-8 py-4">Explorar Cursos</Button>
                 </Link>
               </div>
             </div>
@@ -82,25 +82,25 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-4 w-full">
             <div className="relative p-card rounded-card shadow-card flex flex-col items-center gap-3 border border-tertiary">
               <span className="absolute top-2 right-2 w-6 h-6 rounded-full bg-tertiary text-white flex items-center justify-center text-sm font-semibold">1</span>
-              <UserPlusIcon className="w-10 h-10 text-primary" />
-              <h3 className="text-lg font-semibold">Registrate gratis</h3>
-              <p className="text-sm text-center">Primero creá tu cuenta de usuario en la plataforma. Completa tus datos de contacto para que podamos identificarte. El registro es totalmente gratuito.</p>
+              <UserPlusIcon className="w-16 h-16 text-primary" />
+              <h3 className="text-3xl font-semibold">Registrate gratis</h3>
+              <p className="text-center">Primero creá tu cuenta de usuario en la plataforma. Completa tus datos de contacto para que podamos identificarte. El registro es totalmente gratuito.</p>
             </div>
             <div className="relative p-card rounded-card shadow-card flex flex-col items-center gap-3 border border-tertiary">
               <span className="absolute top-2 right-2 w-6 h-6 rounded-full bg-tertiary text-white flex items-center justify-center text-sm font-semibold">2</span>
-              <BookOpenIcon className="w-10 h-10 text-primary" />
-              <h3 className="text-lg font-semibold">Elegí un curso</h3>
-              <p className="text-sm text-center">Cuando hayas iniciado sesión podrás explorar nuestro catálogo de cursos. Revisa cada propuesta con calma y selecciona la que prefieras. Las clases se realizan paso a paso y a tu ritmo.</p>
+              <BookOpenIcon className="w-16 h-16 text-primary" />
+              <h3 className="text-3xl font-semibold">Elegí un curso</h3>
+              <p className="text-center">Cuando hayas iniciado sesión podrás explorar nuestro catálogo de cursos. Revisa cada propuesta con calma y selecciona la que prefieras. Las clases se realizan paso a paso y a tu ritmo.</p>
             </div>
             <div className="relative p-card rounded-card shadow-card flex flex-col items-center gap-3 border border-tertiary">
               <span className="absolute top-2 right-2 w-6 h-6 rounded-full bg-tertiary text-white flex items-center justify-center text-sm font-semibold">3</span>
-              <ClipboardDocumentCheckIcon className="w-10 h-10 text-primary" />
-              <h3 className="text-lg font-semibold">Realiza la evaluación</h3>
-              <p className="text-sm text-center">Al terminar las clases deberás contestar la evaluación final. Envía tus respuestas para demostrar lo aprendido. Si apruebas recibirás un certificado del curso.</p>
+              <ClipboardDocumentCheckIcon className="w-16 h-16 text-primary" />
+              <h3 className="text-3xl font-semibold">Realiza la evaluación</h3>
+              <p className="text-center">Al terminar las clases deberás contestar la evaluación final. Envía tus respuestas para demostrar lo aprendido. Si apruebas recibirás un certificado del curso.</p>
             </div>
           </div>
           <Link to="/cursos">
-            <Button variant="primary">Comenzar ahora</Button>
+            <Button variant="primary" className="text-lg uppercase px-8 py-4">Explorar Cursos</Button>
           </Link>
         </section>
 

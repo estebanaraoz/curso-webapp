@@ -74,7 +74,7 @@ export default function ClassPage() {
     return (
       <div className="flex flex-col min-h-screen">
         <Navbar />
-        <main className="container mx-auto flex-grow p-4 flex flex-col items-center justify-center">
+        <main className="container mx-auto flex-grow p-4 pb-12 flex flex-col items-center justify-center">
           <p>Clase no encontrada</p>
         </main>
         <Footer />
@@ -85,7 +85,7 @@ export default function ClassPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="container mx-auto flex-grow p-4 flex flex-col lg:flex-row gap-6">
+      <main className="container mx-auto flex-grow p-4 pb-12 flex flex-col lg:flex-row gap-6">
         <section className="flex-grow space-y-4">
           <nav className="text-sm flex items-center gap-2">
             <Link

@@ -12,7 +12,7 @@ export default function Profile() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="container mx-auto flex-grow p-4 space-y-4">
+      <main className="container mx-auto flex-grow p-4 pb-12 space-y-4">
         <h1 className="text-3xl font-bold">Perfil de usuario</h1>
         <div className="flex flex-col gap-4 max-w-sm">
           <input className="border p-2 rounded" value={name} onChange={e => setName(e.target.value)} placeholder="Nombre" />

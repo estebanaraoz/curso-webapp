@@ -8,8 +8,8 @@ export default function Register() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="flex-grow flex items-center justify-center p-4 bg-gray-50 dark:bg-gray-900">
-        <div className="bg-white rounded-2xl shadow-lg overflow-hidden grid w-full max-w-4xl lg:grid-cols-2">
+      <main className="flex-grow flex items-center justify-center p-4 pb-12 bg-gray-50 dark:bg-gray-900">
+        <div className="bg-white rounded-2xl shadow-lg overflow-hidden grid w-full max-w-4xl lg:grid-cols-2 md:min-h-[550px]">
           {/* Upload an SVG or PNG at public/images/auth-illustration.png
               representing modern and accessible online learning */}
           <img

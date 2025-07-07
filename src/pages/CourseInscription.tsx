@@ -44,7 +44,7 @@ export default function CourseInscription() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="container mx-auto flex-grow p-4 flex flex-col items-center justify-center">
+      <main className="container mx-auto flex-grow p-4 pb-12 flex flex-col items-center justify-center">
         {course ? (
           <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-prose w-full border rounded-card p-card shadow-card bg-white dark:bg-gray-800">
             <h1 className="text-3xl font-bold text-center">Inscripción a {course.title}</h1>
