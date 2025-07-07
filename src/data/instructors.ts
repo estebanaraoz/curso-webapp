@@ -6,11 +6,11 @@ export interface InstructorInfo {
 }
 
 export const instructors: InstructorInfo[] = [
-  { name: 'Ing. Marilina', role: 'Front‑end', avatar: '/images/instructor-marilina.png', bio: 'Especialista en interfaces accesibles.' },
-  { name: 'Ing. Juan', role: 'Back‑end', avatar: '/images/instructor-juan.png', bio: 'Apasionado por la arquitectura de servicios.' },
-  { name: 'Lic. Ana', role: 'UX', avatar: '/images/instructor-ana.png', bio: 'Diseñadora enfocada en experiencia de usuario.' },
-  { name: 'Ing. Luis', role: 'DevOps', avatar: '/images/instructor-luis.png', bio: 'Automatiza despliegues y buenas prácticas.' },
-  { name: 'Mgtr. Sof\u00eda', role: 'Data', avatar: '/images/instructor-sofia.png', bio: 'Experta en análisis de datos.' },
+  { name: 'Ing. Marilina López', role: 'Front‑end', avatar: '/images/instructor-marilina.png', bio: 'Especialista en interfaces accesibles.' },
+  { name: 'Ing. Juan Pérez', role: 'Back‑end', avatar: '/images/instructor-juan.png', bio: 'Apasionado por la arquitectura de servicios.' },
+  { name: 'Lic. Ana Ruiz', role: 'UX', avatar: '/images/instructor-ana.png', bio: 'Diseñadora enfocada en experiencia de usuario.' },
+  { name: 'Ing. Luis Gómez', role: 'DevOps', avatar: '/images/instructor-luis.png', bio: 'Automatiza despliegues y buenas prácticas.' },
+  { name: 'Mgtr. Sof\u00eda Ramírez', role: 'Data', avatar: '/images/instructor-sofia.png', bio: 'Experta en análisis de datos.' },
 ]
 
 export function getInstructorByCourse(courseId: string): InstructorInfo {

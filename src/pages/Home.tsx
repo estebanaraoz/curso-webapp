@@ -110,7 +110,7 @@ export default function Home() {
               <img
                 src={getAssetUrl('/images/testimonials/lucia.png')}
                 alt="Lucía"
-                className="w-[80px] h-[80px] object-cover rounded-full mx-auto"
+                className="w-[240px] h-[240px] object-cover rounded-full mx-auto"
               />
               <p className="text-xl font-semibold">"Gracias a Aula Digital pude conseguir mi primer trabajo en tecnología"</p>
               <span className="text-base">- Lucía</span>
@@ -119,7 +119,7 @@ export default function Home() {
               <img
                 src={getAssetUrl('/images/testimonials/mateo.png')}
                 alt="Mateo"
-                className="w-[80px] h-[80px] object-cover rounded-full mx-auto"
+                className="w-[240px] h-[240px] object-cover rounded-full mx-auto"
               />
               <p className="text-xl font-semibold">"Los cursos son claros y el soporte del foro es excelente"</p>
               <span className="text-base">- Mateo</span>
