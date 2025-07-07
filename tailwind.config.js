@@ -8,6 +8,7 @@ export default {
         primary: 'var(--color-primary)',
         'primary-dark': 'var(--color-primary-dark)',
         secondary: 'var(--color-secondary)',
+        tertiary: 'var(--color-tertiary)',
       },
       borderRadius: { card: '0.75rem' },
       boxShadow: { card: '0 2px 8px rgba(0,0,0,0.08)' },
