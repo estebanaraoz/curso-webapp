@@ -7,7 +7,7 @@ import ScrollToTop from './components/ScrollToTop'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/curso-webapp">
       <ScrollToTop />
       <App />
     </BrowserRouter>

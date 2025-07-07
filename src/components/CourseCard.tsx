@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { InformationCircleIcon, PlayCircleIcon } from '@heroicons/react/24/solid'
 import { useAuthStore } from '../store/auth'
+import getAssetUrl from '../utils/getAssetUrl'
 
 interface Props {
   id: string
@@ -56,7 +57,7 @@ export default function CourseCard({
     >
       <Link to={`/cursos/${id}`} className="flex flex-col gap-2 flex-grow">
         <img
-          src={image}
+          src={getAssetUrl(image)}
           alt={title}
           className="w-full aspect-video object-cover rounded"
         />

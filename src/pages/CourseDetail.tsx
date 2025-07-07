@@ -3,6 +3,7 @@ import Footer from '../components/Footer'
 import Button from '../components/Button'
 import PrerequisiteCourses from '../components/PrerequisiteCourses'
 import { useParams, useNavigate, Link } from 'react-router-dom'
+import getAssetUrl from '../utils/getAssetUrl'
 
 import {
   UserCircleIcon,
@@ -68,7 +69,7 @@ export default function CourseDetail() {
           <>
           <div className="space-y-4 w-full">
             <img
-              src={course.image}
+              src={getAssetUrl(course.image)}
               alt={course.title}
               className="w-full max-h-[300px] object-contain rounded overflow-hidden"
             />

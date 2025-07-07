@@ -2,6 +2,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Button from '../components/Button'
 import { useNavigate } from 'react-router-dom'
+import getAssetUrl from '../utils/getAssetUrl'
 
 export default function NotFound() {
   const navigate = useNavigate()
@@ -23,7 +24,7 @@ export default function NotFound() {
           </div>
 
           <img
-            src="/images/error404.png"
+            src={getAssetUrl('/images/error404.png')}
             alt="falla en la página"
             className="md:w-[400px] lg:w-[500px] object-contain"
           />

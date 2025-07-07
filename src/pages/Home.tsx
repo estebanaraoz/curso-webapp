@@ -3,6 +3,7 @@ import Footer from '../components/Footer'
 import Button from '../components/Button'
 import CourseCard from '../components/CourseCard'
 import { courses } from '../data/courses'
+import getAssetUrl from '../utils/getAssetUrl'
 import { Link } from 'react-router-dom'
 import {
   UserCircleIcon,
@@ -34,7 +35,7 @@ export default function Home() {
                 </Link>
               </div>
               <img
-                src="/images/hero.png"
+                src={getAssetUrl('/images/hero.png')}
                 alt="Grupo de estudiantes"
                 className="w-full md:w-1/2 rounded-lg shadow-xl"
               />

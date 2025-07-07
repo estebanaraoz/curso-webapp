@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { UserCircleIcon } from '@heroicons/react/24/solid'
 import DarkModeToggle from './DarkModeToggle'
 import { useAuthStore } from '../store/auth'
+import getAssetUrl from '../utils/getAssetUrl'
 
 export default function Navbar() {
   const navigate = useNavigate()
@@ -44,7 +45,7 @@ export default function Navbar() {
           className="absolute left-1/2 -translate-x-1/2"
           onClick={() => setOpen(false)}
         >
-          <img src="/logo.png" alt="Logo" className="h-12 w-auto object-contain" />
+          <img src={getAssetUrl('/logo.png')} alt="Logo" className="h-12 w-auto object-contain" />
         </Link>
         <div className="ml-auto">
           {isLogged ? (
@@ -110,7 +111,7 @@ export default function Navbar() {
           className="hidden sm:block mr-4"
           onClick={() => setOpen(false)}
         >
-          <img src="/logo.png" alt="Logo" className="h-12 w-auto object-contain" />
+          <img src={getAssetUrl('/logo.png')} alt="Logo" className="h-12 w-auto object-contain" />
         </Link>
         <NavLink
           to="/"
