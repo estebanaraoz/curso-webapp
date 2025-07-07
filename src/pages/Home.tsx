@@ -6,7 +6,6 @@ import { courses } from '../data/courses'
 import getAssetUrl from '../utils/getAssetUrl'
 import { Link } from 'react-router-dom'
 import {
-  UserCircleIcon,
   UserPlusIcon,
   BookOpenIcon,
   ClipboardDocumentCheckIcon,
@@ -85,19 +84,19 @@ export default function Home() {
               <span className="absolute top-2 right-2 w-6 h-6 rounded-full bg-tertiary text-white flex items-center justify-center text-sm font-semibold">1</span>
               <UserPlusIcon className="w-10 h-10 text-primary" />
               <h3 className="text-lg font-semibold">Registrate gratis</h3>
-              <p className="text-sm text-center">Crea tu cuenta con tu email.</p>
+              <p className="text-sm text-center">Primero creá tu cuenta de usuario. Luego elegí el curso que más te interese. Finalmente aceptá las normas y completá el formulario de inscripción.</p>
             </div>
             <div className="relative p-card rounded-card shadow-card flex flex-col items-center gap-3 border border-tertiary">
               <span className="absolute top-2 right-2 w-6 h-6 rounded-full bg-tertiary text-white flex items-center justify-center text-sm font-semibold">2</span>
               <BookOpenIcon className="w-10 h-10 text-primary" />
               <h3 className="text-lg font-semibold">Elegí un curso</h3>
-              <p className="text-sm text-center">Explora las opciones disponibles.</p>
+              <p className="text-sm text-center">Primero creá tu cuenta de usuario. Luego elegí el curso que más te interese. Finalmente aceptá las normas y completá el formulario de inscripción.</p>
             </div>
             <div className="relative p-card rounded-card shadow-card flex flex-col items-center gap-3 border border-tertiary">
               <span className="absolute top-2 right-2 w-6 h-6 rounded-full bg-tertiary text-white flex items-center justify-center text-sm font-semibold">3</span>
               <ClipboardDocumentCheckIcon className="w-10 h-10 text-primary" />
-              <h3 className="text-lg font-semibold">Completá el formulario</h3>
-              <p className="text-sm text-center">Envíanos tus datos para inscribirte.</p>
+              <h3 className="text-lg font-semibold">Aceptá las normas y completá el formulario</h3>
+              <p className="text-sm text-center">Primero creá tu cuenta de usuario. Luego elegí el curso que más te interese. Finalmente aceptá las normas y completá el formulario de inscripción.</p>
             </div>
           </div>
           <Link to="/cursos">
@@ -108,12 +107,20 @@ export default function Home() {
         <section className="bg-gray-100 dark:bg-gray-800 py-12">
           <div className="container mx-auto grid md:grid-cols-2 gap-8 p-4 text-center">
             <div className="flex flex-col items-center gap-2">
-              <UserCircleIcon className="w-[60px] h-[60px] mx-auto text-gray-500" />
+              <img
+                src={getAssetUrl('/images/testimonials/lucia.png')}
+                alt="Lucía"
+                className="w-[80px] h-[80px] object-cover rounded-full mx-auto"
+              />
               <p className="text-xl font-semibold">"Gracias a Aula Digital pude conseguir mi primer trabajo en tecnología"</p>
               <span className="text-base">- Lucía</span>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <UserCircleIcon className="w-[60px] h-[60px] mx-auto text-gray-500" />
+              <img
+                src={getAssetUrl('/images/testimonials/mateo.png')}
+                alt="Mateo"
+                className="w-[80px] h-[80px] object-cover rounded-full mx-auto"
+              />
               <p className="text-xl font-semibold">"Los cursos son claros y el soporte del foro es excelente"</p>
               <span className="text-base">- Mateo</span>
             </div>
