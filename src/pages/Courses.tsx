@@ -48,7 +48,7 @@ export default function Courses() {
             {inProgressCourses.length === 0 ? (
               <p>No tienes cursos en curso.</p>
             ) : (
-              <div className="grid gap-6 items-start grid-cols-[repeat(auto-fill,minmax(260px,1fr))]">
+              <div className="grid gap-6 items-start grid-cols-[repeat(auto-fill,minmax(360px,1fr))]">
                 {inProgressCourses.map(course => {
                   const info = courses.find(c => c.id === course.id)
                   return (
@@ -119,7 +119,7 @@ export default function Courses() {
               </label>
             )}
           </div>
-          <div className="grid gap-6 items-start grid-cols-[repeat(auto-fill,minmax(260px,1fr))]">
+          <div className="grid gap-6 items-start grid-cols-[repeat(auto-fill,minmax(360px,1fr))]">
             {filteredCourses.map(course => (
               <CourseCard
                 key={course.id}
