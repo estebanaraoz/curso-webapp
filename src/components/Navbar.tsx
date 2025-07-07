@@ -25,8 +25,9 @@ export default function Navbar() {
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen)
 
   return (
-    <nav className="sticky top-0 z-50 bg-gray-200 dark:bg-gray-800 text-sm py-4">
-      <div className="relative flex items-center py-5 px-4 sm:hidden">
+    <nav className="sticky top-0 z-50 bg-blue-600 dark:bg-blue-700 text-white text-sm py-4">
+      <div className="container mx-auto px-4">
+        <div className="relative flex items-center py-5 sm:hidden">
         <button onClick={toggleMenu} aria-label="Abrir menú" className="mr-2" role="button" tabIndex={0}>
           {open ? (
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -102,7 +103,7 @@ export default function Navbar() {
         </div>
       </div>
       <div
-        className={`${open ? 'flex' : 'hidden'} sm:flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 border-t sm:border-none`}
+        className={`${open ? 'flex' : 'hidden'} sm:flex flex-col sm:flex-row items-start sm:items-center gap-4 py-4 border-t sm:border-none`}
       >
         <Link
           to="/"
@@ -113,28 +114,28 @@ export default function Navbar() {
         </Link>
         <NavLink
           to="/"
-          className={({ isActive }) => `block ${isActive ? 'font-semibold text-blue-600' : ''}`}
+          className={({ isActive }) => `block ${isActive ? 'font-semibold text-yellow-300' : ''}`}
           onClick={() => setOpen(false)}
         >
           Home
         </NavLink>
         <NavLink
           to="/cursos"
-          className={({ isActive }) => `block ${isActive ? 'font-semibold text-blue-600' : ''}`}
+          className={({ isActive }) => `block ${isActive ? 'font-semibold text-yellow-300' : ''}`}
           onClick={() => setOpen(false)}
         >
           Cursos
         </NavLink>
         <NavLink
           to="/nosotros"
-          className={({ isActive }) => `block ${isActive ? 'font-semibold text-blue-600' : ''}`}
+          className={({ isActive }) => `block ${isActive ? 'font-semibold text-yellow-300' : ''}`}
           onClick={() => setOpen(false)}
         >
           Nosotros
         </NavLink>
         <NavLink
           to="/foro"
-          className={({ isActive }) => `block ${isActive ? 'font-semibold text-blue-600' : ''}`}
+          className={({ isActive }) => `block ${isActive ? 'font-semibold text-yellow-300' : ''}`}
           onClick={() => setOpen(false)}
         >
           Foro
@@ -195,6 +196,7 @@ export default function Navbar() {
           )}
         </div>
       </div>
+    </div>
     </nav>
   )
 }
