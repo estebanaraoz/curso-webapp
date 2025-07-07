@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { UserCircleIcon } from '@heroicons/react/24/solid'
 import DarkModeToggle from './DarkModeToggle'
@@ -12,6 +12,8 @@ export default function Navbar() {
   const logout = useAuthStore(state => state.logout)
   const [open, setOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
+  const dropdownMobileRef = useRef<HTMLDivElement>(null)
+  const dropdownDesktopRef = useRef<HTMLDivElement>(null)
   const exampleUser = { name: 'Mariana' }
   const name = (user as { name?: string } | null)?.name ?? exampleUser.name
 
@@ -25,10 +27,31 @@ export default function Navbar() {
   const toggleMenu = () => setOpen(!open)
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen)
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node
+      const clickedInsideMobile =
+        dropdownMobileRef.current?.contains(target) ?? false
+      const clickedInsideDesktop =
+        dropdownDesktopRef.current?.contains(target) ?? false
+      if (!clickedInsideMobile && !clickedInsideDesktop) {
+        setDropdownOpen(false)
+      }
+    }
+
+    if (dropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [dropdownOpen])
+
   return (
     <nav className="sticky top-0 z-50 bg-blue-600 dark:bg-blue-700 text-white text-lg py-6">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-3 items-center py-5 sm:hidden">
+        <div className="grid grid-cols-[auto_1fr_auto] items-center py-5 sm:hidden">
         <button
           onClick={toggleMenu}
           aria-label="Abrir menú"
@@ -37,11 +60,11 @@ export default function Navbar() {
           tabIndex={0}
         >
           {open ? (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5m-16.5 5.25h16.5m-16.5 5.25h16.5" />
             </svg>
           )}
@@ -55,7 +78,7 @@ export default function Navbar() {
         </Link>
         <div className="justify-self-end">
           {isLogged ? (
-            <div className="relative">
+            <div className="relative" ref={dropdownMobileRef}>
               <button
                 onClick={toggleDropdown}
                 className="flex items-center gap-2 px-4 py-2 rounded bg-tertiary text-white hover:brightness-90 focus:outline-none focus:ring-2 focus:ring-primary"
@@ -153,7 +176,7 @@ export default function Navbar() {
         </NavLink>
         <div className="hidden sm:flex sm:ml-auto flex-col sm:flex-row items-start sm:items-center gap-2 w-full sm:w-auto">
           {isLogged ? (
-            <div className="relative w-full sm:w-auto">
+            <div className="relative w-full sm:w-auto" ref={dropdownDesktopRef}>
               <button
                 onClick={toggleDropdown}
                 className="flex items-center gap-2 w-full sm:w-auto px-4 py-2 rounded bg-tertiary text-white hover:brightness-90 focus:outline-none focus:ring-2 focus:ring-primary"
