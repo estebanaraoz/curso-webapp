@@ -39,7 +39,7 @@ export default function Nosotros() {
             <AcademicCapIcon className="w-16 h-16 text-purple-600" />
             <h2 className="text-4xl font-semibold">Misión y visión</h2>
             <p>
-              Buscamos formar una comunidad que comparta conocimiento y oportunidades. Soñamos con un futuro en que cualquier persona pueda crecer profesionalmente sin barreras.
+              Buscamos formar una comunidad que comparta conocimiento y oportunidades. Soñamos con un futuro en que cualquiera pueda crecer profesionalmente sin barreras.
             </p>
           </div>
         </section>
