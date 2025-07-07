@@ -24,12 +24,10 @@ export default function Home() {
       <Navbar />
         <main className="flex-grow">
           <section
-            className="relative w-full bg-gradient-to-r from-blue-50/70 to-purple-50/70 dark:from-gray-800/70 dark:to-gray-700/70 overflow-hidden"
+            className="relative w-full bg-cover bg-center overflow-hidden"
+            style={{ backgroundImage: `url(${getAssetUrl('/images/hero.png')})` }}
           >
-            <div
-              className="absolute inset-0 w-full h-full bg-cover bg-center blur-sm scale-105 -z-10"
-              style={{ backgroundImage: `url('/images/hero.png')` }}
-            />
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-50/70 to-purple-50/70 dark:from-gray-800/70 dark:to-gray-700/70 backdrop-blur-sm -z-10" />
             <div className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-8 p-8">
               <div className="flex flex-col items-start gap-4 md:w-1/2">
                 <h1 className="text-6xl md:text-7xl font-extrabold text-blue-600 pb-2">

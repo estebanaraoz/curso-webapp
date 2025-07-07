@@ -5,28 +5,28 @@ export default function Footer() {
   return (
     <footer className="bg-gray-500 dark:bg-gray-900 text-white text-sm">
       <div className="container mx-auto px-4 py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-        <div className="flex flex-col items-center text-center">
+        <div className="flex flex-col items-center">
           <img src={getAssetUrl('/logo.png')} alt="Logo" className="h-16 w-auto mb-2 object-contain" />
-          <p>
+          <p className="text-left">
             Aula Digital Ciudadana es una plataforma de formación en línea para que aprendas a tu propio ritmo.
           </p>
         </div>
-        <div className="text-lg text-center">
-          <h3 className="font-semibold mb-2">Contacto</h3>
-          <ul className="space-y-1">
+        <div className="text-lg">
+          <h3 className="font-semibold mb-2 text-center">Contacto</h3>
+          <ul className="space-y-1 text-left">
             <li>correo@example.com</li>
             <li>Av. Siempre Viva 123</li>
           </ul>
         </div>
-        <div className="text-lg text-center">
-          <h3 className="font-semibold mb-2">Quiénes somos</h3>
-          <p>
+        <div className="text-lg">
+          <h3 className="font-semibold mb-2 text-center">Quiénes somos</h3>
+          <p className="text-left">
             Somos desarrolladores apasionados por compartir conocimiento a través de cursos asíncronos.
           </p>
         </div>
-        <div className="text-lg text-center">
-          <h3 className="font-semibold mb-2">Mapa del sitio</h3>
-          <ul className="space-y-1">
+        <div className="text-lg">
+          <h3 className="font-semibold mb-2 text-center">Mapa del sitio</h3>
+          <ul className="space-y-1 text-left">
             <li>
               <Link to="/">Home</Link>
             </li>
