@@ -9,6 +9,7 @@ import {
   ChatBubbleBottomCenterTextIcon,
   PaperAirplaneIcon,
   PencilSquareIcon,
+  HandThumbUpIcon,
 } from '@heroicons/react/24/solid'
 
 export default function Forum() {
@@ -72,11 +73,13 @@ export default function Forum() {
                 onChange={e => setContent(e.target.value)}
                 required
               />
+              <input type="file" multiple className="border p-2 rounded" />
               <button
                 type="submit"
-                className="flex items-center gap-2 px-4 py-2 rounded bg-blue-600 text-white self-start"
+                className="flex items-center gap-2 px-4 py-2 rounded bg-primary text-white self-start"
               >
-                <PaperAirplaneIcon className="w-5 h-5" /> Publicar
+                <PaperAirplaneIcon className="w-5 h-5" />
+                <span className="sr-only">Publicar</span>
               </button>
             </form>
           ) : (
@@ -94,17 +97,20 @@ export default function Forum() {
 
         <section className="space-y-4">
           {posts.map(post => (
-            <article key={post.id} className="border rounded p-4 space-y-2">
+            <article key={post.id} className="border rounded-card p-card shadow-card bg-white space-y-2">
               <header className="flex justify-between items-center">
                 <h3 className="font-semibold">{post.title}</h3>
-                <span className="text-sm text-gray-500">
-                  {new Date(post.date).toLocaleDateString()}
+                <span className="text-xs text-gray-500">
+                  {new Date(post.date).toLocaleString()}
                 </span>
               </header>
               <p className="text-sm">{post.content}</p>
               <div className="text-sm flex items-center gap-1 text-gray-500">
                 <ChatBubbleBottomCenterTextIcon className="w-4 h-4" />
                 {post.replies.length} respuestas
+                <button className="ml-auto flex items-center gap-1 text-gray-500 text-sm" aria-label="Me gusta">
+                  <HandThumbUpIcon className="w-4 h-4" /> {post.likes ?? 0}
+                </button>
               </div>
             </article>
           ))}

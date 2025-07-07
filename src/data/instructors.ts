@@ -1,14 +1,16 @@
 export interface InstructorInfo {
   name: string
+  role: string
   avatar: string
+  bio: string
 }
 
 export const instructors: InstructorInfo[] = [
-  { name: 'Ing. Marilina', avatar: '/images/instructor-marilina.png' },
-  { name: 'Ing. Juan', avatar: '/images/instructor-juan.png' },
-  { name: 'Lic. Ana', avatar: '/images/instructor-ana.png' },
-  { name: 'Ing. Luis', avatar: '/images/instructor-luis.png' },
-  { name: 'Mgtr. Sof\u00eda', avatar: '/images/instructor-sofia.png' },
+  { name: 'Ing. Marilina', role: 'Front‑end', avatar: '/images/instructor-marilina.png', bio: 'Especialista en interfaces accesibles.' },
+  { name: 'Ing. Juan', role: 'Back‑end', avatar: '/images/instructor-juan.png', bio: 'Apasionado por la arquitectura de servicios.' },
+  { name: 'Lic. Ana', role: 'UX', avatar: '/images/instructor-ana.png', bio: 'Diseñadora enfocada en experiencia de usuario.' },
+  { name: 'Ing. Luis', role: 'DevOps', avatar: '/images/instructor-luis.png', bio: 'Automatiza despliegues y buenas prácticas.' },
+  { name: 'Mgtr. Sof\u00eda', role: 'Data', avatar: '/images/instructor-sofia.png', bio: 'Experta en análisis de datos.' },
 ]
 
 export function getInstructorByCourse(courseId: string): InstructorInfo {

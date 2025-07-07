@@ -12,6 +12,8 @@ export interface ForumPost {
   title: string
   date: string
   content: string
+  attachments?: string[]
+  likes?: number
   replies: ForumReply[]
 }
 
@@ -23,6 +25,7 @@ export const sampleForumPosts: ForumPost[] = [
     title: 'Duda con selectores CSS',
     date: '2025-05-12T10:00:00Z',
     content: 'No entiendo bien cuando usar > versus espacio en un selector. ¿Alguna recomendación?',
+    likes: 3,
     replies: [
       {
         id: 'r1',
@@ -39,6 +42,7 @@ export const sampleForumPosts: ForumPost[] = [
     title: 'Problema con useEffect',
     date: '2025-05-13T09:30:00Z',
     content: 'Mi componente entra en bucle infinito al usar useEffect. ¿Qué debería revisar?',
+    likes: 2,
     replies: [
       {
         id: 'r2',

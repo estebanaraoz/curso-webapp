@@ -52,7 +52,7 @@ export default function CourseCard({
 
   return (
     <div
-      className="border-2 border-gray-300 p-4 rounded shadow hover:shadow-lg flex flex-col gap-4 w-full sm:w-[360px]"
+      className="border border-gray-300 p-card rounded-card shadow-card flex flex-col gap-4 w-full sm:w-[360px]"
     >
       <Link to={`/cursos/${id}`} className="flex flex-col gap-2 flex-grow">
         <img
@@ -138,7 +138,7 @@ export default function CourseCard({
               {isEnrolled
                 ? showExam
                   ? 'EVALUACIÓN'
-                  : 'SEGUIR'
+                  : 'VER'
                 : 'COMENZAR'}
             </span>
           </Link>
