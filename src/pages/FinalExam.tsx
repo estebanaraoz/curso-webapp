@@ -61,7 +61,7 @@ export default function FinalExam() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="container mx-auto flex-grow p-4 space-y-4">
-        <h1 className="text-3xl font-bold">
+        <h1 className="text-5xl font-bold">
           Examen final - {course ? course.title : `Curso ${id}`}
         </h1>
         {canRetakeExam ? (
@@ -91,7 +91,7 @@ export default function FinalExam() {
             <Button type="submit">Enviar respuestas</Button>
           </form>
         ) : (
-          <p className="text-red-600">Aún no puedes realizar este examen.</p>
+          <p className="text-lg text-red-600">Aún no puedes realizar este examen.</p>
         )}
       </main>
       <Footer />

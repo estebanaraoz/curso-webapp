@@ -14,8 +14,8 @@ export default function InscriptionSuccess() {
       <Navbar />
       <main className="container mx-auto flex-grow flex flex-col items-center justify-center gap-6 p-4 text-center">
         <CheckCircleIcon className="w-16 h-16 text-green-600" />
-        <h1 className="text-4xl font-bold">¡Te inscribiste al curso con éxito!</h1>
-        <p className="text-xl">{courseName}</p>
+        <h1 className="text-6xl font-bold">¡Te inscribiste al curso con éxito!</h1>
+        <p className="text-2xl">{courseName}</p>
         <div className="flex gap-4 mt-4">
           <Button className="bg-sky-500 hover:bg-sky-600 text-white" onClick={() => navigate('/dashboard')}>
             Ir a mi cuenta
