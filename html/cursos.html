@@ -9,19 +9,19 @@
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-  <nav class="bg-gray-200 dark:bg-gray-800 text-sm">
+  <nav class="bg-gray-200 dark:bg-gray-800 text-lg py-6">
     <div class="container mx-auto p-4 flex justify-between items-center">
       <div class="flex items-center gap-4">
         <img src="../public/logo.png" alt="Logo" class="h-10 w-auto object-contain">
-        <a href="#" class="hidden sm:block">Home</a>
-        <a href="#">Cursos</a>
-        <a href="#">Nosotros</a>
-        <a href="#">Foro</a>
+        <a href="#" class="hidden sm:block uppercase px-4 py-2">Home</a>
+        <a href="#" class="uppercase px-4 py-2">Cursos</a>
+        <a href="#" class="uppercase px-4 py-2">Nosotros</a>
+        <a href="#" class="uppercase px-4 py-2">Foro</a>
       </div>
       <div class="relative">
-        <button id="userMenuButton" class="px-4 py-2 rounded bg-sky-500 text-white flex items-center gap-1">
-          <span>Mariana</span>
-          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <button id="userMenuButton" class="px-4 py-3 rounded bg-sky-500 text-white flex items-center gap-2">
+          <span class="text-lg">Mariana</span>
+          <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
           </svg>
         </button>
@@ -35,8 +35,8 @@
   <main class="flex-grow container mx-auto p-8">
     <section class="mb-12">
       <h1 class="text-3xl font-bold mb-4">Mis cursos</h1>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="border-2 border-gray-300 p-4 rounded shadow flex flex-col gap-4 max-w-md w-full">
+      <div class="grid gap-6 justify-start [grid-template-columns:repeat(auto-fill,_minmax(320px,_1fr))]">
+        <div class="border-2 border-gray-300 p-4 rounded shadow flex flex-col gap-4 min-w-[320px] max-w-[320px]">
           <img src="../public/images/course-react.png" alt="React para principiantes" class="w-full h-60 object-cover rounded">
           <h3 class="text-xl font-semibold">React para principiantes</h3>
           <p>Progreso: 40%</p>
@@ -57,7 +57,7 @@
             </a>
           </div>
         </div>
-        <div class="border-2 border-gray-300 p-4 rounded shadow flex flex-col gap-4 max-w-md w-full">
+        <div class="border-2 border-gray-300 p-4 rounded shadow flex flex-col gap-4 min-w-[320px] max-w-[320px]">
           <img src="../public/images/course-js.png" alt="JavaScript desde cero" class="w-full h-60 object-cover rounded">
           <h3 class="text-xl font-semibold">JavaScript desde cero</h3>
           <p>Progreso: 75%</p>
@@ -76,7 +76,7 @@
             </a>
           </div>
         </div>
-        <div class="border-2 border-gray-300 p-4 rounded shadow flex flex-col gap-4 max-w-md w-full">
+        <div class="border-2 border-gray-300 p-4 rounded shadow flex flex-col gap-4 min-w-[320px] max-w-[320px]">
           <img src="../public/images/course-node.png" alt="Node.js y Express" class="w-full h-60 object-cover rounded">
           <h3 class="text-xl font-semibold">Node.js y Express</h3>
           <p>Progreso: 20%</p>
@@ -120,8 +120,8 @@
           Mostrar cursos realizados
         </label>
       </div>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="border-2 border-gray-300 p-4 rounded shadow flex flex-col gap-4 max-w-md w-full">
+      <div class="grid gap-6 justify-start [grid-template-columns:repeat(auto-fill,_minmax(320px,_1fr))]">
+        <div class="border-2 border-gray-300 p-4 rounded shadow flex flex-col gap-4 min-w-[320px] max-w-[320px]">
           <img src="../public/images/course-html-css.png" alt="HTML y CSS desde cero" class="w-full h-60 object-cover rounded">
           <h3 class="text-xl font-semibold">HTML y CSS desde cero</h3>
           <p>Duración: 4 semanas</p>
@@ -140,7 +140,7 @@
             </a>
           </div>
         </div>
-        <div class="border-2 border-gray-300 p-4 rounded shadow flex flex-col gap-4 max-w-md w-full">
+        <div class="border-2 border-gray-300 p-4 rounded shadow flex flex-col gap-4 min-w-[320px] max-w-[320px]">
           <img src="../public/images/course-python.png" alt="Python para principiantes" class="w-full h-60 object-cover rounded">
           <h3 class="text-xl font-semibold">Python para principiantes</h3>
           <p>Duración: 6 semanas</p>
@@ -159,7 +159,7 @@
             </a>
           </div>
         </div>
-        <div class="border-2 border-gray-300 p-4 rounded shadow flex flex-col gap-4 max-w-md w-full">
+        <div class="border-2 border-gray-300 p-4 rounded shadow flex flex-col gap-4 min-w-[320px] max-w-[320px]">
           <img src="../public/images/course-react-native.png" alt="React Native" class="w-full h-60 object-cover rounded">
           <h3 class="text-xl font-semibold">React Native</h3>
           <p>Duración: 10 semanas</p>
