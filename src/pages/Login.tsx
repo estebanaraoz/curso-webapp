@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import Button from '../components/Button'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../store/auth'
+import getAssetUrl from '../utils/getAssetUrl'
 
 const DEFAULT_USER = {
   name: 'usuario',
@@ -36,7 +37,7 @@ export default function Login() {
           {/* Upload an SVG or PNG at public/images/auth-illustration.png
               representing modern and accessible online learning */}
           <img
-            src="/images/auth-illustration.png"
+            src={getAssetUrl('/images/auth-illustration.png')}
             alt="Ilustración educativa"
             className="w-full h-48 object-cover lg:h-full"
           />

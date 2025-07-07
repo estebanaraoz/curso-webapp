@@ -6,6 +6,7 @@ import {
   HeartIcon,
   AcademicCapIcon,
 } from '@heroicons/react/24/solid'
+import getAssetUrl from '../utils/getAssetUrl'
 
 export default function Nosotros() {
   return (
@@ -48,7 +49,7 @@ export default function Nosotros() {
           <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
             {instructors.map(i => (
               <div key={i.name} className="p-card rounded-card shadow-card text-center space-y-2">
-                <img src={i.avatar} alt={i.name} className="w-24 h-24 object-cover rounded-full mx-auto" />
+                <img src={getAssetUrl(i.avatar)} alt={i.name} className="w-24 h-24 object-cover rounded-full mx-auto" />
                 <h3 className="font-semibold">{i.name}</h3>
                 <p className="text-sm text-gray-600">{i.role}</p>
                 <p className="text-sm">{i.bio}</p>

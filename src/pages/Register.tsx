@@ -2,6 +2,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Button from '../components/Button'
 import { Link } from 'react-router-dom'
+import getAssetUrl from '../utils/getAssetUrl'
 
 export default function Register() {
   return (
@@ -12,7 +13,7 @@ export default function Register() {
           {/* Upload an SVG or PNG at public/images/auth-illustration.png
               representing modern and accessible online learning */}
           <img
-            src="/images/auth-illustration.png"
+            src={getAssetUrl('/images/auth-illustration.png')}
             alt="Ilustración educativa"
             className="w-full h-48 object-cover lg:h-full"
           />
