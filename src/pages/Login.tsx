@@ -7,7 +7,7 @@ import { useAuthStore } from '../store/auth'
 import getAssetUrl from '../utils/getAssetUrl'
 
 const DEFAULT_USER = {
-  name: 'usuario',
+  name: 'Usuario',
   email: 'usuario@cursos.com.ar',
   password: 'usuario',
 }

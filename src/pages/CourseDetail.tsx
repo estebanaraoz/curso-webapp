@@ -6,7 +6,6 @@ import { useParams, useNavigate, Link } from 'react-router-dom'
 import getAssetUrl from '../utils/getAssetUrl'
 
 import {
-  UserCircleIcon,
   LockClosedIcon,
   CheckCircleIcon as CheckCircleSolidIcon,
 } from '@heroicons/react/24/solid'
@@ -115,9 +114,11 @@ export default function CourseDetail() {
               <h2 className="text-4xl font-bold">Instructor</h2>
               {instructor && (
                 <div className="flex flex-col items-center gap-2">
-                  <div className="w-[60px] h-[60px] rounded-full bg-gray-300 flex items-center justify-center">
-                    <UserCircleIcon className="w-[60px] h-[60px] text-gray-400" />
-                  </div>
+                  <img
+                    src={getAssetUrl(instructor.avatar)}
+                    alt={instructor.name}
+                    className="w-[240px] h-[240px] object-cover rounded-full"
+                  />
                   <span className="font-semibold">{instructor.name}</span>
                 </div>
               )}

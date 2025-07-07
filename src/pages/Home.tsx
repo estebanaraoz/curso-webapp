@@ -30,7 +30,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-r from-blue-50/70 to-purple-50/70 dark:from-gray-800/70 dark:to-gray-700/70 -z-10" />
             <div className="container mx-auto flex justify-center p-8">
               <div className="flex flex-col items-start gap-4 md:w-2/3">
-                <h1 className="text-6xl md:text-7xl font-extrabold text-blue-600 pb-2">
+                <h1 className="text-6xl md:text-7xl font-extrabold text-primary pb-2">
                   Aula Digital Ciudadana
                 </h1>
                 <p className="text-xl md:text-2xl text-black">Aprende y potencia tu carrera con cursos online dictados por profesionales del desarrollo web.</p>
@@ -110,7 +110,7 @@ export default function Home() {
               <img
                 src={getAssetUrl('/images/testimonials/lucia.png')}
                 alt="Lucía"
-                className="w-[80px] h-[80px] object-cover rounded-full mx-auto"
+                className="w-[240px] h-[240px] object-cover rounded-full mx-auto"
               />
               <p className="text-xl font-semibold">"Gracias a Aula Digital pude conseguir mi primer trabajo en tecnología"</p>
               <span className="text-base">- Lucía</span>
@@ -119,7 +119,7 @@ export default function Home() {
               <img
                 src={getAssetUrl('/images/testimonials/mateo.png')}
                 alt="Mateo"
-                className="w-[80px] h-[80px] object-cover rounded-full mx-auto"
+                className="w-[240px] h-[240px] object-cover rounded-full mx-auto"
               />
               <p className="text-xl font-semibold">"Los cursos son claros y el soporte del foro es excelente"</p>
               <span className="text-base">- Mateo</span>
