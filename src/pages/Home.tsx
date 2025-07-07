@@ -25,7 +25,7 @@ export default function Home() {
         <main className="flex-grow">
           <section className="relative w-full overflow-hidden">
             <div
-              className="absolute inset-0 w-full h-full bg-cover bg-center blur-3xl scale-110 -z-10"
+              className="absolute inset-0 w-full h-full bg-cover bg-center blur-[32px] scale-110 -z-10"
               style={{ backgroundImage: `url(${getAssetUrl('/images/hero.png')})` }}
             />
             <div className="absolute inset-0 bg-gradient-to-r from-blue-50/70 to-purple-50/70 dark:from-gray-800/70 dark:to-gray-700/70 backdrop-blur-sm -z-10" />
