@@ -25,12 +25,12 @@ export default function Home() {
         <main className="flex-grow">
           <section className="relative w-full overflow-hidden">
             <div
-              className="absolute inset-0 w-full h-full bg-cover bg-center blur-[48px] scale-110 -z-10"
+              className="absolute inset-0 w-full h-full bg-cover bg-center -z-10"
               style={{ backgroundImage: `url(${getAssetUrl('/images/hero.png')})` }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-50/70 to-purple-50/70 dark:from-gray-800/70 dark:to-gray-700/70 backdrop-blur-sm -z-10" />
-            <div className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-8 p-8">
-              <div className="flex flex-col items-start gap-4 md:w-1/2">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-50/70 to-purple-50/70 dark:from-gray-800/70 dark:to-gray-700/70 -z-10" />
+            <div className="container mx-auto flex justify-center p-8">
+              <div className="flex flex-col items-start gap-4 md:w-2/3">
                 <h1 className="text-6xl md:text-7xl font-extrabold text-blue-600 pb-2">
                   Aula Digital Ciudadana
                 </h1>
@@ -39,11 +39,6 @@ export default function Home() {
                   <Button variant="primary">Explorar cursos</Button>
                 </Link>
               </div>
-              <img
-                src={getAssetUrl('/images/hero.png')}
-                alt="Grupo de estudiantes"
-                className="w-full md:w-1/2 rounded-lg shadow-xl"
-              />
             </div>
           </section>
 
