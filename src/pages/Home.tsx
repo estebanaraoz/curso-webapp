@@ -4,7 +4,15 @@ import Button from '../components/Button'
 import CourseCard from '../components/CourseCard'
 import { courses } from '../data/courses'
 import { Link } from 'react-router-dom'
-import { UserCircleIcon, UserPlusIcon, BookOpenIcon, ClipboardDocumentCheckIcon } from '@heroicons/react/24/solid'
+import {
+  UserCircleIcon,
+  UserPlusIcon,
+  BookOpenIcon,
+  ClipboardDocumentCheckIcon,
+  CheckBadgeIcon,
+  ClockIcon,
+  UsersIcon
+} from '@heroicons/react/24/solid'
 
 export default function Home() {
   const featuredCourses = courses.slice(0, 5)
@@ -13,59 +21,55 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="flex-grow">
-        <section className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-8 p-8 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-lg">
-          <div className="flex flex-col items-start gap-4 md:w-1/2">
-            <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent pb-2">
-              Aula Digital Ciudadana
-            </h1>
-            <p className="text-lg">Aprende y potencia tu carrera con cursos online dictados por profesionales del desarrollo web.</p>
-            <Link to="/cursos">
-              <Button variant="primary">Explorar cursos</Button>
-            </Link>
-          </div>
-          <img
-            src="/images/hero.png"
-            alt="Grupo de estudiantes"
-            className="w-full md:w-2/3 rounded-lg shadow-xl"
-          />
-        </section>
+        <main className="flex-grow">
+          <section className="w-full bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700">
+            <div className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-8 p-8">
+              <div className="flex flex-col items-start gap-4 md:w-1/2">
+                <h1 className="text-4xl md:text-5xl font-extrabold text-blue-600 pb-2">
+                  Aula Digital Ciudadana
+                </h1>
+                <p className="text-lg">Aprende y potencia tu carrera con cursos online dictados por profesionales del desarrollo web.</p>
+                <Link to="/cursos">
+                  <Button variant="primary">Explorar cursos</Button>
+                </Link>
+              </div>
+              <img
+                src="/images/hero.png"
+                alt="Grupo de estudiantes"
+                className="w-full md:w-1/2 rounded-lg shadow-xl"
+              />
+            </div>
+          </section>
 
 
-        <section className="bg-gray-100 dark:bg-gray-800 py-8">
-          <div className="container mx-auto grid md:grid-cols-3 gap-8 p-4 text-center">
-            <div className="flex flex-col items-center gap-2">
-              <img src="/images/icon-quality.png" alt="" className="w-16 h-16" />
-              <h2 className="text-xl font-semibold">Cursos certificados</h2>
-              <p>Inscríbete y recibe un certificado oficial al aprobar la evaluación.</p>
+          <section className="bg-gray-100 dark:bg-gray-800 py-8">
+            <div className="container mx-auto grid md:grid-cols-3 gap-8 p-4 text-center">
+              <div className="flex flex-col items-center gap-2">
+                <CheckBadgeIcon className="w-16 h-16 text-blue-600" />
+                <h2 className="text-xl font-semibold">Cursos certificados</h2>
+                <p>Inscríbete y recorre cada clase con documentos y videos. Al terminar rendí una evaluación para obtener tu certificado.</p>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <ClockIcon className="w-16 h-16 text-blue-600" />
+                <h2 className="text-xl font-semibold">A tu propio ritmo</h2>
+                <p>Avanza con total flexibilidad de horarios y elige cuándo tomar cada lección. Repasa los módulos las veces que necesites.</p>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <UsersIcon className="w-16 h-16 text-blue-600" />
+                <h2 className="text-xl font-semibold">Foro de la comunidad</h2>
+                <p>Participa en un espacio colaborativo con estudiantes y asesores. Comparte dudas y soluciones con la comunidad.</p>
+              </div>
             </div>
-            <div className="flex flex-col items-center gap-2">
-              <img src="/images/icon-flexibility.png" alt="" className="w-16 h-16" />
-              <h2 className="text-xl font-semibold">A tu propio ritmo</h2>
-              <p>
-                Avanza con total flexibilidad de horarios y elige cuándo tomar
-                cada lección. Repasa los módulos las veces que necesites.
-              </p>
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <img src="/images/icon-support.png" alt="" className="w-16 h-16" />
-              <h2 className="text-xl font-semibold">Foro de la comunidad</h2>
-              <p>
-                Participa en un espacio colaborativo con estudiantes y asesores
-                para compartir dudas y soluciones.
-              </p>
-            </div>
-          </div>
-        </section>
+          </section>
 
-        <section className="py-12">
-          <h2 className="text-2xl font-bold text-center mb-4">Últimos Cursos</h2>
-          <div className="grid gap-4 justify-center items-start [grid-template-columns:repeat(auto-fit,_minmax(320px,_1fr))]">
-            {featuredCourses.slice(0,4).map(course => (
-              <CourseCard key={course.id} {...course} showProgress={false} />
-            ))}
-          </div>
-        </section>
+          <section className="py-12">
+            <h2 className="text-2xl font-bold text-center mb-4">Últimos Cursos</h2>
+            <div className="flex flex-wrap justify-center gap-6 w-full max-w-7xl mx-auto">
+              {featuredCourses.slice(0,4).map(course => (
+                <CourseCard key={course.id} {...course} showProgress={false} />
+              ))}
+            </div>
+          </section>
 
         <section className="container mx-auto py-12 flex flex-col items-center gap-6">
           <h2 className="text-2xl font-bold">¿Cómo inscribirse?</h2>
