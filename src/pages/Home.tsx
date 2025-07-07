@@ -23,7 +23,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
         <main className="flex-grow">
-          <section className="relative w-full overflow-hidden">
+          <section className="relative w-full overflow-hidden min-h-[600px]">
             <div
               className="absolute inset-0 w-full h-full bg-cover bg-center -z-10"
               style={{ backgroundImage: `url(${getAssetUrl('/images/hero.png')})` }}
@@ -34,7 +34,7 @@ export default function Home() {
                 <h1 className="text-6xl md:text-7xl font-extrabold text-blue-600 pb-2">
                   Aula Digital Ciudadana
                 </h1>
-                <p className="text-xl">Aprende y potencia tu carrera con cursos online dictados por profesionales del desarrollo web.</p>
+                <p className="text-4xl md:text-6xl text-black">Aprende y potencia tu carrera con cursos online dictados por profesionales del desarrollo web.</p>
                 <Link to="/cursos">
                   <Button variant="primary">Explorar cursos</Button>
                 </Link>
