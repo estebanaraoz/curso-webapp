@@ -11,7 +11,7 @@ export default function Contacto() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="container mx-auto flex-grow p-4 flex flex-col items-center gap-4">
+      <main className="container mx-auto flex-grow p-4 pb-12 flex flex-col items-center gap-4">
         <h1 className="text-5xl font-bold">Formulario de contacto</h1>
         <form className="border-2 border-gray-300 rounded p-4 flex flex-col gap-2 w-full max-w-md">
           {course && (

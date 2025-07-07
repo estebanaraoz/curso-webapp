@@ -54,7 +54,7 @@ export default function CourseDetail() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="container mx-auto flex-grow p-4 flex flex-col items-start gap-6">
+      <main className="container mx-auto flex-grow p-4 pb-12 flex flex-col items-start gap-6">
         <nav className="text-base flex items-center gap-2">
           <button onClick={() => navigate(-1)} aria-label="Volver" className="p-1">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">

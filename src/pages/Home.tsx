@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-        <main className="flex-grow">
+        <main className="flex-grow pt-4 pb-12">
           <section className="relative w-full overflow-hidden min-h-[600px] flex items-center">
             <div
               className="absolute inset-0 w-full h-full bg-cover bg-center -z-10"

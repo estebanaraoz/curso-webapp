@@ -9,7 +9,7 @@ export default function NotFound() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="container mx-auto flex-grow flex items-center justify-center p-4 min-h-[600px]">
+      <main className="container mx-auto flex-grow flex items-center justify-center p-4 pb-12 min-h-[600px]">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
           <div className="flex flex-col items-start text-left max-w-md">
             <br />
