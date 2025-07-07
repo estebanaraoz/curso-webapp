@@ -13,14 +13,14 @@ export default function NotFound() {
         <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
           <div className="flex flex-col items-start text-left max-w-md">
             <br />
-            <h1 className="text-6xl md:text-7xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent pb-2">
+            <h1 className="text-6xl md:text-7xl font-extrabold text-primary pb-2">
               Error 404 - Página no encontrada
             </h1>
             <br />
             <p className="text-xl mb-6">
               Ups... Lo lamento, la ruta que estás buscando no existe.
             </p>
-            <Button onClick={() => navigate('/')}>Volver al inicio</Button>
+            <Button onClick={() => navigate('/')} className="text-lg uppercase px-8 py-4">Volver al inicio</Button>
           </div>
 
           <img

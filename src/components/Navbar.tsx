@@ -125,7 +125,7 @@ export default function Navbar() {
                 navigate('/login')
                 setOpen(false)
               }}
-              className="px-4 py-2 rounded bg-gray-300 text-gray-800 hover:bg-gray-400"
+              className="px-4 py-2 rounded bg-gray-300 text-gray-800 hover:bg-gray-400 uppercase"
             >
               Ingresar
             </button>
@@ -223,7 +223,7 @@ export default function Navbar() {
                 navigate('/login')
                 setOpen(false)
               }}
-              className="px-4 py-2 rounded min-w-[6rem] bg-gray-300 text-gray-800 hover:bg-gray-400"
+              className="px-4 py-2 rounded min-w-[6rem] bg-gray-300 text-gray-800 hover:bg-gray-400 uppercase"
             >
               Ingresar
             </button>
