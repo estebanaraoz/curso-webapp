@@ -81,17 +81,23 @@ export default function Home() {
         <section className="container mx-auto py-12 flex flex-col items-center gap-6">
           <h2 className="text-4xl font-bold">¿Cómo inscribirse?</h2>
           <div className="grid md:grid-cols-3 gap-4 w-full">
-            <div className="p-card rounded-card shadow-card flex flex-col items-center gap-3">
+            <div className="relative p-card rounded-card shadow-card flex flex-col items-center gap-3 border border-tertiary">
+              <span className="absolute top-2 right-2 w-6 h-6 rounded-full bg-tertiary text-white flex items-center justify-center text-sm font-semibold">1</span>
               <UserPlusIcon className="w-10 h-10 text-primary" />
-              <p>Registrate gratis</p>
+              <h3 className="text-lg font-semibold">Registrate gratis</h3>
+              <p className="text-sm text-center">Crea tu cuenta con tu email.</p>
             </div>
-            <div className="p-card rounded-card shadow-card flex flex-col items-center gap-3">
+            <div className="relative p-card rounded-card shadow-card flex flex-col items-center gap-3 border border-tertiary">
+              <span className="absolute top-2 right-2 w-6 h-6 rounded-full bg-tertiary text-white flex items-center justify-center text-sm font-semibold">2</span>
               <BookOpenIcon className="w-10 h-10 text-primary" />
-              <p>Elegí un curso</p>
+              <h3 className="text-lg font-semibold">Elegí un curso</h3>
+              <p className="text-sm text-center">Explora las opciones disponibles.</p>
             </div>
-            <div className="p-card rounded-card shadow-card flex flex-col items-center gap-3">
+            <div className="relative p-card rounded-card shadow-card flex flex-col items-center gap-3 border border-tertiary">
+              <span className="absolute top-2 right-2 w-6 h-6 rounded-full bg-tertiary text-white flex items-center justify-center text-sm font-semibold">3</span>
               <ClipboardDocumentCheckIcon className="w-10 h-10 text-primary" />
-              <p>Completá el formulario</p>
+              <h3 className="text-lg font-semibold">Completá el formulario</h3>
+              <p className="text-sm text-center">Envíanos tus datos para inscribirte.</p>
             </div>
           </div>
           <Link to="/cursos">
