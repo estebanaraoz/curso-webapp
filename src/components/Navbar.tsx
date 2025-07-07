@@ -49,9 +49,9 @@ export default function Navbar() {
   }, [dropdownOpen])
 
   return (
-    <nav className="sticky top-0 z-50 bg-blue-600 dark:bg-blue-700 text-white text-lg py-[21px]">
+    <nav className="sticky top-0 z-50 bg-blue-600 dark:bg-blue-700 text-white text-lg py-3">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-[auto_1fr_auto] items-center py-5 sm:hidden">
+        <div className="grid grid-cols-[auto_1fr_auto] items-center py-3 sm:hidden">
         <button
           onClick={toggleMenu}
           aria-label="Abrir menú"
@@ -133,7 +133,7 @@ export default function Navbar() {
         </div>
       </div>
       <div
-        className={`${open ? 'flex' : 'hidden'} sm:flex flex-col sm:flex-row items-start sm:items-center gap-4 py-4 border-t sm:border-none`}
+        className={`${open ? 'flex' : 'hidden'} sm:flex flex-col sm:flex-row items-start sm:items-center gap-4 py-3 border-t sm:border-none`}
       >
         <Link
           to="/"

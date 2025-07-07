@@ -11,20 +11,20 @@ export default function Footer() {
             Aula Digital Ciudadana es una plataforma de formación en línea para que aprendas a tu propio ritmo.
           </p>
         </div>
-        <div>
+        <div className="text-lg">
           <h3 className="font-semibold mb-2">Contacto</h3>
           <ul className="space-y-1">
             <li>correo@example.com</li>
             <li>Av. Siempre Viva 123</li>
           </ul>
         </div>
-        <div>
+        <div className="text-lg">
           <h3 className="font-semibold mb-2">Quiénes somos</h3>
           <p>
             Somos desarrolladores apasionados por compartir conocimiento a través de cursos asíncronos.
           </p>
         </div>
-        <div>
+        <div className="text-lg">
           <h3 className="font-semibold mb-2">Mapa del sitio</h3>
           <ul className="space-y-1">
             <li>

@@ -23,7 +23,13 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
         <main className="flex-grow">
-          <section className="w-full bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700">
+          <section
+            className="relative w-full bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 overflow-hidden"
+          >
+            <div
+              className="absolute inset-0 w-full h-full bg-cover bg-center blur-3xl scale-110 -z-10"
+              style={{ backgroundImage: `url(${getAssetUrl('/images/hero.png')})` }}
+            />
             <div className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-8 p-8">
               <div className="flex flex-col items-start gap-4 md:w-1/2">
                 <h1 className="text-6xl md:text-7xl font-extrabold text-blue-600 pb-2">
