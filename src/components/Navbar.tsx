@@ -71,7 +71,7 @@ export default function Navbar() {
                 <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-700 border rounded shadow flex flex-col z-10">
                   <Link
                     to="/dashboard"
-                    className="text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                    className="text-left px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
                     onClick={() => {
                       setOpen(false)
                       setDropdownOpen(false)
@@ -81,11 +81,11 @@ export default function Navbar() {
                   </Link>
                   <button
                     onClick={handleLogout}
-                    className="text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                    className="text-left px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
                   >
                     Cerrar sesión
                   </button>
-                  <DarkModeToggle className="text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600" />
+                  <DarkModeToggle className="text-left px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600" />
                 </div>
               )}
             </div>
@@ -169,7 +169,7 @@ export default function Navbar() {
                 <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-700 border rounded shadow flex flex-col z-10">
                   <Link
                     to="/dashboard"
-                    className="text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                    className="text-left px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
                     onClick={() => {
                       setOpen(false)
                       setDropdownOpen(false)
@@ -179,11 +179,11 @@ export default function Navbar() {
                   </Link>
                   <button
                     onClick={handleLogout}
-                    className="text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                    className="text-left px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
                   >
                     Cerrar sesión
                   </button>
-                  <DarkModeToggle className="text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600" />
+                  <DarkModeToggle className="text-left px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600" />
                 </div>
               )}
             </div>
