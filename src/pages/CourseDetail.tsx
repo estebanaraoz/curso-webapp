@@ -56,7 +56,7 @@ export default function CourseDetail() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="container mx-auto flex-grow p-4 flex flex-col items-start gap-6">
-        <nav className="text-sm flex items-center gap-2">
+        <nav className="text-base flex items-center gap-2">
           <button onClick={() => navigate(-1)} aria-label="Volver" className="p-1">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -73,10 +73,10 @@ export default function CourseDetail() {
               alt={course.title}
               className="w-full max-h-[300px] object-contain rounded overflow-hidden"
             />
-            <h1 className="text-4xl font-extrabold">{course.title}</h1>
+            <h1 className="text-6xl font-extrabold">{course.title}</h1>
             <section className="border-2 border-gray-300 rounded p-4 space-y-4">
-              <p className="text-lg">{course.description}</p>
-              <div className="flex flex-wrap gap-2 text-sm">
+              <p className="text-xl">{course.description}</p>
+              <div className="flex flex-wrap gap-2 text-base">
                 <span className="px-3 py-1 bg-gray-200 rounded underline font-semibold">Dificultad: {course.level}</span>
                 <span className="px-3 py-1 bg-gray-200 rounded">Duración: {formatDuration(course.weeks)}</span>
                 <span className="px-3 py-1 bg-gray-200 rounded">Módulos: {course.modules.length}</span>
@@ -102,7 +102,7 @@ export default function CourseDetail() {
               </section>
             )}
             <section className="border-2 border-gray-300 rounded p-4 space-y-2">
-              <h2 className="text-2xl font-bold">Preguntas frecuentes</h2>
+              <h2 className="text-4xl font-bold">Preguntas frecuentes</h2>
               <p>
                 ¿Tienes dudas? Escríbelas a través del siguiente formulario para contactarnos.
               </p>
@@ -112,11 +112,11 @@ export default function CourseDetail() {
               </Link>
             </section>
             <section className="border-2 border-gray-300 rounded p-4 space-y-2">
-              <h2 className="text-2xl font-bold">Instructor</h2>
+              <h2 className="text-4xl font-bold">Instructor</h2>
               {instructor && (
                 <div className="flex flex-col items-center gap-2">
-                  <div className="w-24 h-24 rounded-full bg-gray-300 flex items-center justify-center">
-                    <UserCircleIcon className="w-20 h-20 text-gray-400" />
+                  <div className="w-[60px] h-[60px] rounded-full bg-gray-300 flex items-center justify-center">
+                    <UserCircleIcon className="w-[60px] h-[60px] text-gray-400" />
                   </div>
                   <span className="font-semibold">{instructor.name}</span>
                 </div>
@@ -133,7 +133,7 @@ export default function CourseDetail() {
                       : 'Actualmente en curso'}
                   {progress.completed >= progress.total && progress.grade !== undefined && (
                     <span
-                      className={`ml-1 px-2 py-0.5 rounded text-xs ${
+                      className={`ml-1 px-2 py-0.5 rounded text-sm ${
                         progress.grade >= 40 ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'
                       }`}
                     >
@@ -154,7 +154,7 @@ export default function CourseDetail() {
                   progress.grade === undefined &&
                   attemptsRemaining > 0 ? (
                     <>
-                      <p className="text-sm font-semibold">
+                      <p className="text-base font-semibold">
                         Ya has visto todas las clases de este curso. Por favor,
                         contestá la evaluación para que un instructor pueda calificar tu rendimiento.
                       </p>
@@ -170,7 +170,7 @@ export default function CourseDetail() {
                     progress.grade < 40 &&
                     attemptsRemaining > 0 ? (
                     <>
-                      <p className="text-sm text-red-600">
+                      <p className="text-base text-red-600">
                         Debes volver a contestar la evaluación.
                         {!canRetakeExam &&
                           ' Debes esperar 24 horas antes de volver a responder esta evaluación.'}{' '}
@@ -200,11 +200,11 @@ export default function CourseDetail() {
             )}
           </div>
         </div>
-        <h2 className="text-2xl font-bold mt-4">Módulos</h2>
+        <h2 className="text-4xl font-bold mt-4">Módulos</h2>
         {!progress ? (
-          <p className="text-sm mb-2">Inscríbete a este curso para comenzar y ver las clases.</p>
+          <p className="text-base mb-2">Inscríbete a este curso para comenzar y ver las clases.</p>
         ) : (
-          <p className="text-sm mb-2">
+          <p className="text-base mb-2">
             Los próximos módulos se irán desbloqueando a medida que completes cada
             módulo anterior. Debes finalizar todas las clases para habilitar el
             siguiente módulo.
@@ -227,7 +227,7 @@ export default function CourseDetail() {
                 <div className="p-3 flex justify-between">
                   <div>
                     <div className={`font-semibold ${completed ? 'line-through' : ''}`}>Módulo {i + 1}: {m.title}</div>
-                    <p className="text-sm text-gray-600">{m.description}</p>
+                    <p className="text-base text-gray-600">{m.description}</p>
                   </div>
                   {locked && <LockClosedIcon className="w-5 h-5 text-gray-500" />}
                 </div>
@@ -249,9 +249,9 @@ export default function CourseDetail() {
                               </span>
                             </div>
                             {done ? (
-                              <span className="text-green-600 text-sm font-semibold">Completado</span>
+                              <span className="text-green-600 text-base font-semibold">Completado</span>
                             ) : (
-                              <span className="text-blue-600 underline text-sm">Ver</span>
+                              <span className="text-blue-600 underline text-base">Ver</span>
                             )}
                           </Link>
                         </li>

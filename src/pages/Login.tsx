@@ -46,7 +46,7 @@ export default function Login() {
             role="form"
             onSubmit={handleSubmit}
           >
-            <h1 className="text-2xl font-bold text-gray-800">Iniciar sesión</h1>
+            <h1 className="text-4xl font-bold text-gray-800">Iniciar sesión</h1>
             <div className="flex flex-col">
               <label htmlFor="email" className="text-gray-700">
                 Correo electrónico
@@ -78,19 +78,19 @@ export default function Login() {
             <div className="flex items-center justify-between">
               <label className="flex items-center gap-2">
                 <input type="checkbox" className="" />
-                <span className="text-gray-700">Recordarme</span>
+                <span className="text-lg text-gray-700">Recordarme</span>
               </label>
-              <a href="#" className="text-sm text-blue-600 hover:underline">
+              <a href="#" className="text-base text-blue-600 hover:underline">
                 ¿Olvidaste tu contraseña?
               </a>
             </div>
             {error && (
-              <p className="text-sm text-red-600" role="alert">
+              <p className="text-base text-red-600" role="alert">
                 {error}
               </p>
             )}
             <Button type="submit" className="w-full">Iniciar sesión</Button>
-            <p className="text-sm text-center text-gray-700">
+            <p className="text-base text-center text-gray-700">
               ¿No tenés una cuenta?{' '}
               <Link to="/register" className="text-blue-600 hover:underline">
                 Registrate

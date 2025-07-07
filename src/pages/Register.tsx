@@ -18,7 +18,7 @@ export default function Register() {
             className="w-full h-48 object-cover lg:h-full"
           />
           <form className="p-8 space-y-4 flex flex-col justify-center" role="form">
-            <h1 className="text-2xl font-bold text-gray-800">Crear cuenta</h1>
+            <h1 className="text-4xl font-bold text-gray-800">Crear cuenta</h1>
             <div className="flex flex-col">
               <label htmlFor="name" className="text-gray-700">
                 Nombre completo
@@ -68,7 +68,7 @@ export default function Register() {
               />
             </div>
             <Button type="submit" className="w-full">Registrarme</Button>
-            <p className="text-sm text-center text-gray-700">
+            <p className="text-base text-center text-gray-700">
               ¿Ya tenés cuenta?{' '}
               <Link to="/login" className="text-blue-600 hover:underline">
                 Iniciar sesión

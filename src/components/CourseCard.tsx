@@ -61,11 +61,11 @@ export default function CourseCard({
           alt={title}
           className="w-full aspect-video object-cover rounded"
         />
-        <h2 className="text-xl font-semibold">{title}</h2>
+        <h2 className="text-3xl font-semibold">{title}</h2>
         <p>Duración: {formatDuration(weeks)}</p>
         <p>Nivel: {level}</p>
         {showProgress && isEnrolled && (
-          <div className="text-sm mt-1 space-y-1">
+          <div className="text-base mt-1 space-y-1">
             {progress && progress.completed >= progress.total ? (
               <>
                 <p className="font-semibold text-green-700">Curso finalizado</p>

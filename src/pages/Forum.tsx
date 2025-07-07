@@ -40,10 +40,10 @@ export default function Forum() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="container mx-auto flex-grow p-4 space-y-8">
-        <h1 className="text-3xl font-bold text-center">Foro de la comunidad</h1>
+        <h1 className="text-5xl font-bold text-center">Foro de la comunidad</h1>
 
         <section className="bg-gray-100 dark:bg-gray-800 p-4 rounded space-y-4">
-          <h2 className="text-xl font-semibold flex items-center gap-2">
+          <h2 className="text-3xl font-semibold flex items-center gap-2">
             <PencilSquareIcon className="w-6 h-6" /> Nueva publicación
           </h2>
           {isLogged ? (
@@ -51,7 +51,7 @@ export default function Forum() {
               <select
                 value={courseId}
                 onChange={e => setCourseId(e.target.value)}
-                className="border p-2 rounded text-gray-800"
+                className="border p-2 rounded text-base text-gray-800"
               >
                 {courses.map(c => (
                   <option key={c.id} value={c.id}>
@@ -100,15 +100,15 @@ export default function Forum() {
             <article key={post.id} className="border rounded-card p-card shadow-card bg-white space-y-2">
               <header className="flex justify-between items-center">
                 <h3 className="font-semibold">{post.title}</h3>
-                <span className="text-xs text-gray-500">
+                <span className="text-base text-gray-500">
                   {new Date(post.date).toLocaleString()}
                 </span>
               </header>
-              <p className="text-sm">{post.content}</p>
-              <div className="text-sm flex items-center gap-1 text-gray-500">
+              <p className="text-base">{post.content}</p>
+              <div className="text-base flex items-center gap-1 text-gray-500">
                 <ChatBubbleBottomCenterTextIcon className="w-4 h-4" />
                 {post.replies.length} respuestas
-                <button className="ml-auto flex items-center gap-1 text-gray-500 text-sm" aria-label="Me gusta">
+                <button className="ml-auto flex items-center gap-1 text-gray-500 text-base" aria-label="Me gusta">
                   <HandThumbUpIcon className="w-4 h-4" /> {post.likes ?? 0}
                 </button>
               </div>

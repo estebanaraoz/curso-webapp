@@ -65,14 +65,14 @@ export default function Dashboard() {
         </aside>
         <section className="flex-grow space-y-4 w-full">
           <div className="border border-gray-300 rounded-card shadow-card p-card space-y-4 w-full">
-            <h1 className="text-3xl font-bold">Mis cursos</h1>
+            <h1 className="text-5xl font-bold">Mis cursos</h1>
             {enrolledCourses.length === 0 ? (
               <p>Todavía no te inscribiste a ningún curso.</p>
             ) : (
               <>
                 {currentCourses.length > 0 && (
                   <div className="space-y-2">
-                    <h2 className="text-2xl font-semibold">Actualmente cursando</h2>
+                    <h2 className="text-4xl font-semibold">Actualmente cursando</h2>
                     <CourseSlider
                       courses={currentCourses.map(course => {
                         const info = courses.find(c => c.id === course.id)
@@ -89,7 +89,7 @@ export default function Dashboard() {
                 )}
                 {finishedCourses.length > 0 && (
                   <div className="space-y-2">
-                    <h2 className="text-2xl font-semibold">Cursos finalizados</h2>
+                    <h2 className="text-4xl font-semibold">Cursos finalizados</h2>
                     <CourseSlider
                       courses={finishedCourses.map(course => {
                         const info = courses.find(c => c.id === course.id)
@@ -108,11 +108,11 @@ export default function Dashboard() {
             )}
           </div>
           <div className="border border-gray-300 rounded-card shadow-card p-card space-y-2 w-full">
-            <h1 className="text-3xl font-bold">Mis calificaciones</h1>
+            <h1 className="text-5xl font-bold">Mis calificaciones</h1>
             <p>Aquí verás tus calificaciones</p>
           </div>
           <div className="border border-gray-300 rounded-card shadow-card p-card space-y-2 w-full">
-            <h1 className="text-3xl font-bold">Mis certificados</h1>
+            <h1 className="text-5xl font-bold">Mis certificados</h1>
             <p>Aquí verás tus certificados</p>
           </div>
         </section>
