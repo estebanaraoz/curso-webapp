@@ -53,7 +53,7 @@ export default function CourseSlider({ courses, showProgress = true }: Props) {
       >
         {courses.map(course => (
           <SwiperSlide key={course.id} className="flex items-center justify-center">
-            <div className="w-[360px] px-4">
+            <div className="w-[320px] px-4">
               <CourseCard
                 id={course.id}
                 title={course.title}

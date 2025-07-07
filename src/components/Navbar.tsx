@@ -25,7 +25,7 @@ export default function Navbar() {
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen)
 
   return (
-    <nav className="sticky top-0 z-50 bg-blue-600 dark:bg-blue-700 text-white text-sm py-4">
+    <nav className="sticky top-0 z-50 bg-blue-600 dark:bg-blue-700 text-white text-lg py-6">
       <div className="container mx-auto px-4">
         <div className="relative flex items-center py-5 sm:hidden">
         <button onClick={toggleMenu} aria-label="Abrir menú" className="mr-2" role="button" tabIndex={0}>
@@ -51,13 +51,13 @@ export default function Navbar() {
             <div className="relative">
               <button
                 onClick={toggleDropdown}
-                className="flex items-center gap-1 px-2 py-1 rounded bg-sky-500 text-white hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="flex items-center gap-2 px-4 py-2 rounded bg-sky-500 text-white hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-primary"
                 aria-haspopup="true"
               >
-                <UserCircleIcon className="w-5 h-5" />
-                <span className="hidden sm:inline text-sm">{name}</span>
+                <UserCircleIcon className="w-8 h-8" />
+                <span className="hidden sm:inline text-lg">{name}</span>
                 <svg
-                  className={`w-4 h-4 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`}
+                  className={`w-6 h-6 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`}
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -114,28 +114,32 @@ export default function Navbar() {
         </Link>
         <NavLink
           to="/"
-          className={({ isActive }) => `block ${isActive ? 'font-semibold text-yellow-300' : ''}`}
+          className={({ isActive }) =>
+            `block px-4 py-2 uppercase ${isActive ? 'font-semibold text-yellow-300' : ''}`}
           onClick={() => setOpen(false)}
         >
           Home
         </NavLink>
         <NavLink
           to="/cursos"
-          className={({ isActive }) => `block ${isActive ? 'font-semibold text-yellow-300' : ''}`}
+          className={({ isActive }) =>
+            `block px-4 py-2 uppercase ${isActive ? 'font-semibold text-yellow-300' : ''}`}
           onClick={() => setOpen(false)}
         >
           Cursos
         </NavLink>
         <NavLink
           to="/nosotros"
-          className={({ isActive }) => `block ${isActive ? 'font-semibold text-yellow-300' : ''}`}
+          className={({ isActive }) =>
+            `block px-4 py-2 uppercase ${isActive ? 'font-semibold text-yellow-300' : ''}`}
           onClick={() => setOpen(false)}
         >
           Nosotros
         </NavLink>
         <NavLink
           to="/foro"
-          className={({ isActive }) => `block ${isActive ? 'font-semibold text-yellow-300' : ''}`}
+          className={({ isActive }) =>
+            `block px-4 py-2 uppercase ${isActive ? 'font-semibold text-yellow-300' : ''}`}
           onClick={() => setOpen(false)}
         >
           Foro
@@ -145,13 +149,13 @@ export default function Navbar() {
             <div className="relative w-full sm:w-auto">
               <button
                 onClick={toggleDropdown}
-                className="flex items-center gap-1 w-full sm:w-auto px-4 py-2 rounded bg-sky-500 text-white hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="flex items-center gap-2 w-full sm:w-auto px-4 py-2 rounded bg-sky-500 text-white hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-primary"
                 aria-haspopup="true"
               >
-                <UserCircleIcon className="w-5 h-5" />
-                <span>{name}</span>
+                <UserCircleIcon className="w-8 h-8" />
+                <span className="text-lg">{name}</span>
                 <svg
-                  className={`w-4 h-4 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`}
+                  className={`w-6 h-6 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`}
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
