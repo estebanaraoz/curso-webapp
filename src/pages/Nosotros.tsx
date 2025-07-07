@@ -5,7 +5,6 @@ import {
   UsersIcon,
   HeartIcon,
   AcademicCapIcon,
-  UserCircleIcon,
 } from '@heroicons/react/24/solid'
 
 export default function Nosotros() {
@@ -48,11 +47,11 @@ export default function Nosotros() {
           <h2 className="text-2xl font-bold text-center">Nuestro equipo</h2>
           <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
             {instructors.map(i => (
-              <div key={i.name} className="flex flex-col items-center gap-2 text-center">
-                <div className="w-24 h-24 rounded-full bg-gray-300 flex items-center justify-center">
-                  <UserCircleIcon className="w-20 h-20 text-gray-500" />
-                </div>
-                <span className="font-medium">{i.name}</span>
+              <div key={i.name} className="p-card rounded-card shadow-card text-center space-y-2">
+                <img src={i.avatar} alt={i.name} className="w-24 h-24 object-cover rounded-full mx-auto" />
+                <h3 className="font-semibold">{i.name}</h3>
+                <p className="text-sm text-gray-600">{i.role}</p>
+                <p className="text-sm">{i.bio}</p>
               </div>
             ))}
           </div>

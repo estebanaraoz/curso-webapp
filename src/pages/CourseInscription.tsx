@@ -46,9 +46,9 @@ export default function CourseInscription() {
       <Navbar />
       <main className="container mx-auto flex-grow p-4 flex flex-col items-center justify-center">
         {course ? (
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-prose w-full border rounded p-6 bg-white dark:bg-gray-800 text-center items-center">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-prose w-full border rounded-card p-card shadow-card bg-white dark:bg-gray-800">
             <h1 className="text-3xl font-bold text-center">Inscripción a {course.title}</h1>
-            <p className="text-center">Lee atentamente el siguiente documento y acepta las condiciones para completar tu inscripción.</p>
+            <p>Lee atentamente el siguiente documento y acepta las condiciones para completar tu inscripción.</p>
             {course.prerequisites && (
               <section className="space-y-2">
                 <h2 className="text-xl font-semibold">Requisitos</h2>
