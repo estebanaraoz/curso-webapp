@@ -28,8 +28,14 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 bg-blue-600 dark:bg-blue-700 text-white text-lg py-6">
       <div className="container mx-auto px-4">
-        <div className="relative flex items-center py-5 sm:hidden">
-        <button onClick={toggleMenu} aria-label="Abrir menú" className="mr-2" role="button" tabIndex={0}>
+        <div className="grid grid-cols-3 items-center py-5 sm:hidden">
+        <button
+          onClick={toggleMenu}
+          aria-label="Abrir menú"
+          className="justify-self-start p-2"
+          role="button"
+          tabIndex={0}
+        >
           {open ? (
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -42,12 +48,12 @@ export default function Navbar() {
         </button>
         <Link
           to="/"
-          className="absolute left-1/2 -translate-x-1/2"
+          className="justify-self-center"
           onClick={() => setOpen(false)}
         >
           <img src={getAssetUrl('/logo.png')} alt="Logo" className="h-12 w-auto object-contain" />
         </Link>
-        <div className="ml-auto">
+        <div className="justify-self-end">
           {isLogged ? (
             <div className="relative">
               <button
