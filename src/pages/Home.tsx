@@ -84,19 +84,19 @@ export default function Home() {
               <span className="absolute top-2 right-2 w-6 h-6 rounded-full bg-tertiary text-white flex items-center justify-center text-sm font-semibold">1</span>
               <UserPlusIcon className="w-10 h-10 text-primary" />
               <h3 className="text-lg font-semibold">Registrate gratis</h3>
-              <p className="text-sm text-center">Primero creá tu cuenta de usuario. Luego elegí el curso que más te interese. Finalmente aceptá las normas y completá el formulario de inscripción.</p>
+              <p className="text-sm text-center">Primero creá tu cuenta de usuario en la plataforma. Completa tus datos de contacto para que podamos identificarte. El registro es totalmente gratuito.</p>
             </div>
             <div className="relative p-card rounded-card shadow-card flex flex-col items-center gap-3 border border-tertiary">
               <span className="absolute top-2 right-2 w-6 h-6 rounded-full bg-tertiary text-white flex items-center justify-center text-sm font-semibold">2</span>
               <BookOpenIcon className="w-10 h-10 text-primary" />
               <h3 className="text-lg font-semibold">Elegí un curso</h3>
-              <p className="text-sm text-center">Primero creá tu cuenta de usuario. Luego elegí el curso que más te interese. Finalmente aceptá las normas y completá el formulario de inscripción.</p>
+              <p className="text-sm text-center">Cuando hayas iniciado sesión podrás explorar nuestro catálogo de cursos. Revisa cada propuesta con calma y selecciona la que prefieras. Las clases se realizan paso a paso y a tu ritmo.</p>
             </div>
             <div className="relative p-card rounded-card shadow-card flex flex-col items-center gap-3 border border-tertiary">
               <span className="absolute top-2 right-2 w-6 h-6 rounded-full bg-tertiary text-white flex items-center justify-center text-sm font-semibold">3</span>
               <ClipboardDocumentCheckIcon className="w-10 h-10 text-primary" />
-              <h3 className="text-lg font-semibold">Aceptá las normas y completá el formulario</h3>
-              <p className="text-sm text-center">Primero creá tu cuenta de usuario. Luego elegí el curso que más te interese. Finalmente aceptá las normas y completá el formulario de inscripción.</p>
+              <h3 className="text-lg font-semibold">Realiza la evaluación</h3>
+              <p className="text-sm text-center">Al terminar las clases deberás contestar la evaluación final. Envía tus respuestas para demostrar lo aprendido. Si apruebas recibirás un certificado del curso.</p>
             </div>
           </div>
           <Link to="/cursos">
