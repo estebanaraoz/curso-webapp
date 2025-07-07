@@ -68,7 +68,12 @@ export default function Home() {
           <p className="text-sm text-center mb-4">por la comunidad</p>
             <div className="flex flex-wrap justify-center gap-6 w-full max-w-screen-2xl mx-auto">
               {featuredCourses.slice(0,4).map(course => (
-                <CourseCard key={course.id} {...course} showProgress={false} />
+                <CourseCard
+                  key={course.id}
+                  {...course}
+                  showProgress={false}
+                  showActions={false}
+                />
               ))}
             </div>
           </section>

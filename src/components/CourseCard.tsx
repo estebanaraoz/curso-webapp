@@ -11,6 +11,10 @@ interface Props {
   image: string
   /** Show user's progress info inside the card */
   showProgress?: boolean
+  /** Display action buttons at the bottom of the card */
+  showActions?: boolean
+  /** Text shown when actions are hidden */
+  legend?: string
 }
 
 import formatDuration from '../utils/formatDuration'
@@ -24,6 +28,8 @@ export default function CourseCard({
   level,
   image,
   showProgress = true,
+  showActions = true,
+  legend = 'Haz clic para ver más detalles de este curso',
 }: Props) {
   const isLogged = useAuthStore(state => state.isLogged)
   const enrolledCourses = useAuthStore(state => state.enrolledCourses)
@@ -101,50 +107,54 @@ export default function CourseCard({
           </div>
         )}
       </Link>
-      <div className="mt-auto flex flex-col sm:flex-row gap-2 justify-center">
-        <Link
-          to={`/cursos/${id}`}
-          className="flex w-full sm:flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-indigo-500 text-white hover:bg-indigo-600 min-w-[8rem] uppercase"
-        >
-          <InformationCircleIcon className="h-6 w-6" />
-          <span>Ver info</span>
-        </Link>
-        {!isLogged ? (
+      {showActions ? (
+        <div className="mt-auto flex flex-col sm:flex-row gap-2 justify-center">
           <Link
-            to={`/cursos/${id}/inscripcion`}
-          className="flex w-full sm:flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-orange-500 text-white hover:bg-orange-600 min-w-[8rem] uppercase"
-        >
-          <PlayCircleIcon className="h-6 w-6" />
-          <span>Comenzar</span>
-          </Link>
-        ) : (
-          <Link
-            to={
-              isEnrolled
-                ? showExam
-                  ? `/cursos/${id}/examen-final`
-                  : nextLink
-                : `/cursos/${id}/inscripcion`
-            }
-          className={`flex w-full sm:flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded min-w-[8rem] uppercase ${
-              isEnrolled
-                ? showExam
-                  ? 'bg-purple-600 text-white hover:bg-purple-700'
-                  : 'bg-blue-600 text-white hover:bg-blue-700'
-                : 'bg-orange-500 text-white hover:bg-orange-600'
-            }`}
+            to={`/cursos/${id}`}
+            className="flex w-full sm:flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-indigo-500 text-white hover:bg-indigo-600 min-w-[8rem] uppercase"
           >
-            <PlayCircleIcon className="h-6 w-6" />
-            <span>
-              {isEnrolled
-                ? showExam
-                  ? 'EVALUACIÓN'
-                  : 'VER'
-                : 'COMENZAR'}
-            </span>
+            <InformationCircleIcon className="h-6 w-6" />
+            <span>Ver info</span>
           </Link>
-        )}
-      </div>
+          {!isLogged ? (
+            <Link
+              to={`/cursos/${id}/inscripcion`}
+              className="flex w-full sm:flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-orange-500 text-white hover:bg-orange-600 min-w-[8rem] uppercase"
+            >
+              <PlayCircleIcon className="h-6 w-6" />
+              <span>Comenzar</span>
+            </Link>
+          ) : (
+            <Link
+              to={
+                isEnrolled
+                  ? showExam
+                    ? `/cursos/${id}/examen-final`
+                    : nextLink
+                  : `/cursos/${id}/inscripcion`
+              }
+              className={`flex w-full sm:flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded min-w-[8rem] uppercase ${
+                isEnrolled
+                  ? showExam
+                    ? 'bg-purple-600 text-white hover:bg-purple-700'
+                    : 'bg-blue-600 text-white hover:bg-blue-700'
+                  : 'bg-orange-500 text-white hover:bg-orange-600'
+              }`}
+            >
+              <PlayCircleIcon className="h-6 w-6" />
+              <span>
+                {isEnrolled
+                  ? showExam
+                    ? 'EVALUACIÓN'
+                    : 'VER'
+                  : 'COMENZAR'}
+              </span>
+            </Link>
+          )}
+        </div>
+      ) : (
+        <p className="mt-auto text-center text-sm text-gray-600">{legend}</p>
+      )}
     </div>
   )
 }
