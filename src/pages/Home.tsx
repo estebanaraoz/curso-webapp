@@ -6,7 +6,6 @@ import { courses } from '../data/courses'
 import getAssetUrl from '../utils/getAssetUrl'
 import { Link } from 'react-router-dom'
 import {
-  UserCircleIcon,
   UserPlusIcon,
   BookOpenIcon,
   ClipboardDocumentCheckIcon,
@@ -48,26 +47,32 @@ export default function Home() {
               <div className="flex flex-col items-center gap-2">
                 <CheckBadgeIcon className="w-16 h-16 text-blue-600" />
                 <h2 className="text-3xl font-semibold">Cursos certificados</h2>
-                <p>Inscríbete y recorre cada clase con documentos y videos. Al terminar rendí una evaluación para obtener tu certificado.</p>
+                <p>Inscríbete y recorre cada clase con documentos y videos. Al finalizar harás una evaluación para obtener tu certificado oficial.</p>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <ClockIcon className="w-16 h-16 text-blue-600" />
                 <h2 className="text-3xl font-semibold">A tu propio ritmo</h2>
-                <p>Avanza con total flexibilidad de horarios y elige cuándo tomar cada lección. Repasa los módulos las veces que necesites.</p>
+                <p>Avanza con total flexibilidad de horario y elige cuándo tomar cada lección. Repasa los módulos las veces que necesites.</p>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <UsersIcon className="w-16 h-16 text-blue-600" />
                 <h2 className="text-3xl font-semibold">Foro de la comunidad</h2>
-                <p>Participa en un espacio colaborativo con estudiantes y asesores. Comparte dudas y soluciones con la comunidad.</p>
+                <p>Participa en un espacio colaborativo junto a estudiantes y asesores. Comparte dudas y soluciones con toda la comunidad.</p>
               </div>
             </div>
           </section>
 
           <section className="py-12">
-          <h2 className="text-4xl font-bold text-center mb-4">Últimos Cursos</h2>
-            <div className="flex flex-wrap justify-center gap-6 w-full max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold text-center">Cursos Más Destacados</h2>
+          <p className="text-sm text-center mb-4">por la comunidad</p>
+            <div className="flex flex-wrap justify-center gap-6 w-full max-w-screen-2xl mx-auto">
               {featuredCourses.slice(0,4).map(course => (
-                <CourseCard key={course.id} {...course} showProgress={false} />
+                <CourseCard
+                  key={course.id}
+                  {...course}
+                  showProgress={false}
+                  showActions={false}
+                />
               ))}
             </div>
           </section>
@@ -75,17 +80,23 @@ export default function Home() {
         <section className="container mx-auto py-12 flex flex-col items-center gap-6">
           <h2 className="text-4xl font-bold">¿Cómo inscribirse?</h2>
           <div className="grid md:grid-cols-3 gap-4 w-full">
-            <div className="p-card rounded-card shadow-card flex flex-col items-center gap-3">
+            <div className="relative p-card rounded-card shadow-card flex flex-col items-center gap-3 border border-tertiary">
+              <span className="absolute top-2 right-2 w-6 h-6 rounded-full bg-tertiary text-white flex items-center justify-center text-sm font-semibold">1</span>
               <UserPlusIcon className="w-10 h-10 text-primary" />
-              <p>Registrate gratis</p>
+              <h3 className="text-lg font-semibold">Registrate gratis</h3>
+              <p className="text-sm text-center">Primero creá tu cuenta de usuario en la plataforma. Completa tus datos de contacto para que podamos identificarte. El registro es totalmente gratuito.</p>
             </div>
-            <div className="p-card rounded-card shadow-card flex flex-col items-center gap-3">
+            <div className="relative p-card rounded-card shadow-card flex flex-col items-center gap-3 border border-tertiary">
+              <span className="absolute top-2 right-2 w-6 h-6 rounded-full bg-tertiary text-white flex items-center justify-center text-sm font-semibold">2</span>
               <BookOpenIcon className="w-10 h-10 text-primary" />
-              <p>Elegí un curso</p>
+              <h3 className="text-lg font-semibold">Elegí un curso</h3>
+              <p className="text-sm text-center">Cuando hayas iniciado sesión podrás explorar nuestro catálogo de cursos. Revisa cada propuesta con calma y selecciona la que prefieras. Las clases se realizan paso a paso y a tu ritmo.</p>
             </div>
-            <div className="p-card rounded-card shadow-card flex flex-col items-center gap-3">
+            <div className="relative p-card rounded-card shadow-card flex flex-col items-center gap-3 border border-tertiary">
+              <span className="absolute top-2 right-2 w-6 h-6 rounded-full bg-tertiary text-white flex items-center justify-center text-sm font-semibold">3</span>
               <ClipboardDocumentCheckIcon className="w-10 h-10 text-primary" />
-              <p>Completá el formulario</p>
+              <h3 className="text-lg font-semibold">Realiza la evaluación</h3>
+              <p className="text-sm text-center">Al terminar las clases deberás contestar la evaluación final. Envía tus respuestas para demostrar lo aprendido. Si apruebas recibirás un certificado del curso.</p>
             </div>
           </div>
           <Link to="/cursos">
@@ -96,12 +107,20 @@ export default function Home() {
         <section className="bg-gray-100 dark:bg-gray-800 py-12">
           <div className="container mx-auto grid md:grid-cols-2 gap-8 p-4 text-center">
             <div className="flex flex-col items-center gap-2">
-              <UserCircleIcon className="w-[60px] h-[60px] mx-auto text-gray-500" />
+              <img
+                src={getAssetUrl('/images/testimonials/lucia.png')}
+                alt="Lucía"
+                className="w-[80px] h-[80px] object-cover rounded-full mx-auto"
+              />
               <p className="text-xl font-semibold">"Gracias a Aula Digital pude conseguir mi primer trabajo en tecnología"</p>
               <span className="text-base">- Lucía</span>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <UserCircleIcon className="w-[60px] h-[60px] mx-auto text-gray-500" />
+              <img
+                src={getAssetUrl('/images/testimonials/mateo.png')}
+                alt="Mateo"
+                className="w-[80px] h-[80px] object-cover rounded-full mx-auto"
+              />
               <p className="text-xl font-semibold">"Los cursos son claros y el soporte del foro es excelente"</p>
               <span className="text-base">- Mateo</span>
             </div>
