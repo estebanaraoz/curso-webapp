@@ -39,7 +39,7 @@ export default function Forum() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="container mx-auto flex-grow p-4 space-y-8">
+      <main className="container mx-auto flex-grow p-4 pb-12 space-y-8">
         <h1 className="text-5xl font-bold text-center">Foro de la comunidad</h1>
 
         <section className="bg-gray-100 dark:bg-gray-800 p-4 rounded space-y-4">

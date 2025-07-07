@@ -12,7 +12,7 @@ export default function Nosotros() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="container mx-auto flex-grow p-4 space-y-12">
+      <main className="container mx-auto flex-grow p-4 pb-12 space-y-12">
         <section className="text-center space-y-4">
           <h1 className="text-6xl font-extrabold">Sobre Aula Digital Ciudadana</h1>
           <p className="text-xl">
@@ -39,7 +39,7 @@ export default function Nosotros() {
             <AcademicCapIcon className="w-16 h-16 text-purple-600" />
             <h2 className="text-4xl font-semibold">Misión y visión</h2>
             <p>
-              Buscamos formar una comunidad que comparta conocimiento y oportunidades. Soñamos con un futuro en el que cualquier persona pueda crecer profesionalmente sin barreras.
+              Buscamos formar una comunidad que comparta conocimiento y oportunidades. Soñamos con un futuro en que cualquier persona pueda crecer profesionalmente sin barreras.
             </p>
           </div>
         </section>
