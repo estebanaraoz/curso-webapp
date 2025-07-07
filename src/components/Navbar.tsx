@@ -52,7 +52,7 @@ export default function Navbar() {
             <div className="relative">
               <button
                 onClick={toggleDropdown}
-                className="flex items-center gap-2 px-4 py-2 rounded bg-sky-500 text-white hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="flex items-center gap-2 px-4 py-2 rounded bg-tertiary text-white hover:brightness-90 focus:outline-none focus:ring-2 focus:ring-primary"
                 aria-haspopup="true"
               >
                 <UserCircleIcon className="w-8 h-8" />
@@ -150,7 +150,7 @@ export default function Navbar() {
             <div className="relative w-full sm:w-auto">
               <button
                 onClick={toggleDropdown}
-                className="flex items-center gap-2 w-full sm:w-auto px-4 py-2 rounded bg-sky-500 text-white hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="flex items-center gap-2 w-full sm:w-auto px-4 py-2 rounded bg-tertiary text-white hover:brightness-90 focus:outline-none focus:ring-2 focus:ring-primary"
                 aria-haspopup="true"
               >
                 <UserCircleIcon className="w-8 h-8" />
