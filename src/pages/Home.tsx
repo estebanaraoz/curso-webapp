@@ -60,7 +60,7 @@ export default function Home() {
 
         <section className="py-12">
           <h2 className="text-2xl font-bold text-center mb-4">Cursos Destacados</h2>
-          <div className="grid gap-4 justify-center [grid-template-columns:repeat(auto-fit,_minmax(300px,_1fr))]">
+          <div className="grid gap-4 justify-center [grid-template-columns:repeat(auto-fit,_minmax(360px,_1fr))]">
             {featuredCourses.slice(0,4).map(course => (
               <CourseCard key={course.id} {...course} showProgress={false} />
             ))}
