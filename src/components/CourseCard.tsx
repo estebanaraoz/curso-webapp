@@ -52,13 +52,13 @@ export default function CourseCard({
 
   return (
     <div
-      className="border border-gray-300 p-card rounded-card shadow-card flex flex-col gap-4 w-full sm:w-[360px]"
+      className="border border-gray-300 p-card rounded-card shadow-card flex flex-col h-full gap-4"
     >
       <Link to={`/cursos/${id}`} className="flex flex-col gap-2 flex-grow">
         <img
           src={image}
           alt={title}
-          className="w-full h-60 object-cover rounded"
+          className="w-full aspect-video object-cover rounded"
         />
         <h2 className="text-xl font-semibold">{title}</h2>
         <p>Duración: {formatDuration(weeks)}</p>
@@ -100,7 +100,7 @@ export default function CourseCard({
           </div>
         )}
       </Link>
-      <div className="mt-2 flex flex-col sm:flex-row gap-2 justify-center">
+      <div className="mt-auto flex flex-col sm:flex-row gap-2 justify-center">
         <Link
           to={`/cursos/${id}`}
           className="flex w-full sm:flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-indigo-500 text-white hover:bg-indigo-600 min-w-[8rem] uppercase"
