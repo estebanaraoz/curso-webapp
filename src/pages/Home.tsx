@@ -24,7 +24,7 @@ export default function Home() {
       <Navbar />
         <main className="flex-grow">
           <section
-            className="relative w-full bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 overflow-hidden"
+            className="relative w-full bg-gradient-to-r from-blue-50/80 to-purple-50/80 dark:from-gray-800/80 dark:to-gray-700/80 overflow-hidden"
           >
             <div
               className="absolute inset-0 w-full h-full bg-cover bg-center blur-3xl scale-110 -z-10"

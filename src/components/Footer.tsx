@@ -4,7 +4,7 @@ import getAssetUrl from '../utils/getAssetUrl'
 export default function Footer() {
   return (
     <footer className="bg-gray-500 dark:bg-gray-900 text-white text-sm">
-      <div className="container mx-auto px-4 py-8 grid gap-8 md:grid-cols-4">
+      <div className="container mx-auto px-4 py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         <div>
           <img src={getAssetUrl('/logo.png')} alt="Logo" className="h-16 w-auto mb-2 object-contain" />
           <p>
