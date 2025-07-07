@@ -35,7 +35,7 @@ export default function Home() {
                 </h1>
                 <p className="text-xl md:text-2xl text-black">Aprende y potencia tu carrera con cursos online dictados por profesionales del desarrollo web.</p>
                 <Link to="/cursos">
-                  <Button variant="primary" className="text-lg uppercase">Explorar Cursos</Button>
+                  <Button variant="primary" className="text-lg uppercase px-8 py-4">Explorar Cursos</Button>
                 </Link>
               </div>
             </div>
@@ -100,7 +100,7 @@ export default function Home() {
             </div>
           </div>
           <Link to="/cursos">
-            <Button variant="primary" className="text-lg uppercase">Explorar Cursos</Button>
+            <Button variant="primary" className="text-lg uppercase px-8 py-4">Explorar Cursos</Button>
           </Link>
         </section>
 
