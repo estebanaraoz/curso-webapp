@@ -48,7 +48,7 @@ export default function Home() {
               <div className="flex flex-col items-center gap-2">
                 <CheckBadgeIcon className="w-16 h-16 text-blue-600" />
                 <h2 className="text-3xl font-semibold">Cursos certificados</h2>
-                <p>Inscríbete y recorre cada clase con documentos y videos. Al finalizar harás una evaluación para obtener tu certificado.</p>
+                <p>Inscríbete y recorre cada clase con documentos y videos. Al finalizar harás una evaluación para obtener tu certificado oficial.</p>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <ClockIcon className="w-16 h-16 text-blue-600" />
@@ -64,8 +64,9 @@ export default function Home() {
           </section>
 
           <section className="py-12">
-          <h2 className="text-4xl font-bold text-center mb-4">Últimos Cursos</h2>
-            <div className="flex flex-wrap justify-center gap-6 w-full max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold text-center">Cursos Más Destacados</h2>
+          <p className="text-sm text-center mb-4">por la comunidad</p>
+            <div className="flex flex-wrap justify-center gap-6 w-full max-w-screen-2xl mx-auto">
               {featuredCourses.slice(0,4).map(course => (
                 <CourseCard key={course.id} {...course} showProgress={false} />
               ))}
