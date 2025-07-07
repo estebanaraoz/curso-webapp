@@ -49,7 +49,7 @@ export default function Navbar() {
   }, [dropdownOpen])
 
   return (
-    <nav className="sticky top-0 z-50 bg-blue-600 dark:bg-blue-700 text-white text-lg py-3">
+    <nav className="sticky top-0 z-50 bg-primary dark:bg-primary-dark text-white text-lg py-3">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-[auto_1fr_auto] items-center py-3 sm:hidden">
         <button

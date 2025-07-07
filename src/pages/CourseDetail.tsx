@@ -6,7 +6,6 @@ import { useParams, useNavigate, Link } from 'react-router-dom'
 import getAssetUrl from '../utils/getAssetUrl'
 
 import {
-  UserCircleIcon,
   LockClosedIcon,
   CheckCircleIcon as CheckCircleSolidIcon,
 } from '@heroicons/react/24/solid'
@@ -118,7 +117,7 @@ export default function CourseDetail() {
                   <img
                     src={getAssetUrl(instructor.avatar)}
                     alt={instructor.name}
-                    className="w-[60px] h-[60px] object-cover rounded-full"
+                    className="w-[240px] h-[240px] object-cover rounded-full"
                   />
                   <span className="font-semibold">{instructor.name}</span>
                 </div>
