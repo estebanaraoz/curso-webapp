@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom'
-import { InformationCircleIcon, PlayCircleIcon } from '@heroicons/react/24/solid'
+import {
+  InformationCircleIcon,
+  PlayCircleIcon,
+  ClipboardDocumentCheckIcon,
+} from '@heroicons/react/24/solid'
 import { useAuthStore } from '../store/auth'
 import getAssetUrl from '../utils/getAssetUrl'
 
@@ -126,18 +130,18 @@ export default function CourseCard({
       <div className="mt-auto flex flex-col sm:flex-row gap-2 justify-center">
         <Link
           to={`/cursos/${id}`}
-          className="flex w-full sm:flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-indigo-500 text-white hover:bg-indigo-600 min-w-[8rem] uppercase"
+          className="flex w-full sm:flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-primary text-white hover:bg-primary-dark min-w-[8rem] uppercase"
         >
-          <InformationCircleIcon className="h-6 w-6" />
-          <span>Ver info</span>
+          <InformationCircleIcon className="h-7 w-7" />
+          <span>Detalles</span>
         </Link>
         {!isLogged ? (
           <Link
             to={`/cursos/${id}/inscripcion`}
             className="flex w-full sm:flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-orange-500 text-white hover:bg-orange-600 min-w-[8rem] uppercase"
           >
-            <PlayCircleIcon className="h-6 w-6" />
-            <span>Comenzar</span>
+            <PlayCircleIcon className="h-7 w-7" />
+            <span>Iniciar</span>
           </Link>
         ) : (
           <Link
@@ -152,17 +156,21 @@ export default function CourseCard({
               isEnrolled
                 ? showExam
                   ? 'bg-purple-600 text-white hover:bg-purple-700'
-                  : 'bg-blue-600 text-white hover:bg-blue-700'
+                  : 'bg-orange-500 text-white hover:bg-orange-600'
                 : 'bg-orange-500 text-white hover:bg-orange-600'
             }`}
           >
-            <PlayCircleIcon className="h-6 w-6" />
+            {isEnrolled && showExam ? (
+              <ClipboardDocumentCheckIcon className="h-7 w-7" />
+            ) : (
+              <PlayCircleIcon className="h-7 w-7" />
+            )}
             <span>
               {isEnrolled
                 ? showExam
-                  ? 'EVALUACIÓN'
-                  : 'VER'
-                : 'COMENZAR'}
+                  ? 'RENDIR'
+                  : 'SEGUIR'
+                : 'INICIAR'}
             </span>
           </Link>
         )}

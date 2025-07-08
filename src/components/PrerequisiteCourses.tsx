@@ -11,8 +11,8 @@ export default function PrerequisiteCourses({ courseIds }: Props) {
   if (list.length === 0) return null
   return (
     <section className="border-2 border-gray-300 rounded p-4 space-y-2">
-      <h2 className="text-2xl font-bold">Cursos requeridos</h2>
-      <p className="text-sm">Debes completar previamente los siguientes cursos:</p>
+      <h2 className="text-3xl font-bold">Cursos requeridos</h2>
+      <p className="text-lg">Debes completar previamente los siguientes cursos:</p>
       <ul className="space-y-2">
         {list.map(c => (
           <li key={c.id}>
@@ -20,8 +20,8 @@ export default function PrerequisiteCourses({ courseIds }: Props) {
               to={`/cursos/${c.id}`}
               className="flex items-center gap-2 text-black hover:text-black no-underline"
             >
-              <AcademicCapIcon className="w-5 h-5 text-gray-500" />
-              <span className="font-semibold">{c.title}</span>
+              <AcademicCapIcon className="w-6 h-6 text-gray-500" />
+              <span className="font-semibold text-lg">{c.title}</span>
             </Link>
           </li>
         ))}
