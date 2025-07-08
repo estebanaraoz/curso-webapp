@@ -1,6 +1,6 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import CourseSlider from '../components/CourseSlider'
+import CourseCard from '../components/CourseCard'
 import { useAuthStore } from '../store/auth'
 import { Link, useNavigate } from 'react-router-dom'
 import { courses } from '../data/courses'
@@ -31,24 +31,24 @@ export default function Dashboard() {
               <span className="block px-4 py-2 font-semibold">Menú</span>
             </li>
             <li>
-              <button className="w-full text-left px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">
+              <button className="w-full text-left px-4 py-2 hover:text-tertiary">
                 Mis cursos
               </button>
             </li>
             <li>
-              <button className="w-full text-left px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">
+              <button className="w-full text-left px-4 py-2 hover:text-tertiary">
                 Mis calificaciones
               </button>
             </li>
             <li>
-              <button className="w-full text-left px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">
+              <button className="w-full text-left px-4 py-2 hover:text-tertiary">
                 Mis certificados
               </button>
             </li>
             <li>
               <Link
                 to="/perfil"
-                className="block w-full text-left px-4 py-2 rounded bg-gray-200 hover:bg-gray-300"
+                className="block w-full text-left px-4 py-2 hover:text-tertiary"
               >
                 Editar cuenta
               </Link>
@@ -56,7 +56,7 @@ export default function Dashboard() {
             <li>
               <button
                 onClick={handleLogout}
-                className="w-full text-left px-4 py-2 rounded bg-gray-200 hover:bg-gray-300"
+                className="w-full text-left px-4 py-2 hover:text-tertiary"
               >
                 Cerrar sesión
               </button>
@@ -66,54 +66,52 @@ export default function Dashboard() {
         <section className="flex-grow space-y-4 w-full">
           <div className="border border-gray-300 rounded-card shadow-card p-card space-y-4 w-full">
             <h1 className="text-5xl font-bold">Mis cursos</h1>
-            {enrolledCourses.length === 0 ? (
-              <p>Todavía no te inscribiste a ningún curso.</p>
-            ) : (
-              <>
-                {currentCourses.length > 0 && (
-                  <div className="space-y-2">
-                    <h2 className="text-4xl font-semibold">Actualmente cursando</h2>
-                    <CourseSlider
-                      courses={currentCourses.map(course => {
-                        const info = courses.find(c => c.id === course.id)
-                        return {
-                          id: course.id,
-                          title: info?.title ?? course.title,
-                          weeks: info?.weeks ?? 0,
-                          level: info?.level ?? '',
-                          image: info?.image ?? '',
-                        }
-                      })}
-                    />
-                  </div>
-                )}
-                {finishedCourses.length > 0 && (
-                  <div className="space-y-2">
-                    <h2 className="text-4xl font-semibold">Cursos finalizados</h2>
-                    <CourseSlider
-                      courses={finishedCourses.map(course => {
-                        const info = courses.find(c => c.id === course.id)
-                        return {
-                          id: course.id,
-                          title: info?.title ?? course.title,
-                          weeks: info?.weeks ?? 0,
-                          level: info?.level ?? '',
-                          image: info?.image ?? '',
-                        }
-                      })}
-                    />
-                  </div>
-                )}
-              </>
+            {currentCourses.length > 0 && (
+              <div className="space-y-2">
+                <h2 className="text-4xl font-semibold">Actualmente cursando</h2>
+                <div className="grid gap-6 items-start justify-center justify-items-center sm:justify-start sm:justify-items-start grid-cols-[repeat(auto-fill,minmax(320px,1fr))]">
+                  {currentCourses.map(course => {
+                    const info = courses.find(c => c.id === course.id)
+                    return (
+                      <CourseCard
+                        key={course.id}
+                        id={course.id}
+                        title={info?.title ?? course.title}
+                        weeks={info?.weeks ?? 0}
+                        level={info?.level ?? ''}
+                        image={info?.image ?? ''}
+                      />
+                    )
+                  })}
+                </div>
+              </div>
+            )}
+            {finishedCourses.length > 0 && (
+              <div className="space-y-2">
+                <h2 className="text-4xl font-semibold">Cursos finalizados</h2>
+                <div className="grid gap-6 items-start justify-center justify-items-center sm:justify-start sm:justify-items-start grid-cols-[repeat(auto-fill,minmax(320px,1fr))]">
+                  {finishedCourses.map(course => {
+                    const info = courses.find(c => c.id === course.id)
+                    return (
+                      <CourseCard
+                        key={course.id}
+                        id={course.id}
+                        title={info?.title ?? course.title}
+                        weeks={info?.weeks ?? 0}
+                        level={info?.level ?? ''}
+                        image={info?.image ?? ''}
+                      />
+                    )
+                  })}
+                </div>
+              </div>
             )}
           </div>
           <div className="border border-gray-300 rounded-card shadow-card p-card space-y-2 w-full">
             <h1 className="text-5xl font-bold">Mis calificaciones</h1>
-            <p>Aquí verás tus calificaciones</p>
           </div>
           <div className="border border-gray-300 rounded-card shadow-card p-card space-y-2 w-full">
             <h1 className="text-5xl font-bold">Mis certificados</h1>
-            <p>Aquí verás tus certificados</p>
           </div>
         </section>
       </main>
