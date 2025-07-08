@@ -37,7 +37,7 @@ export default function Forum() {
     setPosts([newPost, ...posts])
     setTitle('')
     setContent('')
-    navigate('/error')
+    navigate('/404')
   }
 
   return (
@@ -83,7 +83,7 @@ export default function Forum() {
                 className="flex items-center gap-2 px-4 py-2 rounded bg-primary text-white self-start"
               >
                 <PaperAirplaneIcon className="w-5 h-5" />
-                <span className="sr-only">Publicar</span>
+                <span>Publicar</span>
               </button>
             </form>
           ) : (
@@ -101,18 +101,24 @@ export default function Forum() {
 
         <section className="space-y-4">
           {posts.map(post => (
-            <article key={post.id} className="border rounded-card p-card shadow-card bg-white space-y-2">
-              <header className="flex justify-between items-center">
-                <h3 className="font-semibold">{post.title}</h3>
-                <span className="text-base text-gray-500">
+            <article
+              key={post.id}
+              className="border rounded-card p-card shadow-card bg-white space-y-2"
+            >
+              <header className="space-y-1">
+                <span className="text-sm text-gray-500">
                   {new Date(post.date).toLocaleString()}
                 </span>
+                <h3 className="font-semibold">{post.title}</h3>
               </header>
               <p className="text-base">{post.content}</p>
               <div className="text-base flex items-center gap-1 text-gray-500">
                 <ChatBubbleBottomCenterTextIcon className="w-4 h-4" />
                 {post.replies.length} respuestas
-                <button className="ml-auto flex items-center gap-1 text-gray-500 text-base" aria-label="Me gusta">
+                <button
+                  className="flex items-center gap-1 text-gray-500 text-base"
+                  aria-label="Me gusta"
+                >
                   <HandThumbUpIcon className="w-4 h-4" /> {post.likes ?? 0}
                 </button>
               </div>
