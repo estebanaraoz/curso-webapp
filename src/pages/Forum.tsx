@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import Button from '../components/Button'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { courses } from '../data/courses'
@@ -18,6 +20,7 @@ export default function Forum() {
   const [content, setContent] = useState('')
   const [courseId, setCourseId] = useState(courses[0]?.id ?? '')
   const isLogged = useAuthStore(state => state.isLogged)
+  const navigate = useNavigate()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -34,6 +37,7 @@ export default function Forum() {
     setPosts([newPost, ...posts])
     setTitle('')
     setContent('')
+    navigate('/error')
   }
 
   return (
@@ -85,12 +89,12 @@ export default function Forum() {
           ) : (
             <div className="flex flex-col gap-2">
               <p>No puedes realizar una publicación si no iniciaste sesión.</p>
-              <a
-                href="/login"
-                className="flex items-center gap-2 px-4 py-2 rounded bg-blue-600 text-white w-max"
+              <Button
+                onClick={() => navigate('/login')}
+                className="text-lg uppercase px-8 py-4"
               >
                 Inicia sesión para hacer una nueva consulta
-              </a>
+              </Button>
             </div>
           )}
         </section>

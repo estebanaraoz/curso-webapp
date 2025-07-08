@@ -123,7 +123,12 @@ export default function ClassPage() {
                 </Button>
               )
             ) : (
-              <Button onClick={() => navigate('/login')}>Inicia sesión para continuar</Button>
+              <Button
+                onClick={() => navigate('/login')}
+                className="text-lg uppercase px-8 py-4"
+              >
+                Inicia sesión para continuar
+              </Button>
             )}
           </div>
           <hr className="my-6" />
@@ -239,7 +244,12 @@ export default function ClassPage() {
                     </Button>
                   )
                 ) : (
-                  <Button onClick={() => navigate('/login')}>Inicia sesión para continuar</Button>
+                  <Button
+                    onClick={() => navigate('/login')}
+                    className="text-lg uppercase px-8 py-4"
+                  >
+                    Inicia sesión para continuar
+                  </Button>
                 )}
               </div>
             </>
