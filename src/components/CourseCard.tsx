@@ -141,7 +141,7 @@ export default function CourseCard({
             className="flex w-full sm:flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-orange-500 text-white hover:bg-orange-600 min-w-[8rem] uppercase"
           >
             <PlayCircleIcon className="h-7 w-7" />
-            <span>Comenzar</span>
+            <span>Iniciar</span>
           </Link>
         ) : (
           <Link
@@ -170,7 +170,7 @@ export default function CourseCard({
                 ? showExam
                   ? 'RENDIR'
                   : 'SEGUIR'
-                : 'COMENZAR'}
+                : 'INICIAR'}
             </span>
           </Link>
         )}

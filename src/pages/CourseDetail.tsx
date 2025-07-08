@@ -90,15 +90,15 @@ export default function CourseDetail() {
             {!progress && (
               <section className="border-2 border-gray-300 rounded p-4 space-y-3">
                 <p className="font-semibold">
-                  Aún no estás inscrito en este curso. Presiona "Comenzar" para
+                  Aún no estás inscrito en este curso. Presiona "Iniciar" para
                   revisar los requisitos previos y los términos de aprobación.
                 </p>
                 <Link
                   to={`/cursos/${id}/inscripcion`}
-                  className="flex w-full sm:flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-orange-500 text-white hover:bg-orange-600 min-w-[8rem] uppercase"
+                  className="flex items-center justify-center gap-2 px-4 py-2 text-base rounded bg-orange-500 text-white hover:bg-orange-600 uppercase self-start"
                 >
                   <PlayCircleIcon className="h-6 w-6" />
-                  <span>Comenzar</span>
+                  <span>Iniciar</span>
                 </Link>
               </section>
             )}
