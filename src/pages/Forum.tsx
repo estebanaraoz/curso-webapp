@@ -90,10 +90,10 @@ export default function Forum() {
             <div className="flex flex-col gap-2">
               <p>No puedes realizar una publicación si no iniciaste sesión.</p>
               <Button
-                onClick={() => navigate('/error')}
-                className="w-max text-lg uppercase px-8 py-4"
+                onClick={() => navigate('/404')}
+                className="w-max text-base uppercase px-6 py-3"
               >
-                Inicia sesión para hacer una nueva consulta
+                Iniciar sesión
               </Button>
             </div>
           )}

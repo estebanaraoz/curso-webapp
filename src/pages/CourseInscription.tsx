@@ -100,7 +100,11 @@ export default function CourseInscription() {
                 <p className="text-red-700 font-semibold">
                   Debes iniciar sesión para poder inscribirte en este curso.
                 </p>
-                <Button type="button" onClick={() => navigate('/login')}>
+                <Button
+                  type="button"
+                  onClick={() => navigate('/login')}
+                  className="text-lg uppercase px-8 py-4"
+                >
                   Iniciar sesión
                 </Button>
               </div>
