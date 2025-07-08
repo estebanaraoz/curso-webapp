@@ -149,12 +149,7 @@ export default function ClassPage() {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                 </svg>
-                <span className="flex flex-col items-start text-left">
-                  <span className="text-sm">
-                    Clase anterior · Módulo {prevModuleId} · Clase {prevClass.id}
-                  </span>
-                  <span className="text-xs truncate">{prevClass.title}</span>
-                </span>
+                <span className="text-sm">Clase anterior</span>
               </Button>
             )}
             {canAccess && nextClass && nextModuleId && (
@@ -163,12 +158,7 @@ export default function ClassPage() {
                 className="flex items-center gap-2 py-3"
                 variant="secondary"
               >
-                <span className="flex flex-col items-end text-right">
-                  <span className="text-sm">
-                    Próxima clase · Módulo {nextModuleId} · Clase {nextClass.id}
-                  </span>
-                  <span className="text-xs truncate">{nextClass.title}</span>
-                </span>
+                <span className="text-sm">Próxima clase</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -272,12 +262,7 @@ export default function ClassPage() {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                 </svg>
-                <span className="flex flex-col items-start text-left">
-                  <span className="text-sm">
-                    Clase anterior · Módulo {prevModuleId} · Clase {prevClass.id}
-                  </span>
-                  <span className="text-xs truncate">{prevClass.title}</span>
-                </span>
+                <span className="text-sm">Clase anterior</span>
               </Button>
             )}
             {canAccess && nextClass && nextModuleId && (
@@ -286,12 +271,7 @@ export default function ClassPage() {
                 className="flex items-center gap-2 py-3"
                 variant="secondary"
               >
-                <span className="flex flex-col items-end text-right">
-                  <span className="text-sm">
-                    Próxima clase · Módulo {nextModuleId} · Clase {nextClass.id}
-                  </span>
-                  <span className="text-xs truncate">{nextClass.title}</span>
-                </span>
+                <span className="text-sm">Próxima clase</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

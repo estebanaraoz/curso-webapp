@@ -89,10 +89,7 @@ export default function Login() {
                 {error}
               </p>
             )}
-            <Button
-              type="submit"
-              className="text-lg uppercase px-8 py-4"
-            >
+            <Button type="submit" className="w-full">
               Iniciar sesión
             </Button>
             <p className="text-base text-center text-gray-700">
