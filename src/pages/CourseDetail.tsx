@@ -95,9 +95,9 @@ export default function CourseDetail() {
                 </p>
                 <Link
                   to={`/cursos/${id}/inscripcion`}
-                  className="flex items-center justify-center gap-2 px-4 py-2 text-base rounded bg-orange-500 text-white hover:bg-orange-600 uppercase self-start"
+                  className="inline-flex items-center gap-2 min-w-[8rem] px-4 py-2 rounded text-base font-medium bg-orange-500 text-white hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-primary uppercase"
                 >
-                  <PlayCircleIcon className="h-6 w-6" />
+                  <PlayCircleIcon className="h-7 w-7" />
                   <span>Iniciar</span>
                 </Link>
               </section>
