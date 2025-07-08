@@ -44,7 +44,7 @@ export default function Forum() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="container mx-auto flex-grow p-4 pb-12 space-y-8">
-        <h1 className="text-5xl font-bold text-center">Foro de la comunidad</h1>
+        <h1 className="text-6xl font-extrabold text-center">Foro de la comunidad</h1>
 
         <section className="bg-gray-100 dark:bg-gray-800 p-4 rounded space-y-4">
           <h2 className="text-3xl font-semibold flex items-center gap-2">

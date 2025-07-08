@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom'
-import { InformationCircleIcon, PlayCircleIcon } from '@heroicons/react/24/solid'
+import {
+  InformationCircleIcon,
+  PlayCircleIcon,
+  ClipboardDocumentCheckIcon,
+} from '@heroicons/react/24/solid'
 import { useAuthStore } from '../store/auth'
 import getAssetUrl from '../utils/getAssetUrl'
 
@@ -128,7 +132,7 @@ export default function CourseCard({
           to={`/cursos/${id}`}
           className="flex w-full sm:flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-primary text-white hover:bg-primary-dark min-w-[8rem] uppercase"
         >
-          <InformationCircleIcon className="h-6 w-6" />
+          <InformationCircleIcon className="h-7 w-7" />
           <span>Detalles</span>
         </Link>
         {!isLogged ? (
@@ -136,7 +140,7 @@ export default function CourseCard({
             to={`/cursos/${id}/inscripcion`}
             className="flex w-full sm:flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-orange-500 text-white hover:bg-orange-600 min-w-[8rem] uppercase"
           >
-            <PlayCircleIcon className="h-6 w-6" />
+            <PlayCircleIcon className="h-7 w-7" />
             <span>Comenzar</span>
           </Link>
         ) : (
@@ -156,7 +160,11 @@ export default function CourseCard({
                 : 'bg-orange-500 text-white hover:bg-orange-600'
             }`}
           >
-            <PlayCircleIcon className="h-6 w-6" />
+            {isEnrolled && showExam ? (
+              <ClipboardDocumentCheckIcon className="h-7 w-7" />
+            ) : (
+              <PlayCircleIcon className="h-7 w-7" />
+            )}
             <span>
               {isEnrolled
                 ? showExam
