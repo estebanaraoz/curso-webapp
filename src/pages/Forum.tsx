@@ -37,7 +37,7 @@ export default function Forum() {
     setPosts([newPost, ...posts])
     setTitle('')
     setContent('')
-    navigate('/error')
+    navigate('/404')
   }
 
   return (
@@ -83,7 +83,7 @@ export default function Forum() {
                 className="flex items-center gap-2 px-4 py-2 rounded bg-primary text-white self-start"
               >
                 <PaperAirplaneIcon className="w-5 h-5" />
-                <span className="sr-only">Publicar</span>
+                <span>Publicar</span>
               </button>
             </form>
           ) : (

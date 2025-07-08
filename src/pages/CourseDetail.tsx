@@ -8,6 +8,7 @@ import getAssetUrl from '../utils/getAssetUrl'
 import {
   LockClosedIcon,
   CheckCircleIcon as CheckCircleSolidIcon,
+  PlayCircleIcon,
 } from '@heroicons/react/24/solid'
 import { CheckCircleIcon as CheckCircleOutlineIcon } from '@heroicons/react/24/outline'
 import { useAuthStore } from '../store/auth'
@@ -92,12 +93,13 @@ export default function CourseDetail() {
                   Aún no estás inscrito en este curso. Presiona "Comenzar" para
                   revisar los requisitos previos y los términos de aprobación.
                 </p>
-                <Button
-                  className="bg-orange-500 hover:bg-orange-600 text-white"
-                  onClick={() => navigate(`/cursos/${id}/inscripcion`)}
+                <Link
+                  to={`/cursos/${id}/inscripcion`}
+                  className="flex w-full sm:flex-1 items-center justify-center gap-2 px-4 py-2 text-base rounded bg-orange-500 text-white hover:bg-orange-600 min-w-[8rem] uppercase"
                 >
-                  Comenzar
-                </Button>
+                  <PlayCircleIcon className="h-6 w-6" />
+                  <span>Comenzar</span>
+                </Link>
               </section>
             )}
             <section className="border-2 border-gray-300 rounded p-4 space-y-2">
